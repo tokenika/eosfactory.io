@@ -1,2 +1,0 @@
-# eosfactory.io
-EOSFactory website
