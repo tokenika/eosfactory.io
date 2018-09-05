@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>eosf_account &#8212; EOSFactory 0.0 documentation</title>
+    <title>efacc &#8212; EOSFactory 0.0 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -25,8 +25,8 @@
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="eosf_contract" href="eosf_contract.html" />
-    <link rel="prev" title="cleos_system" href="cleos_system.html" />
+    <link rel="next" title="efcon" href="efcon.html" />
+    <link rel="prev" title="cleosys" href="cleosys.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -62,10 +62,10 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul>
-<li class="toctree-l1"><a class="reference internal" href="../cases/02_wallet/case.html">The Wallet Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cases/02_wallet/case.html">Wallet Class</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cases/03_symbolic_names/case.html">Symbolic Names</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../cases/04_account/case.html">The Account Class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../cases/05_master_account/case.html">The Master Account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cases/04_account/case.html">Account Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cases/05_master_account/case.html">Master Account</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion0.8.html">EOSFactory Release Notes - v0.8</a></li>
@@ -86,13 +86,13 @@
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="cleos.html">cleos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cleos_system.html">cleos_system</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">eosf_account</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eosf_contract.html">eosf_contract</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eosf_control.html">eosf_control</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eosf_testnet.html">eosf_testnet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eosf_ui.html">eosf_ui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eosf_wallet.html">eosf_wallet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cleosys.html">cleosys</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">efacc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="efcon.html">efcon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="efman.html">efman</a></li>
+<li class="toctree-l1"><a class="reference internal" href="efnet.html">efnet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="efui.html">efui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="efwlt.html">efwlt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eosf.html">eosf</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup.html">setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="teos.html">teos</a></li>
@@ -109,7 +109,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">eosf_account</a></li>
+<li><a class="reference internal" href="#">efacc</a></li>
 </ul>
 </ul>
 </li>
@@ -119,11 +119,11 @@
               
                 
   <li>
-    <a href="cleos_system.html" title="Previous Chapter: cleos_system"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; cleos_system</span>
+    <a href="cleosys.html" title="Previous Chapter: cleosys"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; cleosys</span>
     </a>
   </li>
   <li>
-    <a href="eosf_contract.html" title="Next Chapter: eosf_contract"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">eosf_contract &raquo;</span>
+    <a href="efcon.html" title="Next Chapter: efcon"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">efcon &raquo;</span>
     </a>
   </li>
               
@@ -133,7 +133,7 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="../_sources/rst/eosf_account.rst.txt"
+  <a href="../_sources/rst/efacc.rst.txt"
      rel="nofollow">Source</a>
 </div></li>
             
@@ -157,11 +157,11 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="module-eosf_account">
-<span id="eosf-account"></span><h1>eosf_account<a class="headerlink" href="#module-eosf_account" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-efacc">
+<span id="efacc"></span><h1>efacc<a class="headerlink" href="#module-efacc" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="eosf_account.GetAccount">
-<em class="property">class </em><code class="descclassname">eosf_account.</code><code class="descname">GetAccount</code><span class="sig-paren">(</span><em>account_object_name</em>, <em>name=None</em>, <em>owner_key_private=None</em>, <em>active_key_private=None</em>, <em>verbosity=None</em><span class="sig-paren">)</span><a class="headerlink" href="#eosf_account.GetAccount" title="Permalink to this definition">¶</a></dt>
+<dt id="efacc.GetAccount">
+<em class="property">class </em><code class="descclassname">efacc.</code><code class="descname">GetAccount</code><span class="sig-paren">(</span><em>account_object_name</em>, <em>name=None</em>, <em>owner_key_private=None</em>, <em>active_key_private=None</em>, <em>verbosity=None</em><span class="sig-paren">)</span><a class="headerlink" href="#efacc.GetAccount" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="cleos.html#cleos.GetAccount" title="cleos.GetAccount"><code class="xref py py-class docutils literal"><span class="pre">cleos.GetAccount</span></code></a></p>
 <p>Look for the account of the given name, put it into the wallet.</p>
 <ul>
@@ -187,8 +187,8 @@ active_key_private: private active key, if not ``None``, used for
 </dd></dl>
 
 <dl class="function">
-<dt id="eosf_account.create_master_account">
-<code class="descclassname">eosf_account.</code><code class="descname">create_master_account</code><span class="sig-paren">(</span><em>account_object_name</em>, <em>account_name=None</em>, <em>owner_key=None</em>, <em>active_key=None</em>, <em>verbosity=None</em><span class="sig-paren">)</span><a class="headerlink" href="#eosf_account.create_master_account" title="Permalink to this definition">¶</a></dt>
+<dt id="efacc.create_master_account">
+<code class="descclassname">efacc.</code><code class="descname">create_master_account</code><span class="sig-paren">(</span><em>account_object_name</em>, <em>account_name=None</em>, <em>owner_key=None</em>, <em>active_key=None</em>, <em>verbosity=None</em><span class="sig-paren">)</span><a class="headerlink" href="#efacc.create_master_account" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create account object in caller’s global namespace.</p>
 <ul>
 <li><p class="first"><strong>parameters</strong>:</p>
@@ -246,13 +246,13 @@ finishes successfully.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="eosf_account.is_wallet_defined">
-<code class="descclassname">eosf_account.</code><code class="descname">is_wallet_defined</code><span class="sig-paren">(</span><em>logger</em>, <em>globals=None</em><span class="sig-paren">)</span><a class="headerlink" href="#eosf_account.is_wallet_defined" title="Permalink to this definition">¶</a></dt>
+<dt id="efacc.is_wallet_defined">
+<code class="descclassname">efacc.</code><code class="descname">is_wallet_defined</code><span class="sig-paren">(</span><em>logger</em>, <em>globals=None</em><span class="sig-paren">)</span><a class="headerlink" href="#efacc.is_wallet_defined" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="data">
-<dt id="eosf_account.wallet_globals">
-<code class="descclassname">eosf_account.</code><code class="descname">wallet_globals</code><em class="property"> = None</em><a class="headerlink" href="#eosf_account.wallet_globals" title="Permalink to this definition">¶</a></dt>
+<dt id="efacc.wallet_globals">
+<code class="descclassname">efacc.</code><code class="descname">wallet_globals</code><em class="property"> = None</em><a class="headerlink" href="#efacc.wallet_globals" title="Permalink to this definition">¶</a></dt>
 <dd><p>The singleton <code class="docutils literal"><span class="pre">Wallet</span></code> object.</p>
 </dd></dl>
 

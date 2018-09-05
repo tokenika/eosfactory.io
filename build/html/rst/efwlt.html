@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>eosf_wallet &#8212; EOSFactory 0.0 documentation</title>
+    <title>efwlt &#8212; EOSFactory 0.0 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -26,7 +26,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="eosf" href="eosf.html" />
-    <link rel="prev" title="eosf_ui" href="eosf_ui.html" />
+    <link rel="prev" title="efui" href="efui.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -62,10 +62,10 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul>
-<li class="toctree-l1"><a class="reference internal" href="../cases/02_wallet/case.html">The Wallet Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cases/02_wallet/case.html">Wallet Class</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cases/03_symbolic_names/case.html">Symbolic Names</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../cases/04_account/case.html">The Account Class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../cases/05_master_account/case.html">The Master Account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cases/04_account/case.html">Account Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cases/05_master_account/case.html">Master Account</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion0.8.html">EOSFactory Release Notes - v0.8</a></li>
@@ -86,13 +86,13 @@
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="cleos.html">cleos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cleos_system.html">cleos_system</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eosf_account.html">eosf_account</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eosf_contract.html">eosf_contract</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eosf_control.html">eosf_control</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eosf_testnet.html">eosf_testnet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="eosf_ui.html">eosf_ui</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">eosf_wallet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cleosys.html">cleosys</a></li>
+<li class="toctree-l1"><a class="reference internal" href="efacc.html">efacc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="efcon.html">efcon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="efman.html">efman</a></li>
+<li class="toctree-l1"><a class="reference internal" href="efnet.html">efnet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="efui.html">efui</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">efwlt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eosf.html">eosf</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setup.html">setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="teos.html">teos</a></li>
@@ -109,7 +109,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">eosf_wallet</a></li>
+<li><a class="reference internal" href="#">efwlt</a></li>
 </ul>
 </ul>
 </li>
@@ -119,7 +119,7 @@
               
                 
   <li>
-    <a href="eosf_ui.html" title="Previous Chapter: eosf_ui"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; eosf_ui</span>
+    <a href="efui.html" title="Previous Chapter: efui"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; efui</span>
     </a>
   </li>
   <li>
@@ -133,7 +133,7 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="../_sources/rst/eosf_wallet.rst.txt"
+  <a href="../_sources/rst/efwlt.rst.txt"
      rel="nofollow">Source</a>
 </div></li>
             
@@ -157,11 +157,11 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="module-eosf_wallet">
-<span id="eosf-wallet"></span><h1>eosf_wallet<a class="headerlink" href="#module-eosf_wallet" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-efwlt">
+<span id="efwlt"></span><h1>efwlt<a class="headerlink" href="#module-efwlt" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="eosf_wallet.Wallet">
-<em class="property">class </em><code class="descclassname">eosf_wallet.</code><code class="descname">Wallet</code><span class="sig-paren">(</span><em>name=None</em>, <em>password=''</em>, <em>verbosity=None</em>, <em>file=False</em><span class="sig-paren">)</span><a class="headerlink" href="#eosf_wallet.Wallet" title="Permalink to this definition">¶</a></dt>
+<dt id="efwlt.Wallet">
+<em class="property">class </em><code class="descclassname">efwlt.</code><code class="descname">Wallet</code><span class="sig-paren">(</span><em>name=None</em>, <em>password=''</em>, <em>verbosity=None</em>, <em>file=False</em><span class="sig-paren">)</span><a class="headerlink" href="#efwlt.Wallet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="cleos.html#cleos.WalletCreate" title="cleos.WalletCreate"><code class="xref py py-class docutils literal"><span class="pre">cleos.WalletCreate</span></code></a></p>
 <p>Create a new wallet locally and operate it.</p>
 <ul>
@@ -183,71 +183,71 @@ is_verbose: If `0`, do not print unless on error,
 </li>
 </ul>
 <dl class="method">
-<dt id="eosf_wallet.Wallet.import_key">
-<code class="descname">import_key</code><span class="sig-paren">(</span><em>account_or_key</em><span class="sig-paren">)</span><a class="headerlink" href="#eosf_wallet.Wallet.import_key" title="Permalink to this definition">¶</a></dt>
+<dt id="efwlt.Wallet.import_key">
+<code class="descname">import_key</code><span class="sig-paren">(</span><em>account_or_key</em><span class="sig-paren">)</span><a class="headerlink" href="#efwlt.Wallet.import_key" title="Permalink to this definition">¶</a></dt>
 <dd><p>Imports private keys of an account into wallet.
 Returns list of <cite>cleos.WalletImport</cite> objects</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="eosf_wallet.Wallet.index">
-<code class="descname">index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eosf_wallet.Wallet.index" title="Permalink to this definition">¶</a></dt>
+<dt id="efwlt.Wallet.index">
+<code class="descname">index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#efwlt.Wallet.index" title="Permalink to this definition">¶</a></dt>
 <dd><p>Lists opened wallets, * marks unlocked.
 Returns <cite>cleos.WalletList</cite> object</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="eosf_wallet.Wallet.keys">
-<code class="descname">keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eosf_wallet.Wallet.keys" title="Permalink to this definition">¶</a></dt>
+<dt id="efwlt.Wallet.keys">
+<code class="descname">keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#efwlt.Wallet.keys" title="Permalink to this definition">¶</a></dt>
 <dd><p>Lists public keys from all unlocked wallets.
 Returns <cite>cleos.WalletKeys</cite> object.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="eosf_wallet.Wallet.lock">
-<code class="descname">lock</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eosf_wallet.Wallet.lock" title="Permalink to this definition">¶</a></dt>
+<dt id="efwlt.Wallet.lock">
+<code class="descname">lock</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#efwlt.Wallet.lock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Lock the wallet.
 Returns <cite>cleos.WalletLock</cite> object.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="eosf_wallet.Wallet.lock_all">
-<code class="descname">lock_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eosf_wallet.Wallet.lock_all" title="Permalink to this definition">¶</a></dt>
+<dt id="efwlt.Wallet.lock_all">
+<code class="descname">lock_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#efwlt.Wallet.lock_all" title="Permalink to this definition">¶</a></dt>
 <dd><p>Lock the wallet.
 Returns <cite>cleos.WalletLock</cite> object.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="eosf_wallet.Wallet.map_account">
-<code class="descname">map_account</code><span class="sig-paren">(</span><em>account_object_name</em>, <em>account_object</em><span class="sig-paren">)</span><a class="headerlink" href="#eosf_wallet.Wallet.map_account" title="Permalink to this definition">¶</a></dt>
+<dt id="efwlt.Wallet.map_account">
+<code class="descname">map_account</code><span class="sig-paren">(</span><em>account_object_name</em>, <em>account_object</em><span class="sig-paren">)</span><a class="headerlink" href="#efwlt.Wallet.map_account" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="eosf_wallet.Wallet.open">
-<code class="descname">open</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eosf_wallet.Wallet.open" title="Permalink to this definition">¶</a></dt>
+<dt id="efwlt.Wallet.open">
+<code class="descname">open</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#efwlt.Wallet.open" title="Permalink to this definition">¶</a></dt>
 <dd><p>Opens the wallet.
 Returns <cite>WalletOpen</cite> object</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="eosf_wallet.Wallet.open_unlock">
-<code class="descname">open_unlock</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eosf_wallet.Wallet.open_unlock" title="Permalink to this definition">¶</a></dt>
+<dt id="efwlt.Wallet.open_unlock">
+<code class="descname">open_unlock</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#efwlt.Wallet.open_unlock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Open&amp;Unlock automatics.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="eosf_wallet.Wallet.remove_key">
-<code class="descname">remove_key</code><span class="sig-paren">(</span><em>account_or_key</em><span class="sig-paren">)</span><a class="headerlink" href="#eosf_wallet.Wallet.remove_key" title="Permalink to this definition">¶</a></dt>
+<dt id="efwlt.Wallet.remove_key">
+<code class="descname">remove_key</code><span class="sig-paren">(</span><em>account_or_key</em><span class="sig-paren">)</span><a class="headerlink" href="#efwlt.Wallet.remove_key" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="eosf_wallet.Wallet.restore_accounts">
-<code class="descname">restore_accounts</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eosf_wallet.Wallet.restore_accounts" title="Permalink to this definition">¶</a></dt>
+<dt id="efwlt.Wallet.restore_accounts">
+<code class="descname">restore_accounts</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#efwlt.Wallet.restore_accounts" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="eosf_wallet.Wallet.unlock">
-<code class="descname">unlock</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eosf_wallet.Wallet.unlock" title="Permalink to this definition">¶</a></dt>
+<dt id="efwlt.Wallet.unlock">
+<code class="descname">unlock</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#efwlt.Wallet.unlock" title="Permalink to this definition">¶</a></dt>
 <dd><p>Unlock the wallet.
 Returns <cite>WalletUnlock</cite> object.</p>
 </dd></dl>
