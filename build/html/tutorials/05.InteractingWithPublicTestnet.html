@@ -199,11 +199,7 @@
 <p>We consider two cases, depending whether you already have an account registered on a public testnet or not.</p>
 <div class="section" id="case-1-you-do-not-have-an-account">
 <span id="case-1-you-do-not-have-an-account"></span><h3>Case 1: You do not have an account<a class="headerlink" href="#case-1-you-do-not-have-an-account" title="Permalink to this headline">¶</a></h3>
-<p>Use the following Python script:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">utils</span><span class="o">/</span><span class="n">register_testnet</span><span class="o">.</span><span class="n">py</span>
-</pre></div>
-</div>
-<p>The script two parameters:</p>
+<p>We recommend using the <code class="docutils literal"><span class="pre">utils/register_testnet.py</span></code> script with the following two parameters:</p>
 <ul class="simple">
 <li>an URL of a public node offering access to the testnet, e.g. <code class="docutils literal"><span class="pre">http://88.99.97.30:38888</span></code>,</li>
 <li>your preferred alias for the testnet, e.g. <code class="docutils literal"><span class="pre">jungle</span></code>.</li>
@@ -218,18 +214,18 @@
 <span class="n">Active</span> <span class="n">Public</span> <span class="n">Key</span><span class="p">:</span> <span class="n">EOS8LQq1VDf1F5cBSdYvbott9GgsR7Bvz4ttR8A6RJiHDKsPdBY1c</span>
 </pre></div>
 </div>
-<p>To complete the process, use the above data to register a new account on a public testnet. This account will serve as a master account for the <em>EOSFactory</em> testnet object.</p>
+<p>To complete the process, use the suggested account name and public keys (ignore the private keys) to register a new account on a public testnet. This account will serve as a master account for the <em>EOSFactory</em> testnet object.</p>
 <p><strong>NOTE:</strong> Make sure to use the testnet’s faucet to fund the newly created account with enough liquid EOS to be able to spawn other accounts, delegate CPU &amp; NET and buy RAM for them.</p>
 <p>When you are ready, type <code class="docutils literal"><span class="pre">go</span></code> to let the script verify that the newly created account has been registered properly with the testnet. Once this is done, the script proceeds to register the testnet with <em>EOSFactory</em>.</p>
+<p>If everything works fine, you should see a message similar to this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jungle</span><span class="p">:</span>  <span class="n">tcfchehyagd4</span> <span class="o">@</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">88.99</span><span class="o">.</span><span class="mf">97.30</span><span class="p">:</span><span class="mi">38888</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="case-2-you-already-have-an-account">
 <span id="case-2-you-already-have-an-account"></span><h3>Case 2: You already have an account<a class="headerlink" href="#case-2-you-already-have-an-account" title="Permalink to this headline">¶</a></h3>
 <p>We assume that you already have an account registered on a public testnet and this account is able to act as a master account for the <em>EOSFactory</em> testnet object, i.e. it’s funded with enough liquid EOS to be able to spawn other accounts, delegate CPU &amp; NET and buy RAM for them.</p>
-<p>Use the following Python script:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">utils</span><span class="o">/</span><span class="n">register_testnet</span><span class="o">.</span><span class="n">py</span>
-</pre></div>
-</div>
-<p>The script takes five parameters:</p>
+<p>We recommend using the <code class="docutils literal"><span class="pre">utils/register_testnet.py</span></code> script with the following five parameters:</p>
 <ul class="simple">
 <li>an URL of a public node offering access to the testnet, e.g. <code class="docutils literal"><span class="pre">http://88.99.97.30:38888</span></code>,</li>
 <li>your preferred alias for the testnet, e.g. <code class="docutils literal"><span class="pre">jungle</span></code>,</li>
@@ -242,6 +238,10 @@
 </pre></div>
 </div>
 <p>As a result, the script verifies that the account supplied by you is properly registered with the testnet and then proceeds to register the testnet with <em>EOSFactory</em>.</p>
+<p>If everything works fine, you should see a message similar to this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jungle</span><span class="p">:</span>  <span class="n">dgxo1uyhoytn</span> <span class="o">@</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">88.99</span><span class="o">.</span><span class="mf">97.30</span><span class="p">:</span><span class="mi">38888</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="list-registered-testnets">
@@ -253,6 +253,16 @@
 <p>Once in the Python shell, run this command:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">eosf</span> <span class="k">import</span> <span class="o">*</span>
 <span class="n">testnets</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>As a result, you should get a list similar to this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jungle1</span><span class="p">:</span>  <span class="n">dgxo1uyhoytn</span> <span class="o">@</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">88.99</span><span class="o">.</span><span class="mf">97.30</span><span class="p">:</span><span class="mi">38888</span>
+<span class="n">jungle2</span><span class="p">:</span>  <span class="n">tcfchehyagd4</span> <span class="o">@</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">88.99</span><span class="o">.</span><span class="mf">97.30</span><span class="p">:</span><span class="mi">38888</span>
+<span class="n">jungle3</span><span class="p">:</span>  <span class="n">uzpile1lv52y</span> <span class="o">@</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">88.99</span><span class="o">.</span><span class="mf">97.30</span><span class="p">:</span><span class="mi">38888</span>
+</pre></div>
+</div>
+<p>You can now exit Python CLI:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">exit</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -284,10 +294,7 @@
 </div>
 <div class="section" id="utilizing-public-testnet-in-an-ad-hoc-mode">
 <span id="utilizing-public-testnet-in-an-ad-hoc-mode"></span><h2>Utilizing public testnet in an <em>ad hoc</em> mode<a class="headerlink" href="#utilizing-public-testnet-in-an-ad-hoc-mode" title="Permalink to this headline">¶</a></h2>
-<p>If you have an account on a public testnet, you can skip the process of registering this testnet with <em>EOSFactory</em> and run a unit test directly, by using the <code class="docutils literal"><span class="pre">-t</span></code> option.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">test</span><span class="o">/</span><span class="n">unittest1</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">t</span>
-</pre></div>
-</div>
+<p>If you have an account on a public testnet, you can skip the process of registering this testnet with <em>EOSFactory</em> and run a unit test directly, by using the <code class="docutils literal"><span class="pre">-t</span></code> (or <code class="docutils literal"><span class="pre">--testnet</span></code>) option.</p>
 <p>This option requires four parameters:</p>
 <ul class="simple">
 <li>an URL of a public node offering access to the testnet, e.g. <code class="docutils literal"><span class="pre">http://88.99.97.30:38888</span></code>,</li>
