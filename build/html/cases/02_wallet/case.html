@@ -176,14 +176,8 @@
 <span id="context"></span><h2>Context<a class="headerlink" href="#context" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal"><span class="pre">Wallet</span></code> class wraps an <em>EOSIO</em> wallet. An instance of the class, i.e. a <code class="docutils literal"><span class="pre">Wallet</span></code> object keeps track of <code class="docutils literal"><span class="pre">Account</span></code> objects.</p>
 <p>The <code class="docutils literal"><span class="pre">Wallet</span></code> class is a singleton, so there needs to be exactly one <code class="docutils literal"><span class="pre">Wallet</span></code> object in the namespace. After the <code class="docutils literal"><span class="pre">Wallet</span></code> is created with the <code class="docutils literal"><span class="pre">create_wallet()</span></code> command, it remains transparent to the script, yet usually there is no need to access it directly.</p>
-<p>Although <em>EOSFactory</em> manages only one <code class="docutils literal"><span class="pre">Wallet</span></code> object at a time, it produces numerous wallet files in the wallet directory, i.e. in the location where the <code class="docutils literal"><span class="pre">keosd</span></code> wallet manager stores its wallets.</p>
-<p>The wallet files are marked with prefixes, which are either encoding the URL of the active testnet (i.e. the one which is active the <code class="docutils literal"><span class="pre">create_wallet()</span></code> command is executed) or arbitrary (i.e. defined <em>ad hoc</em> by a specific unit test).</p>
-<p>There is an important distinction regarding wallet prefixes:</p>
-<ul class="simple">
-<li>URL prefixes are used in context of various testnets. They allow <em>EOSFactory</em> to keep state between different Python sessions.</li>
-<li>Arbitrary prefixes mark wallets associated with specific unit tests. They allow <em>EOSFactory</em> to keep state between different unit tests performed on the same testnet.</li>
-<li>Empty prefix (not implemented yet) are reserved for wallets to be used with the mainnet.</li>
-</ul>
+<p>Although <em>EOSFactory</em> manages only one <code class="docutils literal"><span class="pre">Wallet</span></code> object at a time, it produces numerous wallet files in <code class="docutils literal"><span class="pre">~/eosio-wallet</span></code>, i.e. in the location where the <code class="docutils literal"><span class="pre">keosd</span></code> wallet manager stores its wallets.</p>
+<p>The wallet files are marked with prefixes which are encoding the URL of the active testnet (i.e. the one which is active when the <code class="docutils literal"><span class="pre">create_wallet()</span></code> command is executed), for example: <code class="docutils literal"><span class="pre">_127_0_0_1_8888_default.wallet</span></code> or <code class="docutils literal"><span class="pre">_88_99_97_30_38888_default.wallet</span></code>.</p>
 </div>
 <div class="section" id="use-case">
 <span id="use-case"></span><h2>Use Case<a class="headerlink" href="#use-case" title="Permalink to this headline">¶</a></h2>
