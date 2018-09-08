@@ -126,6 +126,7 @@
 <li><a class="reference internal" href="#case-3">Case 3</a></li>
 <li><a class="reference internal" href="#case-4">Case 4</a></li>
 <li><a class="reference internal" href="#case-5">Case 5</a></li>
+<li><a class="reference internal" href="#case-6">Case 6</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#troubleshooting-general-problems">Troubleshooting general problems</a></li>
@@ -377,7 +378,7 @@
 </div>
 <div class="section" id="case-3">
 <span id="case-3"></span><h3>Case 3<a class="headerlink" href="#case-3" title="Permalink to this headline">¶</a></h3>
-<p>If a unit test fails while executing the <code class="docutils literal"><span class="pre">reset()</span></code> command, make sure you have EOSIO&nbsp;<a class="reference external" href="https://github.com/EOSIO/eos/releases/tag/v1.2.0">v1.2.0</a> (or higher) installed. Also, make sure no other instance of <code class="docutils literal"><span class="pre">nodeos</span></code> is running on your machine.</p>
+<p>If a unit test fails with the <code class="docutils literal"><span class="pre">string</span> <span class="pre">indices</span> <span class="pre">must</span> <span class="pre">be</span> <span class="pre">integers</span></code> error, make sure you have EOSIO&nbsp;<a class="reference external" href="https://github.com/EOSIO/eos/releases/tag/v1.2.0">v1.2.0</a> (or higher) installed. Also, make sure no other instance of <code class="docutils literal"><span class="pre">nodeos</span></code> is running on your machine.</p>
 </div>
 <div class="section" id="case-4">
 <span id="case-4"></span><h3>Case 4<a class="headerlink" href="#case-4" title="Permalink to this headline">¶</a></h3>
@@ -386,6 +387,10 @@
 <div class="section" id="case-5">
 <span id="case-5"></span><h3>Case 5<a class="headerlink" href="#case-5" title="Permalink to this headline">¶</a></h3>
 <p>If a unit tests fails due to the <code class="docutils literal"><span class="pre">execve</span></code> error, make sure you have executed the <code class="docutils literal"><span class="pre">eosio_install.sh</span></code> script after <em>EOSIO</em> build, as described above.</p>
+</div>
+<div class="section" id="case-6">
+<span id="case-6"></span><h3>Case 6<a class="headerlink" href="#case-6" title="Permalink to this headline">¶</a></h3>
+<p>If a unit test fails with the <code class="docutils literal"><span class="pre">No</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span> <span class="pre">directory:</span> <span class="pre">~/eosio-wallet/</span></code> error, please make sure this directory exists, and if not - create one manually.</p>
 </div>
 </div>
 <div class="section" id="troubleshooting-general-problems">

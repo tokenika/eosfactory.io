@@ -173,7 +173,7 @@
       
   <div class="section" id="interacting-with-public-testnet">
 <span id="interacting-with-public-testnet"></span><h1>Interacting with Public Testnet<a class="headerlink" href="#interacting-with-public-testnet" title="Permalink to this headline">¶</a></h1>
-<p>The purpose of this tutorial is to demonstrate how <em>EOSFactory</em> can be used to deploy and test EOS smart-contracts on a public testnet, e.g. <a class="reference external" href="http://dev.cryptolions.io/">Jungle Testnet</a>.</p>
+<p>The purpose of this tutorial is to demonstrate how <em>EOSFactory</em> can be used to deploy and test EOS smart-contracts on a public testnet, e.g. <a class="reference external" href="http://dev.cryptolions.io/">Jungle Testnet</a> or <a class="reference external" href="https://www.cryptokylin.io/">CryptoKylin Testnet</a>.</p>
 <div class="section" id="prerequisites">
 <span id="prerequisites"></span><h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
 <ul>
@@ -197,6 +197,7 @@
 <div class="section" id="register-a-public-testnet-with-eosfactory">
 <span id="register-a-public-testnet-with-eosfactory"></span><h2>Register a public testnet with <em>EOSFactory</em><a class="headerlink" href="#register-a-public-testnet-with-eosfactory" title="Permalink to this headline">¶</a></h2>
 <p>We consider two cases, depending whether you already have an account registered on a public testnet or not.</p>
+<p><strong>NOTE:</strong> If you intend to work with the <a class="reference external" href="https://www.cryptokylin.io/">CryptoKylin Testnet</a>, first create and fund an account there, as described in <a class="reference external" href="https://tools.cryptokylin.io/#/tools/create">their guide</a>, and then jump to <code class="docutils literal"><span class="pre">Case</span> <span class="pre">2</span></code>.</p>
 <div class="section" id="case-1-you-do-not-have-an-account">
 <span id="case-1-you-do-not-have-an-account"></span><h3>Case 1: You do not have an account<a class="headerlink" href="#case-1-you-do-not-have-an-account" title="Permalink to this headline">¶</a></h3>
 <p>We recommend using the <code class="docutils literal"><span class="pre">utils/register_testnet.py</span></code> script with the following two parameters:</p>
@@ -227,42 +228,32 @@
 <p>We assume that you already have an account registered on a public testnet and this account is able to act as a master account for the <em>EOSFactory</em> testnet object, i.e. it’s funded with enough liquid EOS to be able to spawn other accounts, delegate CPU &amp; NET and buy RAM for them.</p>
 <p>We recommend using the <code class="docutils literal"><span class="pre">utils/register_testnet.py</span></code> script with the following five parameters:</p>
 <ul class="simple">
-<li>an URL of a public node offering access to the testnet, e.g. <code class="docutils literal"><span class="pre">http://88.99.97.30:38888</span></code>,</li>
-<li>your preferred alias for the testnet, e.g. <code class="docutils literal"><span class="pre">jungle</span></code>,</li>
-<li>your account name, as registered on the testnet, e.g. <code class="docutils literal"><span class="pre">dgxo1uyhoytn</span></code>,</li>
+<li>an URL of a public node offering access to the testnet, e.g. <code class="docutils literal"><span class="pre">https://api.kylin.alohaeos.com</span></code>,</li>
+<li>your preferred alias for the testnet, e.g. <code class="docutils literal"><span class="pre">kylin</span></code>,</li>
+<li>your account name, as registered on the testnet, e.g. <code class="docutils literal"><span class="pre">xlg3pao3idlq</span></code>,</li>
 <li>your account’s owner private key,</li>
 <li>your account’s active private key.</li>
 </ul>
 <p>In our case the command looks like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">utils</span><span class="o">/</span><span class="n">register_testnet</span><span class="o">.</span><span class="n">py</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">88.99</span><span class="o">.</span><span class="mf">97.30</span><span class="p">:</span><span class="mi">38888</span> <span class="n">jungle</span> <span class="o">-</span><span class="n">a</span> <span class="n">dgxo1uyhoytn</span> <span class="mi">5</span><span class="n">JE9XSurh4Bmdw8Ynz72Eh6ZCKrxf63SmQWKrYJSXf1dEnoiKFY</span> <span class="mi">5</span><span class="n">JgLo7jZhmY4huDNXwExmaWQJqyS1hGZrnSjECcpWwGU25Ym8tA</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">utils</span><span class="o">/</span><span class="n">register_testnet</span><span class="o">.</span><span class="n">py</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">kylin</span><span class="o">.</span><span class="n">alohaeos</span><span class="o">.</span><span class="n">com</span> <span class="n">kylin</span> <span class="o">-</span><span class="n">a</span> <span class="n">xlg3pao3idlq</span> <span class="mi">5</span><span class="n">JBbCwe3t6j63yerYmguRVWg7ZVDY3nKXzGYMwkR9y5w4appKhk</span> <span class="mi">5</span><span class="n">JYZU9xPS54NhnJrmgQWzVXxZCWpzsVUPS3SBZVZnsPUBFtV5YK</span>
 </pre></div>
 </div>
 <p>As a result, the script verifies that the account supplied by you is properly registered with the testnet and then proceeds to register the testnet with <em>EOSFactory</em>.</p>
 <p>If everything works fine, you should see a message similar to this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jungle</span><span class="p">:</span>  <span class="n">dgxo1uyhoytn</span> <span class="o">@</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">88.99</span><span class="o">.</span><span class="mf">97.30</span><span class="p">:</span><span class="mi">38888</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">kylin</span><span class="p">:</span>  <span class="n">xlg3pao3idlq</span> <span class="o">@</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">kylin</span><span class="o">.</span><span class="n">alohaeos</span><span class="o">.</span><span class="n">com</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="list-registered-testnets">
 <span id="list-registered-testnets"></span><h2>List registered testnets<a class="headerlink" href="#list-registered-testnets" title="Permalink to this headline">¶</a></h2>
-<p>Open a bash terminal and run Python CLI:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span>
-</pre></div>
-</div>
-<p>Once in the Python shell, run this command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">eosf</span> <span class="k">import</span> <span class="o">*</span>
-<span class="n">testnets</span><span class="p">()</span>
+<p>Use this command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">utils</span><span class="o">/</span><span class="n">testnets</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p>As a result, you should get a list similar to this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jungle1</span><span class="p">:</span>  <span class="n">dgxo1uyhoytn</span> <span class="o">@</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">88.99</span><span class="o">.</span><span class="mf">97.30</span><span class="p">:</span><span class="mi">38888</span>
-<span class="n">jungle2</span><span class="p">:</span>  <span class="n">tcfchehyagd4</span> <span class="o">@</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">88.99</span><span class="o">.</span><span class="mf">97.30</span><span class="p">:</span><span class="mi">38888</span>
-<span class="n">jungle3</span><span class="p">:</span>  <span class="n">uzpile1lv52y</span> <span class="o">@</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">88.99</span><span class="o">.</span><span class="mf">97.30</span><span class="p">:</span><span class="mi">38888</span>
-</pre></div>
-</div>
-<p>You can now exit Python CLI:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">exit</span><span class="p">()</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jungle</span><span class="p">:</span>  <span class="n">dgxo1uyhoytn</span> <span class="o">@</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">88.99</span><span class="o">.</span><span class="mf">97.30</span><span class="p">:</span><span class="mi">38888</span>
+<span class="n">kylin</span><span class="p">:</span>   <span class="n">xlg3pao3idlq</span> <span class="o">@</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">kylin</span><span class="o">.</span><span class="n">alohaeos</span><span class="o">.</span><span class="n">com</span>
 </pre></div>
 </div>
 </div>
@@ -280,9 +271,15 @@
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">unittest1</span><span class="o">.</span><span class="n">py</span> <span class="n">jungle</span>
 </pre></div>
 </div>
-<p><strong>NOTE:</strong> The positional parameter, in our case <code class="docutils literal"><span class="pre">jungle</span></code>, indicates the alias of the public testnet.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">unittest1</span><span class="o">.</span><span class="n">py</span> <span class="n">kylin</span>
+</pre></div>
+</div>
+<p><strong>NOTE:</strong> The positional parameter, in our case <code class="docutils literal"><span class="pre">jungle</span></code> or <code class="docutils literal"><span class="pre">kylin</span></code>, indicates the alias of the public testnet.</p>
 <p>Similarly, you can run the other (non-standard) test:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">test1</span><span class="o">.</span><span class="n">py</span> <span class="n">jungle</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">test1</span><span class="o">.</span><span class="n">py</span> <span class="n">kylin</span>
 </pre></div>
 </div>
 </div>
