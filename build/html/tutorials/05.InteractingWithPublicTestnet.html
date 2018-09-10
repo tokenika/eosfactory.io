@@ -93,7 +93,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../rst/efman.html">efman</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/efnet.html">efnet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/efui.html">efui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efwlt.html">efwlt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/efwal.html">efwal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/eosf.html">eosf</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/setup.html">setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/teos.html">teos</a></li>
@@ -116,6 +116,7 @@
 <li><a class="reference internal" href="#register-a-public-testnet-with-eosfactory">Register a public testnet with <em>EOSFactory</em></a><ul>
 <li><a class="reference internal" href="#case-1-you-do-not-have-an-account">Case 1: You do not have an account</a></li>
 <li><a class="reference internal" href="#case-2-you-already-have-an-account">Case 2: You already have an account</a></li>
+<li><a class="reference internal" href="#case-3-the-kylin-testnet">Case 3: The Kylin Testnet</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#list-registered-testnets">List registered testnets</a></li>
@@ -196,17 +197,17 @@
 </div>
 <div class="section" id="register-a-public-testnet-with-eosfactory">
 <span id="register-a-public-testnet-with-eosfactory"></span><h2>Register a public testnet with <em>EOSFactory</em><a class="headerlink" href="#register-a-public-testnet-with-eosfactory" title="Permalink to this headline">¶</a></h2>
-<p>We consider two cases, depending whether you already have an account registered on a public testnet or not.</p>
-<p><strong>NOTE:</strong> If you intend to work with the <a class="reference external" href="https://www.cryptokylin.io/">CryptoKylin Testnet</a>, first create and fund an account there, as described in <a class="reference external" href="https://tools.cryptokylin.io/#/tools/create">their guide</a>, and then jump to <code class="docutils literal"><span class="pre">Case</span> <span class="pre">2</span></code>.</p>
+<p>The following procedure differs depending whether you want to use your existing account which is already registered on a public testnet or you want EOSFactory to help you with creating a new account.</p>
+<p>Also, if you intend to work with the <a class="reference external" href="https://www.cryptokylin.io/">CryptoKylin Testnet</a>, <em>EOSFactory</em> offers a special script for that purpose, as described in <em>Case 3</em>.</p>
 <div class="section" id="case-1-you-do-not-have-an-account">
 <span id="case-1-you-do-not-have-an-account"></span><h3>Case 1: You do not have an account<a class="headerlink" href="#case-1-you-do-not-have-an-account" title="Permalink to this headline">¶</a></h3>
 <p>We recommend using the <code class="docutils literal"><span class="pre">utils/register_testnet.py</span></code> script with the following two parameters:</p>
 <ul class="simple">
 <li>an URL of a public node offering access to the testnet, e.g. <code class="docutils literal"><span class="pre">http://88.99.97.30:38888</span></code>,</li>
-<li>your preferred alias for the testnet, e.g. <code class="docutils literal"><span class="pre">jungle</span></code>.</li>
+<li>your preferred alias for the testnet, e.g. <code class="docutils literal"><span class="pre">myjungle</span></code>.</li>
 </ul>
 <p>In our case the command looks like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">utils</span><span class="o">/</span><span class="n">register_testnet</span><span class="o">.</span><span class="n">py</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">88.99</span><span class="o">.</span><span class="mf">97.30</span><span class="p">:</span><span class="mi">38888</span> <span class="n">jungle</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">utils</span><span class="o">/</span><span class="n">register_testnet</span><span class="o">.</span><span class="n">py</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">88.99</span><span class="o">.</span><span class="mf">97.30</span><span class="p">:</span><span class="mi">38888</span> <span class="n">myjungle</span>
 </pre></div>
 </div>
 <p>In response you will receive a message similar to the following example:</p>
@@ -219,7 +220,7 @@
 <p><strong>NOTE:</strong> Make sure to use the testnet’s faucet to fund the newly created account with enough liquid EOS to be able to spawn other accounts, delegate CPU &amp; NET and buy RAM for them.</p>
 <p>When you are ready, type <code class="docutils literal"><span class="pre">go</span></code> to let the script verify that the newly created account has been registered properly with the testnet. Once this is done, the script proceeds to register the testnet with <em>EOSFactory</em>.</p>
 <p>If everything works fine, you should see a message similar to this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jungle</span><span class="p">:</span>  <span class="n">tcfchehyagd4</span> <span class="o">@</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">88.99</span><span class="o">.</span><span class="mf">97.30</span><span class="p">:</span><span class="mi">38888</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">myjungle</span><span class="p">:</span>  <span class="n">tcfchehyagd4</span> <span class="o">@</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">88.99</span><span class="o">.</span><span class="mf">97.30</span><span class="p">:</span><span class="mi">38888</span>
 </pre></div>
 </div>
 </div>
@@ -228,19 +229,46 @@
 <p>We assume that you already have an account registered on a public testnet and this account is able to act as a master account for the <em>EOSFactory</em> testnet object, i.e. it’s funded with enough liquid EOS to be able to spawn other accounts, delegate CPU &amp; NET and buy RAM for them.</p>
 <p>We recommend using the <code class="docutils literal"><span class="pre">utils/register_testnet.py</span></code> script with the following five parameters:</p>
 <ul class="simple">
-<li>an URL of a public node offering access to the testnet, e.g. <code class="docutils literal"><span class="pre">https://api.kylin.alohaeos.com</span></code>,</li>
-<li>your preferred alias for the testnet, e.g. <code class="docutils literal"><span class="pre">kylin</span></code>,</li>
-<li>your account name, as registered on the testnet, e.g. <code class="docutils literal"><span class="pre">xlg3pao3idlq</span></code>,</li>
+<li>an URL of a public node offering access to the testnet, e.g. <code class="docutils literal"><span class="pre">http://88.99.97.30:38888</span></code>,</li>
+<li>your preferred alias for the testnet, e.g. <code class="docutils literal"><span class="pre">myjungle</span></code>,</li>
+<li>your account name, as registered on the testnet, e.g. <code class="docutils literal"><span class="pre">tcfchehyagd4</span></code>,</li>
 <li>your account’s owner private key,</li>
 <li>your account’s active private key.</li>
 </ul>
 <p>In our case the command looks like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">utils</span><span class="o">/</span><span class="n">register_testnet</span><span class="o">.</span><span class="n">py</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">kylin</span><span class="o">.</span><span class="n">alohaeos</span><span class="o">.</span><span class="n">com</span> <span class="n">kylin</span> <span class="o">-</span><span class="n">a</span> <span class="n">xlg3pao3idlq</span> <span class="mi">5</span><span class="n">JBbCwe3t6j63yerYmguRVWg7ZVDY3nKXzGYMwkR9y5w4appKhk</span> <span class="mi">5</span><span class="n">JYZU9xPS54NhnJrmgQWzVXxZCWpzsVUPS3SBZVZnsPUBFtV5YK</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">utils</span><span class="o">/</span><span class="n">register_testnet</span><span class="o">.</span><span class="n">py</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">88.99</span><span class="o">.</span><span class="mf">97.30</span><span class="p">:</span><span class="mi">38888</span> <span class="n">myjungle</span> <span class="o">-</span><span class="n">a</span> <span class="n">tcfchehyagd4</span> <span class="mi">5</span><span class="n">JBbCwe3t6j63yerYmguRVWg7ZVDY3nKXzGYMwkR9y5w4appKhk</span> <span class="mi">5</span><span class="n">JYZU9xPS54NhnJrmgQWzVXxZCWpzsVUPS3SBZVZnsPUBFtV5YK</span>
 </pre></div>
 </div>
 <p>As a result, the script verifies that the account supplied by you is properly registered with the testnet and then proceeds to register the testnet with <em>EOSFactory</em>.</p>
 <p>If everything works fine, you should see a message similar to this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">kylin</span><span class="p">:</span>  <span class="n">xlg3pao3idlq</span> <span class="o">@</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">kylin</span><span class="o">.</span><span class="n">alohaeos</span><span class="o">.</span><span class="n">com</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">myjungle</span><span class="p">:</span>  <span class="n">tcfchehyagd4</span> <span class="o">@</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">88.99</span><span class="o">.</span><span class="mf">97.30</span><span class="p">:</span><span class="mi">38888</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="case-3-the-kylin-testnet">
+<span id="case-3-the-kylin-testnet"></span><h3>Case 3: The Kylin Testnet<a class="headerlink" href="#case-3-the-kylin-testnet" title="Permalink to this headline">¶</a></h3>
+<p>We recommend using the <code class="docutils literal"><span class="pre">utils/register_testnet_kylin.py</span></code> script with the following three parameters:</p>
+<ul class="simple">
+<li>an URL of a public faucet, e.g. <code class="docutils literal"><span class="pre">http://faucet.cryptokylin.io</span></code>,</li>
+<li>an URL of a public node offering access to the testnet, e.g. <code class="docutils literal"><span class="pre">https://api.kylin.alohaeos.com</span></code>,</li>
+<li>your preferred alias for the testnet, e.g. <code class="docutils literal"><span class="pre">mykylin</span></code>.</li>
+</ul>
+<p>In our case the command looks like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">utils</span><span class="o">/</span><span class="n">register_testnet_kylin</span><span class="o">.</span><span class="n">py</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">faucet</span><span class="o">.</span><span class="n">cryptokylin</span><span class="o">.</span><span class="n">io</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">kylin</span><span class="o">.</span><span class="n">alohaeos</span><span class="o">.</span><span class="n">com</span> <span class="n">mykylin</span>
+</pre></div>
+</div>
+<p>The output should be similar to this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>REMOTE testnet is active @ https://api.kylin.alohaeos.com.
+Registering account: http://faucet.cryptokylin.io/create_account?xlg3pao3idlq
+Account ``xlg3pao3idlq`` successfully registered.
+Funding account: http://faucet.cryptokylin.io/get_token?xlg3pao3idlq
+Funding account: http://faucet.cryptokylin.io/get_token?xlg3pao3idlq
+Funding account: http://faucet.cryptokylin.io/get_token?xlg3pao3idlq
+Account ``xlg3pao3idlq`` successfully funded.
+</pre></div>
+</div>
+<p>If everything works fine, you should see a message similar to this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mykylin</span><span class="p">:</span>  <span class="n">xlg3pao3idlq</span> <span class="o">@</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">kylin</span><span class="o">.</span><span class="n">alohaeos</span><span class="o">.</span><span class="n">com</span>
 </pre></div>
 </div>
 </div>
@@ -252,34 +280,40 @@
 </pre></div>
 </div>
 <p>As a result, you should get a list similar to this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jungle</span><span class="p">:</span>  <span class="n">dgxo1uyhoytn</span> <span class="o">@</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">88.99</span><span class="o">.</span><span class="mf">97.30</span><span class="p">:</span><span class="mi">38888</span>
-<span class="n">kylin</span><span class="p">:</span>   <span class="n">xlg3pao3idlq</span> <span class="o">@</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">kylin</span><span class="o">.</span><span class="n">alohaeos</span><span class="o">.</span><span class="n">com</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">myjungle</span><span class="p">:</span>  <span class="n">dgxo1uyhoytn</span> <span class="o">@</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">88.99</span><span class="o">.</span><span class="mf">97.30</span><span class="p">:</span><span class="mi">38888</span>
+<span class="n">mykylin</span><span class="p">:</span>   <span class="n">xlg3pao3idlq</span> <span class="o">@</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">kylin</span><span class="o">.</span><span class="n">alohaeos</span><span class="o">.</span><span class="n">com</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="run-unit-tests">
 <span id="run-unit-tests"></span><h2>Run unit tests<a class="headerlink" href="#run-unit-tests" title="Permalink to this headline">¶</a></h2>
-<p>Switch to the <code class="docutils literal"><span class="pre">eosfactory/contracts/03_tic_tac_toe/test</span></code> folder:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">contracts</span><span class="o">/</span><span class="mi">03</span><span class="n">_tic_tac_toe</span><span class="o">/</span><span class="n">test</span>
+<p>Create a new smart-contract project:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">utils</span><span class="o">/</span><span class="n">create_workspace</span><span class="o">.</span><span class="n">py</span> <span class="n">foo_bar</span> <span class="mi">03</span><span class="n">_tic_tac_toe</span>
 </pre></div>
 </div>
-<p>First, execute <code class="docutils literal"><span class="pre">unittest1.py</span></code> without any parameters, just to make sure everything works fine on a local testnet:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">unittest1</span><span class="o">.</span><span class="n">py</span>
+<p><strong>NOTE:</strong> The first parameter is the name of your project (and it’s also the name of the smart-contract itself), whereas the second parameter is the name of the template being used for project creation. For more details about this command please refer to <a class="reference external" href="04.WorkingWithEOSContractsUsingEOSFactoryInVSC.html">Working With EOS Contracts Using EOSFactory In VSC</a>.</p>
+<p><strong>NOTE:</strong> As of now only the <code class="docutils literal"><span class="pre">03_tic_tac_toe</span></code> template supports the public testnet interactions.</p>
+<p>As a result, you should get a message similar to this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Contract</span> <span class="n">directory</span> <span class="ow">is</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">d</span><span class="o">/</span><span class="n">Workspaces</span><span class="o">/</span><span class="n">EOS</span><span class="o">/</span><span class="n">contracts</span><span class="o">/</span><span class="n">foo_bar</span>
+</pre></div>
+</div>
+<p>Switch to the <code class="docutils literal"><span class="pre">foo_ba</span></code> folder and first execute <code class="docutils literal"><span class="pre">unittest1.py</span></code> without any parameters, just to make sure everything works fine on a local testnet:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">test</span><span class="o">/</span><span class="n">unittest1</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p>Next, you can attempt to run the same unit test on a public testnet:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">unittest1</span><span class="o">.</span><span class="n">py</span> <span class="n">jungle</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">test</span><span class="o">/</span><span class="n">unittest1</span><span class="o">.</span><span class="n">py</span> <span class="n">jungle</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">unittest1</span><span class="o">.</span><span class="n">py</span> <span class="n">kylin</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">test</span><span class="o">/</span><span class="n">unittest1</span><span class="o">.</span><span class="n">py</span> <span class="n">kylin</span>
 </pre></div>
 </div>
 <p><strong>NOTE:</strong> The positional parameter, in our case <code class="docutils literal"><span class="pre">jungle</span></code> or <code class="docutils literal"><span class="pre">kylin</span></code>, indicates the alias of the public testnet.</p>
 <p>Similarly, you can run the other (non-standard) test:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">test1</span><span class="o">.</span><span class="n">py</span> <span class="n">jungle</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">test</span><span class="o">/</span><span class="n">test1</span><span class="o">.</span><span class="n">py</span> <span class="n">jungle</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">test1</span><span class="o">.</span><span class="n">py</span> <span class="n">kylin</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">test</span><span class="o">/</span><span class="n">test1</span><span class="o">.</span><span class="n">py</span> <span class="n">kylin</span>
 </pre></div>
 </div>
 </div>
@@ -288,7 +322,7 @@
 <p>During the initial run of a unit test, the master account associated with a given testnet is used to create (and register) all the additional accounts required by the unit test.</p>
 <p>However, during subsequent runs those accounts are reused, which saves you a lot of hassle with managing those accounts and constantly having to refund them. As described above, this is possible because all newly created accounts are internally cached by <em>EOSFactory</em> and their random names are mapped to stable variable names.</p>
 <p>Use the <code class="docutils literal"><span class="pre">-r</span></code> option, if you want to run the test from scratch, i.e. with the existing accounts being removed from <em>EOSFactory</em> cache and replaced by another set of newly created accounts:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">unittest1</span><span class="o">.</span><span class="n">py</span> <span class="n">jungle</span> <span class="o">-</span><span class="n">r</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">test</span><span class="o">/</span><span class="n">unittest1</span><span class="o">.</span><span class="n">py</span> <span class="n">jungle</span> <span class="o">-</span><span class="n">r</span>
 </pre></div>
 </div>
 </div>
@@ -303,7 +337,7 @@
 <li>your account’s active private key.</li>
 </ul>
 <p>In our case the command looks like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">unittest1</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">t</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">88.99</span><span class="o">.</span><span class="mf">97.30</span><span class="p">:</span><span class="mi">38888</span> <span class="n">dgxo1uyhoytn</span> <span class="mi">5</span><span class="n">JE9XSurh4Bmdw8Ynz72Eh6ZCKrxf63SmQWKrYJSXf1dEnoiKFY</span> <span class="mi">5</span><span class="n">JgLo7jZhmY4huDNXwExmaWQJqyS1hGZrnSjECcpWwGU25Ym8tA</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">test</span><span class="o">/</span><span class="n">unittest1</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">t</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">88.99</span><span class="o">.</span><span class="mf">97.30</span><span class="p">:</span><span class="mi">38888</span> <span class="n">dgxo1uyhoytn</span> <span class="mi">5</span><span class="n">JE9XSurh4Bmdw8Ynz72Eh6ZCKrxf63SmQWKrYJSXf1dEnoiKFY</span> <span class="mi">5</span><span class="n">JgLo7jZhmY4huDNXwExmaWQJqyS1hGZrnSjECcpWwGU25Ym8tA</span>
 </pre></div>
 </div>
 </div>

@@ -93,7 +93,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../rst/efman.html">efman</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/efnet.html">efnet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/efui.html">efui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efwlt.html">efwlt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/efwal.html">efwal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/eosf.html">eosf</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/setup.html">setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/teos.html">teos</a></li>
@@ -194,7 +194,7 @@
 <div class="section" id="create-a-new-contract-from-template">
 <span id="create-a-new-contract-from-template"></span><h2>Create a new contract from template<a class="headerlink" href="#create-a-new-contract-from-template" title="Permalink to this headline">¶</a></h2>
 <p>To create a new contract from a pre-defined template all you need is a name for the contract and the name of the template, for example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span> <span class="o">=</span> <span class="n">ContractBuilder</span><span class="p">(</span><span class="n">workspace_from_template</span><span class="p">(</span><span class="s2">&quot;foo_bar&quot;</span><span class="p">,</span> <span class="n">template</span><span class="o">=</span><span class="s2">&quot;01_hello_world&quot;</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span> <span class="o">=</span> <span class="n">ContractBuilder</span><span class="p">(</span><span class="n">project_from_template</span><span class="p">(</span><span class="s2">&quot;foo_bar&quot;</span><span class="p">,</span> <span class="n">template</span><span class="o">=</span><span class="s2">&quot;01_hello_world&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p><strong>NOTE:</strong> Do not use spaces in contract names. What is allowed are letters, numbers, underscores <code class="docutils literal"><span class="pre">_</span></code>, dots <code class="docutils literal"><span class="pre">.</span></code> and dashes <code class="docutils literal"><span class="pre">-</span></code>. Regarding the second parameter, as of now there are three templates to choose from (i.e. <code class="docutils literal"><span class="pre">01_hello_world</span></code>, <code class="docutils literal"><span class="pre">02_eosio_token</span></code> and <code class="docutils literal"><span class="pre">03_tic_tac_toe</span></code>), with more coming in the future. This parameter is optional, the default value is&nbsp;<code class="docutils literal"><span class="pre">01_hello_world</span></code>.</p>
