@@ -248,14 +248,14 @@
 <div class="section" id="case-3-the-kylin-testnet">
 <span id="case-3-the-kylin-testnet"></span><h3>Case 3: The Kylin Testnet<a class="headerlink" href="#case-3-the-kylin-testnet" title="Permalink to this headline">¶</a></h3>
 <p>We assume here that for the purpose of unit testing you want to create a new account on the <a class="reference external" href="https://www.cryptokylin.io/">CryptoKylin Testnet</a>. If you want to use an exiting one, please refer to <em>Case 2</em> above.</p>
-<p>We recommend using the <code class="docutils literal"><span class="pre">utils/register_testnet_kylin.py</span></code> script with the following three parameters:</p>
+<p>We recommend using the <code class="docutils literal"><span class="pre">utils/register_testnet_via_faucet.py</span></code> script with the following three parameters:</p>
 <ul class="simple">
 <li>an URL of a public faucet, e.g. <code class="docutils literal"><span class="pre">http://faucet.cryptokylin.io</span></code>,</li>
 <li>an URL of a public node offering access to the testnet, e.g. <code class="docutils literal"><span class="pre">https://api.kylin.alohaeos.com</span></code>,</li>
 <li>your preferred alias for the testnet, e.g. <code class="docutils literal"><span class="pre">mykylin</span></code>.</li>
 </ul>
 <p>In our case the command looks like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">utils</span><span class="o">/</span><span class="n">register_testnet_kylin</span><span class="o">.</span><span class="n">py</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">faucet</span><span class="o">.</span><span class="n">cryptokylin</span><span class="o">.</span><span class="n">io</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">kylin</span><span class="o">.</span><span class="n">alohaeos</span><span class="o">.</span><span class="n">com</span> <span class="n">mykylin</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">utils</span><span class="o">/</span><span class="n">register_testnet_via_faucet</span><span class="o">.</span><span class="n">py</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">faucet</span><span class="o">.</span><span class="n">cryptokylin</span><span class="o">.</span><span class="n">io</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">kylin</span><span class="o">.</span><span class="n">alohaeos</span><span class="o">.</span><span class="n">com</span> <span class="n">mykylin</span>
 </pre></div>
 </div>
 <p>The output should be similar to this:</p>
