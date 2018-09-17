@@ -216,7 +216,7 @@
 </div>
 <div class="section" id="upgrading-from-previous-version">
 <span id="upgrading-from-previous-version"></span><h2>Upgrading from previous version<a class="headerlink" href="#upgrading-from-previous-version" title="Permalink to this headline">¶</a></h2>
-<p>If you have a previous installation of <em>EOSFactory</em> on your machine, make sure to remove the <code class="docutils literal"><span class="pre">EOSIO_SHARED_MEMORY_SIZE_MB</span></code> variable from your system.</p>
+<p>If you have a previous installation of <em>EOSFactory</em> on your machine, please remove all <em>EOSFactory</em> export statements from your system.</p>
 <p>To do this, edit the <code class="docutils literal"><span class="pre">.profile</span></code> or <code class="docutils literal"><span class="pre">.bash_profile</span></code> file:</p>
 <ul>
 <li><p class="first">If you are on Ubuntu or <em>Windows Subsystem for Linux</em>:</p>
@@ -230,28 +230,36 @@
 </div>
 </li>
 </ul>
-<p>And make sure this entry is removed:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">EOSIO_SHARED_MEMORY_SIZE_MB</span><span class="o">=</span><span class="mi">100</span>
-</pre></div>
-</div>
-<p>While all the other entries need to stay:</p>
+<p>And make sure all <em>EOSFactory</em> export statements are removed:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">EOSIO_SOURCE_DIR</span><span class="o">=...</span>
 <span class="n">export</span> <span class="n">EOSIO_EOSFACTORY_DIR</span><span class="o">=...</span>
 <span class="n">export</span> <span class="n">U_HOME</span><span class="o">=...</span>
 <span class="n">export</span> <span class="n">eosf</span><span class="o">=...</span>
+<span class="n">export</span> <span class="n">EOSIO_SHARED_MEMORY_SIZE_MB</span><span class="o">=...</span>
 <span class="n">export</span> <span class="n">EOSIO_CONTRACT_WORKSPACE</span><span class="o">=...</span>
 <span class="n">export</span> <span class="n">PYTHONPATH</span><span class="o">=...</span>
 </pre></div>
 </div>
-<p><strong>NOTE:</strong> You might need to restart your console (or your machine) to apply the change. If everything has been removed correctly, this command should return an empty value:</p>
+<p>Also, if you’re on Ubuntu make sure there are no similar export statements in the <code class="docutils literal"><span class="pre">~/.bashrc</span></code> file. If there are any, remove all of them.</p>
+<p>When you’re done, restart your console to apply the change.</p>
+<p>If everything has been removed correctly, this command should return an empty value:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>echo $EOSIO_SOURCE_DIR
+</pre></div>
+</div>
+<p>Especially this one is important - make sure it returns an empty value:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>echo $EOSIO_SHARED_MEMORY_SIZE_MB
 </pre></div>
 </div>
-<p>Then you can just run the <code class="docutils literal"><span class="pre">build.sh</span></code> script with the <code class="docutils literal"><span class="pre">-r</span></code> option and without having to specify any other parameters, as the they are already stored in the system variables:</p>
+<p>Next, run the <code class="docutils literal"><span class="pre">build.sh</span></code> script with the <code class="docutils literal"><span class="pre">-r</span></code> option:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">eosfactory</span>
-<span class="o">./</span><span class="n">build</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">r</span>
+<span class="o">./</span><span class="n">build</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">e</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">EOSIO</span><span class="o">/</span><span class="n">repository</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">workspace</span> <span class="o">-</span><span class="n">r</span>
 </pre></div>
 </div>
+<p><strong>NOTE:</strong> Make sure to supply the correct paths:</p>
+<ul class="simple">
+<li>The first one is meant to be the location of the <em>EOSIO</em> source code that you have cloned from the official <a class="reference external" href="https://github.com/EOSIO/eos">EOSIO repository</a>.</li>
+<li>The second one is meant to be the location of your smart-contract workspace. It has to be already existent, so if you don’t already have it, you need to create it manually.</li>
+</ul>
 </div>
 <div class="section" id="build-on-ubuntu-macos">
 <span id="build-on-ubuntu-macos"></span><h2>Build on Ubuntu &amp; MacOS<a class="headerlink" href="#build-on-ubuntu-macos" title="Permalink to this headline">¶</a></h2>
@@ -270,7 +278,7 @@
 <p><strong>NOTE:</strong> Make sure to supply the correct paths:</p>
 <ul class="simple">
 <li>The first one is meant to be the location of the <em>EOSIO</em> source code that you have cloned from the official <a class="reference external" href="https://github.com/EOSIO/eos">EOSIO repository</a>.</li>
-<li>The second one is meant to be the location of your smart-contract workspace. It has to be already existant, so you need to create it manually.</li>
+<li>The second one is meant to be the location of your smart-contract workspace. It has to be already existent, so you need to create it manually.</li>
 </ul>
 <p>In our case the <em>EOSIO</em> location is <code class="docutils literal"><span class="pre">~/Workspaces/EOS/eos</span></code>, and the workspace location is <code class="docutils literal"><span class="pre">~/Workspaces/EOS/contracts</span></code>, but yours will most probably be different:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">build</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">e</span> <span class="o">~/</span><span class="n">Workspaces</span><span class="o">/</span><span class="n">EOS</span><span class="o">/</span><span class="n">eos</span> <span class="o">-</span><span class="n">w</span> <span class="o">~/</span><span class="n">Workspaces</span><span class="o">/</span><span class="n">EOS</span><span class="o">/</span><span class="n">contracts</span>
@@ -295,7 +303,7 @@
 <p><strong>NOTE:</strong> Make sure to supply the correct paths:</p>
 <ul class="simple">
 <li>The first one is meant to be the location of the <em>EOSIO</em> source code that you have cloned from the official <a class="reference external" href="https://github.com/EOSIO/eos">EOSIO repository</a>.</li>
-<li>The second one is meant to be the location of your smart-contract workspace. It has to be already existant, so you need to create it manually.</li>
+<li>The second one is meant to be the location of your smart-contract workspace. It has to be already existent, so you need to create it manually.</li>
 </ul>
 <p>In our case the <em>EOSIO</em> location is <code class="docutils literal"><span class="pre">/mnt/d/Workspaces/EOS/eos</span></code>, and the workspace location is <code class="docutils literal"><span class="pre">/mnt/d/Workspaces/EOS/contracts</span></code>, but yours will most probably be different:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">build</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">e</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">d</span><span class="o">/</span><span class="n">Workspaces</span><span class="o">/</span><span class="n">EOS</span><span class="o">/</span><span class="n">eos</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">d</span><span class="o">/</span><span class="n">Workspaces</span><span class="o">/</span><span class="n">EOS</span><span class="o">/</span><span class="n">contracts</span>
