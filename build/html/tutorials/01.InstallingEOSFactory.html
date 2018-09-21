@@ -194,7 +194,7 @@
 <li>MacOS 10.13 (High Sierra)</li>
 <li>Windows 10 (version 1803)</li>
 </ul>
-<p><strong>NOTE:</strong> <em>EOSFactory</em> is now compatible with the latest release of <em>EOSIO</em>, tagged as <a class="reference external" href="https://github.com/EOSIO/eos/releases/tag/v1.2.0">v1.2.0</a> (or higher), and from now on we expect it to be fully compatible with any subsequent <em>EOSIO</em> release.</p>
+<p><strong>NOTE:</strong> <em>EOSFactory</em> is compatible with <em>EOSIO</em> <a class="reference external" href="https://github.com/EOSIO/eos/releases/tag/v1.2.0">v1.2.x</a> and <a class="reference external" href="https://github.com/EOSIO/eos/releases/tag/v1.3.0">v1.3.x</a> .</p>
 <div class="section" id="general-prerequisites">
 <span id="general-prerequisites"></span><h2>General Prerequisites<a class="headerlink" href="#general-prerequisites" title="Permalink to this headline">¶</a></h2>
 <p>We assume that you have successfully installed <em>EOSIO</em> <a class="reference external" href="https://github.com/EOSIO/eos/releases/tag/v1.2.0">v1.2.0</a> (or higher) on your machine. If that’s not the case, please refer to <a class="reference external" href="https://developers.eos.io/eosio-nodeos/docs/getting-the-code">this guide</a>.</p>
@@ -255,9 +255,9 @@
 <div class="highlight-default"><div class="highlight"><pre><span></span>echo $EOSIO_SHARED_MEMORY_SIZE_MB
 </pre></div>
 </div>
-<p>Next, run the <code class="docutils literal"><span class="pre">build.sh</span></code> script with the <code class="docutils literal"><span class="pre">-r</span></code> option:</p>
+<p>Next, run the <code class="docutils literal"><span class="pre">build.sh</span></code> script:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">eosfactory</span>
-<span class="o">./</span><span class="n">build</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">e</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">EOSIO</span><span class="o">/</span><span class="n">repository</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">workspace</span> <span class="o">-</span><span class="n">r</span>
+<span class="o">./</span><span class="n">build</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">e</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">EOSIO</span><span class="o">/</span><span class="n">repository</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">workspace</span>
 </pre></div>
 </div>
 <p><strong>NOTE:</strong> Make sure to supply the correct paths:</p>
@@ -409,7 +409,8 @@
 <div class="section" id="troubleshooting-general-problems">
 <span id="troubleshooting-general-problems"></span><h2>Troubleshooting general problems<a class="headerlink" href="#troubleshooting-general-problems" title="Permalink to this headline">¶</a></h2>
 <p>First, make sure <em>EOSFactory</em> configuration is correct by running this command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>eval $eosf get config
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">eosfactory</span>
+<span class="n">python3</span> <span class="n">utils</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p>As a result, you should get data similar to this:</p>
@@ -452,10 +453,6 @@
 </div>
 <p><strong>NOTE:</strong> After the initial successful installation, unless the path to your <em>EOSIO</em> source code and/or your workspace directory has changed, you don’t need to supply them when doing subsequent <em>EOSFactory</em> builds, as those paths are already stored in your system variables. If you do need to supply those parameters, use this syntax:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">build</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">e</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">EOSIO</span><span class="o">/</span><span class="n">repository</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">workspace</span>
-</pre></div>
-</div>
-<p>If you want to rebuild <em>EOSFactory</em> from scratch, apply the <code class="docutils literal"><span class="pre">-r</span></code> option:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">build</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">r</span>
 </pre></div>
 </div>
 <p>And to get help for the <code class="docutils literal"><span class="pre">build</span></code> script:</p>
