@@ -72,6 +72,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion1.0.html">EOSFactory Release Notes - v1.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion1.1.html">EOSFactory Release Notes - v1.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.0.html">EOSFactory Release Notes - v2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.1.html">EOSFactory Release Notes - v2.1</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="00.IntroductionToEOSFactory.html">Introduction to <em>EOSFactory</em></a></li>
@@ -86,17 +87,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../roadmap/LongTermEOSFactoryRoadmap.html">Long-term EOSFactory Roadmap</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../rst/cleos.html">cleos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/cleosys.html">cleosys</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efacc.html">efacc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efcon.html">efcon</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efman.html">efman</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efnet.html">efnet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efui.html">efui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efwal.html">efwal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.cleos.html">core.cleos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.cleosys.html">core.cleosys</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.config.html">core.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.errors.html">core.errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.logger.html">core.logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.manager.html">core.manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.teos.html">core.teos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.testnet.html">core.testnet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.utils.html">core.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.interface.html">shell.interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.wallet.html">shell.wallet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.setup.html">shell.setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.account.html">shell.account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.contract.html">shell.contract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/eosf.html">eosf</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/setup.html">setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/teos.html">teos</a></li>
 </ul>
 </ul>
 </li>
@@ -299,22 +304,22 @@ Account ``xlg3pao3idlq`` successfully funded.
 </pre></div>
 </div>
 <p>Switch to the <code class="docutils literal"><span class="pre">foo_bar</span></code> folder and first execute <code class="docutils literal"><span class="pre">unittest1.py</span></code> without any parameters, just to make sure everything works fine on a local testnet:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">test</span><span class="o">/</span><span class="n">unittest1</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">tests</span><span class="o">/</span><span class="n">unittest1</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p>Next, you can attempt to run the same unit test on a public testnet:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">test</span><span class="o">/</span><span class="n">unittest1</span><span class="o">.</span><span class="n">py</span> <span class="n">myjungle</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">test</span><span class="o">/</span><span class="n">unittest1</span><span class="o">.</span><span class="n">py</span> <span class="n">mykylin</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">tests</span><span class="o">/</span><span class="n">unittest1</span><span class="o">.</span><span class="n">py</span> <span class="n">mykylin</span>
 </pre></div>
 </div>
 <p><strong>NOTE:</strong> The positional parameter, in our case <code class="docutils literal"><span class="pre">myjungle</span></code> or <code class="docutils literal"><span class="pre">mykylin</span></code>, indicates the alias of the public testnet.</p>
 <p>Similarly, you can run the other (non-standard) test:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">test</span><span class="o">/</span><span class="n">test1</span><span class="o">.</span><span class="n">py</span> <span class="n">myjungle</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">tests</span><span class="o">/</span><span class="n">test1</span><span class="o">.</span><span class="n">py</span> <span class="n">myjungle</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">test</span><span class="o">/</span><span class="n">test1</span><span class="o">.</span><span class="n">py</span> <span class="n">mykylin</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">tests</span><span class="o">/</span><span class="n">test1</span><span class="o">.</span><span class="n">py</span> <span class="n">mykylin</span>
 </pre></div>
 </div>
 </div>
@@ -323,7 +328,7 @@ Account ``xlg3pao3idlq`` successfully funded.
 <p>During the initial run of a unit test, the master account associated with a given testnet is used to create (and register) all the additional accounts required by the unit test.</p>
 <p>However, during subsequent runs those accounts are reused, which saves you a lot of hassle with managing those accounts and constantly having to refund them. As described above, this is possible because all newly created accounts are internally cached by <em>EOSFactory</em> and their random names are mapped to stable variable names.</p>
 <p>Use the <code class="docutils literal"><span class="pre">-r</span></code> option, if you want to run the test from scratch, i.e. with the existing accounts being removed from <em>EOSFactory</em> cache and replaced by another set of newly created accounts:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">test</span><span class="o">/</span><span class="n">unittest1</span><span class="o">.</span><span class="n">py</span> <span class="n">myjungle</span> <span class="o">-</span><span class="n">r</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">tests</span><span class="o">/</span><span class="n">unittest1</span><span class="o">.</span><span class="n">py</span> <span class="n">myjungle</span> <span class="o">-</span><span class="n">r</span>
 </pre></div>
 </div>
 </div>
@@ -338,7 +343,7 @@ Account ``xlg3pao3idlq`` successfully funded.
 <li>your account’s active private key.</li>
 </ul>
 <p>In our case the command looks like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">test</span><span class="o">/</span><span class="n">unittest1</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">t</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">88.99</span><span class="o">.</span><span class="mf">97.30</span><span class="p">:</span><span class="mi">38888</span> <span class="n">dgxo1uyhoytn</span> <span class="mi">5</span><span class="n">JE9XSurh4Bmdw8Ynz72Eh6ZCKrxf63SmQWKrYJSXf1dEnoiKFY</span> <span class="mi">5</span><span class="n">JgLo7jZhmY4huDNXwExmaWQJqyS1hGZrnSjECcpWwGU25Ym8tA</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">tests</span><span class="o">/</span><span class="n">unittest1</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">t</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">88.99</span><span class="o">.</span><span class="mf">97.30</span><span class="p">:</span><span class="mi">38888</span> <span class="n">dgxo1uyhoytn</span> <span class="mi">5</span><span class="n">JE9XSurh4Bmdw8Ynz72Eh6ZCKrxf63SmQWKrYJSXf1dEnoiKFY</span> <span class="mi">5</span><span class="n">JgLo7jZhmY4huDNXwExmaWQJqyS1hGZrnSjECcpWwGU25Ym8tA</span>
 </pre></div>
 </div>
 </div>

@@ -32,10 +32,6 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 
 
-    <script type="text/javascript">
-      DOCUMENTATION_OPTIONS.COLLAPSE_INDEX = true;
-    </script>
-
 
   </head>
   <body>
@@ -77,6 +73,7 @@
 <li class="toctree-l1"><a class="reference internal" href="releases/ReleaseNotesVersion1.0.html">EOSFactory Release Notes - v1.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="releases/ReleaseNotesVersion1.1.html">EOSFactory Release Notes - v1.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="releases/ReleaseNotesVersion2.0.html">EOSFactory Release Notes - v2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="releases/ReleaseNotesVersion2.1.html">EOSFactory Release Notes - v2.1</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="tutorials/00.IntroductionToEOSFactory.html">Introduction to <em>EOSFactory</em></a></li>
@@ -91,17 +88,21 @@
 <li class="toctree-l1"><a class="reference internal" href="roadmap/LongTermEOSFactoryRoadmap.html">Long-term EOSFactory Roadmap</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="rst/cleos.html">cleos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst/cleosys.html">cleosys</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst/efacc.html">efacc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst/efcon.html">efcon</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst/efman.html">efman</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst/efnet.html">efnet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst/efui.html">efui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst/efwal.html">efwal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/core.cleos.html">core.cleos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/core.cleosys.html">core.cleosys</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/core.config.html">core.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/core.errors.html">core.errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/core.logger.html">core.logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/core.manager.html">core.manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/core.teos.html">core.teos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/core.testnet.html">core.testnet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/core.utils.html">core.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/shell.interface.html">shell.interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/shell.wallet.html">shell.wallet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/shell.setup.html">shell.setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/shell.account.html">shell.account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/shell.contract.html">shell.contract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rst/eosf.html">eosf</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst/setup.html">setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst/teos.html">teos</a></li>
 </ul>
 </ul>
 </li>
@@ -155,8 +156,7 @@
    <a href="#cap-c"><strong>c</strong></a> | 
    <a href="#cap-e"><strong>e</strong></a> | 
    <a href="#cap-p"><strong>p</strong></a> | 
-   <a href="#cap-s"><strong>s</strong></a> | 
-   <a href="#cap-t"><strong>t</strong></a>
+   <a href="#cap-s"><strong>s</strong></a>
    </div>
 
    <table class="indextable modindextable">
@@ -164,48 +164,59 @@
      <tr class="cap" id="cap-c"><td></td><td>
        <strong>c</strong></td><td></td></tr>
      <tr>
-       <td></td>
+       <td><img src="_static/minus.png" class="toggler"
+              id="toggle-1" style="display: none" alt="-" /></td>
        <td>
-       <a href="rst/cleos.html#module-cleos"><code class="xref">cleos</code></a></td><td>
+       <code class="xref">core</code></td><td>
        <em></em></td></tr>
-     <tr>
+     <tr class="cg-1">
        <td></td>
-       <td>
-       <a href="rst/cleosys.html#module-cleosys"><code class="xref">cleosys</code></a></td><td>
+       <td>&#160;&#160;&#160;
+       <a href="rst/core.cleos.html#module-core.cleos"><code class="xref">core.cleos</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="rst/core.cleosys.html#module-core.cleosys"><code class="xref">core.cleosys</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="rst/core.config.html#module-core.config"><code class="xref">core.config</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="rst/core.errors.html#module-core.errors"><code class="xref">core.errors</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="rst/core.logger.html#module-core.logger"><code class="xref">core.logger</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="rst/core.manager.html#module-core.manager"><code class="xref">core.manager</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="rst/core.teos.html#module-core.teos"><code class="xref">core.teos</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="rst/core.testnet.html#module-core.testnet"><code class="xref">core.testnet</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="rst/core.utils.html#module-core.utils"><code class="xref">core.utils</code></a></td><td>
        <em></em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-e"><td></td><td>
        <strong>e</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="rst/efacc.html#module-efacc"><code class="xref">efacc</code></a></td><td>
-       <em></em></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="rst/efcon.html#module-efcon"><code class="xref">efcon</code></a></td><td>
-       <em></em></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="rst/efman.html#module-efman"><code class="xref">efman</code></a></td><td>
-       <em></em></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="rst/efnet.html#module-efnet"><code class="xref">efnet</code></a></td><td>
-       <em></em></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="rst/efui.html#module-efui"><code class="xref">efui</code></a></td><td>
-       <em></em></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="rst/efwal.html#module-efwal"><code class="xref">efwal</code></a></td><td>
-       <em></em></td></tr>
      <tr>
        <td></td>
        <td>
@@ -217,25 +228,41 @@
      <tr>
        <td></td>
        <td>
-       <a href="rst/teos.html#module-pyteos"><code class="xref">pyteos</code></a> <em>(Unix, Windows)</em></td><td>
-       <em>Python front-end for C++ `teos` controll classes which implement 
-functionality needed for EOSIO smart-contract development process, yet 
-not available form the EOSIO `cleos`.</em></td></tr>
+       <a href="rst/core.cleosys.html#module-pyteos"><code class="xref">pyteos</code></a> <em>(Unix, Windows)</em></td><td>
+       <em>Python front-end for `EOSIO cleos system`.</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-s"><td></td><td>
        <strong>s</strong></td><td></td></tr>
      <tr>
-       <td></td>
+       <td><img src="_static/minus.png" class="toggler"
+              id="toggle-2" style="display: none" alt="-" /></td>
        <td>
-       <a href="rst/setup.html#module-setup"><code class="xref">setup</code></a></td><td>
+       <code class="xref">shell</code></td><td>
        <em></em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-t"><td></td><td>
-       <strong>t</strong></td><td></td></tr>
-     <tr>
+     <tr class="cg-2">
        <td></td>
-       <td>
-       <a href="rst/teos.html#module-teos"><code class="xref">teos</code></a></td><td>
+       <td>&#160;&#160;&#160;
+       <a href="rst/shell.account.html#module-shell.account"><code class="xref">shell.account</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-2">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="rst/shell.contract.html#module-shell.contract"><code class="xref">shell.contract</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-2">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="rst/shell.interface.html#module-shell.interface"><code class="xref">shell.interface</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-2">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="rst/shell.setup.html#module-shell.setup"><code class="xref">shell.setup</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-2">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="rst/shell.wallet.html#module-shell.wallet"><code class="xref">shell.wallet</code></a></td><td>
        <em></em></td></tr>
    </table>
 

@@ -26,7 +26,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Installing EOSFactory" href="01.InstallingEOSFactory.html" />
-    <link rel="prev" title="EOSFactory Release Notes - v2.0" href="../releases/ReleaseNotesVersion2.0.html" />
+    <link rel="prev" title="EOSFactory Release Notes - v2.1" href="../releases/ReleaseNotesVersion2.1.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -72,6 +72,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion1.0.html">EOSFactory Release Notes - v1.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion1.1.html">EOSFactory Release Notes - v1.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.0.html">EOSFactory Release Notes - v2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.1.html">EOSFactory Release Notes - v2.1</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction to <em>EOSFactory</em></a></li>
@@ -86,17 +87,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../roadmap/LongTermEOSFactoryRoadmap.html">Long-term EOSFactory Roadmap</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../rst/cleos.html">cleos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/cleosys.html">cleosys</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efacc.html">efacc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efcon.html">efcon</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efman.html">efman</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efnet.html">efnet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efui.html">efui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efwal.html">efwal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.cleos.html">core.cleos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.cleosys.html">core.cleosys</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.config.html">core.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.errors.html">core.errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.logger.html">core.logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.manager.html">core.manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.teos.html">core.teos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.testnet.html">core.testnet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.utils.html">core.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.interface.html">shell.interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.wallet.html">shell.wallet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.setup.html">shell.setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.account.html">shell.account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.contract.html">shell.contract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/eosf.html">eosf</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/setup.html">setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/teos.html">teos</a></li>
 </ul>
 </ul>
 </li>
@@ -130,7 +135,7 @@
               
                 
   <li>
-    <a href="../releases/ReleaseNotesVersion2.0.html" title="Previous Chapter: EOSFactory Release Notes - v2.0"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; EOSFactory Re...</span>
+    <a href="../releases/ReleaseNotesVersion2.1.html" title="Previous Chapter: EOSFactory Release Notes - v2.1"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; EOSFactory Re...</span>
     </a>
   </li>
   <li>
@@ -196,10 +201,9 @@
 </div>
 <div class="section" id="architecture">
 <span id="architecture"></span><h2>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h2>
-<p><em>EOSFactory</em> is composed of three layers:</p>
+<p><em>EOSFactory</em> is composed of two layers:</p>
 <ul class="simple">
 <li>C++ client (i.e. <code class="docutils literal"><span class="pre">cleos</span></code>) connected to an EOS node (i.e. <code class="docutils literal"><span class="pre">nodeos</span></code>) running a private or public testnet,</li>
-<li>C++ bridge (i.e. <code class="docutils literal"><span class="pre">teos</span></code>) for functionalities not supported by <code class="docutils literal"><span class="pre">cleos</span></code>,</li>
 <li>Python wrapper acting as a convenient human-oriented interface.</li>
 </ul>
 </div>

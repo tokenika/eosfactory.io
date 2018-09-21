@@ -72,6 +72,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion1.0.html">EOSFactory Release Notes - v1.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion1.1.html">EOSFactory Release Notes - v1.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.0.html">EOSFactory Release Notes - v2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.1.html">EOSFactory Release Notes - v2.1</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="00.IntroductionToEOSFactory.html">Introduction to <em>EOSFactory</em></a></li>
@@ -86,17 +87,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../roadmap/LongTermEOSFactoryRoadmap.html">Long-term EOSFactory Roadmap</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../rst/cleos.html">cleos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/cleosys.html">cleosys</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efacc.html">efacc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efcon.html">efcon</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efman.html">efman</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efnet.html">efnet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efui.html">efui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efwal.html">efwal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.cleos.html">core.cleos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.cleosys.html">core.cleosys</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.config.html">core.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.errors.html">core.errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.logger.html">core.logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.manager.html">core.manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.teos.html">core.teos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.testnet.html">core.testnet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.utils.html">core.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.interface.html">shell.interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.wallet.html">shell.wallet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.setup.html">shell.setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.account.html">shell.account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.contract.html">shell.contract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/eosf.html">eosf</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/setup.html">setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/teos.html">teos</a></li>
 </ul>
 </ul>
 </li>
@@ -205,10 +210,6 @@
 <span class="n">python3</span> <span class="n">utils</span><span class="o">/</span><span class="n">create_project</span><span class="o">.</span><span class="n">py</span> <span class="n">foo_bar</span> <span class="mi">01</span><span class="n">_hello_world</span>
 </pre></div>
 </div>
-<p>Alternatively, use this command which is more handy, as it works from any directory:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>eval $eosf template create foo_bar 01_hello_world
-</pre></div>
-</div>
 <p><strong>NOTE:</strong> If you are on Windows and have not restarted your WSL bash terminal after <em>EOSFactory</em> installation, you’ll need to do so before you execute this command (if you are using WSL bash terminal inside <em>Visual Studio Code</em>, restart your VSC instead).</p>
 <p>The first parameter (in our case <code class="docutils literal"><span class="pre">foo_bar</span></code>) is the name of your contract. It can be any name you want, provided there are no spaces in it. Letters, numbers, underscores <code class="docutils literal"><span class="pre">_</span></code>, dots <code class="docutils literal"><span class="pre">.</span></code> and dashes <code class="docutils literal"><span class="pre">-</span></code> are allowed.</p>
 <p>The second parameter (in our case <code class="docutils literal"><span class="pre">01_hello_world</span></code>) denotes the template from which the new contract will be created. As of now there are three templates to choose from (i.e. <code class="docutils literal"><span class="pre">01_hello_world</span></code>, <code class="docutils literal"><span class="pre">02_eosio_token</span></code> and <code class="docutils literal"><span class="pre">03_tic_tac_toe</span></code>), with more coming in the future. This parameter is optional, the default value is <code class="docutils literal"><span class="pre">01_hello_world</span></code>.</p>
@@ -219,10 +220,6 @@
 <p>Alternatively, you can add the <code class="docutils literal"><span class="pre">--vsc</span></code> option to the command and then VSC will launch automatically, already switched to the projects’s folder, for example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">eosfactory</span>
 <span class="n">python3</span> <span class="n">utils</span><span class="o">/</span><span class="n">create_project</span><span class="o">.</span><span class="n">py</span> <span class="n">foo_bar</span> <span class="mi">01</span><span class="n">_hello_world</span> <span class="o">--</span><span class="n">vsc</span>
-</pre></div>
-</div>
-<p>Or using a simpler syntax:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>eval $eosf template create foo_bar 01_hello_world --vsc
 </pre></div>
 </div>
 </div>
@@ -319,10 +316,10 @@ definitions, etc.</li>
 </div>
 <p><strong>NOTE:</strong> As you might have noticed, there are two types of unit tests: the standard ones (named <em>unittest1</em>, <em>unittest2</em>, etc) and ad-hoc ones (named <em>test1</em>, <em>test2</em>, etc). The reason for this duality is this: we find it useful to have standard unit tests to prove that things work as expected, and ad-hoc tests to investigate bugs and generally monitor the inner workings of a smart-contract. <em>EOSFactory</em> supports both, so you can choose whatever suits your needs.</p>
 <p>Also, please note that an alternative way to run the tests is to invoke them as a Python executable file, for example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">test</span><span class="o">/</span><span class="n">test1</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">tests</span><span class="o">/</span><span class="n">test1</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">test</span><span class="o">/</span><span class="n">unittest1</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">tests</span><span class="o">/</span><span class="n">unittest1</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 </div>

@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="cleos" href="../rst/cleos.html" />
+    <link rel="next" title="core.cleos" href="../rst/core.cleos.html" />
     <link rel="prev" title="Plan for Subsequent EOSFactory Releases" href="PlanForSubsequentEOSFactoryReleases.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -72,6 +72,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion1.0.html">EOSFactory Release Notes - v1.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion1.1.html">EOSFactory Release Notes - v1.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.0.html">EOSFactory Release Notes - v2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.1.html">EOSFactory Release Notes - v2.1</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/00.IntroductionToEOSFactory.html">Introduction to <em>EOSFactory</em></a></li>
@@ -86,17 +87,21 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Long-term EOSFactory Roadmap</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../rst/cleos.html">cleos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/cleosys.html">cleosys</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efacc.html">efacc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efcon.html">efcon</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efman.html">efman</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efnet.html">efnet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efui.html">efui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efwal.html">efwal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.cleos.html">core.cleos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.cleosys.html">core.cleosys</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.config.html">core.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.errors.html">core.errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.logger.html">core.logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.manager.html">core.manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.teos.html">core.teos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.testnet.html">core.testnet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.utils.html">core.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.interface.html">shell.interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.wallet.html">shell.wallet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.setup.html">shell.setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.account.html">shell.account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.contract.html">shell.contract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/eosf.html">eosf</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/setup.html">setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/teos.html">teos</a></li>
 </ul>
 </ul>
 </li>
@@ -130,7 +135,7 @@
     </a>
   </li>
   <li>
-    <a href="../rst/cleos.html" title="Next Chapter: cleos"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">cleos &raquo;</span>
+    <a href="../rst/core.cleos.html" title="Next Chapter: core.cleos"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">core.cleos &raquo;</span>
     </a>
   </li>
               
@@ -176,7 +181,7 @@
 </div>
 <div class="section" id="two-implementations">
 <span id="two-implementations"></span><h2>Two implementations<a class="headerlink" href="#two-implementations" title="Permalink to this headline">¶</a></h2>
-<p>We are also considering splitting the EOSFactory project into two implementations: pure Python (based on <a class="reference external" href="https://docs.python.org/3/library/unittest.html">unittest</a> or <a class="reference external" href="https://docs.pytest.org/en/latest/">pytest</a>) and pure C++ (based on <a class="reference external" href="https://www.boost.org/doc/libs/1_53_0/libs/test/doc/html/utf.html">Boost Unit Test Framework</a>).</p>
+<p>We are also considering splitting the EOSFactory project into two implementations: pure Python (based on <a class="reference external" href="https://docs.python.org/3/library/unittest.html">unittest</a> or <a class="reference external" href="https://docs.pytest.org/en/latest/">pytest</a>) and pure C++ (based on <a class="reference external" href="https://www.boost.org/doc/libs/1_53_0/libs/tests/doc/html/utf.html">Boost Unit Test Framework</a>).</p>
 </div>
 <div class="section" id="ricardian-contracts">
 <span id="ricardian-contracts"></span><h2>Ricardian Contracts<a class="headerlink" href="#ricardian-contracts" title="Permalink to this headline">¶</a></h2>

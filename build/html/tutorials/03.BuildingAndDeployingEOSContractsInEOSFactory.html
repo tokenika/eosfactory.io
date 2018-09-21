@@ -72,6 +72,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion1.0.html">EOSFactory Release Notes - v1.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion1.1.html">EOSFactory Release Notes - v1.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.0.html">EOSFactory Release Notes - v2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.1.html">EOSFactory Release Notes - v2.1</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="00.IntroductionToEOSFactory.html">Introduction to <em>EOSFactory</em></a></li>
@@ -86,17 +87,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../roadmap/LongTermEOSFactoryRoadmap.html">Long-term EOSFactory Roadmap</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../rst/cleos.html">cleos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/cleosys.html">cleosys</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efacc.html">efacc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efcon.html">efcon</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efman.html">efman</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efnet.html">efnet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efui.html">efui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efwal.html">efwal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.cleos.html">core.cleos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.cleosys.html">core.cleosys</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.config.html">core.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.errors.html">core.errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.logger.html">core.logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.manager.html">core.manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.teos.html">core.teos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.testnet.html">core.testnet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.utils.html">core.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.interface.html">shell.interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.wallet.html">shell.wallet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.setup.html">shell.setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.account.html">shell.account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.contract.html">shell.contract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/eosf.html">eosf</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/setup.html">setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/teos.html">teos</a></li>
 </ul>
 </ul>
 </li>
@@ -198,7 +203,7 @@
 </pre></div>
 </div>
 <p><strong>NOTE:</strong> Do not use spaces in contract names. What is allowed are letters, numbers, underscores <code class="docutils literal"><span class="pre">_</span></code>, dots <code class="docutils literal"><span class="pre">.</span></code> and dashes <code class="docutils literal"><span class="pre">-</span></code>. Regarding the second parameter, as of now there are three templates to choose from (i.e. <code class="docutils literal"><span class="pre">01_hello_world</span></code>, <code class="docutils literal"><span class="pre">02_eosio_token</span></code> and <code class="docutils literal"><span class="pre">03_tic_tac_toe</span></code>), with more coming in the future. This parameter is optional, the default value is&nbsp;<code class="docutils literal"><span class="pre">01_hello_world</span></code>.</p>
-<p>The above command creates a new contract. However, if you want to access an existing one, use the following syntax instead:</p>
+<p>The above command creates a new folder and inside it a new smart-contract file is placed. However, if you want to access an existing smart-contract, use the following syntax instead:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span> <span class="o">=</span> <span class="n">ContractBuilder</span><span class="p">(</span><span class="s2">&quot;foo_bar&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -301,19 +306,38 @@
 </pre></div>
 </div>
 <p>You can play with the contract by sending it actions with different arguments:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span><span class="o">.</span><span class="n">push_action</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span><span class="n">alice</span><span class="p">},</span> <span class="n">permission</span><span class="o">=</span><span class="n">alice</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span><span class="o">.</span><span class="n">push_action</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span><span class="n">carol</span><span class="p">},</span> <span class="n">permission</span><span class="o">=</span><span class="n">carol</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span><span class="o">.</span><span class="n">push_action</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span><span class="n">alice</span><span class="p">},</span> <span class="n">permission</span><span class="o">=</span><span class="n">carol</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span><span class="o">.</span><span class="n">push_action</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span><span class="n">carol</span><span class="p">},</span> <span class="n">permission</span><span class="o">=</span><span class="n">alice</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>NOTE:</strong> The <code class="docutils literal"><span class="pre">push_action</span></code> method takes three parameters:</p>
+<ul class="simple">
+<li>the name of the action, e.g. <code class="docutils literal"><span class="pre">&quot;hi&quot;</span></code>,</li>
+<li>the data required by the action, e.g. <code class="docutils literal"><span class="pre">{&quot;user&quot;:alice}</span></code>,</li>
+<li>the permissions required by the action, e.g. <code class="docutils literal"><span class="pre">alice</span></code>.</li>
+</ul>
+<p>Regarding permissions, <em>EOSFactory</em> offers several options:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span><span class="o">.</span><span class="n">push_action</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span><span class="n">alice</span><span class="p">},</span> <span class="n">alice</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span><span class="o">.</span><span class="n">push_action</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span><span class="n">carol</span><span class="p">},</span> <span class="n">carol</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span><span class="o">.</span><span class="n">push_action</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span><span class="n">alice</span><span class="p">},</span> <span class="n">permission</span><span class="o">=</span><span class="n">alice</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span><span class="o">.</span><span class="n">push_action</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span><span class="n">alice</span><span class="p">},</span> <span class="n">carol</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span><span class="o">.</span><span class="n">push_action</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span><span class="n">alice</span><span class="p">},</span> <span class="n">permission</span><span class="o">=</span><span class="p">(</span><span class="n">alice</span><span class="p">,</span> <span class="n">Permission</span><span class="o">.</span><span class="n">ACTIVE</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span><span class="o">.</span><span class="n">push_action</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span><span class="n">carol</span><span class="p">},</span> <span class="n">alice</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span><span class="o">.</span><span class="n">push_action</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span><span class="n">alice</span><span class="p">},</span> <span class="n">permission</span><span class="o">=</span><span class="p">[(</span><span class="n">alice</span><span class="p">,</span> <span class="n">Permission</span><span class="o">.</span><span class="n">ACTIVE</span><span class="p">),</span> <span class="p">(</span><span class="n">carol</span><span class="p">,</span> <span class="n">Permission</span><span class="o">.</span><span class="n">OWNER</span><span class="p">)]</span>
 </pre></div>
 </div>
-<p>All the above variations should work, as the contract allows anyone to authorize it.</p>
+<p>All the above variations should work, as the contract allows anyone to authorize the <code class="docutils literal"><span class="pre">hi</span></code> action.</p>
 <p><strong>NOTE:</strong> Among other things, the console displays a debugger output, for example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">INFO</span> <span class="n">debug</span> <span class="n">user</span> <span class="n">name</span><span class="p">:</span> <span class="n">alice</span> <span class="o">@</span> <span class="mi">12</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mi">05</span> <span class="n">hello</span><span class="o">.</span><span class="n">world</span><span class="o">.</span><span class="n">cpp</span><span class="p">[</span><span class="mi">17</span><span class="p">](</span><span class="n">hi</span><span class="p">)</span>
 </pre></div>
@@ -342,7 +366,7 @@
 </pre></div>
 </div>
 <p>Now, if we attempt to mismatch the user and the authority, the contract will throw an error:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span><span class="o">.</span><span class="n">push_action</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span><span class="n">alice</span><span class="p">},</span> <span class="n">carol</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span><span class="o">.</span><span class="n">push_action</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span><span class="n">alice</span><span class="p">},</span> <span class="n">permission</span><span class="o">=</span><span class="n">carol</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span>Error 3090004: Missing required authority
@@ -350,7 +374,7 @@ Ensure that you have the related authority inside your transaction!
 </pre></div>
 </div>
 <p>But if we use the appropriate authority, there should no error:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span><span class="o">.</span><span class="n">push_action</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span><span class="n">alice</span><span class="p">},</span> <span class="n">alice</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span><span class="o">.</span><span class="n">push_action</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span><span class="n">alice</span><span class="p">},</span> <span class="n">permission</span><span class="o">=</span><span class="n">alice</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

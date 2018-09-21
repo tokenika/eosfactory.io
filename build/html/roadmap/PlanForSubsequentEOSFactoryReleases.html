@@ -72,6 +72,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion1.0.html">EOSFactory Release Notes - v1.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion1.1.html">EOSFactory Release Notes - v1.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.0.html">EOSFactory Release Notes - v2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.1.html">EOSFactory Release Notes - v2.1</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/00.IntroductionToEOSFactory.html">Introduction to <em>EOSFactory</em></a></li>
@@ -86,17 +87,21 @@
 <li class="toctree-l1"><a class="reference internal" href="LongTermEOSFactoryRoadmap.html">Long-term EOSFactory Roadmap</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../rst/cleos.html">cleos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/cleosys.html">cleosys</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efacc.html">efacc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efcon.html">efcon</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efman.html">efman</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efnet.html">efnet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efui.html">efui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/efwal.html">efwal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.cleos.html">core.cleos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.cleosys.html">core.cleosys</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.config.html">core.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.errors.html">core.errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.logger.html">core.logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.manager.html">core.manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.teos.html">core.teos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.testnet.html">core.testnet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.utils.html">core.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.interface.html">shell.interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.wallet.html">shell.wallet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.setup.html">shell.setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.account.html">shell.account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.contract.html">shell.contract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/eosf.html">eosf</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/setup.html">setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/teos.html">teos</a></li>
 </ul>
 </ul>
 </li>
@@ -113,7 +118,6 @@
 <li><a class="reference internal" href="#">Plan for Subsequent EOSFactory Releases</a><ul>
 <li><a class="reference internal" href="#integration-with-eosjs-instead-of-cleos">Integration with <code class="docutils literal"><span class="pre">eosjs</span></code> instead of <code class="docutils literal"><span class="pre">cleos</span></code></a></li>
 <li><a class="reference internal" href="#better-integration-with-visual-studio-code">Better integration with <em>Visual Studio Code</em></a></li>
-<li><a class="reference internal" href="#extracting-the-c-layer-as-a-separate-project">Extracting the C++ layer as a separate project</a></li>
 </ul>
 </li>
 </ul>
@@ -172,10 +176,6 @@
 <div class="section" id="better-integration-with-visual-studio-code">
 <span id="better-integration-with-visual-studio-code"></span><h2>Better integration with <em>Visual Studio Code</em><a class="headerlink" href="#better-integration-with-visual-studio-code" title="Permalink to this headline">¶</a></h2>
 <p>There is still a lot of things we can do to make <em>EOSFactory</em> more tightly integrated with VSC. What’s important, we still want to offer the option to perform all the tasks in a standard bash terminal &amp; your favorite code editor or IDE, thus work entirely outside of VSC.</p>
-</div>
-<div class="section" id="extracting-the-c-layer-as-a-separate-project">
-<span id="extracting-the-c-layer-as-a-separate-project"></span><h2>Extracting the C++ layer as a separate project<a class="headerlink" href="#extracting-the-c-layer-as-a-separate-project" title="Permalink to this headline">¶</a></h2>
-<p>We plan to move the C++ layer’s source code (i.e.<code class="docutils literal"><span class="pre">teos</span></code>) into a separate repository, so that it can also serve as a foundation for other projects. What’s nice about <code class="docutils literal"><span class="pre">teos</span></code> is that it’s a static library, not an executable like <code class="docutils literal"><span class="pre">cleos</span></code>, and therefore it’s much more suitable for integrations.</p>
 </div>
 </div>
 

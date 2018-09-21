@@ -71,6 +71,7 @@
 <li class="toctree-l1"><a class="reference internal" href="releases/ReleaseNotesVersion1.0.html">EOSFactory Release Notes - v1.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="releases/ReleaseNotesVersion1.1.html">EOSFactory Release Notes - v1.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="releases/ReleaseNotesVersion2.0.html">EOSFactory Release Notes - v2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="releases/ReleaseNotesVersion2.1.html">EOSFactory Release Notes - v2.1</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="tutorials/00.IntroductionToEOSFactory.html">Introduction to <em>EOSFactory</em></a></li>
@@ -85,17 +86,21 @@
 <li class="toctree-l1"><a class="reference internal" href="roadmap/LongTermEOSFactoryRoadmap.html">Long-term EOSFactory Roadmap</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="rst/cleos.html">cleos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst/cleosys.html">cleosys</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst/efacc.html">efacc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst/efcon.html">efcon</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst/efman.html">efman</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst/efnet.html">efnet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst/efui.html">efui</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst/efwal.html">efwal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/core.cleos.html">core.cleos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/core.cleosys.html">core.cleosys</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/core.config.html">core.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/core.errors.html">core.errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/core.logger.html">core.logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/core.manager.html">core.manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/core.teos.html">core.teos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/core.testnet.html">core.testnet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/core.utils.html">core.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/shell.interface.html">shell.interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/shell.wallet.html">shell.wallet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/shell.setup.html">shell.setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/shell.account.html">shell.account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/shell.contract.html">shell.contract</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rst/eosf.html">eosf</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst/setup.html">setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst/teos.html">teos</a></li>
 </ul>
 </ul>
 </li>
@@ -169,11 +174,15 @@
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/cleos.html#cleos.Account">Account (class in cleos)</a>
+      <li><a href="rst/core.teos.html#core.teos.ABI">ABI() (in module core.teos)</a>
+</li>
+      <li><a href="rst/shell.interface.html#shell.interface.Account">Account (class in shell.interface)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/efman.html#efman.account_map">account_map() (in module efman)</a>
+      <li><a href="rst/core.manager.html#core.manager.account_map">account_map() (in module core.manager)</a>
+</li>
+      <li><a href="rst/core.errors.html#core.errors.AccountDoesNotExistError">AccountDoesNotExistError</a>
 </li>
   </ul></td>
 </tr></table>
@@ -181,7 +190,7 @@
 <h2 id="B">B</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/cleosys.html#cleosys.BuyRam">BuyRam (class in cleosys)</a>
+      <li><a href="rst/core.cleosys.html#core.cleosys.BuyRam">BuyRam (class in core.cleosys)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -189,21 +198,35 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/efman.html#efman.clear_testnet_cache">clear_testnet_cache() (in module efman)</a>
+      <li><a href="rst/core.manager.html#core.manager.clear_testnet_cache">clear_testnet_cache() (in module core.manager)</a>
 </li>
-      <li><a href="rst/cleos.html#module-cleos">cleos (module)</a>
+      <li><a href="rst/shell.contract.html#shell.contract.ContractBuilder">ContractBuilder (class in shell.contract)</a>
 </li>
-      <li><a href="rst/cleosys.html#module-cleosys">cleosys (module)</a>
+      <li><a href="rst/core.cleos.html#module-core.cleos">core.cleos (module)</a>
+</li>
+      <li><a href="rst/core.cleosys.html#module-core.cleosys">core.cleosys (module)</a>
+</li>
+      <li><a href="rst/core.config.html#module-core.config">core.config (module)</a>
+</li>
+      <li><a href="rst/core.errors.html#module-core.errors">core.errors (module)</a>
+</li>
+      <li><a href="rst/core.logger.html#module-core.logger">core.logger (module)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/efcon.html#efcon.ContractBuilder">ContractBuilder (class in efcon)</a>
+      <li><a href="rst/core.manager.html#module-core.manager">core.manager (module)</a>
 </li>
-      <li><a href="rst/efacc.html#efacc.create_master_account">create_master_account() (in module efacc)</a>
+      <li><a href="rst/core.teos.html#module-core.teos">core.teos (module)</a>
 </li>
-      <li><a href="rst/cleos.html#cleos.CreateAccount">CreateAccount (class in cleos)</a>
+      <li><a href="rst/core.testnet.html#module-core.testnet">core.testnet (module)</a>
 </li>
-      <li><a href="rst/cleos.html#cleos.CreateKey">CreateKey (class in cleos)</a>
+      <li><a href="rst/core.utils.html#module-core.utils">core.utils (module)</a>
+</li>
+      <li><a href="rst/shell.account.html#shell.account.create_master_account">create_master_account() (in module shell.account)</a>
+</li>
+      <li><a href="rst/core.cleos.html#core.cleos.CreateAccount">CreateAccount (class in core.cleos)</a>
+</li>
+      <li><a href="rst/core.cleos.html#core.cleos.CreateKey">CreateKey (class in core.cleos)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -211,7 +234,7 @@
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/cleosys.html#cleosys.DelegateBw">DelegateBw (class in cleosys)</a>
+      <li><a href="rst/core.cleosys.html#core.cleosys.DelegateBw">DelegateBw (class in core.cleosys)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -219,21 +242,11 @@
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/efacc.html#module-efacc">efacc (module)</a>
-</li>
-      <li><a href="rst/efcon.html#module-efcon">efcon (module)</a>
-</li>
-      <li><a href="rst/efman.html#module-efman">efman (module)</a>
+      <li><a href="rst/eosf.html#module-eosf">eosf (module)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/efnet.html#module-efnet">efnet (module)</a>
-</li>
-      <li><a href="rst/efui.html#module-efui">efui (module)</a>
-</li>
-      <li><a href="rst/efwal.html#module-efwal">efwal (module)</a>
-</li>
-      <li><a href="rst/eosf.html#module-eosf">eosf (module)</a>
+      <li><a href="rst/core.errors.html#core.errors.Error">Error</a>
 </li>
   </ul></td>
 </tr></table>
@@ -241,31 +254,43 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/teos.html#teos.get_keosd_wallet_dir">get_keosd_wallet_dir() (in module teos)</a>
+      <li><a href="rst/core.config.html#core.config.get_abi_file">get_abi_file() (in module core.config)</a>
 </li>
-      <li><a href="rst/teos.html#teos.get_node_wallet_dir">get_node_wallet_dir() (in module teos)</a>
+      <li><a href="rst/core.teos.html#core.teos.get_keosd_wallet_dir">get_keosd_wallet_dir() (in module core.teos)</a>
 </li>
-      <li><a href="rst/cleos.html#cleos.GetAccount">GetAccount (class in cleos)</a>
+      <li><a href="rst/core.teos.html#core.teos.get_pid">get_pid() (in module core.teos)</a>
+</li>
+      <li><a href="rst/core.config.html#core.config.get_wasm_file">get_wasm_file() (in module core.config)</a>
+</li>
+      <li><a href="rst/core.config.html#core.config.get_wast_file">get_wast_file() (in module core.config)</a>
+</li>
+      <li><a href="rst/core.cleos.html#core.cleos.GetAccount">GetAccount (class in core.cleos)</a>
 
       <ul>
-        <li><a href="rst/efacc.html#efacc.GetAccount">(class in efacc)</a>
+        <li><a href="rst/shell.account.html#shell.account.GetAccount">(class in shell.account)</a>
 </li>
       </ul></li>
-      <li><a href="rst/cleos.html#cleos.GetAccounts">GetAccounts (class in cleos)</a>
+      <li><a href="rst/core.cleos.html#core.cleos.GetAccounts">GetAccounts (class in core.cleos)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/cleos.html#cleos.GetBlock">GetBlock (class in cleos)</a>
+      <li><a href="rst/core.cleos.html#core.cleos.GetBlock">GetBlock (class in core.cleos)</a>
 </li>
-      <li><a href="rst/cleos.html#cleos.GetCode">GetCode (class in cleos)</a>
+      <li><a href="rst/core.cleos.html#core.cleos.GetCode">GetCode (class in core.cleos)</a>
 </li>
-      <li><a href="rst/teos.html#teos.GetConfig">GetConfig (class in teos)</a>
+      <li><a href="rst/core.config.html#core.config.getContractDir">getContractDir() (in module core.config)</a>
 </li>
-      <li><a href="rst/cleos.html#cleos.GetInfo">GetInfo (class in cleos)</a>
+      <li><a href="rst/core.config.html#core.config.getContractFile">getContractFile() (in module core.config)</a>
 </li>
-      <li><a href="rst/cleos.html#cleos.GetTable">GetTable (class in cleos)</a>
+      <li><a href="rst/core.config.html#core.config.getContractWorkspace">getContractWorkspace() (in module core.config)</a>
 </li>
-      <li><a href="rst/cleos.html#cleos.GetTransaction">GetTransaction (class in cleos)</a>
+      <li><a href="rst/core.cleos.html#core.cleos.GetInfo">GetInfo (class in core.cleos)</a>
+</li>
+      <li><a href="rst/core.cleos.html#core.cleos.GetTable">GetTable (class in core.cleos)</a>
+</li>
+      <li><a href="rst/core.cleos.html#core.cleos.GetTransaction">GetTransaction (class in core.cleos)</a>
+</li>
+      <li><a href="rst/core.config.html#core.config.getValidPath">getValidPath() (in module core.config)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -273,17 +298,17 @@
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/efwal.html#efwal.Wallet.import_key">import_key() (efwal.Wallet method)</a>
+      <li><a href="rst/shell.wallet.html#shell.wallet.Wallet.import_key">import_key() (shell.wallet.Wallet method)</a>
 </li>
-      <li><a href="rst/efwal.html#efwal.Wallet.index">index() (efwal.Wallet method)</a>
+      <li><a href="rst/shell.wallet.html#shell.wallet.Wallet.index">index() (shell.wallet.Wallet method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/efman.html#efman.info">info() (in module efman)</a>
+      <li><a href="rst/core.manager.html#core.manager.info">info() (in module core.manager)</a>
 </li>
-      <li><a href="rst/efman.html#efman.is_head_block_num">is_head_block_num() (in module efman)</a>
+      <li><a href="rst/core.manager.html#core.manager.is_head_block_num">is_head_block_num() (in module core.manager)</a>
 </li>
-      <li><a href="rst/efacc.html#efacc.is_wallet_defined">is_wallet_defined() (in module efacc)</a>
+      <li><a href="rst/shell.account.html#shell.account.is_wallet_defined">is_wallet_defined() (in module shell.account)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -291,11 +316,11 @@
 <h2 id="K">K</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/cleos.html#cleos.Key">Key (class in cleos)</a>
+      <li><a href="rst/shell.interface.html#shell.interface.Key">Key (class in shell.interface)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/efwal.html#efwal.Wallet.keys">keys() (efwal.Wallet method)</a>
+      <li><a href="rst/shell.wallet.html#shell.wallet.Wallet.keys">keys() (shell.wallet.Wallet method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -303,11 +328,11 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/efwal.html#efwal.Wallet.lock">lock() (efwal.Wallet method)</a>
+      <li><a href="rst/shell.wallet.html#shell.wallet.Wallet.lock">lock() (shell.wallet.Wallet method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/efwal.html#efwal.Wallet.lock_all">lock_all() (efwal.Wallet method)</a>
+      <li><a href="rst/shell.wallet.html#shell.wallet.Wallet.lock_all">lock_all() (shell.wallet.Wallet method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -315,7 +340,7 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/efwal.html#efwal.Wallet.map_account">map_account() (efwal.Wallet method)</a>
+      <li><a href="rst/shell.wallet.html#shell.wallet.Wallet.map_account">map_account() (shell.wallet.Wallet method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -323,11 +348,11 @@
 <h2 id="O">O</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/efwal.html#efwal.Wallet.open">open() (efwal.Wallet method)</a>
+      <li><a href="rst/shell.wallet.html#shell.wallet.Wallet.open">open() (shell.wallet.Wallet method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/efwal.html#efwal.Wallet.open_unlock">open_unlock() (efwal.Wallet method)</a>
+      <li><a href="rst/shell.wallet.html#shell.wallet.Wallet.open_unlock">open_unlock() (shell.wallet.Wallet method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -335,15 +360,15 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/cleos.html#cleos.Permission">Permission (class in cleos)</a>
+      <li><a href="rst/shell.interface.html#shell.interface.Permission">Permission (class in shell.interface)</a>
 </li>
-      <li><a href="rst/efcon.html#efcon.project_from_template">project_from_template() (in module efcon)</a>
+      <li><a href="rst/shell.contract.html#shell.contract.project_from_template">project_from_template() (in module shell.contract)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/cleos.html#cleos.PushAction">PushAction (class in cleos)</a>
+      <li><a href="rst/core.cleos.html#core.cleos.PushAction">PushAction (class in core.cleos)</a>
 </li>
-      <li><a href="rst/cleos.html#module-pyteos">pyteos (module)</a>, <a href="rst/cleosys.html#module-pyteos">[1]</a>, <a href="rst/efman.html#module-pyteos">[2]</a>, <a href="rst/teos.html#module-pyteos">[3]</a>
+      <li><a href="rst/core.cleosys.html#module-pyteos">pyteos (module)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -351,17 +376,17 @@
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/efman.html#efman.read_map">read_map() (in module efman)</a>
+      <li><a href="rst/core.manager.html#core.manager.read_map">read_map() (in module core.manager)</a>
 </li>
-      <li><a href="rst/efwal.html#efwal.Wallet.remove_key">remove_key() (efwal.Wallet method)</a>
+      <li><a href="rst/shell.wallet.html#shell.wallet.Wallet.remove_key">remove_key() (shell.wallet.Wallet method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/efman.html#efman.reset">reset() (in module efman)</a>
+      <li><a href="rst/core.manager.html#core.manager.reset">reset() (in module core.manager)</a>
 </li>
-      <li><a href="rst/efwal.html#efwal.Wallet.restore_accounts">restore_accounts() (efwal.Wallet method)</a>
+      <li><a href="rst/shell.wallet.html#shell.wallet.Wallet.restore_accounts">restore_accounts() (shell.wallet.Wallet method)</a>
 </li>
-      <li><a href="rst/efman.html#efman.resume">resume() (in module efman)</a>
+      <li><a href="rst/core.manager.html#core.manager.resume">resume() (in module core.manager)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -369,23 +394,33 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/setup.html#setup.save_code">save_code() (in module setup)</a>
+      <li><a href="rst/core.utils.html#core.utils.save_code">save_code() (in module core.utils)</a>
+
+      <ul>
+        <li><a href="rst/shell.setup.html#shell.setup.save_code">(in module shell.setup)</a>
 </li>
-      <li><a href="rst/efui.html#efui.set_is_testing_errors">set_is_testing_errors() (in module efui)</a>
+      </ul></li>
+      <li><a href="rst/core.logger.html#core.logger.set_is_testing_errors">set_is_testing_errors() (in module core.logger)</a>
 </li>
-      <li><a href="rst/cleos.html#cleos.SetContract">SetContract (class in cleos)</a>
+      <li><a href="rst/core.cleos.html#core.cleos.SetContract">SetContract (class in core.cleos)</a>
 </li>
-      <li><a href="rst/setup.html#setup.Setup">Setup (class in setup)</a>
+      <li><a href="rst/shell.account.html#module-shell.account">shell.account (module)</a>
+</li>
+      <li><a href="rst/shell.contract.html#module-shell.contract">shell.contract (module)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/setup.html#module-setup">setup (module)</a>
+      <li><a href="rst/shell.interface.html#module-shell.interface">shell.interface (module)</a>
 </li>
-      <li><a href="rst/efman.html#efman.status">status() (in module efman)</a>
+      <li><a href="rst/shell.setup.html#module-shell.setup">shell.setup (module)</a>
 </li>
-      <li><a href="rst/efman.html#efman.stop">stop() (in module efman)</a>
+      <li><a href="rst/shell.wallet.html#module-shell.wallet">shell.wallet (module)</a>
 </li>
-      <li><a href="rst/cleosys.html#cleosys.SystemNewaccount">SystemNewaccount (class in cleosys)</a>
+      <li><a href="rst/core.manager.html#core.manager.status">status() (in module core.manager)</a>
+</li>
+      <li><a href="rst/core.manager.html#core.manager.stop">stop() (in module core.manager)</a>
+</li>
+      <li><a href="rst/core.cleosys.html#core.cleosys.SystemNewaccount">SystemNewaccount (class in core.cleosys)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -393,7 +428,7 @@
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/teos.html#module-teos">teos (module)</a>
+      <li><a href="rst/core.teos.html#core.teos.template_create">template_create() (in module core.teos)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -401,7 +436,7 @@
 <h2 id="U">U</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/efwal.html#efwal.Wallet.unlock">unlock() (efwal.Wallet method)</a>
+      <li><a href="rst/shell.wallet.html#shell.wallet.Wallet.unlock">unlock() (shell.wallet.Wallet method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -409,7 +444,11 @@
 <h2 id="V">V</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/efui.html#efui.Verbosity">Verbosity (class in efui)</a>
+      <li><a href="rst/core.errors.html#core.errors.validate">validate() (in module core.errors)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="rst/core.logger.html#core.logger.Verbosity">Verbosity (class in core.logger)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -417,35 +456,37 @@
 <h2 id="W">W</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/cleos.html#cleos.Wallet">Wallet (class in cleos)</a>
+      <li><a href="rst/shell.interface.html#shell.interface.Wallet">Wallet (class in shell.interface)</a>
 
       <ul>
-        <li><a href="rst/efwal.html#efwal.Wallet">(class in efwal)</a>
+        <li><a href="rst/shell.wallet.html#shell.wallet.Wallet">(class in shell.wallet)</a>
 </li>
       </ul></li>
-      <li><a href="rst/efacc.html#efacc.wallet_globals">wallet_globals (in module efacc)</a>
+      <li><a href="rst/shell.account.html#shell.account.wallet_globals">wallet_globals (in module shell.account)</a>
 </li>
-      <li><a href="rst/cleos.html#cleos.WalletCreate">WalletCreate (class in cleos)</a>
+      <li><a href="rst/core.cleos.html#core.cleos.WalletCreate">WalletCreate (class in core.cleos)</a>
 </li>
-      <li><a href="rst/cleos.html#cleos.WalletImport">WalletImport (class in cleos)</a>
+      <li><a href="rst/core.cleos.html#core.cleos.WalletImport">WalletImport (class in core.cleos)</a>
 </li>
-      <li><a href="rst/cleos.html#cleos.WalletKeys">WalletKeys (class in cleos)</a>
+      <li><a href="rst/core.cleos.html#core.cleos.WalletKeys">WalletKeys (class in core.cleos)</a>
+</li>
+      <li><a href="rst/core.cleos.html#core.cleos.WalletList">WalletList (class in core.cleos)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/cleos.html#cleos.WalletList">WalletList (class in cleos)</a>
+      <li><a href="rst/core.cleos.html#core.cleos.WalletLock">WalletLock (class in core.cleos)</a>
 </li>
-      <li><a href="rst/cleos.html#cleos.WalletLock">WalletLock (class in cleos)</a>
+      <li><a href="rst/core.cleos.html#core.cleos.WalletLockAll">WalletLockAll (class in core.cleos)</a>
 </li>
-      <li><a href="rst/cleos.html#cleos.WalletLockAll">WalletLockAll (class in cleos)</a>
+      <li><a href="rst/core.cleos.html#core.cleos.WalletOpen">WalletOpen (class in core.cleos)</a>
 </li>
-      <li><a href="rst/cleos.html#cleos.WalletOpen">WalletOpen (class in cleos)</a>
+      <li><a href="rst/core.cleos.html#core.cleos.WalletRemove_key">WalletRemove_key (class in core.cleos)</a>
 </li>
-      <li><a href="rst/cleos.html#cleos.WalletRemove_key">WalletRemove_key (class in cleos)</a>
+      <li><a href="rst/core.cleos.html#core.cleos.WalletStop">WalletStop (class in core.cleos)</a>
 </li>
-      <li><a href="rst/cleos.html#cleos.WalletStop">WalletStop (class in cleos)</a>
+      <li><a href="rst/core.cleos.html#core.cleos.WalletUnlock">WalletUnlock (class in core.cleos)</a>
 </li>
-      <li><a href="rst/cleos.html#cleos.WalletUnlock">WalletUnlock (class in cleos)</a>
+      <li><a href="rst/core.teos.html#core.teos.WAST">WAST() (in module core.teos)</a>
 </li>
   </ul></td>
 </tr></table>
