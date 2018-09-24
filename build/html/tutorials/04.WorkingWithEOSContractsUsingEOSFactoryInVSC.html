@@ -424,7 +424,7 @@ are listed.</li>
 </div>
 <p>Thus the logger utility offers you much more than just a way of monitoring the value of a variable. What you also get is the method name, the file name and the line number where this logger event occurred.</p>
 <p><strong>NOTE:</strong> For the logger output to be visible in the console, make sure that your unit test contains the <code class="docutils literal"><span class="pre">Verbosity.DEBUG</span></code> flag as part of the <code class="docutils literal"><span class="pre">Logger.verbosity</span></code> options, for example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">verbosity</span> <span class="o">=</span> <span class="p">[</span><span class="n">Verbosity</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span> <span class="n">Verbosity</span><span class="o">.</span><span class="n">OUT</span><span class="p">,</span> <span class="n">Verbosity</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">verbosity</span><span class="p">([</span><span class="n">Verbosity</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span> <span class="n">Verbosity</span><span class="o">.</span><span class="n">OUT</span><span class="p">,</span> <span class="n">Verbosity</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>In our examples logger verbosity is defined in the top section of the file, just below the import statements.</p>
