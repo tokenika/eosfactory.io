@@ -123,7 +123,8 @@
 <li><a class="reference internal" href="#initialize-workspace">Initialize Workspace</a></li>
 <li><a class="reference internal" href="#create-test-accounts">Create test accounts</a></li>
 <li><a class="reference internal" href="#create-reference-to-the-eos-token-contract">Create reference to the EOS Token Contract</a></li>
-<li><a class="reference internal" href="#deploy-the-eos-token-contract">Deploy the EOS Token Contract</a></li>
+<li><a class="reference internal" href="#build-the-contract">Build the Contract</a></li>
+<li><a class="reference internal" href="#deploy-the-contract">Deploy the Contract</a></li>
 <li><a class="reference internal" href="#create-the-eos-token">Create the EOS Token</a></li>
 <li><a class="reference internal" href="#create-testing-accounts">Create Testing Accounts</a></li>
 <li><a class="reference internal" href="#issue-eos-tokens">Issue EOS Tokens</a></li>
@@ -295,8 +296,15 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="deploy-the-eos-token-contract">
-<span id="deploy-the-eos-token-contract"></span><h2>Deploy the EOS Token Contract<a class="headerlink" href="#deploy-the-eos-token-contract" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="build-the-contract">
+<span id="build-the-contract"></span><h2>Build the Contract<a class="headerlink" href="#build-the-contract" title="Permalink to this headline">¶</a></h2>
+<p>Before deploying the contract needs to be built from the source code. To build the contract invoke its <code class="docutils literal"><span class="pre">build()</span></code> method:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="deploy-the-contract">
+<span id="deploy-the-contract"></span><h2>Deploy the Contract<a class="headerlink" href="#deploy-the-contract" title="Permalink to this headline">¶</a></h2>
 <p>At this stage the contract has no code deployed. You can check it by running its <code class="docutils literal"><span class="pre">code()</span></code> method:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span><span class="o">.</span><span class="n">code</span><span class="p">()</span>
 </pre></div>
