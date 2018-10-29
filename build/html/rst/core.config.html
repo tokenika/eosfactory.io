@@ -46,7 +46,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           EOSFactory</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -73,6 +73,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion1.1.html">EOSFactory Release Notes - v1.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.0.html">EOSFactory Release Notes - v2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.1.html">EOSFactory Release Notes - v2.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.2.html">EOSFactory Release Notes - v2.2</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/00.IntroductionToEOSFactory.html">Introduction to <em>EOSFactory</em></a></li>
@@ -91,16 +92,16 @@
 <li class="toctree-l1"><a class="reference internal" href="core.cleosys.html">core.cleosys</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">core.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="core.errors.html">core.errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core.interface.html">core.interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="core.logger.html">core.logger</a></li>
 <li class="toctree-l1"><a class="reference internal" href="core.manager.html">core.manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core.setup.html">core.setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="core.teos.html">core.teos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="core.testnet.html">core.testnet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="core.utils.html">core.utils</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shell.interface.html">shell.interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shell.wallet.html">shell.wallet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shell.setup.html">shell.setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shell.account.html">shell.account</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shell.contract.html">shell.contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell.wallet.html">shell.wallet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eosf.html">eosf</a></li>
 </ul>
 </ul>
@@ -163,29 +164,35 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="module-core.config">
-<span id="core-config"></span><h1>core.config<a class="headerlink" href="#module-core.config" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-eosfactory.core.config">
+<span id="core-config"></span><h1>core.config<a class="headerlink" href="#module-eosfactory.core.config" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
-<dt id="core.config.getContractDir">
-<code class="descclassname">core.config.</code><code class="descname">getContractDir</code><span class="sig-paren">(</span><em>contract_dir_hint</em><span class="sig-paren">)</span><a class="headerlink" href="#core.config.getContractDir" title="Permalink to this definition">¶</a></dt>
+<dt id="eosfactory.core.config.abi_file">
+<code class="descclassname">eosfactory.core.config.</code><code class="descname">abi_file</code><span class="sig-paren">(</span><em>contract_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.config.abi_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given the contract directory, return the ABI file path relative.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.contract_dir">
+<code class="descclassname">eosfactory.core.config.</code><code class="descname">contract_dir</code><span class="sig-paren">(</span><em>contract_dir_hint</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.config.contract_dir" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given a hint, determine the contract directory.
-The contract directory is the container for the project of a contract. The 
-hint is probed to be one of the following pieces of information:
+The contract directory is the container for the project of a contract.
+The hint is probed to be one of the following pieces of information:
 the absolute path to a contract directory;
-the relative path to a contract directory, relative to the directory set with the EOSIO_CONTRACT_WORKSPACE variable;
+the relative path to a contract directory, relative to the directory set with the <code class="docutils literal"><span class="pre">contract_workspace_</span></code> variable;
 the relative path to a contract directory, relative to the <code class="docutils literal"><span class="pre">contracts</span></code> directory in the repository of EOSFactory;
 the relative path to a contract directory, relative to the <code class="docutils literal"><span class="pre">contracts</span></code> directory in the repository of EOSIO.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="core.config.getContractFile">
-<code class="descclassname">core.config.</code><code class="descname">getContractFile</code><span class="sig-paren">(</span><em>contract_dir_hint</em>, <em>contract_file_hint</em><span class="sig-paren">)</span><a class="headerlink" href="#core.config.getContractFile" title="Permalink to this definition">¶</a></dt>
+<dt id="eosfactory.core.config.contract_file">
+<code class="descclassname">eosfactory.core.config.</code><code class="descname">contract_file</code><span class="sig-paren">(</span><em>contract_dir_hint</em>, <em>contract_file_hint</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.config.contract_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given contract dir and contract file hints, determine the file.</p>
 <p>Contract files are those extended with <code class="docutils literal"><span class="pre">wast</span></code>, <code class="docutils literal"><span class="pre">wasm</span></code> and <code class="docutils literal"><span class="pre">abi</span></code>.</p>
 <p>First, the <code class="docutils literal"><span class="pre">contract_file_hint</span></code> may be an absolute path.
 Next, it may be relative to the contract directory.</p>
 <p>The contract directory is the container for the project of a contract. This 
-directory is determined with the <code class="docutils literal"><span class="pre">getContractDir</span></code> function, basing on the 
+directory is determined with the <code class="docutils literal"><span class="pre">contract_dir</span></code> function, basing on the 
 <code class="docutils literal"><span class="pre">contract_dir_hint</span></code>.</p>
 <p>Any contract directory contains directories and files structured according 
 to few schemes:
@@ -194,35 +201,35 @@ structure with a directory named <code class="docutils literal"><span class="pre
 </dd></dl>
 
 <dl class="function">
-<dt id="core.config.getContractWorkspace">
-<code class="descclassname">core.config.</code><code class="descname">getContractWorkspace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.config.getContractWorkspace" title="Permalink to this definition">¶</a></dt>
+<dt id="eosfactory.core.config.contract_workspace">
+<code class="descclassname">eosfactory.core.config.</code><code class="descname">contract_workspace</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.config.contract_workspace" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the absolute path to the contract workspace of the user.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="core.config.getValidPath">
-<code class="descclassname">core.config.</code><code class="descname">getValidPath</code><span class="sig-paren">(</span><em>config_key</em>, <em>findFile=None</em><span class="sig-paren">)</span><a class="headerlink" href="#core.config.getValidPath" title="Permalink to this definition">¶</a></dt>
-<dd><p>Given a key to the config map, get a valid file system path.</p>
-<p>The key may map to a path either absolute or relative to the EOS 
-repository. Also, the path can be relative to the <code class="docutils literal"><span class="pre">HOME</span></code> environment
-variable.</p>
+<dt id="eosfactory.core.config.first_valid_path">
+<code class="descclassname">eosfactory.core.config.</code><code class="descname">first_valid_path</code><span class="sig-paren">(</span><em>config_list</em>, <em>findFile=None</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.config.first_valid_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a key to the config list, get a valid file system path.</p>
+<p>The key may map to a path either absolute, or relative either to the EOSIO 
+or EOSF repositories.</p>
+<p>Also, the path can be relative to the <code class="docutils literal"><span class="pre">HOME</span></code> environment variable.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="core.config.get_abi_file">
-<code class="descclassname">core.config.</code><code class="descname">get_abi_file</code><span class="sig-paren">(</span><em>contract_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#core.config.get_abi_file" title="Permalink to this definition">¶</a></dt>
-<dd><p>Given the contract directory, return the ABI file path relative.</p>
+<dt id="eosfactory.core.config.node_exe_name">
+<code class="descclassname">eosfactory.core.config.</code><code class="descname">node_exe_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.config.node_exe_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the local node executable, used for killing the process.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="core.config.get_wasm_file">
-<code class="descclassname">core.config.</code><code class="descname">get_wasm_file</code><span class="sig-paren">(</span><em>contract_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#core.config.get_wasm_file" title="Permalink to this definition">¶</a></dt>
+<dt id="eosfactory.core.config.wasm_file">
+<code class="descclassname">eosfactory.core.config.</code><code class="descname">wasm_file</code><span class="sig-paren">(</span><em>contract_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.config.wasm_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given the contract directory, return the WASM file path relative.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="core.config.get_wast_file">
-<code class="descclassname">core.config.</code><code class="descname">get_wast_file</code><span class="sig-paren">(</span><em>contract_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#core.config.get_wast_file" title="Permalink to this definition">¶</a></dt>
+<dt id="eosfactory.core.config.wast_file">
+<code class="descclassname">eosfactory.core.config.</code><code class="descname">wast_file</code><span class="sig-paren">(</span><em>contract_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.config.wast_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given the contract directory, return the WAST file path relative.</p>
 </dd></dl>
 

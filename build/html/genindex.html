@@ -45,7 +45,7 @@
         </button>
         <a class="navbar-brand" href="index.html">
           EOSFactory</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -72,6 +72,7 @@
 <li class="toctree-l1"><a class="reference internal" href="releases/ReleaseNotesVersion1.1.html">EOSFactory Release Notes - v1.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="releases/ReleaseNotesVersion2.0.html">EOSFactory Release Notes - v2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="releases/ReleaseNotesVersion2.1.html">EOSFactory Release Notes - v2.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="releases/ReleaseNotesVersion2.2.html">EOSFactory Release Notes - v2.2</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="tutorials/00.IntroductionToEOSFactory.html">Introduction to <em>EOSFactory</em></a></li>
@@ -90,16 +91,16 @@
 <li class="toctree-l1"><a class="reference internal" href="rst/core.cleosys.html">core.cleosys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rst/core.config.html">core.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rst/core.errors.html">core.errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/core.interface.html">core.interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rst/core.logger.html">core.logger</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rst/core.manager.html">core.manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/core.setup.html">core.setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rst/core.teos.html">core.teos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rst/core.testnet.html">core.testnet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rst/core.utils.html">core.utils</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst/shell.interface.html">shell.interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst/shell.wallet.html">shell.wallet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rst/shell.setup.html">shell.setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rst/shell.account.html">shell.account</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rst/shell.contract.html">shell.contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rst/shell.wallet.html">shell.wallet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rst/eosf.html">eosf</a></li>
 </ul>
 </ul>
@@ -156,11 +157,13 @@
  | <a href="#C"><strong>C</strong></a>
  | <a href="#D"><strong>D</strong></a>
  | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
  | <a href="#I"><strong>I</strong></a>
  | <a href="#K"><strong>K</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
  | <a href="#O"><strong>O</strong></a>
  | <a href="#P"><strong>P</strong></a>
  | <a href="#R"><strong>R</strong></a>
@@ -174,15 +177,17 @@
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/core.teos.html#core.teos.ABI">ABI() (in module core.teos)</a>
+      <li><a href="rst/core.teos.html#eosfactory.core.teos.ABI">ABI() (in module eosfactory.core.teos)</a>
 </li>
-      <li><a href="rst/shell.interface.html#shell.interface.Account">Account (class in shell.interface)</a>
+      <li><a href="rst/core.config.html#eosfactory.core.config.abi_file">abi_file() (in module eosfactory.core.config)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/core.manager.html#core.manager.account_map">account_map() (in module core.manager)</a>
+      <li><a href="rst/core.interface.html#eosfactory.core.interface.Account">Account (class in eosfactory.core.interface)</a>
 </li>
-      <li><a href="rst/core.errors.html#core.errors.AccountDoesNotExistError">AccountDoesNotExistError</a>
+      <li><a href="rst/core.manager.html#eosfactory.core.manager.account_map">account_map() (in module eosfactory.core.manager)</a>
+</li>
+      <li><a href="rst/core.errors.html#eosfactory.core.errors.AccountDoesNotExistError">AccountDoesNotExistError</a>
 </li>
   </ul></td>
 </tr></table>
@@ -190,7 +195,7 @@
 <h2 id="B">B</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/core.cleosys.html#core.cleosys.BuyRam">BuyRam (class in core.cleosys)</a>
+      <li><a href="rst/core.cleosys.html#eosfactory.core.cleosys.BuyRam">BuyRam (class in eosfactory.core.cleosys)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -198,35 +203,23 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/core.manager.html#core.manager.clear_testnet_cache">clear_testnet_cache() (in module core.manager)</a>
+      <li><a href="rst/core.manager.html#eosfactory.core.manager.clear_testnet_cache">clear_testnet_cache() (in module eosfactory.core.manager)</a>
 </li>
-      <li><a href="rst/shell.contract.html#shell.contract.ContractBuilder">ContractBuilder (class in shell.contract)</a>
+      <li><a href="rst/core.config.html#eosfactory.core.config.contract_dir">contract_dir() (in module eosfactory.core.config)</a>
 </li>
-      <li><a href="rst/core.cleos.html#module-core.cleos">core.cleos (module)</a>
+      <li><a href="rst/core.config.html#eosfactory.core.config.contract_file">contract_file() (in module eosfactory.core.config)</a>
 </li>
-      <li><a href="rst/core.cleosys.html#module-core.cleosys">core.cleosys (module)</a>
-</li>
-      <li><a href="rst/core.config.html#module-core.config">core.config (module)</a>
-</li>
-      <li><a href="rst/core.errors.html#module-core.errors">core.errors (module)</a>
-</li>
-      <li><a href="rst/core.logger.html#module-core.logger">core.logger (module)</a>
+      <li><a href="rst/core.config.html#eosfactory.core.config.contract_workspace">contract_workspace() (in module eosfactory.core.config)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/core.manager.html#module-core.manager">core.manager (module)</a>
+      <li><a href="rst/shell.contract.html#eosfactory.shell.contract.ContractBuilder">ContractBuilder (class in eosfactory.shell.contract)</a>
 </li>
-      <li><a href="rst/core.teos.html#module-core.teos">core.teos (module)</a>
+      <li><a href="rst/shell.account.html#eosfactory.shell.account.create_master_account">create_master_account() (in module eosfactory.shell.account)</a>
 </li>
-      <li><a href="rst/core.testnet.html#module-core.testnet">core.testnet (module)</a>
+      <li><a href="rst/core.cleos.html#eosfactory.core.cleos.CreateAccount">CreateAccount (class in eosfactory.core.cleos)</a>
 </li>
-      <li><a href="rst/core.utils.html#module-core.utils">core.utils (module)</a>
-</li>
-      <li><a href="rst/shell.account.html#shell.account.create_master_account">create_master_account() (in module shell.account)</a>
-</li>
-      <li><a href="rst/core.cleos.html#core.cleos.CreateAccount">CreateAccount (class in core.cleos)</a>
-</li>
-      <li><a href="rst/core.cleos.html#core.cleos.CreateKey">CreateKey (class in core.cleos)</a>
+      <li><a href="rst/core.cleos.html#eosfactory.core.cleos.CreateKey">CreateKey (class in eosfactory.core.cleos)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -234,7 +227,7 @@
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/core.cleosys.html#core.cleosys.DelegateBw">DelegateBw (class in core.cleosys)</a>
+      <li><a href="rst/core.cleosys.html#eosfactory.core.cleosys.DelegateBw">DelegateBw (class in eosfactory.core.cleosys)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -242,11 +235,47 @@
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/eosf.html#module-eosf">eosf (module)</a>
+      <li><a href="rst/core.cleos.html#module-eosfactory.core.cleos">eosfactory.core.cleos (module)</a>
+</li>
+      <li><a href="rst/core.cleosys.html#module-eosfactory.core.cleosys">eosfactory.core.cleosys (module)</a>
+</li>
+      <li><a href="rst/core.config.html#module-eosfactory.core.config">eosfactory.core.config (module)</a>
+</li>
+      <li><a href="rst/core.errors.html#module-eosfactory.core.errors">eosfactory.core.errors (module)</a>
+</li>
+      <li><a href="rst/core.interface.html#module-eosfactory.core.interface">eosfactory.core.interface (module)</a>
+</li>
+      <li><a href="rst/core.logger.html#module-eosfactory.core.logger">eosfactory.core.logger (module)</a>
+</li>
+      <li><a href="rst/core.manager.html#module-eosfactory.core.manager">eosfactory.core.manager (module)</a>
+</li>
+      <li><a href="rst/core.setup.html#module-eosfactory.core.setup">eosfactory.core.setup (module)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/core.errors.html#core.errors.Error">Error</a>
+      <li><a href="rst/core.teos.html#module-eosfactory.core.teos">eosfactory.core.teos (module)</a>
+</li>
+      <li><a href="rst/core.testnet.html#module-eosfactory.core.testnet">eosfactory.core.testnet (module)</a>
+</li>
+      <li><a href="rst/core.utils.html#module-eosfactory.core.utils">eosfactory.core.utils (module)</a>
+</li>
+      <li><a href="rst/eosf.html#module-eosfactory.eosf">eosfactory.eosf (module)</a>
+</li>
+      <li><a href="rst/shell.account.html#module-eosfactory.shell.account">eosfactory.shell.account (module)</a>
+</li>
+      <li><a href="rst/shell.contract.html#module-eosfactory.shell.contract">eosfactory.shell.contract (module)</a>
+</li>
+      <li><a href="rst/shell.wallet.html#module-eosfactory.shell.wallet">eosfactory.shell.wallet (module)</a>
+</li>
+      <li><a href="rst/core.errors.html#eosfactory.core.errors.Error">Error</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="rst/core.config.html#eosfactory.core.config.first_valid_path">first_valid_path() (in module eosfactory.core.config)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -254,43 +283,29 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/core.config.html#core.config.get_abi_file">get_abi_file() (in module core.config)</a>
+      <li><a href="rst/core.teos.html#eosfactory.core.teos.get_keosd_wallet_dir">get_keosd_wallet_dir() (in module eosfactory.core.teos)</a>
 </li>
-      <li><a href="rst/core.teos.html#core.teos.get_keosd_wallet_dir">get_keosd_wallet_dir() (in module core.teos)</a>
+      <li><a href="rst/core.teos.html#eosfactory.core.teos.get_pid">get_pid() (in module eosfactory.core.teos)</a>
 </li>
-      <li><a href="rst/core.teos.html#core.teos.get_pid">get_pid() (in module core.teos)</a>
-</li>
-      <li><a href="rst/core.config.html#core.config.get_wasm_file">get_wasm_file() (in module core.config)</a>
-</li>
-      <li><a href="rst/core.config.html#core.config.get_wast_file">get_wast_file() (in module core.config)</a>
-</li>
-      <li><a href="rst/core.cleos.html#core.cleos.GetAccount">GetAccount (class in core.cleos)</a>
+      <li><a href="rst/core.cleos.html#eosfactory.core.cleos.GetAccount">GetAccount (class in eosfactory.core.cleos)</a>
 
       <ul>
-        <li><a href="rst/shell.account.html#shell.account.GetAccount">(class in shell.account)</a>
+        <li><a href="rst/shell.account.html#eosfactory.shell.account.GetAccount">(class in eosfactory.shell.account)</a>
 </li>
       </ul></li>
-      <li><a href="rst/core.cleos.html#core.cleos.GetAccounts">GetAccounts (class in core.cleos)</a>
+      <li><a href="rst/core.cleos.html#eosfactory.core.cleos.GetAccounts">GetAccounts (class in eosfactory.core.cleos)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/core.cleos.html#core.cleos.GetBlock">GetBlock (class in core.cleos)</a>
+      <li><a href="rst/core.cleos.html#eosfactory.core.cleos.GetBlock">GetBlock (class in eosfactory.core.cleos)</a>
 </li>
-      <li><a href="rst/core.cleos.html#core.cleos.GetCode">GetCode (class in core.cleos)</a>
+      <li><a href="rst/core.cleos.html#eosfactory.core.cleos.GetCode">GetCode (class in eosfactory.core.cleos)</a>
 </li>
-      <li><a href="rst/core.config.html#core.config.getContractDir">getContractDir() (in module core.config)</a>
+      <li><a href="rst/core.cleos.html#eosfactory.core.cleos.GetInfo">GetInfo (class in eosfactory.core.cleos)</a>
 </li>
-      <li><a href="rst/core.config.html#core.config.getContractFile">getContractFile() (in module core.config)</a>
+      <li><a href="rst/core.cleos.html#eosfactory.core.cleos.GetTable">GetTable (class in eosfactory.core.cleos)</a>
 </li>
-      <li><a href="rst/core.config.html#core.config.getContractWorkspace">getContractWorkspace() (in module core.config)</a>
-</li>
-      <li><a href="rst/core.cleos.html#core.cleos.GetInfo">GetInfo (class in core.cleos)</a>
-</li>
-      <li><a href="rst/core.cleos.html#core.cleos.GetTable">GetTable (class in core.cleos)</a>
-</li>
-      <li><a href="rst/core.cleos.html#core.cleos.GetTransaction">GetTransaction (class in core.cleos)</a>
-</li>
-      <li><a href="rst/core.config.html#core.config.getValidPath">getValidPath() (in module core.config)</a>
+      <li><a href="rst/core.cleos.html#eosfactory.core.cleos.GetTransaction">GetTransaction (class in eosfactory.core.cleos)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -298,17 +313,17 @@
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/shell.wallet.html#shell.wallet.Wallet.import_key">import_key() (shell.wallet.Wallet method)</a>
+      <li><a href="rst/shell.wallet.html#eosfactory.shell.wallet.Wallet.import_key">import_key() (eosfactory.shell.wallet.Wallet method)</a>
 </li>
-      <li><a href="rst/shell.wallet.html#shell.wallet.Wallet.index">index() (shell.wallet.Wallet method)</a>
+      <li><a href="rst/shell.wallet.html#eosfactory.shell.wallet.Wallet.index">index() (eosfactory.shell.wallet.Wallet method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/core.manager.html#core.manager.info">info() (in module core.manager)</a>
+      <li><a href="rst/core.manager.html#eosfactory.core.manager.info">info() (in module eosfactory.core.manager)</a>
 </li>
-      <li><a href="rst/core.manager.html#core.manager.is_head_block_num">is_head_block_num() (in module core.manager)</a>
+      <li><a href="rst/core.manager.html#eosfactory.core.manager.is_head_block_num">is_head_block_num() (in module eosfactory.core.manager)</a>
 </li>
-      <li><a href="rst/shell.account.html#shell.account.is_wallet_defined">is_wallet_defined() (in module shell.account)</a>
+      <li><a href="rst/shell.account.html#eosfactory.shell.account.is_wallet_defined">is_wallet_defined() (in module eosfactory.shell.account)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -316,11 +331,11 @@
 <h2 id="K">K</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/shell.interface.html#shell.interface.Key">Key (class in shell.interface)</a>
+      <li><a href="rst/core.interface.html#eosfactory.core.interface.Key">Key (class in eosfactory.core.interface)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/shell.wallet.html#shell.wallet.Wallet.keys">keys() (shell.wallet.Wallet method)</a>
+      <li><a href="rst/shell.wallet.html#eosfactory.shell.wallet.Wallet.keys">keys() (eosfactory.shell.wallet.Wallet method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -328,11 +343,11 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/shell.wallet.html#shell.wallet.Wallet.lock">lock() (shell.wallet.Wallet method)</a>
+      <li><a href="rst/shell.wallet.html#eosfactory.shell.wallet.Wallet.lock">lock() (eosfactory.shell.wallet.Wallet method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/shell.wallet.html#shell.wallet.Wallet.lock_all">lock_all() (shell.wallet.Wallet method)</a>
+      <li><a href="rst/shell.wallet.html#eosfactory.shell.wallet.Wallet.lock_all">lock_all() (eosfactory.shell.wallet.Wallet method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -340,7 +355,15 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/shell.wallet.html#shell.wallet.Wallet.map_account">map_account() (shell.wallet.Wallet method)</a>
+      <li><a href="rst/shell.wallet.html#eosfactory.shell.wallet.Wallet.map_account">map_account() (eosfactory.shell.wallet.Wallet method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="rst/core.config.html#eosfactory.core.config.node_exe_name">node_exe_name() (in module eosfactory.core.config)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -348,11 +371,11 @@
 <h2 id="O">O</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/shell.wallet.html#shell.wallet.Wallet.open">open() (shell.wallet.Wallet method)</a>
+      <li><a href="rst/shell.wallet.html#eosfactory.shell.wallet.Wallet.open">open() (eosfactory.shell.wallet.Wallet method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/shell.wallet.html#shell.wallet.Wallet.open_unlock">open_unlock() (shell.wallet.Wallet method)</a>
+      <li><a href="rst/shell.wallet.html#eosfactory.shell.wallet.Wallet.open_unlock">open_unlock() (eosfactory.shell.wallet.Wallet method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -360,15 +383,15 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/shell.interface.html#shell.interface.Permission">Permission (class in shell.interface)</a>
+      <li><a href="rst/core.interface.html#eosfactory.core.interface.Permission">Permission (class in eosfactory.core.interface)</a>
 </li>
-      <li><a href="rst/shell.contract.html#shell.contract.project_from_template">project_from_template() (in module shell.contract)</a>
+      <li><a href="rst/shell.wallet.html#eosfactory.shell.wallet.Wallet.private_keys">private_keys() (eosfactory.shell.wallet.Wallet method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/core.cleos.html#core.cleos.PushAction">PushAction (class in core.cleos)</a>
+      <li><a href="rst/shell.contract.html#eosfactory.shell.contract.project_from_template">project_from_template() (in module eosfactory.shell.contract)</a>
 </li>
-      <li><a href="rst/core.cleosys.html#module-pyteos">pyteos (module)</a>
+      <li><a href="rst/core.cleos.html#eosfactory.core.cleos.PushAction">PushAction (class in eosfactory.core.cleos)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -376,17 +399,17 @@
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/core.manager.html#core.manager.read_map">read_map() (in module core.manager)</a>
+      <li><a href="rst/core.manager.html#eosfactory.core.manager.read_map">read_map() (in module eosfactory.core.manager)</a>
 </li>
-      <li><a href="rst/shell.wallet.html#shell.wallet.Wallet.remove_key">remove_key() (shell.wallet.Wallet method)</a>
+      <li><a href="rst/shell.wallet.html#eosfactory.shell.wallet.Wallet.remove_key">remove_key() (eosfactory.shell.wallet.Wallet method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/core.manager.html#core.manager.reset">reset() (in module core.manager)</a>
+      <li><a href="rst/core.manager.html#eosfactory.core.manager.reset">reset() (in module eosfactory.core.manager)</a>
 </li>
-      <li><a href="rst/shell.wallet.html#shell.wallet.Wallet.restore_accounts">restore_accounts() (shell.wallet.Wallet method)</a>
+      <li><a href="rst/shell.wallet.html#eosfactory.shell.wallet.Wallet.restore_accounts">restore_accounts() (eosfactory.shell.wallet.Wallet method)</a>
 </li>
-      <li><a href="rst/core.manager.html#core.manager.resume">resume() (in module core.manager)</a>
+      <li><a href="rst/core.manager.html#eosfactory.core.manager.resume">resume() (in module eosfactory.core.manager)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -394,33 +417,23 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/core.utils.html#core.utils.save_code">save_code() (in module core.utils)</a>
+      <li><a href="rst/core.setup.html#eosfactory.core.setup.save_code">save_code() (in module eosfactory.core.setup)</a>
 
       <ul>
-        <li><a href="rst/shell.setup.html#shell.setup.save_code">(in module shell.setup)</a>
+        <li><a href="rst/core.utils.html#eosfactory.core.utils.save_code">(in module eosfactory.core.utils)</a>
 </li>
       </ul></li>
-      <li><a href="rst/core.logger.html#core.logger.set_is_testing_errors">set_is_testing_errors() (in module core.logger)</a>
-</li>
-      <li><a href="rst/core.cleos.html#core.cleos.SetContract">SetContract (class in core.cleos)</a>
-</li>
-      <li><a href="rst/shell.account.html#module-shell.account">shell.account (module)</a>
-</li>
-      <li><a href="rst/shell.contract.html#module-shell.contract">shell.contract (module)</a>
+      <li><a href="rst/core.logger.html#eosfactory.core.logger.set_is_testing_errors">set_is_testing_errors() (in module eosfactory.core.logger)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/shell.interface.html#module-shell.interface">shell.interface (module)</a>
+      <li><a href="rst/core.cleos.html#eosfactory.core.cleos.SetContract">SetContract (class in eosfactory.core.cleos)</a>
 </li>
-      <li><a href="rst/shell.setup.html#module-shell.setup">shell.setup (module)</a>
+      <li><a href="rst/core.manager.html#eosfactory.core.manager.status">status() (in module eosfactory.core.manager)</a>
 </li>
-      <li><a href="rst/shell.wallet.html#module-shell.wallet">shell.wallet (module)</a>
+      <li><a href="rst/core.manager.html#eosfactory.core.manager.stop">stop() (in module eosfactory.core.manager)</a>
 </li>
-      <li><a href="rst/core.manager.html#core.manager.status">status() (in module core.manager)</a>
-</li>
-      <li><a href="rst/core.manager.html#core.manager.stop">stop() (in module core.manager)</a>
-</li>
-      <li><a href="rst/core.cleosys.html#core.cleosys.SystemNewaccount">SystemNewaccount (class in core.cleosys)</a>
+      <li><a href="rst/core.cleosys.html#eosfactory.core.cleosys.SystemNewaccount">SystemNewaccount (class in eosfactory.core.cleosys)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -428,7 +441,7 @@
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/core.teos.html#core.teos.template_create">template_create() (in module core.teos)</a>
+      <li><a href="rst/core.teos.html#eosfactory.core.teos.template_create">template_create() (in module eosfactory.core.teos)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -436,7 +449,7 @@
 <h2 id="U">U</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/shell.wallet.html#shell.wallet.Wallet.unlock">unlock() (shell.wallet.Wallet method)</a>
+      <li><a href="rst/shell.wallet.html#eosfactory.shell.wallet.Wallet.unlock">unlock() (eosfactory.shell.wallet.Wallet method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -444,11 +457,11 @@
 <h2 id="V">V</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/core.errors.html#core.errors.validate">validate() (in module core.errors)</a>
+      <li><a href="rst/core.errors.html#eosfactory.core.errors.validate">validate() (in module eosfactory.core.errors)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/core.logger.html#core.logger.Verbosity">Verbosity (class in core.logger)</a>
+      <li><a href="rst/core.logger.html#eosfactory.core.logger.Verbosity">Verbosity (class in eosfactory.core.logger)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -456,37 +469,41 @@
 <h2 id="W">W</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/shell.interface.html#shell.interface.Wallet">Wallet (class in shell.interface)</a>
+      <li><a href="rst/core.interface.html#eosfactory.core.interface.Wallet">Wallet (class in eosfactory.core.interface)</a>
 
       <ul>
-        <li><a href="rst/shell.wallet.html#shell.wallet.Wallet">(class in shell.wallet)</a>
+        <li><a href="rst/shell.wallet.html#eosfactory.shell.wallet.Wallet">(class in eosfactory.shell.wallet)</a>
 </li>
       </ul></li>
-      <li><a href="rst/shell.account.html#shell.account.wallet_globals">wallet_globals (in module shell.account)</a>
+      <li><a href="rst/shell.account.html#eosfactory.shell.account.wallet_globals">wallet_globals (in module eosfactory.shell.account)</a>
 </li>
-      <li><a href="rst/core.cleos.html#core.cleos.WalletCreate">WalletCreate (class in core.cleos)</a>
+      <li><a href="rst/core.cleos.html#eosfactory.core.cleos.WalletCreate">WalletCreate (class in eosfactory.core.cleos)</a>
 </li>
-      <li><a href="rst/core.cleos.html#core.cleos.WalletImport">WalletImport (class in core.cleos)</a>
+      <li><a href="rst/core.cleos.html#eosfactory.core.cleos.WalletImport">WalletImport (class in eosfactory.core.cleos)</a>
 </li>
-      <li><a href="rst/core.cleos.html#core.cleos.WalletKeys">WalletKeys (class in core.cleos)</a>
+      <li><a href="rst/core.cleos.html#eosfactory.core.cleos.WalletKeys">WalletKeys (class in eosfactory.core.cleos)</a>
 </li>
-      <li><a href="rst/core.cleos.html#core.cleos.WalletList">WalletList (class in core.cleos)</a>
+      <li><a href="rst/core.cleos.html#eosfactory.core.cleos.WalletList">WalletList (class in eosfactory.core.cleos)</a>
+</li>
+      <li><a href="rst/core.cleos.html#eosfactory.core.cleos.WalletLock">WalletLock (class in eosfactory.core.cleos)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="rst/core.cleos.html#core.cleos.WalletLock">WalletLock (class in core.cleos)</a>
+      <li><a href="rst/core.cleos.html#eosfactory.core.cleos.WalletLockAll">WalletLockAll (class in eosfactory.core.cleos)</a>
 </li>
-      <li><a href="rst/core.cleos.html#core.cleos.WalletLockAll">WalletLockAll (class in core.cleos)</a>
+      <li><a href="rst/core.cleos.html#eosfactory.core.cleos.WalletOpen">WalletOpen (class in eosfactory.core.cleos)</a>
 </li>
-      <li><a href="rst/core.cleos.html#core.cleos.WalletOpen">WalletOpen (class in core.cleos)</a>
+      <li><a href="rst/core.cleos.html#eosfactory.core.cleos.WalletRemove_key">WalletRemove_key (class in eosfactory.core.cleos)</a>
 </li>
-      <li><a href="rst/core.cleos.html#core.cleos.WalletRemove_key">WalletRemove_key (class in core.cleos)</a>
+      <li><a href="rst/core.cleos.html#eosfactory.core.cleos.WalletStop">WalletStop (class in eosfactory.core.cleos)</a>
 </li>
-      <li><a href="rst/core.cleos.html#core.cleos.WalletStop">WalletStop (class in core.cleos)</a>
+      <li><a href="rst/core.cleos.html#eosfactory.core.cleos.WalletUnlock">WalletUnlock (class in eosfactory.core.cleos)</a>
 </li>
-      <li><a href="rst/core.cleos.html#core.cleos.WalletUnlock">WalletUnlock (class in core.cleos)</a>
+      <li><a href="rst/core.config.html#eosfactory.core.config.wasm_file">wasm_file() (in module eosfactory.core.config)</a>
 </li>
-      <li><a href="rst/core.teos.html#core.teos.WAST">WAST() (in module core.teos)</a>
+      <li><a href="rst/core.teos.html#eosfactory.core.teos.WAST">WAST() (in module eosfactory.core.teos)</a>
+</li>
+      <li><a href="rst/core.config.html#eosfactory.core.config.wast_file">wast_file() (in module eosfactory.core.config)</a>
 </li>
   </ul></td>
 </tr></table>

@@ -25,7 +25,7 @@
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="core.teos" href="core.teos.html" />
+    <link rel="next" title="core.setup" href="core.setup.html" />
     <link rel="prev" title="core.logger" href="core.logger.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -46,7 +46,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           EOSFactory</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -73,6 +73,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion1.1.html">EOSFactory Release Notes - v1.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.0.html">EOSFactory Release Notes - v2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.1.html">EOSFactory Release Notes - v2.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.2.html">EOSFactory Release Notes - v2.2</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/00.IntroductionToEOSFactory.html">Introduction to <em>EOSFactory</em></a></li>
@@ -91,16 +92,16 @@
 <li class="toctree-l1"><a class="reference internal" href="core.cleosys.html">core.cleosys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="core.config.html">core.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="core.errors.html">core.errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core.interface.html">core.interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="core.logger.html">core.logger</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">core.manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core.setup.html">core.setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="core.teos.html">core.teos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="core.testnet.html">core.testnet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="core.utils.html">core.utils</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shell.interface.html">shell.interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shell.wallet.html">shell.wallet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shell.setup.html">shell.setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shell.account.html">shell.account</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shell.contract.html">shell.contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell.wallet.html">shell.wallet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eosf.html">eosf</a></li>
 </ul>
 </ul>
@@ -129,7 +130,7 @@
     </a>
   </li>
   <li>
-    <a href="core.teos.html" title="Next Chapter: core.teos"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">core.teos &raquo;</span>
+    <a href="core.setup.html" title="Next Chapter: core.setup"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">core.setup &raquo;</span>
     </a>
   </li>
               
@@ -163,11 +164,11 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="module-core.manager">
-<span id="core-manager"></span><h1>core.manager<a class="headerlink" href="#module-core.manager" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-eosfactory.core.manager">
+<span id="core-manager"></span><h1>core.manager<a class="headerlink" href="#module-eosfactory.core.manager" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
-<dt id="core.manager.account_map">
-<code class="descclassname">core.manager.</code><code class="descname">account_map</code><span class="sig-paren">(</span><em>logger=None</em><span class="sig-paren">)</span><a class="headerlink" href="#core.manager.account_map" title="Permalink to this definition">¶</a></dt>
+<dt id="eosfactory.core.manager.account_map">
+<code class="descclassname">eosfactory.core.manager.</code><code class="descname">account_map</code><span class="sig-paren">(</span><em>logger=None</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.manager.account_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return json account map</p>
 <p>Attempt to open the account map file named <code class="docutils literal"><span class="pre">setup.account_map</span></code>, located 
 in the wallet directory <code class="docutils literal"><span class="pre">wallet_dir()</span></code>, to return its json contents. If the 
@@ -177,26 +178,26 @@ editor. Return <code class="docutils literal"><span class="pre">None</span></cod
 </dd></dl>
 
 <dl class="function">
-<dt id="core.manager.clear_testnet_cache">
-<code class="descclassname">core.manager.</code><code class="descname">clear_testnet_cache</code><span class="sig-paren">(</span><em>verbosity=None</em><span class="sig-paren">)</span><a class="headerlink" href="#core.manager.clear_testnet_cache" title="Permalink to this definition">¶</a></dt>
+<dt id="eosfactory.core.manager.clear_testnet_cache">
+<code class="descclassname">eosfactory.core.manager.</code><code class="descname">clear_testnet_cache</code><span class="sig-paren">(</span><em>verbosity=None</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.manager.clear_testnet_cache" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove wallet files associated with the current testnet.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="core.manager.info">
-<code class="descclassname">core.manager.</code><code class="descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.manager.info" title="Permalink to this definition">¶</a></dt>
+<dt id="eosfactory.core.manager.info">
+<code class="descclassname">eosfactory.core.manager.</code><code class="descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.manager.info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Display EOS node info.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="core.manager.is_head_block_num">
-<code class="descclassname">core.manager.</code><code class="descname">is_head_block_num</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.manager.is_head_block_num" title="Permalink to this definition">¶</a></dt>
+<dt id="eosfactory.core.manager.is_head_block_num">
+<code class="descclassname">eosfactory.core.manager.</code><code class="descname">is_head_block_num</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.manager.is_head_block_num" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if testnet is running.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="core.manager.read_map">
-<code class="descclassname">core.manager.</code><code class="descname">read_map</code><span class="sig-paren">(</span><em>file_name</em>, <em>text_editor='nano'</em><span class="sig-paren">)</span><a class="headerlink" href="#core.manager.read_map" title="Permalink to this definition">¶</a></dt>
+<dt id="eosfactory.core.manager.read_map">
+<code class="descclassname">eosfactory.core.manager.</code><code class="descname">read_map</code><span class="sig-paren">(</span><em>file_name</em>, <em>text_editor='nano'</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.manager.read_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return json account map</p>
 <p>Attempt to open the account map file named <code class="docutils literal"><span class="pre">setup.account_map</span></code>, located 
 in the wallet directory <code class="docutils literal"><span class="pre">wallet_dir()</span></code>, to return its json contents. If the 
@@ -206,26 +207,26 @@ editor. Return <code class="docutils literal"><span class="pre">None</span></cod
 </dd></dl>
 
 <dl class="function">
-<dt id="core.manager.reset">
-<code class="descclassname">core.manager.</code><code class="descname">reset</code><span class="sig-paren">(</span><em>verbosity=None</em><span class="sig-paren">)</span><a class="headerlink" href="#core.manager.reset" title="Permalink to this definition">¶</a></dt>
+<dt id="eosfactory.core.manager.reset">
+<code class="descclassname">eosfactory.core.manager.</code><code class="descname">reset</code><span class="sig-paren">(</span><em>verbosity=None</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.manager.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start clean the EOSIO local node.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="core.manager.resume">
-<code class="descclassname">core.manager.</code><code class="descname">resume</code><span class="sig-paren">(</span><em>verbosity=None</em><span class="sig-paren">)</span><a class="headerlink" href="#core.manager.resume" title="Permalink to this definition">¶</a></dt>
+<dt id="eosfactory.core.manager.resume">
+<code class="descclassname">eosfactory.core.manager.</code><code class="descname">resume</code><span class="sig-paren">(</span><em>verbosity=None</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.manager.resume" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resume the EOSIO local node.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="core.manager.status">
-<code class="descclassname">core.manager.</code><code class="descname">status</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.manager.status" title="Permalink to this definition">¶</a></dt>
+<dt id="eosfactory.core.manager.status">
+<code class="descclassname">eosfactory.core.manager.</code><code class="descname">status</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.manager.status" title="Permalink to this definition">¶</a></dt>
 <dd><p>Display EOS node status.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="core.manager.stop">
-<code class="descclassname">core.manager.</code><code class="descname">stop</code><span class="sig-paren">(</span><em>verbosity=None</em><span class="sig-paren">)</span><a class="headerlink" href="#core.manager.stop" title="Permalink to this definition">¶</a></dt>
+<dt id="eosfactory.core.manager.stop">
+<code class="descclassname">eosfactory.core.manager.</code><code class="descname">stop</code><span class="sig-paren">(</span><em>verbosity=None</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.manager.stop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stops all running EOSIO nodes.</p>
 </dd></dl>
 

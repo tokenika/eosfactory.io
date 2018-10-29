@@ -46,7 +46,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           EOSFactory</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -73,6 +73,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion1.1.html">EOSFactory Release Notes - v1.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.0.html">EOSFactory Release Notes - v2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.1.html">EOSFactory Release Notes - v2.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.2.html">EOSFactory Release Notes - v2.2</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="00.IntroductionToEOSFactory.html">Introduction to <em>EOSFactory</em></a></li>
@@ -91,16 +92,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../rst/core.cleosys.html">core.cleosys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/core.config.html">core.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/core.errors.html">core.errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.interface.html">core.interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/core.logger.html">core.logger</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/core.manager.html">core.manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.setup.html">core.setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/core.teos.html">core.teos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/core.testnet.html">core.testnet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/core.utils.html">core.utils</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/shell.interface.html">shell.interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/shell.wallet.html">shell.wallet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/shell.setup.html">shell.setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/shell.account.html">shell.account</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/shell.contract.html">shell.contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.wallet.html">shell.wallet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/eosf.html">eosf</a></li>
 </ul>
 </ul>
@@ -208,11 +209,11 @@
 <span id="case-1-you-do-not-have-an-account"></span><h3>Case 1: You do not have an account<a class="headerlink" href="#case-1-you-do-not-have-an-account" title="Permalink to this headline">¶</a></h3>
 <p>We recommend using the <code class="docutils literal"><span class="pre">utils/register_testnet.py</span></code> script with the following two parameters:</p>
 <ul class="simple">
-<li>an URL of a public node offering access to the testnet, e.g. <code class="docutils literal"><span class="pre">http://88.99.97.30:38888</span></code>,</li>
+<li>an URL of a public node offering access to the testnet, e.g. <code class="docutils literal"><span class="pre">http://145.239.133.201:8888</span></code>,</li>
 <li>your preferred alias for the testnet, e.g. <code class="docutils literal"><span class="pre">myjungle</span></code>.</li>
 </ul>
 <p>In our case the command looks like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">utils</span><span class="o">/</span><span class="n">register_testnet</span><span class="o">.</span><span class="n">py</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">88.99</span><span class="o">.</span><span class="mf">97.30</span><span class="p">:</span><span class="mi">38888</span> <span class="n">myjungle</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">utils</span><span class="o">/</span><span class="n">register_testnet</span><span class="o">.</span><span class="n">py</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">145.239</span><span class="o">.</span><span class="mf">133.201</span><span class="p">:</span><span class="mi">8888</span> <span class="n">myjungle</span>
 </pre></div>
 </div>
 <p>In response you will receive a message similar to the following example:</p>
@@ -225,7 +226,7 @@
 <p><strong>NOTE:</strong> Make sure to use the testnet’s faucet to fund the newly created account with enough liquid EOS to be able to spawn other accounts, delegate CPU &amp; NET and buy RAM for them.</p>
 <p>When you are ready, type <code class="docutils literal"><span class="pre">go</span></code> to let the script verify that the newly created account has been registered properly with the testnet. Once this is done, the script proceeds to register the testnet with <em>EOSFactory</em>.</p>
 <p>If everything works fine, you should see a message similar to this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">myjungle</span><span class="p">:</span>  <span class="n">tcfchehyagd4</span> <span class="o">@</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">88.99</span><span class="o">.</span><span class="mf">97.30</span><span class="p">:</span><span class="mi">38888</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">myjungle</span><span class="p">:</span>  <span class="n">tcfchehyagd4</span> <span class="o">@</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">145.239</span><span class="o">.</span><span class="mf">133.201</span><span class="p">:</span><span class="mi">8888</span>
 </pre></div>
 </div>
 </div>
@@ -234,7 +235,7 @@
 <p>We assume that you already have an account registered on a public testnet and this account is able to act as a master account for the <em>EOSFactory</em> testnet object, i.e. it’s funded with enough liquid EOS to be able to spawn other accounts, delegate CPU &amp; NET and buy RAM for them.</p>
 <p>We recommend using the <code class="docutils literal"><span class="pre">utils/register_testnet.py</span></code> script with the following five parameters:</p>
 <ul class="simple">
-<li>an URL of a public node offering access to the testnet, e.g. <code class="docutils literal"><span class="pre">http://88.99.97.30:38888</span></code>,</li>
+<li>an URL of a public node offering access to the testnet, e.g. <code class="docutils literal"><span class="pre">http://145.239.133.201:8888</span></code>,</li>
 <li>your preferred alias for the testnet, e.g. <code class="docutils literal"><span class="pre">myjungle</span></code>,</li>
 <li>your account name, as registered on the testnet, e.g. <code class="docutils literal"><span class="pre">tcfchehyagd4</span></code>,</li>
 <li>your account’s owner private key,</li>
@@ -256,11 +257,11 @@
 <p>We recommend using the <code class="docutils literal"><span class="pre">utils/register_testnet_via_faucet.py</span></code> script with the following three parameters:</p>
 <ul class="simple">
 <li>an URL of a public faucet, e.g. <code class="docutils literal"><span class="pre">http://faucet.cryptokylin.io</span></code>,</li>
-<li>an URL of a public node offering access to the testnet, e.g. <code class="docutils literal"><span class="pre">https://api.kylin.alohaeos.com</span></code>,</li>
+<li>an URL of a public node offering access to the testnet, e.g. <code class="docutils literal"><span class="pre">http://145.239.133.201:9999</span></code>,</li>
 <li>your preferred alias for the testnet, e.g. <code class="docutils literal"><span class="pre">mykylin</span></code>.</li>
 </ul>
 <p>In our case the command looks like this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">utils</span><span class="o">/</span><span class="n">register_testnet_via_faucet</span><span class="o">.</span><span class="n">py</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">faucet</span><span class="o">.</span><span class="n">cryptokylin</span><span class="o">.</span><span class="n">io</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">kylin</span><span class="o">.</span><span class="n">alohaeos</span><span class="o">.</span><span class="n">com</span> <span class="n">mykylin</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="n">utils</span><span class="o">/</span><span class="n">register_testnet_via_faucet</span><span class="o">.</span><span class="n">py</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">faucet</span><span class="o">.</span><span class="n">cryptokylin</span><span class="o">.</span><span class="n">io</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">145.239</span><span class="o">.</span><span class="mf">133.201</span><span class="p">:</span><span class="mi">9999</span> <span class="n">mykylin</span>
 </pre></div>
 </div>
 <p>The output should be similar to this:</p>
@@ -337,7 +338,7 @@ Account ``xlg3pao3idlq`` successfully funded.
 <p>If you have an account on a public testnet, you can skip the process of registering this testnet with <em>EOSFactory</em> and run a unit test directly, by using the <code class="docutils literal"><span class="pre">-t</span></code> (or <code class="docutils literal"><span class="pre">--testnet</span></code>) option.</p>
 <p>This option requires four parameters:</p>
 <ul class="simple">
-<li>an URL of a public node offering access to the testnet, e.g. <code class="docutils literal"><span class="pre">http://88.99.97.30:38888</span></code>,</li>
+<li>an URL of a public node offering access to the testnet, e.g. <code class="docutils literal"><span class="pre">http://145.239.133.201:8888</span></code>,</li>
 <li>your account name, as registered on the testnet,</li>
 <li>your account’s owner private key,</li>
 <li>your account’s active private key.</li>

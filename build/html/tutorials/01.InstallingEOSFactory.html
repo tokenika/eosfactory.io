@@ -46,7 +46,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           EOSFactory</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -73,6 +73,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion1.1.html">EOSFactory Release Notes - v1.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.0.html">EOSFactory Release Notes - v2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.1.html">EOSFactory Release Notes - v2.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.2.html">EOSFactory Release Notes - v2.2</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="00.IntroductionToEOSFactory.html">Introduction to <em>EOSFactory</em></a></li>
@@ -91,16 +92,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../rst/core.cleosys.html">core.cleosys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/core.config.html">core.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/core.errors.html">core.errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.interface.html">core.interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/core.logger.html">core.logger</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/core.manager.html">core.manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.setup.html">core.setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/core.teos.html">core.teos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/core.testnet.html">core.testnet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/core.utils.html">core.utils</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/shell.interface.html">shell.interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/shell.wallet.html">shell.wallet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/shell.setup.html">shell.setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/shell.account.html">shell.account</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/shell.contract.html">shell.contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.wallet.html">shell.wallet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/eosf.html">eosf</a></li>
 </ul>
 </ul>
@@ -116,22 +117,17 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Installing <em>EOSFactory</em></a><ul>
-<li><a class="reference internal" href="#general-prerequisites">General Prerequisites</a></li>
+<li><a class="reference internal" href="#general-prerequisites">General prerequisites</a></li>
 <li><a class="reference internal" href="#prerequisites-for-ubuntu-macos">Prerequisites for Ubuntu &amp; MacOS</a></li>
 <li><a class="reference internal" href="#prerequisites-for-windows">Prerequisites for Windows</a></li>
 <li><a class="reference internal" href="#upgrading-from-previous-version">Upgrading from previous version</a></li>
 <li><a class="reference internal" href="#build-on-ubuntu-macos">Build on Ubuntu &amp; MacOS</a></li>
 <li><a class="reference internal" href="#build-on-windows">Build on Windows</a></li>
-<li><a class="reference internal" href="#source-system-variables">Source system variables</a></li>
-<li><a class="reference internal" href="#install-termcolor">Install <em>termcolor</em></a></li>
 <li><a class="reference internal" href="#test-the-build">Test the build</a></li>
 <li><a class="reference internal" href="#troubleshooting-specific-errors">Troubleshooting specific errors</a><ul>
 <li><a class="reference internal" href="#case-1">Case 1</a></li>
 <li><a class="reference internal" href="#case-2">Case 2</a></li>
 <li><a class="reference internal" href="#case-3">Case 3</a></li>
-<li><a class="reference internal" href="#case-4">Case 4</a></li>
-<li><a class="reference internal" href="#case-5">Case 5</a></li>
-<li><a class="reference internal" href="#case-6">Case 6</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#troubleshooting-general-problems">Troubleshooting general problems</a></li>
@@ -194,10 +190,10 @@
 <li>MacOS 10.13 (High Sierra)</li>
 <li>Windows 10 (version 1803)</li>
 </ul>
-<p><strong>NOTE:</strong> <em>EOSFactory</em> is compatible with <em>EOSIO</em> <a class="reference external" href="https://github.com/EOSIO/eos/releases/tag/v1.2.0">v1.2.x</a> and <a class="reference external" href="https://github.com/EOSIO/eos/releases/tag/v1.3.0">v1.3.x</a> .</p>
+<p><strong>NOTE:</strong> <em>EOSFactory</em> is compatible with <em>EOSIO</em> <a class="reference external" href="https://github.com/EOSIO/eos/releases/tag/v1.3.0">v1.3.x</a> .</p>
 <div class="section" id="general-prerequisites">
-<span id="general-prerequisites"></span><h2>General Prerequisites<a class="headerlink" href="#general-prerequisites" title="Permalink to this headline">¶</a></h2>
-<p>We assume that you have successfully installed <em>EOSIO</em> <a class="reference external" href="https://github.com/EOSIO/eos/releases/tag/v1.2.0">v1.2.0</a> (or higher) on your machine. If that’s not the case, please refer to <a class="reference external" href="https://developers.eos.io/eosio-nodeos/docs/getting-the-code">this guide</a>.</p>
+<span id="general-prerequisites"></span><h2>General prerequisites<a class="headerlink" href="#general-prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>We assume that you have successfully installed <em>EOSIO</em> <a class="reference external" href="https://github.com/EOSIO/eos/releases/tag/v1.3.0">v1.3.0</a> (or higher) on your machine. If that’s not the case, please refer to <a class="reference external" href="https://developers.eos.io/eosio-nodeos/docs/getting-the-code">this guide</a>.</p>
 <p><strong>NOTE:</strong> <em>EOSFactory</em> requires <em>EOSIO</em> to be compiled from the source code, i.e. not deployed in Docker.</p>
 <p>After the build is complete, make sure to install <em>EOSIO</em> with this command:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">./</span><span class="n">eosio_install</span><span class="o">.</span><span class="n">sh</span>
@@ -234,10 +230,10 @@
 </div>
 </li>
 </ul>
-<p>And make sure all <em>EOSFactory</em> export statements are removed:</p>
+<p>And make sure that <strong>all</strong> <em>EOSFactory</em> export statements are removed:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">EOSIO_SOURCE_DIR</span><span class="o">=...</span>
-<span class="n">export</span> <span class="n">EOSIO_EOSFACTORY_DIR</span><span class="o">=...</span>
-<span class="n">export</span> <span class="n">U_HOME</span><span class="o">=...</span>
+<span class="n">export</span> <span class="n">EOSFACTORY_DIR</span><span class="o">=...</span>
+<span class="n">export</span> <span class="n">HOME</span><span class="o">=...</span>
 <span class="n">export</span> <span class="n">eosf</span><span class="o">=...</span>
 <span class="n">export</span> <span class="n">EOSIO_SHARED_MEMORY_SIZE_MB</span><span class="o">=...</span>
 <span class="n">export</span> <span class="n">EOSIO_CONTRACT_WORKSPACE</span><span class="o">=...</span>
@@ -246,24 +242,6 @@
 </div>
 <p>Also, if you’re on Ubuntu make sure there are no similar export statements in the <code class="docutils literal"><span class="pre">~/.bashrc</span></code> file. If there are any, remove all of them.</p>
 <p>When you’re done, restart your console to apply the change.</p>
-<p>If everything has been removed correctly, this command should return an empty value:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>echo $EOSIO_SOURCE_DIR
-</pre></div>
-</div>
-<p>Especially this one is important - make sure it returns an empty value:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>echo $EOSIO_SHARED_MEMORY_SIZE_MB
-</pre></div>
-</div>
-<p>Next, run the <code class="docutils literal"><span class="pre">build.sh</span></code> script:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">eosfactory</span>
-<span class="o">./</span><span class="n">build</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">e</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">EOSIO</span><span class="o">/</span><span class="n">repository</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">workspace</span>
-</pre></div>
-</div>
-<p><strong>NOTE:</strong> Make sure to supply the correct paths:</p>
-<ul class="simple">
-<li>The first one is meant to be the location of the <em>EOSIO</em> source code that you have cloned from the official <a class="reference external" href="https://github.com/EOSIO/eos">EOSIO repository</a>.</li>
-<li>The second one is meant to be the location of your smart-contract workspace. It has to be already existent, so if you don’t already have it, you need to create it manually.</li>
-</ul>
 </div>
 <div class="section" id="build-on-ubuntu-macos">
 <span id="build-on-ubuntu-macos"></span><h2>Build on Ubuntu &amp; MacOS<a class="headerlink" href="#build-on-ubuntu-macos" title="Permalink to this headline">¶</a></h2>
@@ -275,19 +253,15 @@
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">eosfactory</span>
 </pre></div>
 </div>
-<p>Then run the <code class="docutils literal"><span class="pre">build</span></code> script by pointing it to the <em>EOSIO</em> source code:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">build</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">e</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">EOSIO</span><span class="o">/</span><span class="n">repository</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">workspace</span>
+<p>Then run the <code class="docutils literal"><span class="pre">install</span></code> script by pointing it to the <em>EOSIO</em> source code:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">install</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p><strong>NOTE:</strong> Make sure to supply the correct paths:</p>
+<p><strong>NOTE:</strong> When prompted supply the correct paths:</p>
 <ul class="simple">
-<li>The first one is meant to be the location of the <em>EOSIO</em> source code that you have cloned from the official <a class="reference external" href="https://github.com/EOSIO/eos">EOSIO repository</a>.</li>
-<li>The second one is meant to be the location of your smart-contract workspace. It has to be already existent, so you need to create it manually.</li>
+<li>The first one is the location of the <em>EOSIO</em> source code that you have cloned from the official <a class="reference external" href="https://github.com/EOSIO/eos">EOSIO repository</a>, e.g. <code class="docutils literal"><span class="pre">~/Workspaces/EOS/eos</span></code>.</li>
+<li>The second one is the preferred location of your smart-contract workspace, e.g. <code class="docutils literal"><span class="pre">~/Workspaces/EOS/contracts</span></code>. It has to be existent, so if you don’t have it already, you need to create it manually.</li>
 </ul>
-<p>In our case the <em>EOSIO</em> location is <code class="docutils literal"><span class="pre">~/Workspaces/EOS/eos</span></code>, and the workspace location is <code class="docutils literal"><span class="pre">~/Workspaces/EOS/contracts</span></code>, but yours will most probably be different:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">build</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">e</span> <span class="o">~/</span><span class="n">Workspaces</span><span class="o">/</span><span class="n">EOS</span><span class="o">/</span><span class="n">eos</span> <span class="o">-</span><span class="n">w</span> <span class="o">~/</span><span class="n">Workspaces</span><span class="o">/</span><span class="n">EOS</span><span class="o">/</span><span class="n">contracts</span>
-</pre></div>
-</div>
 </div>
 <div class="section" id="build-on-windows">
 <span id="build-on-windows"></span><h2>Build on Windows<a class="headerlink" href="#build-on-windows" title="Permalink to this headline">¶</a></h2>
@@ -300,65 +274,15 @@
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">d</span><span class="o">/</span><span class="n">Workspaces</span><span class="o">/</span><span class="n">EOS</span><span class="o">/</span><span class="n">eosfactory</span>
 </pre></div>
 </div>
-<p>Then run the <code class="docutils literal"><span class="pre">build</span></code> script by pointing it to the <em>EOSIO</em> source code:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">build</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">e</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">EOSIO</span><span class="o">/</span><span class="n">repository</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">workspace</span>
+<p>Then run the <code class="docutils literal"><span class="pre">install</span></code> script by pointing it to the <em>EOSIO</em> source code:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">install</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p><strong>NOTE:</strong> Make sure to supply the correct paths:</p>
+<p><strong>NOTE:</strong> When prompted supply the correct paths:</p>
 <ul class="simple">
-<li>The first one is meant to be the location of the <em>EOSIO</em> source code that you have cloned from the official <a class="reference external" href="https://github.com/EOSIO/eos">EOSIO repository</a>.</li>
-<li>The second one is meant to be the location of your smart-contract workspace. It has to be already existent, so you need to create it manually.</li>
+<li>The first one is the location of the <em>EOSIO</em> source code that you have cloned from the official <a class="reference external" href="https://github.com/EOSIO/eos">EOSIO repository</a>, e.g. <code class="docutils literal"><span class="pre">/mnt/d/Workspaces/EOS/eos</span></code>.</li>
+<li>The second one is the preferred location of your smart-contract workspace, e.g. <code class="docutils literal"><span class="pre">/mnt/d/Workspaces/EOS/contracts</span></code>. It has to be existent, so if you don’t have it already, you need to create it manually.</li>
 </ul>
-<p>In our case the <em>EOSIO</em> location is <code class="docutils literal"><span class="pre">/mnt/d/Workspaces/EOS/eos</span></code>, and the workspace location is <code class="docutils literal"><span class="pre">/mnt/d/Workspaces/EOS/contracts</span></code>, but yours will most probably be different:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">build</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">e</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">d</span><span class="o">/</span><span class="n">Workspaces</span><span class="o">/</span><span class="n">EOS</span><span class="o">/</span><span class="n">eos</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">d</span><span class="o">/</span><span class="n">Workspaces</span><span class="o">/</span><span class="n">EOS</span><span class="o">/</span><span class="n">contracts</span>
-</pre></div>
-</div>
-<p><strong>NOTE:</strong> The <code class="docutils literal"><span class="pre">build</span></code> script assumes that your WSL is located in this directory:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">LocalAppData</span><span class="o">%</span>\\<span class="n">Packages</span>\\<span class="n">CanonicalGroupLimited</span><span class="o">.</span><span class="n">Ubuntu18</span><span class="o">.</span><span class="mi">04</span><span class="n">onWindows_79rhkp1fndgsc</span>
-</pre></div>
-</div>
-<p>If you have the latest WSL release, this assumption is most likely valid. However, if for some reasons your WSL is in a different location, run the <code class="docutils literal"><span class="pre">build</span></code> script again with an additional <code class="docutils literal"><span class="pre">-o</span></code> parameter pointing to your WSL <code class="docutils literal"><span class="pre">rootfs</span></code> directory, for example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">build</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">e</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">d</span><span class="o">/</span><span class="n">Workspaces</span><span class="o">/</span><span class="n">EOS</span><span class="o">/</span><span class="n">eos</span> <span class="o">-</span><span class="n">o</span> <span class="o">%</span><span class="n">LocalAppData</span><span class="o">%</span>\<span class="n">Packages</span>\<span class="n">CanonicalGroupLimited</span><span class="o">.</span><span class="n">Ubuntu18</span><span class="o">.</span><span class="mi">04</span><span class="n">onWindows_79rhkp1fndgsc</span>\<span class="n">LocalState</span>\<span class="n">rootfs</span>
-</pre></div>
-</div>
-<p>If you are unsure what the path is in your case, open Windows Explorer, navigate to the <code class="docutils literal"><span class="pre">%LocalAppData%\\Packages</span></code> folder and search for <code class="docutils literal"><span class="pre">rootfs</span></code>.</p>
-</div>
-<div class="section" id="source-system-variables">
-<span id="source-system-variables"></span><h2>Source system variables<a class="headerlink" href="#source-system-variables" title="Permalink to this headline">¶</a></h2>
-<p>If the build process is successful, you should see this message:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>         <span class="n">______</span> <span class="n">____</span>   <span class="n">_____</span>  <span class="n">______</span>      <span class="n">_____</span> <span class="n">_______</span> <span class="n">____</span>  <span class="n">_______</span>     <span class="n">__</span>
-        <span class="o">|</span>  <span class="n">____</span><span class="o">/</span> <span class="n">__</span> \ <span class="o">/</span> <span class="n">____</span><span class="o">||</span>  <span class="n">____</span><span class="o">/</span>\   <span class="o">/</span> <span class="n">____</span><span class="o">|</span><span class="n">__</span>   <span class="n">__</span><span class="o">/</span> <span class="n">__</span> \<span class="o">|</span>  <span class="n">__</span> \ \   <span class="o">/</span> <span class="o">/</span>
-        <span class="o">|</span> <span class="o">|</span><span class="n">__</span> <span class="o">|</span> <span class="o">|</span>  <span class="o">|</span> <span class="o">|</span> <span class="p">(</span><span class="n">___</span>  <span class="o">|</span> <span class="o">|</span><span class="n">__</span> <span class="o">/</span>  \ <span class="o">|</span> <span class="o">|</span>       <span class="o">|</span> <span class="o">|</span> <span class="o">|</span> <span class="o">|</span>  <span class="o">|</span> <span class="o">|</span> <span class="o">|</span><span class="n">__</span><span class="p">)</span> \ \<span class="n">_</span><span class="o">/</span> <span class="o">/</span> 
-        <span class="o">|</span>  <span class="n">__</span><span class="o">||</span> <span class="o">|</span>  <span class="o">|</span> <span class="o">|</span>\<span class="n">___</span> \ <span class="o">|</span>  <span class="n">__</span><span class="o">/</span> <span class="o">/</span>\ \<span class="o">|</span> <span class="o">|</span>       <span class="o">|</span> <span class="o">|</span> <span class="o">|</span> <span class="o">|</span>  <span class="o">|</span> <span class="o">|</span>  <span class="n">_</span>  <span class="o">/</span> \   <span class="o">/</span>  
-        <span class="o">|</span> <span class="o">|</span><span class="n">___</span><span class="o">|</span> <span class="o">|</span><span class="n">__</span><span class="o">|</span> <span class="o">|</span><span class="n">____</span><span class="p">)</span> <span class="o">||</span> <span class="o">|</span> <span class="o">/</span> <span class="n">____</span> \ <span class="o">|</span><span class="n">____</span>   <span class="o">|</span> <span class="o">|</span> <span class="o">|</span> <span class="o">|</span><span class="n">__</span><span class="o">|</span> <span class="o">|</span> <span class="o">|</span> \ \  <span class="o">|</span> <span class="o">|</span>   
-        <span class="o">|</span><span class="n">______</span>\<span class="n">____</span><span class="o">/|</span><span class="n">_____</span><span class="o">/</span> <span class="o">|</span><span class="n">_</span><span class="o">|/</span><span class="n">_</span><span class="o">/</span>    \<span class="n">_</span>\<span class="n">_____</span><span class="o">|</span>  <span class="o">|</span><span class="n">_</span><span class="o">|</span>  \<span class="n">____</span><span class="o">/|</span><span class="n">_</span><span class="o">|</span>  \<span class="n">_</span>\ <span class="o">|</span><span class="n">_</span><span class="o">|</span>  
-</pre></div>
-</div>
-<p>At this stage you need to source the system variables that were created during <em>EOSFactory</em> installation. The command may differ depending on your system.</p>
-<ul>
-<li><p class="first">If you are on Ubuntu or <em>Windows Subsystem for Linux</em>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">~/.</span><span class="n">profile</span>
-</pre></div>
-</div>
-</li>
-<li><p class="first">If you are on MacOS:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">~/.</span><span class="n">bash_profile</span>
-</pre></div>
-</div>
-</li>
-</ul>
-<p><strong>NOTE:</strong> If you have <em>Visual Studio Code</em> installed on your machine, make sure it’s shut down (or restart it completely after installing <em>EOSFactory</em>). Otherwise those system variables will not be visible to VSC and some <em>CMake</em>-based tasks executed in VSC might fail.</p>
-</div>
-<div class="section" id="install-termcolor">
-<span id="install-termcolor"></span><h2>Install <em>termcolor</em><a class="headerlink" href="#install-termcolor" title="Permalink to this headline">¶</a></h2>
-<p>In order to make unit test output more readable we recommend installing the <a class="reference external" href="https://pypi.org/project/termcolor/">termcolor</a> extension for Python:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">termcolor</span>
-</pre></div>
-</div>
-<p><strong>NOTE:</strong> If the above command fails you might need to install <code class="docutils literal"><span class="pre">python3-pip</span></code>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="o">-</span><span class="n">pip</span>
-</pre></div>
-</div>
 </div>
 <div class="section" id="test-the-build">
 <span id="test-the-build"></span><h2>Test the build<a class="headerlink" href="#test-the-build" title="Permalink to this headline">¶</a></h2>
@@ -373,10 +297,6 @@
 <span class="n">python3</span> <span class="n">tests</span><span class="o">/</span><span class="mi">03</span><span class="n">_tic_tac_toe</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
-<p><strong>NOTE:</strong> When running <code class="docutils literal"><span class="pre">01_hello_world</span></code> this error is to be expected, as we are testing failure due to authority mismatch:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Error</span> <span class="mi">3040003</span><span class="p">:</span> <span class="n">Transaction</span> <span class="n">should</span> <span class="n">have</span> <span class="n">at</span> <span class="n">least</span> <span class="n">one</span> <span class="n">required</span> <span class="n">authority</span>
-</pre></div>
-</div>
 </div>
 <div class="section" id="troubleshooting-specific-errors">
 <span id="troubleshooting-specific-errors"></span><h2>Troubleshooting specific errors<a class="headerlink" href="#troubleshooting-specific-errors" title="Permalink to this headline">¶</a></h2>
@@ -386,23 +306,11 @@
 </div>
 <div class="section" id="case-2">
 <span id="case-2"></span><h3>Case 2<a class="headerlink" href="#case-2" title="Permalink to this headline">¶</a></h3>
-<p>If the test fails due to the <code class="docutils literal"><span class="pre">ModuleNotFoundError</span></code> error, make sure that after building EOSFactory you’ve sourced the newly created system variables, as described in the previous section.</p>
+<p>If a unit tests fails due to the <code class="docutils literal"><span class="pre">execve</span></code> error, make sure you have executed the <code class="docutils literal"><span class="pre">eosio_install.sh</span></code> script after <em>EOSIO</em> build, as described above.</p>
 </div>
 <div class="section" id="case-3">
 <span id="case-3"></span><h3>Case 3<a class="headerlink" href="#case-3" title="Permalink to this headline">¶</a></h3>
-<p>If a unit test fails with the <code class="docutils literal"><span class="pre">string</span> <span class="pre">indices</span> <span class="pre">must</span> <span class="pre">be</span> <span class="pre">integers</span></code> error, make sure you have EOSIO&nbsp;<a class="reference external" href="https://github.com/EOSIO/eos/releases/tag/v1.2.0">v1.2.0</a> (or higher) installed. Also, make sure no other instance of <code class="docutils literal"><span class="pre">nodeos</span></code> is running on your machine.</p>
-</div>
-<div class="section" id="case-4">
-<span id="case-4"></span><h3>Case 4<a class="headerlink" href="#case-4" title="Permalink to this headline">¶</a></h3>
-<p>If <code class="docutils literal"><span class="pre">nodeos</span></code> is launched but fails to produce blocks, make sure the <code class="docutils literal"><span class="pre">EOSIO_SHARED_MEMORY_SIZE_MB</span></code> variable has been properly removed from system variables, as described above.</p>
-</div>
-<div class="section" id="case-5">
-<span id="case-5"></span><h3>Case 5<a class="headerlink" href="#case-5" title="Permalink to this headline">¶</a></h3>
-<p>If a unit tests fails due to the <code class="docutils literal"><span class="pre">execve</span></code> error, make sure you have executed the <code class="docutils literal"><span class="pre">eosio_install.sh</span></code> script after <em>EOSIO</em> build, as described above.</p>
-</div>
-<div class="section" id="case-6">
-<span id="case-6"></span><h3>Case 6<a class="headerlink" href="#case-6" title="Permalink to this headline">¶</a></h3>
-<p>If a unit test fails with the <code class="docutils literal"><span class="pre">No</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span> <span class="pre">directory:</span> <span class="pre">~/eosio-wallet/</span></code> error, please make sure this directory exists, and if not - create one manually.</p>
+<p>If a unit test fails with the <code class="docutils literal"><span class="pre">No</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span> <span class="pre">directory:</span> <span class="pre">~/eosio-wallet/</span></code> error, please make sure this directory exists, and if not, create one manually.</p>
 </div>
 </div>
 <div class="section" id="troubleshooting-general-problems">
@@ -413,28 +321,32 @@
 </pre></div>
 </div>
 <p>As a result, you should get data similar to this:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;EOSIO_SOURCE_DIR&quot;</span><span class="p">:</span> <span class="s2">&quot;/mnt/x/Workspaces/EOS/eos&quot;</span><span class="p">,</span>
-<span class="s2">&quot;EOSIO_EOSFACTORY_DIR&quot;</span><span class="p">:</span> <span class="s2">&quot;/mnt/x/Workspaces/EOS/eosfactory&quot;</span><span class="p">,</span>
-<span class="s2">&quot;EOSIO_DATA_DIR&quot;</span><span class="p">:</span> <span class="s2">&quot;/mnt/x/Workspaces/EOS/eosfactory/build/daemon/data-dir/&quot;</span><span class="p">,</span>
-<span class="s2">&quot;EOSIO_CONFIG_DIR&quot;</span><span class="p">:</span> <span class="s2">&quot;/mnt/x/Workspaces/EOS/eosfactory/build/daemon/data-dir/&quot;</span><span class="p">,</span>
-<span class="s2">&quot;KEOSD_WALLET_DIR&quot;</span><span class="p">:</span> <span class="s2">&quot;$</span><span class="si">{HOME}</span><span class="s2">/eosio-wallet/&quot;</span><span class="p">,</span>
-<span class="s2">&quot;nodeExe&quot;</span><span class="p">:</span> <span class="s2">&quot;/mnt/x/Workspaces/EOS/eos/build/programs/nodeos/nodeos&quot;</span><span class="p">,</span>
-<span class="s2">&quot;cleosExe&quot;</span><span class="p">:</span> <span class="s2">&quot;/mnt/x/Workspaces/EOS/eos/build/programs/cleos/cleos&quot;</span><span class="p">,</span>
-<span class="s2">&quot;genesisJson&quot;</span><span class="p">:</span> <span class="s2">&quot;/mnt/x/Workspaces/EOS/eosfactory/build/daemon/data-dir/genesis.json&quot;</span><span class="p">,</span>
-<span class="s2">&quot;EOSIO_DAEMON_ADDRESS&quot;</span><span class="p">:</span> <span class="s2">&quot;127.0.0.1:8888&quot;</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;ABIGEN_EXECUTABLE&quot;</span><span class="p">:</span> <span class="s2">&quot;/mnt/d/Workspaces/EOS/eos/build/programs/eosio-abigen/eosio-abigen&quot;</span><span class="p">,</span>
+<span class="s2">&quot;BOOST_INCLUDE_DIR&quot;</span><span class="p">:</span> <span class="s2">&quot;/home/sygnet/opt/boost/include&quot;</span><span class="p">,</span>
+<span class="s2">&quot;EOSIO_ABIGEN&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+<span class="s2">&quot;EOSIO_CLI_EXECUTABLE&quot;</span><span class="p">:</span> <span class="s2">&quot;/mnt/d/Workspaces/EOS/eos/build/programs/cleos/cleos&quot;</span><span class="p">,</span>
+<span class="s2">&quot;EOSIO_CONTRACT_WORKSPACE&quot;</span><span class="p">:</span> <span class="s2">&quot;/mnt/d/Workspaces/EOS/contracts&quot;</span><span class="p">,</span>
+<span class="s2">&quot;EOSIO_CPP&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+<span class="s2">&quot;EOSIO_GENESIS_JSON&quot;</span><span class="p">:</span> <span class="s2">&quot;/mnt/d/Workspaces/EOS/eosfactory/localnode/genesis.json&quot;</span><span class="p">,</span>
 <span class="s2">&quot;EOSIO_KEY_PRIVATE&quot;</span><span class="p">:</span> <span class="s2">&quot;5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3&quot;</span><span class="p">,</span>
 <span class="s2">&quot;EOSIO_KEY_PUBLIC&quot;</span><span class="p">:</span> <span class="s2">&quot;EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV&quot;</span><span class="p">,</span>
-<span class="s2">&quot;EOSIO_WALLET_ADDRESS&quot;</span><span class="p">:</span> <span class="s2">&quot;127.0.0.1:8888&quot;</span><span class="p">,</span>
-<span class="s2">&quot;EOSIO_DAEMON_NAME&quot;</span><span class="p">:</span> <span class="s2">&quot;nodeos&quot;</span><span class="p">,</span>
-<span class="s2">&quot;EOSIO_WASM_CLANG&quot;</span><span class="p">:</span> <span class="s2">&quot;$</span><span class="si">{HOME}</span><span class="s2">/opt/wasm/bin/clang&quot;</span><span class="p">,</span>
-<span class="s2">&quot;EOSIO_BOOST_INCLUDE_DIR&quot;</span><span class="p">:</span> <span class="s2">&quot;$</span><span class="si">{HOME}</span><span class="s2">/opt/boost/include&quot;</span><span class="p">,</span>
-<span class="s2">&quot;EOSIO_WASM_LLVM_LINK&quot;</span><span class="p">:</span> <span class="s2">&quot;$</span><span class="si">{HOME}</span><span class="s2">/opt/wasm/bin/llvm-link&quot;</span><span class="p">,</span>
-<span class="s2">&quot;EOSIO_WASM_LLC&quot;</span><span class="p">:</span> <span class="s2">&quot;$</span><span class="si">{HOME}</span><span class="s2">/opt/wasm/bin/llc&quot;</span><span class="p">,</span>
-<span class="s2">&quot;EOSIO_S2WASM&quot;</span><span class="p">:</span> <span class="s2">&quot;/usr/local/bin/eosio-s2wasm&quot;</span><span class="p">,</span>
-<span class="s2">&quot;EOSIO_WAST2WASM&quot;</span><span class="p">:</span> <span class="s2">&quot;/usr/local/bin/eosio-wast2wasm&quot;</span><span class="p">,</span>
-<span class="s2">&quot;sharedMemory&quot;</span><span class="p">:</span> <span class="s2">&quot;200&quot;</span><span class="p">,</span>
-<span class="s2">&quot;contractWorkspace&quot;</span><span class="p">:</span> <span class="s2">&quot;/mnt/x/Workspaces/EOS/contracts&quot;</span><span class="p">,</span>
-<span class="s2">&quot;workspaceEosio&quot;</span><span class="p">:</span> <span class="s2">&quot;/mnt/x/Workspaces/EOS/eos/build/contracts/&quot;</span>
+<span class="s2">&quot;EOSIO_SHARED_MEMORY_SIZE_MB&quot;</span><span class="p">:</span> <span class="s2">&quot;200&quot;</span><span class="p">,</span>
+<span class="s2">&quot;EOSIO_SOURCE_DIR&quot;</span><span class="p">:</span> <span class="s2">&quot;/mnt/d/Workspaces/EOS/eos&quot;</span><span class="p">,</span>
+<span class="s2">&quot;EOSIO_WORKSPACE&quot;</span><span class="p">:</span> <span class="s2">&quot;/mnt/d/Workspaces/EOS/eos/build/contracts/&quot;</span><span class="p">,</span>
+<span class="s2">&quot;KEOSD_WALLET_DIR&quot;</span><span class="p">:</span> <span class="s2">&quot;/home/sygnet/eosio-wallet/&quot;</span><span class="p">,</span>
+<span class="s2">&quot;LOCAL_NODE_ADDRESS&quot;</span><span class="p">:</span> <span class="s2">&quot;127.0.0.1:8888&quot;</span><span class="p">,</span>
+<span class="s2">&quot;LOCAL_NODE_CONFIG_DIR&quot;</span><span class="p">:</span> <span class="s2">&quot;/mnt/d/Workspaces/EOS/eosfactory/localnode&quot;</span><span class="p">,</span>
+<span class="s2">&quot;LOCAL_NODE_DATA_DIR&quot;</span><span class="p">:</span> <span class="s2">&quot;/mnt/d/Workspaces/EOS/eosfactory/localnode&quot;</span><span class="p">,</span>
+<span class="s2">&quot;LOCAL_NODE_EXECUTABLE&quot;</span><span class="p">:</span> <span class="s2">&quot;/mnt/d/Workspaces/EOS/eos/build/programs/nodeos/nodeos&quot;</span><span class="p">,</span>
+<span class="s2">&quot;NODE_API&quot;</span><span class="p">:</span> <span class="s2">&quot;cleos&quot;</span><span class="p">,</span>
+<span class="s2">&quot;NODE_IN_WINDOW&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<span class="s2">&quot;S2WASM_EXECUTABLE&quot;</span><span class="p">:</span> <span class="s2">&quot;/mnt/d/Workspaces/EOS/eos/build/externals/binaryen/bin/eosio-s2wasm&quot;</span><span class="p">,</span>
+<span class="s2">&quot;WALLET_MANAGER_ADDRESS&quot;</span><span class="p">:</span> <span class="s2">&quot;127.0.0.1:8888&quot;</span><span class="p">,</span>
+<span class="s2">&quot;WASM_CLANG_EXECUTABLE&quot;</span><span class="p">:</span> <span class="s2">&quot;/home/sygnet/opt/wasm/bin/clang&quot;</span><span class="p">,</span>
+<span class="s2">&quot;WASM_LLC_EXECUTABLE&quot;</span><span class="p">:</span> <span class="s2">&quot;/home/sygnet/opt/wasm/bin/llc&quot;</span><span class="p">,</span>
+<span class="s2">&quot;WASM_LLVM_LINK_EXECUTABLE&quot;</span><span class="p">:</span> <span class="s2">&quot;/home/sygnet/opt/wasm/bin/llvm-link&quot;</span><span class="p">,</span>
+<span class="s2">&quot;WAST2WASM_EXECUTABLE&quot;</span><span class="p">:</span> <span class="s2">&quot;/mnt/d/Workspaces/EOS/eos/build/libraries/wasm-jit/Source/Programs/eosio-wast2wasm&quot;</span><span class="p">,</span>
+<span class="s2">&quot;WSL_ROOT&quot;</span><span class="p">:</span> <span class="s2">&quot;C:/Users/tokenika/AppData/Local/Packages/CanonicalGroupLimited.Ubuntu18.04onWindows_79rhkp1fndgsc/LocalState/rootfs&quot;</span>
 </pre></div>
 </div>
 <p>Next, verify that all the above paths are resolved.</p>
@@ -447,15 +359,7 @@
 </pre></div>
 </div>
 <p>And then just run:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">build</span><span class="o">.</span><span class="n">sh</span>
-</pre></div>
-</div>
-<p><strong>NOTE:</strong> After the initial successful installation, unless the path to your <em>EOSIO</em> source code and/or your workspace directory has changed, you don’t need to supply them when doing subsequent <em>EOSFactory</em> builds, as those paths are already stored in your system variables. If you do need to supply those parameters, use this syntax:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">build</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">e</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">EOSIO</span><span class="o">/</span><span class="n">repository</span> <span class="o">-</span><span class="n">w</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">workspace</span>
-</pre></div>
-</div>
-<p>And to get help for the <code class="docutils literal"><span class="pre">build</span></code> script:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">build</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">h</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">install</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 </div>

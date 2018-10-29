@@ -46,7 +46,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           EOSFactory</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -73,6 +73,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion1.1.html">EOSFactory Release Notes - v1.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.0.html">EOSFactory Release Notes - v2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.1.html">EOSFactory Release Notes - v2.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.2.html">EOSFactory Release Notes - v2.2</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="00.IntroductionToEOSFactory.html">Introduction to <em>EOSFactory</em></a></li>
@@ -91,16 +92,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../rst/core.cleosys.html">core.cleosys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/core.config.html">core.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/core.errors.html">core.errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.interface.html">core.interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/core.logger.html">core.logger</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/core.manager.html">core.manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.setup.html">core.setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/core.teos.html">core.teos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/core.testnet.html">core.testnet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/core.utils.html">core.utils</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/shell.interface.html">shell.interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/shell.wallet.html">shell.wallet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rst/shell.setup.html">shell.setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/shell.account.html">shell.account</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/shell.contract.html">shell.contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.wallet.html">shell.wallet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rst/eosf.html">eosf</a></li>
 </ul>
 </ul>
@@ -119,6 +120,7 @@
 <li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li><a class="reference internal" href="#run-python-cli-in-vsc">Run Python CLI in VSC</a></li>
 <li><a class="reference internal" href="#create-a-new-contract-from-template">Create a new contract from template</a></li>
+<li><a class="reference internal" href="#create-reference-to-an-existing-contract">Create reference to an existing contract</a></li>
 <li><a class="reference internal" href="#edit-the-source-code">Edit the source code</a></li>
 <li><a class="reference internal" href="#build-the-new-contract">Build the new contract</a></li>
 <li><a class="reference internal" href="#deploy-the-contract">Deploy the contract</a></li>
@@ -192,7 +194,7 @@
 </pre></div>
 </div>
 <p>Once in the Python shell, import the <em>EOSFactory</em> library:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">eosf</span> <span class="k">import</span> <span class="o">*</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">eosfactory.eosf</span> <span class="k">import</span> <span class="o">*</span>
 </pre></div>
 </div>
 </div>
@@ -203,16 +205,19 @@
 </pre></div>
 </div>
 <p><strong>NOTE:</strong> Do not use spaces in contract names. What is allowed are letters, numbers, underscores <code class="docutils literal"><span class="pre">_</span></code>, dots <code class="docutils literal"><span class="pre">.</span></code> and dashes <code class="docutils literal"><span class="pre">-</span></code>. Regarding the second parameter, as of now there are three templates to choose from (i.e. <code class="docutils literal"><span class="pre">01_hello_world</span></code>, <code class="docutils literal"><span class="pre">02_eosio_token</span></code> and <code class="docutils literal"><span class="pre">03_tic_tac_toe</span></code>), with more coming in the future. This parameter is optional, the default value is&nbsp;<code class="docutils literal"><span class="pre">01_hello_world</span></code>.</p>
-<p>The above command creates a new folder and inside it a new smart-contract file is placed. However, if you want to access an existing smart-contract, use the following syntax instead:</p>
+</div>
+<div class="section" id="create-reference-to-an-existing-contract">
+<span id="create-reference-to-an-existing-contract"></span><h2>Create reference to an existing contract<a class="headerlink" href="#create-reference-to-an-existing-contract" title="Permalink to this headline">¶</a></h2>
+<p>The above command creates a new folder and inside it a new smart-contract file is placed. However, if you want to access an existing smart-contract, use the following syntax and specifying the entire path, for example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span> <span class="o">=</span> <span class="n">ContractBuilder</span><span class="p">(</span><span class="s2">&quot;/mnt/d/Workspaces/EOS/contracts/foo_bar&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Or use just the folder name, if the contract is located in the workspace you explicitly defined when installing <em>EOSFactory</em>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span> <span class="o">=</span> <span class="n">ContractBuilder</span><span class="p">(</span><span class="s2">&quot;foo_bar&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>NOTE:</strong> In a similar way you could access a demo contract supplied by <em>EOSFactory</em>, for example:</p>
+<p>In a similar way, you can access demo contracts shipped with <em>EOSFactory</em>, for example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span> <span class="o">=</span> <span class="n">ContractBuilder</span><span class="p">(</span><span class="s2">&quot;01_hello_world&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Or a demo contract supplied by <em>EOSIO</em>, for example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span> <span class="o">=</span> <span class="n">ContractBuilder</span><span class="p">(</span><span class="s2">&quot;eosio.token&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -237,7 +242,7 @@
   <span class="n">public</span><span class="p">:</span>
     <span class="n">using</span> <span class="n">contract</span><span class="p">::</span><span class="n">contract</span><span class="p">;</span>
 
-    <span class="o">///</span> <span class="nd">@abi</span> <span class="n">action</span>
+    <span class="p">[[</span><span class="n">eosio</span><span class="p">::</span><span class="n">action</span><span class="p">]]</span>
     <span class="n">void</span> <span class="n">hi</span><span class="p">(</span> <span class="n">account_name</span> <span class="n">user</span> <span class="p">)</span> <span class="p">{</span>
       <span class="n">logger_info</span><span class="p">(</span> <span class="s2">&quot;debug user name: &quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">{</span><span class="n">user</span><span class="p">}</span> <span class="p">);</span>
       <span class="o">//</span><span class="n">require_auth</span><span class="p">(</span> <span class="n">user</span> <span class="p">);</span>
@@ -267,7 +272,6 @@
 <span id="deploy-the-contract"></span><h2>Deploy the contract<a class="headerlink" href="#deploy-the-contract" title="Permalink to this headline">¶</a></h2>
 <p>First, start the testnet and initialize the workspace:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">reset</span><span class="p">()</span>
-<span class="n">create_wallet</span><span class="p">()</span>
 <span class="n">create_master_account</span><span class="p">(</span><span class="s2">&quot;master&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -279,11 +283,15 @@
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span> <span class="o">=</span> <span class="n">Contract</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">contract</span><span class="o">.</span><span class="n">path</span><span class="p">())</span>
 </pre></div>
 </div>
-<p>Or you can use the contract name explicitly:</p>
+<p>Or you can use the name of the contract’s folder (provided it’s located in your smart-contract workspace):</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span> <span class="o">=</span> <span class="n">Contract</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="s2">&quot;foo_bar&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>And now we can deploy the contract:</p>
+<p>Or you can use the entire path to the contract’s folder:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span> <span class="o">=</span> <span class="n">Contract</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="s2">&quot;/mnt/d/Workspaces/EOS/contracts/foo_bar&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Next, we can deploy the contract:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span><span class="o">.</span><span class="n">deploy</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -334,7 +342,7 @@
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span><span class="o">.</span><span class="n">push_action</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span><span class="n">alice</span><span class="p">},</span> <span class="n">permission</span><span class="o">=</span><span class="p">(</span><span class="n">alice</span><span class="p">,</span> <span class="n">Permission</span><span class="o">.</span><span class="n">ACTIVE</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span><span class="o">.</span><span class="n">push_action</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span><span class="n">alice</span><span class="p">},</span> <span class="n">permission</span><span class="o">=</span><span class="p">[(</span><span class="n">alice</span><span class="p">,</span> <span class="n">Permission</span><span class="o">.</span><span class="n">ACTIVE</span><span class="p">),</span> <span class="p">(</span><span class="n">carol</span><span class="p">,</span> <span class="n">Permission</span><span class="o">.</span><span class="n">OWNER</span><span class="p">)]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">contract</span><span class="o">.</span><span class="n">push_action</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span><span class="n">alice</span><span class="p">},</span> <span class="n">permission</span><span class="o">=</span><span class="p">[(</span><span class="n">alice</span><span class="p">,</span> <span class="n">Permission</span><span class="o">.</span><span class="n">ACTIVE</span><span class="p">),</span> <span class="p">(</span><span class="n">carol</span><span class="p">,</span> <span class="n">Permission</span><span class="o">.</span><span class="n">OWNER</span><span class="p">)])</span>
 </pre></div>
 </div>
 <p>All the above variations should work, as the contract allows anyone to authorize the <code class="docutils literal"><span class="pre">hi</span></code> action.</p>

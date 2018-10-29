@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>shell.setup &#8212; EOSFactory 0.0 documentation</title>
+    <title>core.interface &#8212; EOSFactory 0.0 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -25,8 +25,8 @@
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="shell.account" href="shell.account.html" />
-    <link rel="prev" title="shell.wallet" href="shell.wallet.html" />
+    <link rel="next" title="core.logger" href="core.logger.html" />
+    <link rel="prev" title="core.errors" href="core.errors.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -46,7 +46,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           EOSFactory</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -73,6 +73,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion1.1.html">EOSFactory Release Notes - v1.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.0.html">EOSFactory Release Notes - v2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.1.html">EOSFactory Release Notes - v2.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.2.html">EOSFactory Release Notes - v2.2</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/00.IntroductionToEOSFactory.html">Introduction to <em>EOSFactory</em></a></li>
@@ -91,16 +92,16 @@
 <li class="toctree-l1"><a class="reference internal" href="core.cleosys.html">core.cleosys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="core.config.html">core.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="core.errors.html">core.errors</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">core.interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="core.logger.html">core.logger</a></li>
 <li class="toctree-l1"><a class="reference internal" href="core.manager.html">core.manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core.setup.html">core.setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="core.teos.html">core.teos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="core.testnet.html">core.testnet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="core.utils.html">core.utils</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shell.interface.html">shell.interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shell.wallet.html">shell.wallet</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">shell.setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shell.account.html">shell.account</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shell.contract.html">shell.contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell.wallet.html">shell.wallet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eosf.html">eosf</a></li>
 </ul>
 </ul>
@@ -115,7 +116,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">shell.setup</a></li>
+<li><a class="reference internal" href="#">core.interface</a></li>
 </ul>
 </ul>
 </li>
@@ -125,11 +126,11 @@
               
                 
   <li>
-    <a href="shell.wallet.html" title="Previous Chapter: shell.wallet"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; shell.wallet</span>
+    <a href="core.errors.html" title="Previous Chapter: core.errors"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; core.errors</span>
     </a>
   </li>
   <li>
-    <a href="shell.account.html" title="Next Chapter: shell.account"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">shell.account &raquo;</span>
+    <a href="core.logger.html" title="Next Chapter: core.logger"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">core.logger &raquo;</span>
     </a>
   </li>
               
@@ -139,7 +140,7 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="../_sources/rst/shell.setup.rst.txt"
+  <a href="../_sources/rst/core.interface.rst.txt"
      rel="nofollow">Source</a>
 </div></li>
             
@@ -163,12 +164,34 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="module-shell.setup">
-<span id="shell-setup"></span><h1>shell.setup<a class="headerlink" href="#module-shell.setup" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
-<dt id="shell.setup.save_code">
-<code class="descclassname">shell.setup.</code><code class="descname">save_code</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#shell.setup.save_code" title="Permalink to this definition">¶</a></dt>
-<dd><p>Copy the current file without heredoc comments.</p>
+  <div class="section" id="module-eosfactory.core.interface">
+<span id="core-interface"></span><h1>core.interface<a class="headerlink" href="#module-eosfactory.core.interface" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="eosfactory.core.interface.Account">
+<em class="property">class </em><code class="descclassname">eosfactory.core.interface.</code><code class="descname">Account</code><span class="sig-paren">(</span><em>name</em>, <em>owner_key=None</em>, <em>active_key=None</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.interface.Account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.interface.Omittable</span></code></p>
+<p>Having the <code class="docutils literal"><span class="pre">name</span></code> and ‘Key’ attributes.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="eosfactory.core.interface.Key">
+<em class="property">class </em><code class="descclassname">eosfactory.core.interface.</code><code class="descname">Key</code><span class="sig-paren">(</span><em>name</em>, <em>key_public</em>, <em>key_private</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.interface.Key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.interface.Omittable</span></code></p>
+<p>Having the <code class="docutils literal"><span class="pre">name</span></code> and ‘Key’ attributes.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="eosfactory.core.interface.Permission">
+<em class="property">class </em><code class="descclassname">eosfactory.core.interface.</code><code class="descname">Permission</code><a class="headerlink" href="#eosfactory.core.interface.Permission" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="eosfactory.core.interface.Wallet">
+<em class="property">class </em><code class="descclassname">eosfactory.core.interface.</code><code class="descname">Wallet</code><span class="sig-paren">(</span><em>name</em>, <em>password=None</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.interface.Wallet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.interface.Omittable</span></code></p>
+<p>Having the <code class="docutils literal"><span class="pre">name</span></code> attribute.</p>
 </dd></dl>
 
 </div>

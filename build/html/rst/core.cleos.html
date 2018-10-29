@@ -46,7 +46,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           EOSFactory</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.2</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -73,6 +73,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion1.1.html">EOSFactory Release Notes - v1.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.0.html">EOSFactory Release Notes - v2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.1.html">EOSFactory Release Notes - v2.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.2.html">EOSFactory Release Notes - v2.2</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/00.IntroductionToEOSFactory.html">Introduction to <em>EOSFactory</em></a></li>
@@ -91,16 +92,16 @@
 <li class="toctree-l1"><a class="reference internal" href="core.cleosys.html">core.cleosys</a></li>
 <li class="toctree-l1"><a class="reference internal" href="core.config.html">core.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="core.errors.html">core.errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core.interface.html">core.interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="core.logger.html">core.logger</a></li>
 <li class="toctree-l1"><a class="reference internal" href="core.manager.html">core.manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core.setup.html">core.setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="core.teos.html">core.teos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="core.testnet.html">core.testnet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="core.utils.html">core.utils</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shell.interface.html">shell.interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shell.wallet.html">shell.wallet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shell.setup.html">shell.setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shell.account.html">shell.account</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shell.contract.html">shell.contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell.wallet.html">shell.wallet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eosf.html">eosf</a></li>
 </ul>
 </ul>
@@ -163,12 +164,12 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <div class="section" id="module-core.cleos">
-<span id="core-cleos"></span><h1>core.cleos<a class="headerlink" href="#module-core.cleos" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-eosfactory.core.cleos">
+<span id="core-cleos"></span><h1>core.cleos<a class="headerlink" href="#module-eosfactory.core.cleos" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="core.cleos.CreateAccount">
-<em class="property">class </em><code class="descclassname">core.cleos.</code><code class="descname">CreateAccount</code><span class="sig-paren">(</span><em>creator</em>, <em>name</em>, <em>owner_key</em>, <em>active_key=None</em>, <em>permission=None</em>, <em>expiration_sec=30</em>, <em>skip_signature=0</em>, <em>dont_broadcast=0</em>, <em>forceUnique=0</em>, <em>max_cpu_usage=0</em>, <em>max_net_usage=0</em>, <em>ref_block=None</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#core.cleos.CreateAccount" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="shell.interface.html#shell.interface.Account" title="shell.interface.Account"><code class="xref py py-class docutils literal"><span class="pre">shell.interface.Account</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">core.cleos._Cleos</span></code></p>
+<dt id="eosfactory.core.cleos.CreateAccount">
+<em class="property">class </em><code class="descclassname">eosfactory.core.cleos.</code><code class="descname">CreateAccount</code><span class="sig-paren">(</span><em>creator</em>, <em>name</em>, <em>owner_key</em>, <em>active_key=None</em>, <em>permission=None</em>, <em>expiration_sec=30</em>, <em>skip_signature=0</em>, <em>dont_broadcast=0</em>, <em>forceUnique=0</em>, <em>max_cpu_usage=0</em>, <em>max_net_usage=0</em>, <em>ref_block=None</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleos.CreateAccount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="core.interface.html#eosfactory.core.interface.Account" title="eosfactory.core.interface.Account"><code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.interface.Account</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.cleos._Cleos</span></code></p>
 <p>Create an account, buy ram, stake for bandwidth for the account.</p>
 <ul>
 <li><p class="first"><strong>parameters</strong>:</p>
@@ -212,9 +213,9 @@ ref_block: The reference block num or block id used for TAPOS
 </dd></dl>
 
 <dl class="class">
-<dt id="core.cleos.CreateKey">
-<em class="property">class </em><code class="descclassname">core.cleos.</code><code class="descname">CreateKey</code><span class="sig-paren">(</span><em>key_name</em>, <em>key_public=''</em>, <em>key_private=''</em>, <em>r1=False</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#core.cleos.CreateKey" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="shell.interface.html#shell.interface.Key" title="shell.interface.Key"><code class="xref py py-class docutils literal"><span class="pre">shell.interface.Key</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">core.cleos._Cleos</span></code></p>
+<dt id="eosfactory.core.cleos.CreateKey">
+<em class="property">class </em><code class="descclassname">eosfactory.core.cleos.</code><code class="descname">CreateKey</code><span class="sig-paren">(</span><em>key_name</em>, <em>key_public=''</em>, <em>key_private=''</em>, <em>r1=False</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleos.CreateKey" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="core.interface.html#eosfactory.core.interface.Key" title="eosfactory.core.interface.Key"><code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.interface.Key</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.cleos._Cleos</span></code></p>
 <p>Create a new keypair and print the public and private keys.</p>
 <ul>
 <li><p class="first"><strong>parameters</strong>:</p>
@@ -235,9 +236,9 @@ ref_block: The reference block num or block id used for TAPOS
 </dd></dl>
 
 <dl class="class">
-<dt id="core.cleos.GetAccount">
-<em class="property">class </em><code class="descclassname">core.cleos.</code><code class="descname">GetAccount</code><span class="sig-paren">(</span><em>account</em>, <em>is_info=True</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#core.cleos.GetAccount" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="shell.interface.html#shell.interface.Account" title="shell.interface.Account"><code class="xref py py-class docutils literal"><span class="pre">shell.interface.Account</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">core.cleos._Cleos</span></code></p>
+<dt id="eosfactory.core.cleos.GetAccount">
+<em class="property">class </em><code class="descclassname">eosfactory.core.cleos.</code><code class="descname">GetAccount</code><span class="sig-paren">(</span><em>account</em>, <em>is_info=True</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleos.GetAccount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="core.interface.html#eosfactory.core.interface.Account" title="eosfactory.core.interface.Account"><code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.interface.Account</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.cleos._Cleos</span></code></p>
 <p>Retrieve an account from the blockchain.</p>
 <ul>
 <li><p class="first"><strong>parameters</strong>:</p>
@@ -254,92 +255,13 @@ is_verbose: If ``False`` do not print. Default is ``True``.
 </pre></div>
 </div>
 </li>
-<li><p class="first"><strong>output json</strong>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;ram_usage&quot;</span><span class="p">:</span> <span class="mi">6614</span><span class="p">,</span>
-    <span class="s2">&quot;ram_quota&quot;</span><span class="p">:</span> <span class="mi">290972</span><span class="p">,</span>
-    <span class="s2">&quot;core_liquid_balance&quot;</span><span class="p">:</span> <span class="s2">&quot;29866.4394 EOS&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;cpu_limit&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;used&quot;</span><span class="p">:</span> <span class="mi">461316</span><span class="p">,</span>
-        <span class="s2">&quot;available&quot;</span><span class="p">:</span> <span class="mi">3223327</span><span class="p">,</span>
-        <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">3684643</span>
-    <span class="p">},</span>
-
-    <span class="s2">&quot;total_resources&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;dgxo1uyhoytn&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;net_weight&quot;</span><span class="p">:</span> <span class="s2">&quot;100.1000 EOS&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;cpu_weight&quot;</span><span class="p">:</span> <span class="s2">&quot;100.1000 EOS&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;ram_bytes&quot;</span><span class="p">:</span> <span class="mi">290972</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;self_delegated_bandwidth&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;dgxo1uyhoytn&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;dgxo1uyhoytn&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;net_weight&quot;</span><span class="p">:</span> <span class="s2">&quot;100.1000 EOS&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;cpu_weight&quot;</span><span class="p">:</span> <span class="s2">&quot;100.1000 EOS&quot;</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;net_limit&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;used&quot;</span><span class="p">:</span> <span class="mi">12403</span><span class="p">,</span>
-        <span class="s2">&quot;available&quot;</span><span class="p">:</span> <span class="mi">19299535</span><span class="p">,</span>
-        <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">19311938</span>
-    <span class="p">},</span>
-
-    <span class="s2">&quot;net_weight&quot;</span><span class="p">:</span> <span class="mi">1001000</span><span class="p">,</span>
-    <span class="s2">&quot;cpu_weight&quot;</span><span class="p">:</span> <span class="mi">1001000</span><span class="p">,</span>
-    <span class="s2">&quot;account_name&quot;</span><span class="p">:</span> <span class="s2">&quot;dgxo1uyhoytn&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;head_block_num&quot;</span><span class="p">:</span> <span class="mi">12252494</span><span class="p">,</span>
-    <span class="s2">&quot;head_block_time&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-08-30T08:18:57.500&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;privileged&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-    <span class="s2">&quot;last_code_update&quot;</span><span class="p">:</span> <span class="s2">&quot;1970-01-01T00:00:00.000&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;created&quot;</span><span class="p">:</span> <span class="s2">&quot;2018-07-18T18:28:38.000&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;permissions&quot;</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="s2">&quot;perm_name&quot;</span><span class="p">:</span> <span class="s2">&quot;active&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;parent&quot;</span><span class="p">:</span> <span class="s2">&quot;owner&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;required_auth&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;threshold&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-            <span class="s2">&quot;keys&quot;</span><span class="p">:</span> <span class="p">[{</span>
-                <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;EOS6HDfGKbR79Gcs74LcQfvL6x8eVhZNXMGZ48Ti7u84nDnyq87rv&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mi">1</span>
-            <span class="p">}</span>
-            <span class="p">],</span>
-            <span class="s2">&quot;accounts&quot;</span><span class="p">:</span> <span class="p">[],</span>
-            <span class="s2">&quot;waits&quot;</span><span class="p">:</span> <span class="p">[]</span>
-        <span class="p">}</span>
-        <span class="p">},{</span>
-        <span class="s2">&quot;perm_name&quot;</span><span class="p">:</span> <span class="s2">&quot;owner&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;parent&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;required_auth&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;threshold&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-            <span class="s2">&quot;keys&quot;</span><span class="p">:</span> <span class="p">[{</span>
-                <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;EOS8AipFftYjovw8xpuqCxsjid57XqNstDyeTVmLtfFYNmFrgY959&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mi">1</span>
-            <span class="p">}</span>
-            <span class="p">],</span>
-            <span class="s2">&quot;accounts&quot;</span><span class="p">:</span> <span class="p">[],</span>
-            <span class="s2">&quot;waits&quot;</span><span class="p">:</span> <span class="p">[]</span>
-        <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="s2">&quot;refund_request&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
-    <span class="s2">&quot;voter_info&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;dgxo1uyhoytn&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;proxy&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;producers&quot;</span><span class="p">:</span> <span class="p">[],</span>
-        <span class="s2">&quot;staked&quot;</span><span class="p">:</span> <span class="mi">2168000</span><span class="p">,</span>
-        <span class="s2">&quot;last_vote_weight&quot;</span><span class="p">:</span> <span class="s2">&quot;0.00000000000000000&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;proxied_vote_weight&quot;</span><span class="p">:</span> <span class="s2">&quot;0.00000000000000000&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;is_proxy&quot;</span><span class="p">:</span> <span class="mi">0</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</li>
 </ul>
 </dd></dl>
 
 <dl class="class">
-<dt id="core.cleos.GetAccounts">
-<em class="property">class </em><code class="descclassname">core.cleos.</code><code class="descname">GetAccounts</code><span class="sig-paren">(</span><em>key</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#core.cleos.GetAccounts" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">core.cleos._Cleos</span></code></p>
+<dt id="eosfactory.core.cleos.GetAccounts">
+<em class="property">class </em><code class="descclassname">eosfactory.core.cleos.</code><code class="descname">GetAccounts</code><span class="sig-paren">(</span><em>key</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleos.GetAccounts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.cleos._Cleos</span></code></p>
 <p>Retrieve accounts associated with a public key.</p>
 <ul>
 <li><p class="first"><strong>attributes</strong>:</p>
@@ -353,9 +275,9 @@ is_verbose: If ``False`` do not print. Default is ``True``.
 </dd></dl>
 
 <dl class="class">
-<dt id="core.cleos.GetBlock">
-<em class="property">class </em><code class="descclassname">core.cleos.</code><code class="descname">GetBlock</code><span class="sig-paren">(</span><em>block_number</em>, <em>block_id=None</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#core.cleos.GetBlock" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">core.cleos._Cleos</span></code></p>
+<dt id="eosfactory.core.cleos.GetBlock">
+<em class="property">class </em><code class="descclassname">eosfactory.core.cleos.</code><code class="descname">GetBlock</code><span class="sig-paren">(</span><em>block_number</em>, <em>block_id=None</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleos.GetBlock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.cleos._Cleos</span></code></p>
 <p>Retrieve a full block from the blockchain.</p>
 <ul>
 <li><p class="first"><strong>parameters</strong>:</p>
@@ -376,9 +298,9 @@ is_verbose: If ``False``, Default is ``True``.
 </dd></dl>
 
 <dl class="class">
-<dt id="core.cleos.GetCode">
-<em class="property">class </em><code class="descclassname">core.cleos.</code><code class="descname">GetCode</code><span class="sig-paren">(</span><em>account</em>, <em>code=''</em>, <em>abi=''</em>, <em>wasm=False</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#core.cleos.GetCode" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">core.cleos._Cleos</span></code></p>
+<dt id="eosfactory.core.cleos.GetCode">
+<em class="property">class </em><code class="descclassname">eosfactory.core.cleos.</code><code class="descname">GetCode</code><span class="sig-paren">(</span><em>account</em>, <em>code=''</em>, <em>abi=''</em>, <em>wasm=False</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleos.GetCode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.cleos._Cleos</span></code></p>
 <p>Retrieve the code and ABI for an account.</p>
 <ul>
 <li><p class="first"><strong>parameters</strong>:</p>
@@ -402,9 +324,9 @@ wasm: Save contract as wasm.
 </dd></dl>
 
 <dl class="class">
-<dt id="core.cleos.GetInfo">
-<em class="property">class </em><code class="descclassname">core.cleos.</code><code class="descname">GetInfo</code><span class="sig-paren">(</span><em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#core.cleos.GetInfo" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">core.cleos._Cleos</span></code></p>
+<dt id="eosfactory.core.cleos.GetInfo">
+<em class="property">class </em><code class="descclassname">eosfactory.core.cleos.</code><code class="descname">GetInfo</code><span class="sig-paren">(</span><em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleos.GetInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.cleos._Cleos</span></code></p>
 <p>Get current blockchain information.</p>
 <ul>
 <li><p class="first"><strong>parameters</strong>:</p>
@@ -423,9 +345,9 @@ wasm: Save contract as wasm.
 </dd></dl>
 
 <dl class="class">
-<dt id="core.cleos.GetTable">
-<em class="property">class </em><code class="descclassname">core.cleos.</code><code class="descname">GetTable</code><span class="sig-paren">(</span><em>account</em>, <em>table</em>, <em>scope</em>, <em>binary=False</em>, <em>limit=10</em>, <em>key=''</em>, <em>lower=''</em>, <em>upper=''</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#core.cleos.GetTable" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">core.cleos._Cleos</span></code></p>
+<dt id="eosfactory.core.cleos.GetTable">
+<em class="property">class </em><code class="descclassname">eosfactory.core.cleos.</code><code class="descname">GetTable</code><span class="sig-paren">(</span><em>account</em>, <em>table</em>, <em>scope</em>, <em>binary=False</em>, <em>limit=10</em>, <em>key=''</em>, <em>lower=''</em>, <em>upper=''</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleos.GetTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.cleos._Cleos</span></code></p>
 <p>Retrieve the contents of a database table</p>
 <ul>
 <li><p class="first"><strong>parameters</strong>:</p>
@@ -458,9 +380,9 @@ upper: JSON representation of upper bound value value of key,
 </dd></dl>
 
 <dl class="class">
-<dt id="core.cleos.GetTransaction">
-<em class="property">class </em><code class="descclassname">core.cleos.</code><code class="descname">GetTransaction</code><span class="sig-paren">(</span><em>transaction_id</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#core.cleos.GetTransaction" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">core.cleos._Cleos</span></code></p>
+<dt id="eosfactory.core.cleos.GetTransaction">
+<em class="property">class </em><code class="descclassname">eosfactory.core.cleos.</code><code class="descname">GetTransaction</code><span class="sig-paren">(</span><em>transaction_id</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleos.GetTransaction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.cleos._Cleos</span></code></p>
 <p>Retrieve a transaction from the blockchain.</p>
 <ul>
 <li><p class="first"><strong>parameters</strong>:</p>
@@ -481,9 +403,9 @@ is_verbose: If ``False`` do not print. Default is ``True``.
 </dd></dl>
 
 <dl class="class">
-<dt id="core.cleos.PushAction">
-<em class="property">class </em><code class="descclassname">core.cleos.</code><code class="descname">PushAction</code><span class="sig-paren">(</span><em>account</em>, <em>action</em>, <em>data</em>, <em>permission=None</em>, <em>expiration_sec=30</em>, <em>skip_signature=0</em>, <em>dont_broadcast=0</em>, <em>forceUnique=0</em>, <em>max_cpu_usage=0</em>, <em>max_net_usage=0</em>, <em>ref_block=None</em>, <em>is_verbose=True</em>, <em>json=False</em><span class="sig-paren">)</span><a class="headerlink" href="#core.cleos.PushAction" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">core.cleos._Cleos</span></code></p>
+<dt id="eosfactory.core.cleos.PushAction">
+<em class="property">class </em><code class="descclassname">eosfactory.core.cleos.</code><code class="descname">PushAction</code><span class="sig-paren">(</span><em>account</em>, <em>action</em>, <em>data</em>, <em>permission=None</em>, <em>expiration_sec=30</em>, <em>skip_signature=0</em>, <em>dont_broadcast=0</em>, <em>forceUnique=0</em>, <em>max_cpu_usage=0</em>, <em>max_net_usage=0</em>, <em>ref_block=None</em>, <em>is_verbose=True</em>, <em>json=False</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleos.PushAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.cleos._Cleos</span></code></p>
 <p>Push a transaction with a single action</p>
 <ul>
 <li><p class="first"><strong>parameters</strong>:</p>
@@ -525,9 +447,9 @@ ref_block: The reference block num or block id used for TAPOS
 </dd></dl>
 
 <dl class="class">
-<dt id="core.cleos.SetContract">
-<em class="property">class </em><code class="descclassname">core.cleos.</code><code class="descname">SetContract</code><span class="sig-paren">(</span><em>account</em>, <em>contract_dir</em>, <em>wasm_file=None</em>, <em>abi_file=None</em>, <em>permission=None</em>, <em>expiration_sec=30</em>, <em>skip_signature=0</em>, <em>dont_broadcast=0</em>, <em>forceUnique=0</em>, <em>max_cpu_usage=0</em>, <em>max_net_usage=0</em>, <em>ref_block=None</em>, <em>is_verbose=True</em>, <em>json=False</em><span class="sig-paren">)</span><a class="headerlink" href="#core.cleos.SetContract" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">core.cleos._Cleos</span></code></p>
+<dt id="eosfactory.core.cleos.SetContract">
+<em class="property">class </em><code class="descclassname">eosfactory.core.cleos.</code><code class="descname">SetContract</code><span class="sig-paren">(</span><em>account</em>, <em>contract_dir</em>, <em>wasm_file=None</em>, <em>abi_file=None</em>, <em>permission=None</em>, <em>expiration_sec=30</em>, <em>skip_signature=0</em>, <em>dont_broadcast=0</em>, <em>forceUnique=0</em>, <em>max_cpu_usage=0</em>, <em>max_net_usage=0</em>, <em>ref_block=None</em>, <em>is_verbose=True</em>, <em>json=False</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleos.SetContract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.cleos._Cleos</span></code></p>
 <p>Create or update the contract on an account.</p>
 <ul>
 <li><p class="first"><strong>parameters</strong>:</p>
@@ -570,9 +492,9 @@ ref_block: The reference block num or block id used for TAPOS
 </dd></dl>
 
 <dl class="class">
-<dt id="core.cleos.WalletCreate">
-<em class="property">class </em><code class="descclassname">core.cleos.</code><code class="descname">WalletCreate</code><span class="sig-paren">(</span><em>name='default'</em>, <em>password=''</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#core.cleos.WalletCreate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="shell.interface.html#shell.interface.Wallet" title="shell.interface.Wallet"><code class="xref py py-class docutils literal"><span class="pre">shell.interface.Wallet</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">core.cleos._Cleos</span></code></p>
+<dt id="eosfactory.core.cleos.WalletCreate">
+<em class="property">class </em><code class="descclassname">eosfactory.core.cleos.</code><code class="descname">WalletCreate</code><span class="sig-paren">(</span><em>name='default'</em>, <em>password=''</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleos.WalletCreate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="core.interface.html#eosfactory.core.interface.Wallet" title="eosfactory.core.interface.Wallet"><code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.interface.Wallet</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.cleos._Cleos</span></code></p>
 <p>Create a new wallet locally.</p>
 <ul>
 <li><p class="first"><strong>parameters</strong>:</p>
@@ -595,9 +517,9 @@ is_verbose: If ``False`` do not print. Default is ``True``.
 </dd></dl>
 
 <dl class="class">
-<dt id="core.cleos.WalletImport">
-<em class="property">class </em><code class="descclassname">core.cleos.</code><code class="descname">WalletImport</code><span class="sig-paren">(</span><em>key</em>, <em>wallet='default'</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#core.cleos.WalletImport" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">core.cleos._Cleos</span></code></p>
+<dt id="eosfactory.core.cleos.WalletImport">
+<em class="property">class </em><code class="descclassname">eosfactory.core.cleos.</code><code class="descname">WalletImport</code><span class="sig-paren">(</span><em>key</em>, <em>wallet='default'</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleos.WalletImport" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.cleos._Cleos</span></code></p>
 <p>Import a private key into wallet.</p>
 <ul>
 <li><p class="first"><strong>parameters</strong>:</p>
@@ -618,9 +540,9 @@ is_verbose: If ``False`` do not print. Default is ``True``.
 </dd></dl>
 
 <dl class="class">
-<dt id="core.cleos.WalletKeys">
-<em class="property">class </em><code class="descclassname">core.cleos.</code><code class="descname">WalletKeys</code><span class="sig-paren">(</span><em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#core.cleos.WalletKeys" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">core.cleos._Cleos</span></code></p>
+<dt id="eosfactory.core.cleos.WalletKeys">
+<em class="property">class </em><code class="descclassname">eosfactory.core.cleos.</code><code class="descname">WalletKeys</code><span class="sig-paren">(</span><em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleos.WalletKeys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.cleos._Cleos</span></code></p>
 <p>List of public keys from all unlocked wallets.</p>
 <ul>
 <li><p class="first"><strong>parameters</strong>:</p>
@@ -646,9 +568,9 @@ is_verbose: If ``False`` do not print. Default is ``True``.
 </dd></dl>
 
 <dl class="class">
-<dt id="core.cleos.WalletList">
-<em class="property">class </em><code class="descclassname">core.cleos.</code><code class="descname">WalletList</code><span class="sig-paren">(</span><em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#core.cleos.WalletList" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">core.cleos._Cleos</span></code></p>
+<dt id="eosfactory.core.cleos.WalletList">
+<em class="property">class </em><code class="descclassname">eosfactory.core.cleos.</code><code class="descname">WalletList</code><span class="sig-paren">(</span><em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleos.WalletList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.cleos._Cleos</span></code></p>
 <p>List opened wallets, * marks unlocked.</p>
 <ul>
 <li><p class="first"><strong>parameters</strong>:</p>
@@ -667,9 +589,9 @@ is_verbose: If ``False`` do not print. Default is ``True``.
 </dd></dl>
 
 <dl class="class">
-<dt id="core.cleos.WalletLock">
-<em class="property">class </em><code class="descclassname">core.cleos.</code><code class="descname">WalletLock</code><span class="sig-paren">(</span><em>wallet='default'</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#core.cleos.WalletLock" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">core.cleos._Cleos</span></code></p>
+<dt id="eosfactory.core.cleos.WalletLock">
+<em class="property">class </em><code class="descclassname">eosfactory.core.cleos.</code><code class="descname">WalletLock</code><span class="sig-paren">(</span><em>wallet='default'</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleos.WalletLock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.cleos._Cleos</span></code></p>
 <p>Lock wallet.</p>
 <ul>
 <li><p class="first"><strong>parameters</strong>:</p>
@@ -691,16 +613,16 @@ is_verbose: If ``False`` do not print. Default is ``True``.
 </dd></dl>
 
 <dl class="class">
-<dt id="core.cleos.WalletLockAll">
-<em class="property">class </em><code class="descclassname">core.cleos.</code><code class="descname">WalletLockAll</code><span class="sig-paren">(</span><em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#core.cleos.WalletLockAll" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">core.cleos._Cleos</span></code></p>
+<dt id="eosfactory.core.cleos.WalletLockAll">
+<em class="property">class </em><code class="descclassname">eosfactory.core.cleos.</code><code class="descname">WalletLockAll</code><span class="sig-paren">(</span><em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleos.WalletLockAll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.cleos._Cleos</span></code></p>
 <p>Lock all unlocked wallets.</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="core.cleos.WalletOpen">
-<em class="property">class </em><code class="descclassname">core.cleos.</code><code class="descname">WalletOpen</code><span class="sig-paren">(</span><em>wallet='default'</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#core.cleos.WalletOpen" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">core.cleos._Cleos</span></code></p>
+<dt id="eosfactory.core.cleos.WalletOpen">
+<em class="property">class </em><code class="descclassname">eosfactory.core.cleos.</code><code class="descname">WalletOpen</code><span class="sig-paren">(</span><em>wallet='default'</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleos.WalletOpen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.cleos._Cleos</span></code></p>
 <p>Open an existing wallet.</p>
 <ul>
 <li><p class="first"><strong>parameters</strong>:</p>
@@ -722,9 +644,9 @@ is_verbose: If ``False`` do not print. Default is ``True``.
 </dd></dl>
 
 <dl class="class">
-<dt id="core.cleos.WalletRemove_key">
-<em class="property">class </em><code class="descclassname">core.cleos.</code><code class="descname">WalletRemove_key</code><span class="sig-paren">(</span><em>key</em>, <em>wallet</em>, <em>password</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#core.cleos.WalletRemove_key" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">core.cleos._Cleos</span></code></p>
+<dt id="eosfactory.core.cleos.WalletRemove_key">
+<em class="property">class </em><code class="descclassname">eosfactory.core.cleos.</code><code class="descname">WalletRemove_key</code><span class="sig-paren">(</span><em>key</em>, <em>wallet</em>, <em>password</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleos.WalletRemove_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.cleos._Cleos</span></code></p>
 <p>Remove key from wallet
 - <strong>parameters</strong>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>wallet: A wallet object or the name of the wallet to import key into.
@@ -744,16 +666,16 @@ is_verbose: If ``False`` do not print. Default is ``True``.
 </dd></dl>
 
 <dl class="class">
-<dt id="core.cleos.WalletStop">
-<em class="property">class </em><code class="descclassname">core.cleos.</code><code class="descname">WalletStop</code><span class="sig-paren">(</span><em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#core.cleos.WalletStop" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">core.cleos._Cleos</span></code></p>
+<dt id="eosfactory.core.cleos.WalletStop">
+<em class="property">class </em><code class="descclassname">eosfactory.core.cleos.</code><code class="descname">WalletStop</code><span class="sig-paren">(</span><em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleos.WalletStop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.cleos._Cleos</span></code></p>
 <p>Stop keosd (doesn’t work with nodeos).</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="core.cleos.WalletUnlock">
-<em class="property">class </em><code class="descclassname">core.cleos.</code><code class="descname">WalletUnlock</code><span class="sig-paren">(</span><em>wallet='default'</em>, <em>password=''</em>, <em>timeout=0</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#core.cleos.WalletUnlock" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">core.cleos._Cleos</span></code></p>
+<dt id="eosfactory.core.cleos.WalletUnlock">
+<em class="property">class </em><code class="descclassname">eosfactory.core.cleos.</code><code class="descname">WalletUnlock</code><span class="sig-paren">(</span><em>wallet='default'</em>, <em>password=''</em>, <em>timeout=0</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleos.WalletUnlock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.cleos._Cleos</span></code></p>
 <p>Unlock wallet.</p>
 <ul>
 <li><p class="first"><strong>parameters</strong>:</p>
