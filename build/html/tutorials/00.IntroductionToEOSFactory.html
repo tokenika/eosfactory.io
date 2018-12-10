@@ -6,6 +6,7 @@
     <title>Introduction to EOSFactory &#8212; EOSFactory 0.0 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -26,7 +27,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Installing EOSFactory" href="01.InstallingEOSFactory.html" />
-    <link rel="prev" title="EOSFactory Release Notes - v2.2" href="../releases/ReleaseNotesVersion2.2.html" />
+    <link rel="prev" title="EOSFactory Release Notes - v2.3" href="../releases/ReleaseNotesVersion2.3.html" />
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
@@ -46,7 +47,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           EOSFactory</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -74,6 +75,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.0.html">EOSFactory Release Notes - v2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.1.html">EOSFactory Release Notes - v2.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.2.html">EOSFactory Release Notes - v2.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.3.html">EOSFactory Release Notes - v2.3</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction to <em>EOSFactory</em></a></li>
@@ -82,6 +84,14 @@
 <li class="toctree-l1"><a class="reference internal" href="03.BuildingAndDeployingEOSContractsInEOSFactory.html">Building and Deploying EOS Contracts using <em>EOSFactory</em></a></li>
 <li class="toctree-l1"><a class="reference internal" href="04.WorkingWithEOSContractsUsingEOSFactoryInVSC.html">Working with EOS Contracts using <em>EOSFactory</em> in <em>Visual Studio Code</em></a></li>
 <li class="toctree-l1"><a class="reference internal" href="05.InteractingWithPublicTestnet.html">Interacting with Public Testnet</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../patterns/README.html">Patterns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../patterns/BIOS_Boot_Sequence.html">BIOS Boot Sequence</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../patterns/set/set_account_permission.html">Set Account Permission?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../patterns/set/set_action_permission.html">Set Action Permission</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../roadmap/PlanForSubsequentEOSFactoryReleases.html">Plan for Subsequent EOSFactory Releases</a></li>
@@ -136,7 +146,7 @@
               
                 
   <li>
-    <a href="../releases/ReleaseNotesVersion2.2.html" title="Previous Chapter: EOSFactory Release Notes - v2.2"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; EOSFactory Re...</span>
+    <a href="../releases/ReleaseNotesVersion2.3.html" title="Previous Chapter: EOSFactory Release Notes - v2.3"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; EOSFactory Re...</span>
     </a>
   </li>
   <li>
@@ -178,22 +188,22 @@
 <span id="introduction-to-eosfactory"></span><h1>Introduction to <em>EOSFactory</em><a class="headerlink" href="#introduction-to-eosfactory" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://github.com/tokenika/eosfactory">EOSFactory</a> is a Python-based <a class="reference external" href="https://eos.io">EOS</a> smart-contract development &amp; testing framework, created by <a class="reference external" href="https://tokenika.io">TOKENIKA</a>.</p>
 <p>The goal is to achieve a similar functionality to Ethereum’s <a class="reference external" href="http://truffleframework.com/">Truffle Framework</a>.</p>
-<p>With a single command-line interface you can create a private testnet and then compile, unit-test and deploy EOS smart-contracts.</p>
+<p>With a single command-line interface you can create a private testnet and then compile, test and deploy EOS smart-contracts.</p>
 <p>All of this using simple yet powerful <a class="reference external" href="https://www.python.org/">Python3</a> syntax.</p>
 <div class="section" id="why-it-s-needed">
 <span id="why-it-s-needed"></span><h2>Why it’s needed?<a class="headerlink" href="#why-it-s-needed" title="Permalink to this headline">¶</a></h2>
-<p>Code development and unit-testing involve tasks that need to be executed hundreds of times, and each time in exactly the same way and exactly the same context. Therefore those tasks need to be fully automated, as otherwise a lot of time is being wasted and, what’s even worse, a lot of additional uncertainty is introduced. Manually performed actions are prone to errors.</p>
+<p>Code development and testing involve tasks that need to be executed hundreds of times, and each time in exactly the same way and exactly the same context. Therefore those tasks need to be fully automated, as otherwise a lot of time is being wasted and, what’s even worse, a lot of additional uncertainty is introduced. Manually performed actions are prone to errors.</p>
 <p>And this is what <em>EOSFactory</em> actually brings to the table: an easy &amp; intuitive way to automate the process of dealing with smart-contracts. Write down, in the form of a Python script, what needs to be done multiple times in exactly the same way and exactly the same context, and then just run the script. <em>EOSFactory</em> will take care of everything else: it will compile your smart-contract, create a new testnet, deploy the contract, invoke its methods and verify the response, then tear down the testnet, and finally report the results. And all of this done in a couple of seconds.</p>
 </div>
 <div class="section" id="main-features">
 <span id="main-features"></span><h2>Main features<a class="headerlink" href="#main-features" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="simple-syntax">
 <span id="simple-syntax"></span><h3>1. Simple syntax<a class="headerlink" href="#simple-syntax" title="Permalink to this headline">¶</a></h3>
-<p>The front-end of <em>EOSFactory</em> is simply a Python3 Command Line Interface. This way you can interact with EOS smart-contract, and prove it works as expected, without having to deal with the complexity of a low-level language like C++. In most cases Python’s syntax is clear for everyone.</p>
+<p>The front-end of <em>EOSFactory</em> is simply a Python3 Command Line Interface. This way you can interact with EOS smart-contract, and prove it works as expected, without having to deal with the complexity of a low-level language like C++. In most cases Python syntax is clear for everyone.</p>
 </div>
 <div class="section" id="real-testnet">
 <span id="real-testnet"></span><h3>2. Real testnet<a class="headerlink" href="#real-testnet" title="Permalink to this headline">¶</a></h3>
-<p>As EOS full node is very quick we don’t need to rely on a testnet simulator similar to <a class="reference external" href="https://github.com/trufflesuite/ganache-cli">TestRPC</a> in Ethereum. Instead, we can work with a real testnet (both local and remote) and this makes unit-tests much more reliable. Thus <em>EOSFactory</em> lets you fully test your smart-contract in a couple of seconds and do it over and over again without much hassle.</p>
+<p>As EOS full node is very quick we don’t need to rely on a testnet simulator similar to <a class="reference external" href="https://github.com/trufflesuite/ganache-cli">TestRPC</a> in Ethereum. Instead, we can work with a real testnet (both local and remote) and this makes testing much more reliable. Thus <em>EOSFactory</em> lets you fully test your smart-contract in a couple of seconds and do it over and over again without much hassle.</p>
 </div>
 <div class="section" id="truly-cross-platform">
 <span id="truly-cross-platform"></span><h3>3. Truly cross-platform<a class="headerlink" href="#truly-cross-platform" title="Permalink to this headline">¶</a></h3>

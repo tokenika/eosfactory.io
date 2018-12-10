@@ -6,6 +6,7 @@
     <title>core.manager &#8212; EOSFactory 0.0 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -46,7 +47,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           EOSFactory</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -74,6 +75,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.0.html">EOSFactory Release Notes - v2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.1.html">EOSFactory Release Notes - v2.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.2.html">EOSFactory Release Notes - v2.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.3.html">EOSFactory Release Notes - v2.3</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/00.IntroductionToEOSFactory.html">Introduction to <em>EOSFactory</em></a></li>
@@ -82,6 +84,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/03.BuildingAndDeployingEOSContractsInEOSFactory.html">Building and Deploying EOS Contracts using <em>EOSFactory</em></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/04.WorkingWithEOSContractsUsingEOSFactoryInVSC.html">Working with EOS Contracts using <em>EOSFactory</em> in <em>Visual Studio Code</em></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/05.InteractingWithPublicTestnet.html">Interacting with Public Testnet</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../patterns/README.html">Patterns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../patterns/BIOS_Boot_Sequence.html">BIOS Boot Sequence</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../patterns/set/set_account_permission.html">Set Account Permission?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../patterns/set/set_action_permission.html">Set Action Permission</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../roadmap/PlanForSubsequentEOSFactoryReleases.html">Plan for Subsequent EOSFactory Releases</a></li>
@@ -171,8 +181,8 @@
 <code class="descclassname">eosfactory.core.manager.</code><code class="descname">account_map</code><span class="sig-paren">(</span><em>logger=None</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.manager.account_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return json account map</p>
 <p>Attempt to open the account map file named <code class="docutils literal"><span class="pre">setup.account_map</span></code>, located 
-in the wallet directory <code class="docutils literal"><span class="pre">wallet_dir()</span></code>, to return its json contents. If the 
-file does not exist, return an empty json.</p>
+in the wallet directory <code class="docutils literal"><span class="pre">config.keosd_wallet_dir()</span></code>, to return its json 
+contents. If the file does not exist, return an empty json.</p>
 <p>If the file is corrupted, offer editing the file with the <code class="docutils literal"><span class="pre">nano</span></code> linux 
 editor. Return <code class="docutils literal"><span class="pre">None</span></code> if the the offer is rejected.</p>
 </dd></dl>
@@ -200,21 +210,21 @@ editor. Return <code class="docutils literal"><span class="pre">None</span></cod
 <code class="descclassname">eosfactory.core.manager.</code><code class="descname">read_map</code><span class="sig-paren">(</span><em>file_name</em>, <em>text_editor='nano'</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.manager.read_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return json account map</p>
 <p>Attempt to open the account map file named <code class="docutils literal"><span class="pre">setup.account_map</span></code>, located 
-in the wallet directory <code class="docutils literal"><span class="pre">wallet_dir()</span></code>, to return its json contents. If the 
-file does not exist, return an empty json.</p>
+in the wallet directory <code class="docutils literal"><span class="pre">config.keosd_wallet_dir()</span></code>, to return its json 
+contents. If the file does not exist, return an empty json.</p>
 <p>If the file is corrupted, offer editing the file with the <code class="docutils literal"><span class="pre">nano</span></code> linux 
 editor. Return <code class="docutils literal"><span class="pre">None</span></code> if the the offer is rejected.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="eosfactory.core.manager.reset">
-<code class="descclassname">eosfactory.core.manager.</code><code class="descname">reset</code><span class="sig-paren">(</span><em>verbosity=None</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.manager.reset" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">eosfactory.core.manager.</code><code class="descname">reset</code><span class="sig-paren">(</span><em>nodeos_stdout=None</em>, <em>verbosity=None</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.manager.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start clean the EOSIO local node.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="eosfactory.core.manager.resume">
-<code class="descclassname">eosfactory.core.manager.</code><code class="descname">resume</code><span class="sig-paren">(</span><em>verbosity=None</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.manager.resume" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">eosfactory.core.manager.</code><code class="descname">resume</code><span class="sig-paren">(</span><em>nodeos_stdout=None</em>, <em>verbosity=None</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.manager.resume" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resume the EOSIO local node.</p>
 </dd></dl>
 

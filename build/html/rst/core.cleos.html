@@ -6,6 +6,7 @@
     <title>core.cleos &#8212; EOSFactory 0.0 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -46,7 +47,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           EOSFactory</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -74,6 +75,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.0.html">EOSFactory Release Notes - v2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.1.html">EOSFactory Release Notes - v2.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.2.html">EOSFactory Release Notes - v2.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.3.html">EOSFactory Release Notes - v2.3</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/00.IntroductionToEOSFactory.html">Introduction to <em>EOSFactory</em></a></li>
@@ -82,6 +84,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/03.BuildingAndDeployingEOSContractsInEOSFactory.html">Building and Deploying EOS Contracts using <em>EOSFactory</em></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/04.WorkingWithEOSContractsUsingEOSFactoryInVSC.html">Working with EOS Contracts using <em>EOSFactory</em> in <em>Visual Studio Code</em></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/05.InteractingWithPublicTestnet.html">Interacting with Public Testnet</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../patterns/README.html">Patterns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../patterns/BIOS_Boot_Sequence.html">BIOS Boot Sequence</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../patterns/set/set_account_permission.html">Set Account Permission?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../patterns/set/set_action_permission.html">Set Action Permission</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../roadmap/PlanForSubsequentEOSFactoryReleases.html">Plan for Subsequent EOSFactory Releases</a></li>
@@ -168,20 +178,20 @@
 <span id="core-cleos"></span><h1>core.cleos<a class="headerlink" href="#module-eosfactory.core.cleos" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="eosfactory.core.cleos.CreateAccount">
-<em class="property">class </em><code class="descclassname">eosfactory.core.cleos.</code><code class="descname">CreateAccount</code><span class="sig-paren">(</span><em>creator</em>, <em>name</em>, <em>owner_key</em>, <em>active_key=None</em>, <em>permission=None</em>, <em>expiration_sec=30</em>, <em>skip_signature=0</em>, <em>dont_broadcast=0</em>, <em>forceUnique=0</em>, <em>max_cpu_usage=0</em>, <em>max_net_usage=0</em>, <em>ref_block=None</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleos.CreateAccount" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">eosfactory.core.cleos.</code><code class="descname">CreateAccount</code><span class="sig-paren">(</span><em>creator</em>, <em>name</em>, <em>owner_key</em>, <em>active_key=None</em>, <em>permission=None</em>, <em>expiration_sec=None</em>, <em>skip_signature=0</em>, <em>dont_broadcast=0</em>, <em>forceUnique=0</em>, <em>max_cpu_usage=0</em>, <em>max_net_usage=0</em>, <em>ref_block=None</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleos.CreateAccount" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="core.interface.html#eosfactory.core.interface.Account" title="eosfactory.core.interface.Account"><code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.interface.Account</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.cleos._Cleos</span></code></p>
 <p>Create an account, buy ram, stake for bandwidth for the account.</p>
 <ul>
 <li><p class="first"><strong>parameters</strong>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>creator: The name, of the account creating the new account. May be an 
-    object having the attribute `name`, like `CreateAccount`, 
-    or a string.
+    object having the attribute `name`, or a string.
 name: The name of the new account.
 owner_key: The owner public key for the new account.
 active_key: The active public key for the new account.
 
 permission: An account and permission level to authorize, as in 
-    &#39;account@permission&#39;. May be a `CreateAccount` or `Account` object
+    &#39;account@permission&#39;. May be an object having the attribute `name`, 
+    or a string.
 expiration: The time in seconds before a transaction expires, 
     defaults to 30s
 skip_sign: Specify if unlocked wallet keys should be used to sign 
@@ -214,7 +224,7 @@ ref_block: The reference block num or block id used for TAPOS
 
 <dl class="class">
 <dt id="eosfactory.core.cleos.CreateKey">
-<em class="property">class </em><code class="descclassname">eosfactory.core.cleos.</code><code class="descname">CreateKey</code><span class="sig-paren">(</span><em>key_name</em>, <em>key_public=''</em>, <em>key_private=''</em>, <em>r1=False</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleos.CreateKey" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">eosfactory.core.cleos.</code><code class="descname">CreateKey</code><span class="sig-paren">(</span><em>key_name=''</em>, <em>key_public=''</em>, <em>key_private=''</em>, <em>r1=False</em>, <em>is_verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleos.CreateKey" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="core.interface.html#eosfactory.core.interface.Key" title="eosfactory.core.interface.Key"><code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.interface.Key</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.cleos._Cleos</span></code></p>
 <p>Create a new keypair and print the public and private keys.</p>
 <ul>
@@ -306,7 +316,7 @@ is_verbose: If ``False``, Default is ``True``.
 <li><p class="first"><strong>parameters</strong>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>account: The name of an account whose code should be retrieved. 
     May be an object having the  May be an object having the attribute 
-    `name`, like `CreateAccount`, or a string.
+    `name`, or a string.
 code: The name of the file to save the contract .wast/wasm to.
 abi: The name of the file to save the contract .abi to.
 wasm: Save contract as wasm.
@@ -352,10 +362,9 @@ wasm: Save contract as wasm.
 <ul>
 <li><p class="first"><strong>parameters</strong>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>account: The name of the account that owns the table. May be 
-    an object having the  May be an object having the attribute 
-    `name`, like `CreateAccount`, or a string.
-scope: The scope within the account in which the table is found,
-    can be a `CreateAccount` or `Account` object, or a name.
+    an object having the attribute `name`, or a string.
+scope: The scope within the account in which the table is found. May be
+    an object having the attribute `name`, or a string.
 table: The name of the table as specified by the contract abi.
 binary: Return the value as BINARY rather than using abi to 
     interpret as JSON
@@ -404,20 +413,20 @@ is_verbose: If ``False`` do not print. Default is ``True``.
 
 <dl class="class">
 <dt id="eosfactory.core.cleos.PushAction">
-<em class="property">class </em><code class="descclassname">eosfactory.core.cleos.</code><code class="descname">PushAction</code><span class="sig-paren">(</span><em>account</em>, <em>action</em>, <em>data</em>, <em>permission=None</em>, <em>expiration_sec=30</em>, <em>skip_signature=0</em>, <em>dont_broadcast=0</em>, <em>forceUnique=0</em>, <em>max_cpu_usage=0</em>, <em>max_net_usage=0</em>, <em>ref_block=None</em>, <em>is_verbose=True</em>, <em>json=False</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleos.PushAction" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">eosfactory.core.cleos.</code><code class="descname">PushAction</code><span class="sig-paren">(</span><em>account</em>, <em>action</em>, <em>data</em>, <em>permission=None</em>, <em>expiration_sec=None</em>, <em>skip_signature=0</em>, <em>dont_broadcast=0</em>, <em>forceUnique=0</em>, <em>max_cpu_usage=0</em>, <em>max_net_usage=0</em>, <em>ref_block=None</em>, <em>is_verbose=True</em>, <em>json=False</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleos.PushAction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.cleos._Cleos</span></code></p>
-<p>Push a transaction with a single action</p>
+<p>Push a transaction with a single action.</p>
 <ul>
 <li><p class="first"><strong>parameters</strong>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>account: The account to publish a contract for.  May be an object 
-    having the  May be an object having the attribute `name`, like 
-    `CreateAccount`, or a string.
+    having the  May be an object having the attribute `name`, 
+    or a string.
 action: A JSON string or filename defining the action to execute on 
     the contract.
 data: The arguments to the contract.
-
 permission: An account and permission level to authorize, as in 
-    &#39;account@permission&#39;. May be a `CreateAccount` or `Account` object
+    &#39;account@permission&#39;. May be an object having the attribute `name`, 
+    or a string.
 expiration: The time in seconds before a transaction expires, 
     defaults to 30s
 skip_sign: Specify if unlocked wallet keys should be used to sign 
@@ -448,21 +457,22 @@ ref_block: The reference block num or block id used for TAPOS
 
 <dl class="class">
 <dt id="eosfactory.core.cleos.SetContract">
-<em class="property">class </em><code class="descclassname">eosfactory.core.cleos.</code><code class="descname">SetContract</code><span class="sig-paren">(</span><em>account</em>, <em>contract_dir</em>, <em>wasm_file=None</em>, <em>abi_file=None</em>, <em>permission=None</em>, <em>expiration_sec=30</em>, <em>skip_signature=0</em>, <em>dont_broadcast=0</em>, <em>forceUnique=0</em>, <em>max_cpu_usage=0</em>, <em>max_net_usage=0</em>, <em>ref_block=None</em>, <em>is_verbose=True</em>, <em>json=False</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleos.SetContract" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">eosfactory.core.cleos.</code><code class="descname">SetContract</code><span class="sig-paren">(</span><em>account</em>, <em>contract_dir</em>, <em>wasm_file=None</em>, <em>abi_file=None</em>, <em>permission=None</em>, <em>expiration_sec=None</em>, <em>skip_signature=0</em>, <em>dont_broadcast=0</em>, <em>forceUnique=0</em>, <em>max_cpu_usage=0</em>, <em>max_net_usage=0</em>, <em>ref_block=None</em>, <em>is_verbose=True</em>, <em>json=False</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleos.SetContract" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.cleos._Cleos</span></code></p>
 <p>Create or update the contract on an account.</p>
 <ul>
 <li><p class="first"><strong>parameters</strong>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>account: The account to publish a contract for. May be an object 
-    having the  May be an object having the attribute `name`, like 
-    `CreateAccount`, or a string.
+    having the  May be an object having the attribute `name`, 
+    or a string.
 contract_dir: The path containing the .wast and .abi. 
 wasm_file: The file containing the contract WASM relative 
     to contract_dir.
 abi_file: The ABI for the contract relative to contract-dir.
 
 permission: An account and permission level to authorize, as in 
-    &#39;account@permission&#39;. May be a `CreateAccount` or `Account` object
+    &#39;account@permission&#39;. May be an object having the attribute `name`, 
+    or a string.
 expiration: The time in seconds before a transaction expires, 
     defaults to 30s
 skip_sign: Specify if unlocked wallet keys should be used to sign 
@@ -596,8 +606,8 @@ is_verbose: If ``False`` do not print. Default is ``True``.
 <ul>
 <li><p class="first"><strong>parameters</strong>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>wallet: The name of the wallet to import key into. May be an object 
-    having the  May be an object having the attribute `name`, like 
-    `CreateAccount`, or a string. 
+    having the  May be an object having the attribute `name`, 
+    or a string. 
 is_verbose: If ``False`` do not print. Default is ``True``.
 </pre></div>
 </div>
@@ -627,8 +637,8 @@ is_verbose: If ``False`` do not print. Default is ``True``.
 <ul>
 <li><p class="first"><strong>parameters</strong>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>wallet: The name of the wallet to import key into. May be an object 
-    having the  May be an object having the attribute `name`, like 
-    `CreateAccount`, or a string. 
+    having the  May be an object having the attribute `name`, 
+    or a string. 
 is_verbose: If ``False`` do not print. Default is ``True``.
 </pre></div>
 </div>
@@ -680,8 +690,8 @@ is_verbose: If ``False`` do not print. Default is ``True``.
 <ul>
 <li><p class="first"><strong>parameters</strong>:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>wallet: The name of the wallet. May be an object 
-    having the  May be an object having the attribute `name`, 
-    like `CreateAccount`, or a string.
+    having the  May be an object having the attribute `name`,
+    or a string.
 password: If the wallet argument is not a wallet object, the password 
     returned by wallet create, else anything, defaults to &quot;&quot;.
 is_verbose: If ``False`` do not print. Default is ``True``.

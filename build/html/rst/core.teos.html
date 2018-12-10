@@ -6,6 +6,7 @@
     <title>core.teos &#8212; EOSFactory 0.0 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -46,7 +47,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           EOSFactory</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -74,6 +75,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.0.html">EOSFactory Release Notes - v2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.1.html">EOSFactory Release Notes - v2.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.2.html">EOSFactory Release Notes - v2.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.3.html">EOSFactory Release Notes - v2.3</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/00.IntroductionToEOSFactory.html">Introduction to <em>EOSFactory</em></a></li>
@@ -82,6 +84,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/03.BuildingAndDeployingEOSContractsInEOSFactory.html">Building and Deploying EOS Contracts using <em>EOSFactory</em></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/04.WorkingWithEOSContractsUsingEOSFactoryInVSC.html">Working with EOS Contracts using <em>EOSFactory</em> in <em>Visual Studio Code</em></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/05.InteractingWithPublicTestnet.html">Interacting with Public Testnet</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../patterns/README.html">Patterns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../patterns/BIOS_Boot_Sequence.html">BIOS Boot Sequence</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../patterns/set/set_account_permission.html">Set Account Permission?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../patterns/set/set_action_permission.html">Set Action Permission</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../roadmap/PlanForSubsequentEOSFactoryReleases.html">Plan for Subsequent EOSFactory Releases</a></li>
@@ -168,20 +178,14 @@
 <span id="core-teos"></span><h1>core.teos<a class="headerlink" href="#module-eosfactory.core.teos" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="eosfactory.core.teos.ABI">
-<code class="descclassname">eosfactory.core.teos.</code><code class="descname">ABI</code><span class="sig-paren">(</span><em>contract_dir_hint=None</em>, <em>code_name=None</em>, <em>include_dir=None</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.teos.ABI" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">eosfactory.core.teos.</code><code class="descname">ABI</code><span class="sig-paren">(</span><em>contract_dir_hint=None</em>, <em>c_cpp_properties_path=None</em>, <em>verbosity=None</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.teos.ABI" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given a hint to a contract directory, produce ABI file.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="eosfactory.core.teos.WAST">
-<code class="descclassname">eosfactory.core.teos.</code><code class="descname">WAST</code><span class="sig-paren">(</span><em>contract_dir_hint</em>, <em>code_name=None</em>, <em>include_dir=None</em>, <em>compile_only=False</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.teos.WAST" title="Permalink to this definition">¶</a></dt>
-<dd><p>Given a hint to a contract directory, produce WAST and WASM code.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="eosfactory.core.teos.get_keosd_wallet_dir">
-<code class="descclassname">eosfactory.core.teos.</code><code class="descname">get_keosd_wallet_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.teos.get_keosd_wallet_dir" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the directory of the <cite>nodeos</cite> local wallet.</p>
+<code class="descclassname">eosfactory.core.teos.</code><code class="descname">WAST</code><span class="sig-paren">(</span><em>contract_dir_hint</em>, <em>c_cpp_properties_path=None</em>, <em>compile_only=False</em>, <em>verbosity=None</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.teos.WAST" title="Permalink to this definition">¶</a></dt>
+<dd><p>Produce WASM code.</p>
 </dd></dl>
 
 <dl class="function">
@@ -199,9 +203,23 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="eosfactory.core.teos.template_create">
-<code class="descclassname">eosfactory.core.teos.</code><code class="descname">template_create</code><span class="sig-paren">(</span><em>project_name</em>, <em>template_dir=None</em>, <em>workspace_dir=None</em>, <em>remove_existing=False</em>, <em>open_vscode=False</em>, <em>throw_exists=False</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.teos.template_create" title="Permalink to this definition">¶</a></dt>
+<dt id="eosfactory.core.teos.project_from_template">
+<code class="descclassname">eosfactory.core.teos.</code><code class="descname">project_from_template</code><span class="sig-paren">(</span><em>project_name</em>, <em>template=None</em>, <em>workspace_dir=None</em>, <em>c_cpp_prop_path=None</em>, <em>remove_existing=False</em>, <em>open_vscode=False</em>, <em>throw_exists=False</em>, <em>verbosity=None</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.teos.project_from_template" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given the project name and template name, create a smart contract project.</p>
+<ul>
+<li><p class="first"><strong>parameters</strong>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>project_name: The name of the project, or an existing path to 
+    a directory.
+template: The name of the template used.
+workspace_dir: If set, the folder for the work-space. Defaults to the 
+    value returned by the config.contract_workspace() function.
+remove_existing: If set, overwrite any existing project.
+visual_studio_code: If set, open the ``VSCode``, if available.
+verbosity: The logging configuration.
+</pre></div>
+</div>
+</li>
+</ul>
 </dd></dl>
 
 </div>

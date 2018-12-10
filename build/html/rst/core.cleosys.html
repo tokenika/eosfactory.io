@@ -6,6 +6,7 @@
     <title>core.cleosys &#8212; EOSFactory 0.0 documentation</title>
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -46,7 +47,7 @@
         </button>
         <a class="navbar-brand" href="../index.html">
           EOSFactory</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.2</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>v2.3</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -74,6 +75,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.0.html">EOSFactory Release Notes - v2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.1.html">EOSFactory Release Notes - v2.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.2.html">EOSFactory Release Notes - v2.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.3.html">EOSFactory Release Notes - v2.3</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/00.IntroductionToEOSFactory.html">Introduction to <em>EOSFactory</em></a></li>
@@ -82,6 +84,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/03.BuildingAndDeployingEOSContractsInEOSFactory.html">Building and Deploying EOS Contracts using <em>EOSFactory</em></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/04.WorkingWithEOSContractsUsingEOSFactoryInVSC.html">Working with EOS Contracts using <em>EOSFactory</em> in <em>Visual Studio Code</em></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/05.InteractingWithPublicTestnet.html">Interacting with Public Testnet</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../patterns/README.html">Patterns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../patterns/BIOS_Boot_Sequence.html">BIOS Boot Sequence</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../patterns/set/set_account_permission.html">Set Account Permission?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../patterns/set/set_action_permission.html">Set Action Permission</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../roadmap/PlanForSubsequentEOSFactoryReleases.html">Plan for Subsequent EOSFactory Releases</a></li>
@@ -168,7 +178,7 @@
 <span id="core-cleosys"></span><h1>core.cleosys<a class="headerlink" href="#module-eosfactory.core.cleosys" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="eosfactory.core.cleosys.BuyRam">
-<em class="property">class </em><code class="descclassname">eosfactory.core.cleosys.</code><code class="descname">BuyRam</code><span class="sig-paren">(</span><em>payer</em>, <em>receiver</em>, <em>amount</em>, <em>buy_ram_kbytes=0</em>, <em>expiration_sec=30</em>, <em>skip_signature=0</em>, <em>dont_broadcast=0</em>, <em>forceUnique=0</em>, <em>max_cpu_usage=0</em>, <em>max_net_usage=0</em>, <em>ref_block=None</em>, <em>is_verbose=1</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleosys.BuyRam" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">eosfactory.core.cleosys.</code><code class="descname">BuyRam</code><span class="sig-paren">(</span><em>payer</em>, <em>receiver</em>, <em>amount</em>, <em>buy_ram_kbytes=0</em>, <em>expiration_sec=None</em>, <em>skip_signature=0</em>, <em>dont_broadcast=0</em>, <em>forceUnique=0</em>, <em>max_cpu_usage=0</em>, <em>max_net_usage=0</em>, <em>ref_block=None</em>, <em>is_verbose=1</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleosys.BuyRam" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.cleos._Cleos</span></code></p>
 <p>Buy RAM.</p>
 <ul>
@@ -208,7 +218,7 @@
 
 <dl class="class">
 <dt id="eosfactory.core.cleosys.DelegateBw">
-<em class="property">class </em><code class="descclassname">eosfactory.core.cleosys.</code><code class="descname">DelegateBw</code><span class="sig-paren">(</span><em>payer</em>, <em>receiver</em>, <em>stake_net_quantity</em>, <em>stake_cpu_quantity</em>, <em>permission=None</em>, <em>transfer=False</em>, <em>expiration_sec=30</em>, <em>skip_signature=0</em>, <em>dont_broadcast=0</em>, <em>forceUnique=0</em>, <em>max_cpu_usage=0</em>, <em>max_net_usage=0</em>, <em>ref_block=None</em>, <em>is_verbose=1</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleosys.DelegateBw" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">eosfactory.core.cleosys.</code><code class="descname">DelegateBw</code><span class="sig-paren">(</span><em>payer</em>, <em>receiver</em>, <em>stake_net_quantity</em>, <em>stake_cpu_quantity</em>, <em>permission=None</em>, <em>transfer=False</em>, <em>expiration_sec=None</em>, <em>skip_signature=0</em>, <em>dont_broadcast=0</em>, <em>forceUnique=0</em>, <em>max_cpu_usage=0</em>, <em>max_net_usage=0</em>, <em>ref_block=None</em>, <em>is_verbose=1</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleosys.DelegateBw" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.cleos._Cleos</span></code></p>
 <p>Delegate bandwidth.</p>
 <ul>
@@ -242,7 +252,7 @@
 
 <dl class="class">
 <dt id="eosfactory.core.cleosys.SystemNewaccount">
-<em class="property">class </em><code class="descclassname">eosfactory.core.cleosys.</code><code class="descname">SystemNewaccount</code><span class="sig-paren">(</span><em>creator</em>, <em>name</em>, <em>owner_key</em>, <em>active_key</em>, <em>stake_net</em>, <em>stake_cpu</em>, <em>permission=None</em>, <em>buy_ram_kbytes=0</em>, <em>buy_ram=''</em>, <em>transfer=False</em>, <em>expiration_sec=30</em>, <em>skip_signature=0</em>, <em>dont_broadcast=0</em>, <em>forceUnique=0</em>, <em>max_cpu_usage=0</em>, <em>max_net_usage=0</em>, <em>ref_block=None</em>, <em>is_verbose=1</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleosys.SystemNewaccount" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">eosfactory.core.cleosys.</code><code class="descname">SystemNewaccount</code><span class="sig-paren">(</span><em>creator</em>, <em>name</em>, <em>owner_key</em>, <em>active_key</em>, <em>stake_net</em>, <em>stake_cpu</em>, <em>permission=None</em>, <em>buy_ram_kbytes=0</em>, <em>buy_ram=''</em>, <em>transfer=False</em>, <em>expiration_sec=None</em>, <em>skip_signature=0</em>, <em>dont_broadcast=0</em>, <em>forceUnique=0</em>, <em>max_cpu_usage=0</em>, <em>max_net_usage=0</em>, <em>ref_block=None</em>, <em>is_verbose=1</em><span class="sig-paren">)</span><a class="headerlink" href="#eosfactory.core.cleosys.SystemNewaccount" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="core.interface.html#eosfactory.core.interface.Account" title="eosfactory.core.interface.Account"><code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.interface.Account</span></code></a>, <code class="xref py py-class docutils literal"><span class="pre">eosfactory.core.cleos._Cleos</span></code></p>
 <p>Create an account, buy ram, stake for bandwidth for the account.</p>
 <ul>

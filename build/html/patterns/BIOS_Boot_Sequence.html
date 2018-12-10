@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>BIOS Boot Sequence &#8212; EOSFactory 0.0 documentation</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Set Account Permission" href="set/set_account_permission.html" />
+    <link rel="prev" title="Patterns" href="README.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          EOSFactory</a>
+        <span class="navbar-text navbar-version pull-left"><b>v2.3</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../cases/02_wallet/case.html">Wallet Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cases/03_symbolic_names/case.html">Symbolic Names</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cases/04_account/case.html">Account Class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cases/05_master_account/case.html">Master Account</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion0.8.html">EOSFactory Release Notes - v0.8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion1.0.html">EOSFactory Release Notes - v1.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion1.1.html">EOSFactory Release Notes - v1.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.0.html">EOSFactory Release Notes - v2.0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.1.html">EOSFactory Release Notes - v2.1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.2.html">EOSFactory Release Notes - v2.2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../releases/ReleaseNotesVersion2.3.html">EOSFactory Release Notes - v2.3</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/00.IntroductionToEOSFactory.html">Introduction to <em>EOSFactory</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/01.InstallingEOSFactory.html">Installing <em>EOSFactory</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/02.InteractingWithEOSContractsInEOSFactory.html">Interacting with EOS Contracts in <em>EOSFactory</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/03.BuildingAndDeployingEOSContractsInEOSFactory.html">Building and Deploying EOS Contracts using <em>EOSFactory</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/04.WorkingWithEOSContractsUsingEOSFactoryInVSC.html">Working with EOS Contracts using <em>EOSFactory</em> in <em>Visual Studio Code</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/05.InteractingWithPublicTestnet.html">Interacting with Public Testnet</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="README.html">Patterns</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">BIOS Boot Sequence</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="set/set_account_permission.html">Set Account Permission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="set/set_action_permission.html">Set Action Permission</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap/PlanForSubsequentEOSFactoryReleases.html">Plan for Subsequent EOSFactory Releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap/LongTermEOSFactoryRoadmap.html">Long-term EOSFactory Roadmap</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.cleos.html">core.cleos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.cleosys.html">core.cleosys</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.config.html">core.config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.errors.html">core.errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.interface.html">core.interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.logger.html">core.logger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.manager.html">core.manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.setup.html">core.setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.teos.html">core.teos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.testnet.html">core.testnet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/core.utils.html">core.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.account.html">shell.account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.contract.html">shell.contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/shell.wallet.html">shell.wallet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rst/eosf.html">eosf</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">BIOS Boot Sequence</a><ul>
+<li><a class="reference internal" href="#step-0-the-system-contracts">Step 0 The system contracts</a></li>
+<li><a class="reference internal" href="#steps-1-2-setup">Steps 1 - 2 Setup</a></li>
+<li><a class="reference internal" href="#step-3-create-important-system-accounts">Step 3: Create important system accounts</a></li>
+<li><a class="reference internal" href="#step-4-install-the-eosio-token-contract">Step 4: Install the eosio.token contract</a></li>
+<li><a class="reference internal" href="#step-5-set-the-eosio-msig-contract">Step 5: Set the eosio.msig contract</a></li>
+<li><a class="reference internal" href="#step-6-create-and-allocate-the-sys-currency">Step 6: Create and allocate the SYS currency</a></li>
+<li><a class="reference internal" href="#step-7-set-the-eosio-system-contract">Step 7: Set the eosio.system contract</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="README.html" title="Previous Chapter: Patterns"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Patterns</span>
+    </a>
+  </li>
+  <li>
+    <a href="set/set_account_permission.html" title="Next Chapter: Set Account Permission"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Set Account P... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../_sources/patterns/BIOS_Boot_Sequence.md.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="bios-boot-sequence">
+<span id="bios-boot-sequence"></span><h1>BIOS Boot Sequence<a class="headerlink" href="#bios-boot-sequence" title="Permalink to this headline">¶</a></h1>
+<p>This article follows a <a class="reference external" href="https://developers.eos.io/eosio-nodeos/docs/bios-boot-sequence">document</a> from eosio archives.</p>
+<p><strong>NOTE</strong>: The Python code listed below is executable, as explained <a class="reference external" href="../README.html">here</a>.</p>
+<div class="section" id="step-0-the-system-contracts">
+<span id="step-0-the-system-contracts"></span><h2>Step 0 The system contracts<a class="headerlink" href="#step-0-the-system-contracts" title="Permalink to this headline">¶</a></h2>
+<p>Execution of the presented code depends on definitions given in <a class="reference external" href="https://github.com/EOSIO/eosio.contracts">eosio.contracts repository</a>, hence, if running the code, as explained <a class="reference external" href="./README.html">here</a> for the first time, you will be asked for the root directory of the repository (build).</p>
+<p>The following chunk of code serves the prompt.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">eosfactory.core.utils</span> <span class="kn">as</span> <span class="nn">utils</span>
+<span class="kn">from</span> <span class="nn">eosfactory.eosf</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="kn">from</span> <span class="nn">termcolor</span> <span class="kn">import</span> <span class="n">colored</span>
+
+<span class="kn">import</span> <span class="nn">eosfactory.core.config</span> <span class="kn">as</span> <span class="nn">config</span>
+
+<span class="n">contract_dir</span> <span class="o">=</span> <span class="bp">None</span>
+
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="nb">map</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">config_map</span><span class="p">()</span>
+    <span class="n">eosio_contracts_dir</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">EOSIO_CONTRACTS</span> <span class="o">=</span> <span class="s2">&quot;EOSIO_CONTRACTS&quot;</span>
+    <span class="n">prompt_color</span> <span class="o">=</span> <span class="s2">&quot;green&quot;</span>
+    <span class="n">error_path_color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span>
+    <span class="n">eosio_bios</span> <span class="o">=</span> <span class="s2">&quot;build/eosio.bios&quot;</span>
+
+    <span class="k">def</span> <span class="nf">ok</span><span class="p">():</span>
+        <span class="n">is_ok</span> <span class="o">=</span> <span class="n">eosio_contracts_dir</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span>
+                    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">eosio_contracts_dir</span><span class="p">,</span> <span class="n">eosio_bios</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">is_ok</span><span class="p">:</span>
+            <span class="k">global</span> <span class="n">contract_dir</span>
+            <span class="n">contract_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">eosio_contracts_dir</span><span class="p">,</span> <span class="s2">&quot;build&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">is_ok</span>
+
+    <span class="k">if</span> <span class="n">EOSIO_CONTRACTS</span> <span class="ow">in</span> <span class="nb">map</span><span class="p">:</span>
+        <span class="n">eosio_contracts_dir</span> <span class="o">=</span> <span class="nb">map</span><span class="p">[</span><span class="n">EOSIO_CONTRACTS</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">ok</span><span class="p">():</span>
+            <span class="k">break</span>
+
+    <span class="n">eosio_contracts_dir</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="n">colored</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">heredoc</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">        Where is &#39;eosio.contracts` repository located on your machine?</span>
+<span class="s1">        Input an existing directory path:</span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">prompt_color</span><span class="p">))</span>
+
+    <span class="n">eosio_contracts_dir</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;~&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()))</span>
+
+    <span class="k">if</span> <span class="n">ok</span><span class="p">():</span>
+        <span class="nb">map</span><span class="p">[</span><span class="n">EOSIO_CONTRACTS</span><span class="p">]</span> <span class="o">=</span> <span class="n">eosio_contracts_dir</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">write_config_map</span><span class="p">(</span><span class="nb">map</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">()</span>
+        <span class="k">break</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">utils</span><span class="o">.</span><span class="n">heredoc</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">    The path you entered:</span>
+<span class="s1">    {}</span>
+<span class="s1">    doesn&#39;t seem to be correct!</span>
+<span class="s1">    directory --</span>
+<span class="s1">    {} </span>
+<span class="s1">    -- does not exist.</span>
+<span class="s1">    &#39;&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">colored</span><span class="p">(</span><span class="n">eosio_contracts_dir</span><span class="p">,</span> <span class="n">error_path_color</span><span class="p">),</span>
+        <span class="n">colored</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">eosio_contracts_dir</span><span class="p">,</span> <span class="n">eosio_bios</span><span class="p">),</span> <span class="n">error_path_color</span><span class="p">)</span>
+        <span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="steps-1-2-setup">
+<span id="steps-1-2-setup"></span><h2>Steps 1 - 2 Setup<a class="headerlink" href="#steps-1-2-setup" title="Permalink to this headline">¶</a></h2>
+<p>Start nodeos, create a wallet.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">reset</span><span class="p">()</span>
+
+<span class="n">create_master_account</span><span class="p">(</span><span class="s2">&quot;eosio&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-3-create-important-system-accounts">
+<span id="step-3-create-important-system-accounts"></span><h2>Step 3: Create important system accounts<a class="headerlink" href="#step-3-create-important-system-accounts" title="Permalink to this headline">¶</a></h2>
+<p>There are several system accounts that are needed. They are created with a third argument of the <code class="docutils literal"><span class="pre">create_account</span></code> factory function, in order to force the names of the new accounts.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">COMMENT</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;Create important system accounts&#39;&#39;&#39;</span><span class="p">)</span>
+
+<span class="n">create_account</span><span class="p">(</span><span class="s2">&quot;eosio_bpay&quot;</span><span class="p">,</span> <span class="n">eosio</span><span class="p">,</span> <span class="s2">&quot;eosio.bpay&quot;</span><span class="p">)</span>
+<span class="n">create_account</span><span class="p">(</span><span class="s2">&quot;eosio_msig&quot;</span><span class="p">,</span> <span class="n">eosio</span><span class="p">,</span> <span class="s2">&quot;eosio.msig&quot;</span><span class="p">)</span>
+<span class="n">create_account</span><span class="p">(</span><span class="s2">&quot;eosio_names&quot;</span><span class="p">,</span> <span class="n">eosio</span><span class="p">,</span> <span class="s2">&quot;eosio.names&quot;</span><span class="p">)</span>
+<span class="n">create_account</span><span class="p">(</span><span class="s2">&quot;eosio_ram&quot;</span><span class="p">,</span> <span class="n">eosio</span><span class="p">,</span> <span class="s2">&quot;eosio.ram&quot;</span><span class="p">)</span>
+<span class="n">create_account</span><span class="p">(</span><span class="s2">&quot;eosio_ramfee&quot;</span><span class="p">,</span> <span class="n">eosio</span><span class="p">,</span> <span class="s2">&quot;eosio.ramfee&quot;</span><span class="p">)</span>
+<span class="n">create_account</span><span class="p">(</span><span class="s2">&quot;eosio_saving&quot;</span><span class="p">,</span> <span class="n">eosio</span><span class="p">,</span> <span class="s2">&quot;eosio.saving&quot;</span><span class="p">)</span>
+<span class="n">create_account</span><span class="p">(</span><span class="s2">&quot;eosio_stake&quot;</span><span class="p">,</span> <span class="n">eosio</span><span class="p">,</span> <span class="s2">&quot;eosio.stake&quot;</span><span class="p">)</span>
+<span class="n">create_account</span><span class="p">(</span><span class="s2">&quot;eosio_token&quot;</span><span class="p">,</span> <span class="n">eosio</span><span class="p">,</span> <span class="s2">&quot;eosio.token&quot;</span><span class="p">)</span>
+<span class="n">create_account</span><span class="p">(</span><span class="s2">&quot;eosio_vpay&quot;</span><span class="p">,</span> <span class="n">eosio</span><span class="p">,</span> <span class="s2">&quot;eosio.vpay&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-4-install-the-eosio-token-contract">
+<span id="step-4-install-the-eosio-token-contract"></span><h2>Step 4: Install the eosio.token contract<a class="headerlink" href="#step-4-install-the-eosio-token-contract" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">eosio.token</span></code> contract enables you to create, issue, transfer, and get information about tokens.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">COMMENT</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;Install the eosio.token contract&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="n">contract</span> <span class="o">=</span> <span class="s2">&quot;eosio.token&quot;</span>
+<span class="n">Contract</span><span class="p">(</span>
+    <span class="n">contract</span><span class="p">,</span> 
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">contract_dir</span><span class="p">,</span> <span class="n">contract</span><span class="p">),</span>
+    <span class="n">contract</span> <span class="o">+</span> <span class="s2">&quot;.abi&quot;</span><span class="p">,</span>
+    <span class="n">contract</span> <span class="o">+</span> <span class="s2">&quot;.wasm&quot;</span>    
+    <span class="p">)</span><span class="o">.</span><span class="n">deploy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-5-set-the-eosio-msig-contract">
+<span id="step-5-set-the-eosio-msig-contract"></span><h2>Step 5: Set the eosio.msig contract<a class="headerlink" href="#step-5-set-the-eosio-msig-contract" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">eosio.msig</span></code> contract enables and simplifies defining and managing permission levels and performing multi-signature actions.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">COMMENT</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;Set the eosio.msig contract&#39;&#39;&#39;</span><span class="p">)</span>
+
+<span class="n">contract</span> <span class="o">=</span> <span class="s2">&quot;eosio.msig&quot;</span>
+<span class="n">Contract</span><span class="p">(</span>
+    <span class="n">contract</span><span class="p">,</span> 
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">contract_dir</span><span class="p">,</span> <span class="n">contract</span><span class="p">),</span>
+    <span class="n">contract</span> <span class="o">+</span> <span class="s2">&quot;.abi&quot;</span><span class="p">,</span>
+    <span class="n">contract</span> <span class="o">+</span> <span class="s2">&quot;.wasm&quot;</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">deploy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-6-create-and-allocate-the-sys-currency">
+<span id="step-6-create-and-allocate-the-sys-currency"></span><h2>Step 6: Create and allocate the SYS currency<a class="headerlink" href="#step-6-create-and-allocate-the-sys-currency" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">COMMENT</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;Create and allocate the SYS currency&#39;&#39;&#39;</span><span class="p">)</span>
+
+<span class="n">eosio_token</span><span class="o">.</span><span class="n">push_action</span><span class="p">(</span>
+    <span class="s2">&quot;create&quot;</span><span class="p">,</span>
+    <span class="p">[</span><span class="n">eosio</span><span class="p">,</span> <span class="s2">&quot;10000000000.0000 SYS&quot;</span><span class="p">],</span>
+    <span class="p">(</span><span class="n">eosio_token</span><span class="p">,</span> <span class="n">Permission</span><span class="o">.</span><span class="n">ACTIVE</span><span class="p">))</span>
+
+<span class="n">eosio_token</span><span class="o">.</span><span class="n">push_action</span><span class="p">(</span>
+    <span class="s2">&quot;issue&quot;</span><span class="p">,</span>
+    <span class="p">[</span><span class="n">eosio</span><span class="p">,</span> <span class="s2">&quot;1000000000.0000 SYS&quot;</span><span class="p">,</span> <span class="s2">&quot;memo&quot;</span><span class="p">],</span>
+    <span class="p">(</span><span class="n">eosio</span><span class="p">,</span> <span class="n">Permission</span><span class="o">.</span><span class="n">ACTIVE</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>In the first step above, the create action from the eosio.token contract, authorized by the eosio.token account, creates 10B SYS tokens in the eosio account. This effectively creates the maximum supply of tokens, but does not put any tokens into circulation. Tokens not in circulation can be considered to be held in reserve.</p>
+<p>In the second step, the eosio.token contract’s issue action takes 1B SYS tokens out of reserve and puts them into circulation. At the time of issue, the tokens are held within the eosio account. Since the eosio account owns the reserve of uncirculated tokens, its authority is required to do the action.</p>
+<p>As a point of interest, from an economic point of view, moving token from reserve into circulation, such as by issuing tokens, is an inflationary action. Issuing tokens is just one way that inflation can occur.</p>
+</div>
+<div class="section" id="step-7-set-the-eosio-system-contract">
+<span id="step-7-set-the-eosio-system-contract"></span><h2>Step 7: Set the eosio.system contract<a class="headerlink" href="#step-7-set-the-eosio-system-contract" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">eosio.system</span></code> contract provides the actions for pretty much all token-based operational behavior. Prior to installing the system contract, actions are done independent of accounting. Once the system contract is enabled, <strong>actions now have an economic element to them</strong>. Resources (cpu, network, memory) must be paid for. Likewise, new accounts must be paid for. The system contract enables tokens to be staked and unstaked, resources to be purchased, potential producers to be registered and subsequently voted on, producer rewards to be claimed, privileges and limits to be set, and more.</p>
+<p>Therefore, with the <code class="docutils literal"><span class="pre">eosio.system</span></code> contract, all the simple tests in the EOSFactory distribution, using the simple signature of the <code class="docutils literal"><span class="pre">create_account</span></code> account factory function, will fail.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">COMMENT</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;Set the eosio.system contract&#39;&#39;&#39;</span><span class="p">)</span>
+
+<span class="n">contract</span> <span class="o">=</span> <span class="s2">&quot;eosio.system&quot;</span>
+<span class="n">Contract</span><span class="p">(</span>
+    <span class="n">eosio</span><span class="p">,</span> 
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">contract_dir</span><span class="p">,</span> <span class="n">contract</span><span class="p">),</span>
+    <span class="n">contract</span> <span class="o">+</span> <span class="s2">&quot;.abi&quot;</span><span class="p">,</span>
+    <span class="n">contract</span> <span class="o">+</span> <span class="s2">&quot;.wasm&quot;</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">deploy</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">stop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2018, Tokenika.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
