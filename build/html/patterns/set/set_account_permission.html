@@ -1,208 +1,74 @@
-<!DOCTYPE html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Set Account Permission &#8212; EOSFactory 0.0 documentation</title>
-    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <title>Set Account Permission &#8212; EOSFactory 2.4 documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '0.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Set Action Permission" href="set_action_permission.html" />
-    <link rel="prev" title="BIOS Boot Sequence" href="../BIOS_Boot_Sequence.html" />
-<meta charset='utf-8'>
-<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
-<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
-<meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="prev" title="BIOS Boot Sequence" href="../BIOS_Boot_Sequence.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="set_action_permission.html" title="Set Action Permission"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../BIOS_Boot_Sequence.html" title="BIOS Boot Sequence"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">EOSFactory 2.4 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
 
-  </head>
-  <body>
-
-  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      <div class="navbar-header">
-        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="../../index.html">
-          EOSFactory</a>
-        <span class="navbar-text navbar-version pull-left"><b>v2.3</b></span>
-      </div>
-
-        <div class="collapse navbar-collapse nav-collapse">
-          <ul class="nav navbar-nav">
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
             
-            
-              <li class="dropdown globaltoc-container">
-  <a role="button"
-     id="dLabelGlobalToc"
-     data-toggle="dropdown"
-     data-target="#"
-     href="../../index.html">Site <b class="caret"></b></a>
-  <ul class="dropdown-menu globaltoc"
-      role="menu"
-      aria-labelledby="dLabelGlobalToc"><ul>
-<li class="toctree-l1"><a class="reference internal" href="../../cases/02_wallet/case.html">Wallet Class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../cases/03_symbolic_names/case.html">Symbolic Names</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../cases/04_account/case.html">Account Class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../cases/05_master_account/case.html">Master Account</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../releases/ReleaseNotesVersion0.8.html">EOSFactory Release Notes - v0.8</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../releases/ReleaseNotesVersion1.0.html">EOSFactory Release Notes - v1.0</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../releases/ReleaseNotesVersion1.1.html">EOSFactory Release Notes - v1.1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../releases/ReleaseNotesVersion2.0.html">EOSFactory Release Notes - v2.0</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../releases/ReleaseNotesVersion2.1.html">EOSFactory Release Notes - v2.1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../releases/ReleaseNotesVersion2.2.html">EOSFactory Release Notes - v2.2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../releases/ReleaseNotesVersion2.3.html">EOSFactory Release Notes - v2.3</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/00.IntroductionToEOSFactory.html">Introduction to <em>EOSFactory</em></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/01.InstallingEOSFactory.html">Installing <em>EOSFactory</em></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/02.InteractingWithEOSContractsInEOSFactory.html">Interacting with EOS Contracts in <em>EOSFactory</em></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/03.BuildingAndDeployingEOSContractsInEOSFactory.html">Building and Deploying EOS Contracts using <em>EOSFactory</em></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/04.WorkingWithEOSContractsUsingEOSFactoryInVSC.html">Working with EOS Contracts using <em>EOSFactory</em> in <em>Visual Studio Code</em></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorials/05.InteractingWithPublicTestnet.html">Interacting with Public Testnet</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../README.html">Patterns</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../BIOS_Boot_Sequence.html">BIOS Boot Sequence</a></li>
-</ul>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Set Account Permission</a></li>
-<li class="toctree-l1"><a class="reference internal" href="set_action_permission.html">Set Action Permission</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../roadmap/PlanForSubsequentEOSFactoryReleases.html">Plan for Subsequent EOSFactory Releases</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../roadmap/LongTermEOSFactoryRoadmap.html">Long-term EOSFactory Roadmap</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../rst/core.cleos.html">core.cleos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../rst/core.cleosys.html">core.cleosys</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../rst/core.config.html">core.config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../rst/core.errors.html">core.errors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../rst/core.interface.html">core.interface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../rst/core.logger.html">core.logger</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../rst/core.manager.html">core.manager</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../rst/core.setup.html">core.setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../rst/core.teos.html">core.teos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../rst/core.testnet.html">core.testnet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../rst/core.utils.html">core.utils</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../rst/shell.account.html">shell.account</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../rst/shell.contract.html">shell.contract</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../rst/shell.wallet.html">shell.wallet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../rst/eosf.html">eosf</a></li>
-</ul>
-</ul>
-</li>
-              
-                <li class="dropdown">
-  <a role="button"
-     id="dLabelLocalToc"
-     data-toggle="dropdown"
-     data-target="#"
-     href="#">Page <b class="caret"></b></a>
-  <ul class="dropdown-menu localtoc"
-      role="menu"
-      aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Set Account Permission</a><ul>
-<li><a class="reference internal" href="#set-new-key-to-a-permission">Set new key to a permission</a></li>
-<li><a class="reference internal" href="#set-an-account-instead-of-a-key-as-authority-for-a-permission">Set an account (instead of a key) as authority for a permission</a></li>
-<li><a class="reference internal" href="#weights-and-threshold">Weights and Threshold</a></li>
-<li><a class="reference internal" href="#set-two-weighted-keys">Set two-weighted keys</a></li>
-</ul>
-</li>
-</ul>
-</ul>
-</li>
-              
-            
-            
-              
-                
-  <li>
-    <a href="../BIOS_Boot_Sequence.html" title="Previous Chapter: BIOS Boot Sequence"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; BIOS Boot Sequence</span>
-    </a>
-  </li>
-  <li>
-    <a href="set_action_permission.html" title="Next Chapter: Set Action Permission"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Set Action Permission &raquo;</span>
-    </a>
-  </li>
-              
-            
-            
-            
-            
-              <li class="hidden-sm">
-<div id="sourcelink">
-  <a href="../../_sources/patterns/set/set_account_permission.md.txt"
-     rel="nofollow">Source</a>
-</div></li>
-            
-          </ul>
-
-          
-            
-<form class="navbar-form navbar-right" action="../../search.html" method="get">
- <div class="form-group">
-  <input type="text" name="q" class="form-control" placeholder="Search" />
- </div>
-  <input type="hidden" name="check_keywords" value="yes" />
-  <input type="hidden" name="area" value="default" />
-</form>
-          
-        </div>
-    </div>
-  </div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-12 content">
-      
   <div class="section" id="set-account-permission">
 <span id="set-account-permission"></span><h1>Set Account Permission<a class="headerlink" href="#set-account-permission" title="Permalink to this headline">¶</a></h1>
-<p>The <code class="docutils literal"><span class="pre">set_account_permission</span></code> command creates or updates an account’s permission.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">set_account_permission</span></code> command creates or updates an account’s permission. You might want to see the plain <code class="docutils literal notranslate"><span class="pre">cleos</span></code> approach <a class="reference external" href="https://developers.eos.io/eosio-cleos/v1.2.0/reference#cleos-set-account">here</a>.</p>
 <p><strong>NOTE</strong>: The Python code listed below is executable, as explained <a class="reference external" href="../README.html">here</a>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">eosfactory.eosf</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">eosfactory.eosf</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">import</span> <span class="nn">eosfactory.core.setup</span> <span class="kn">as</span> <span class="nn">setup</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">reset</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">reset</span><span class="p">()</span>
 <span class="n">create_master_account</span><span class="p">(</span><span class="s2">&quot;master&quot;</span><span class="p">)</span>
 <span class="n">create_account</span><span class="p">(</span><span class="s2">&quot;alice&quot;</span><span class="p">,</span> <span class="n">master</span><span class="p">)</span>
 <span class="n">alice</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>The permissions section of <code class="docutils literal"><span class="pre">alice.info()</span></code>:</p>
-<div class="highlight-md"><div class="highlight"><pre><span></span>permissions:
+<p>The permissions section of <code class="docutils literal notranslate"><span class="pre">alice.info()</span></code>:</p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span>permissions:
      owner     1:    1 alice@owner
         active     1:    1 alice@active
 </pre></div>
 </div>
 <div class="section" id="set-new-key-to-a-permission">
 <span id="set-new-key-to-a-permission"></span><h2>Set new key to a permission<a class="headerlink" href="#set-new-key-to-a-permission" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">COMMENT</span><span class="p">(</span><span class="s2">&quot;Set new key to a permission:&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">COMMENT</span><span class="p">(</span><span class="s2">&quot;Set new key to a permission:&quot;</span><span class="p">)</span>
 <span class="n">key</span> <span class="o">=</span> <span class="n">CreateKey</span><span class="p">(</span><span class="n">is_verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 <span class="n">setup</span><span class="o">.</span><span class="n">is_print_command_line</span> <span class="o">=</span> <span class="bp">True</span>
 <span class="n">alice</span><span class="o">.</span><span class="n">set_account_permission</span><span class="p">(</span>
@@ -212,8 +78,8 @@
 <span class="n">alice</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal"><span class="pre">permissions</span></code> section of <code class="docutils literal"><span class="pre">alice.info()</span></code>:</p>
-<div class="highlight-md"><div class="highlight"><pre><span></span>permissions:
+<p>The <code class="docutils literal notranslate"><span class="pre">permissions</span></code> section of <code class="docutils literal notranslate"><span class="pre">alice.info()</span></code>:</p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span>permissions:
      owner     1:    1 alice@owner
         active     1:    1 alice@active
 </pre></div>
@@ -221,7 +87,7 @@
 </div>
 <div class="section" id="set-an-account-instead-of-a-key-as-authority-for-a-permission">
 <span id="set-an-account-instead-of-a-key-as-authority-for-a-permission"></span><h2>Set an account (instead of a key) as authority for a permission<a class="headerlink" href="#set-an-account-instead-of-a-key-as-authority-for-a-permission" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">COMMENT</span><span class="p">(</span><span class="s2">&quot;Set an account (instead of a key) as authority for a permission:&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">COMMENT</span><span class="p">(</span><span class="s2">&quot;Set an account (instead of a key) as authority for a permission:&quot;</span><span class="p">)</span>
 <span class="n">create_account</span><span class="p">(</span><span class="s2">&quot;bob&quot;</span><span class="p">,</span> <span class="n">master</span><span class="p">)</span>
 <span class="n">setup</span><span class="o">.</span><span class="n">is_print_command_line</span> <span class="o">=</span> <span class="bp">True</span>
 <span class="n">alice</span><span class="o">.</span><span class="n">set_account_permission</span><span class="p">(</span>
@@ -231,8 +97,8 @@
 <span class="n">alice</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>The permissions section of <code class="docutils literal"><span class="pre">alice.info()</span></code>:</p>
-<div class="highlight-md"><div class="highlight"><pre><span></span>permissions:
+<p>The permissions section of <code class="docutils literal notranslate"><span class="pre">alice.info()</span></code>:</p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span>permissions:
      owner     1:    1 alice@owner
         active     1:    1 bob@active
 </pre></div>
@@ -240,8 +106,8 @@
 </div>
 <div class="section" id="weights-and-threshold">
 <span id="weights-and-threshold"></span><h2>Weights and Threshold<a class="headerlink" href="#weights-and-threshold" title="Permalink to this headline">¶</a></h2>
-<p>Note that actors have to be sorted in the <code class="docutils literal"><span class="pre">authority</span></code> JSON.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">COMMENT</span><span class="p">(</span><span class="s2">&quot;Weights and Threshold:&quot;</span><span class="p">)</span>
+<p>Note that actors have to be sorted in the <code class="docutils literal notranslate"><span class="pre">authority</span></code> JSON.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">COMMENT</span><span class="p">(</span><span class="s2">&quot;Weights and Threshold:&quot;</span><span class="p">)</span>
 <span class="n">create_account</span><span class="p">(</span><span class="s2">&quot;carol&quot;</span><span class="p">,</span> <span class="n">master</span><span class="p">)</span>
 <span class="n">actors</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">bob</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">carol</span><span class="p">)]</span>
 <span class="n">actors</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
@@ -274,8 +140,8 @@
 <span class="n">alice</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>The permissions section of <code class="docutils literal"><span class="pre">alice.info()</span></code>:</p>
-<div class="highlight-md"><div class="highlight"><pre><span></span>permissions:
+<p>The permissions section of <code class="docutils literal notranslate"><span class="pre">alice.info()</span></code>:</p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span>permissions:
      owner     1:    1 alice@owner
         active   100:    25 carol@active, 75 bob@active
 </pre></div>
@@ -283,8 +149,8 @@
 </div>
 <div class="section" id="set-two-weighted-keys">
 <span id="set-two-weighted-keys"></span><h2>Set two-weighted keys<a class="headerlink" href="#set-two-weighted-keys" title="Permalink to this headline">¶</a></h2>
-<p>Note that keys have to be sorted in the <code class="docutils literal"><span class="pre">authority</span></code> JSON.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">COMMENT</span><span class="p">(</span><span class="s2">&quot;Set two weighted keys:&quot;</span><span class="p">)</span>
+<p>Note that keys have to be sorted in the <code class="docutils literal notranslate"><span class="pre">authority</span></code> JSON.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">COMMENT</span><span class="p">(</span><span class="s2">&quot;Set two weighted keys:&quot;</span><span class="p">)</span>
 <span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="n">bob</span><span class="o">.</span><span class="n">owner</span><span class="p">(),</span> <span class="n">carol</span><span class="o">.</span><span class="n">owner</span><span class="p">()]</span>
 <span class="n">keys</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
 <span class="n">alice</span><span class="o">.</span><span class="n">set_account_permission</span><span class="p">(</span><span class="n">Permission</span><span class="o">.</span><span class="n">ACTIVE</span><span class="p">,</span>
@@ -308,34 +174,83 @@
 <span class="n">alice</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>The permissions section of <code class="docutils literal"><span class="pre">alice.info()</span></code>:</p>
-<div class="highlight-md"><div class="highlight"><pre><span></span>permissions:
+<p>The permissions section of <code class="docutils literal notranslate"><span class="pre">alice.info()</span></code>:</p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span>permissions:
      owner     1:    1 alice@owner
         active   100:    50 alice@active, 50 bob@owner
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">stop</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stop</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 
 
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Set Account Permission</a><ul>
+<li><a class="reference internal" href="#set-new-key-to-a-permission">Set new key to a permission</a></li>
+<li><a class="reference internal" href="#set-an-account-instead-of-a-key-as-authority-for-a-permission">Set an account (instead of a key) as authority for a permission</a></li>
+<li><a class="reference internal" href="#weights-and-threshold">Weights and Threshold</a></li>
+<li><a class="reference internal" href="#set-two-weighted-keys">Set two-weighted keys</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../BIOS_Boot_Sequence.html"
+                        title="previous chapter">BIOS Boot Sequence</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="set_action_permission.html"
+                        title="next chapter">Set Action Permission</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/patterns/set/set_account_permission.md.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
     </div>
-      
-  </div>
 </div>
-<footer class="footer">
-  <div class="container">
-    <p class="pull-right">
-      <a href="#">Back to top</a>
-      
-    </p>
-    <p>
-        &copy; Copyright 2018, Tokenika.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.<br/>
-    </p>
-  </div>
-</footer>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="set_action_permission.html" title="Set Action Permission"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../BIOS_Boot_Sequence.html" title="BIOS Boot Sequence"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">EOSFactory 2.4 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Tokenika.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/52014dc.
+    </div>
   </body>
 </html>
