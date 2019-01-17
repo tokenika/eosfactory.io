@@ -235,7 +235,7 @@
 </pre></div>
 </div>
 <p>Now, if we attempt to mismatch the user and the authority, the contract will throw an error:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>contract_foo.push_action<span class="o">(</span><span class="s2">&quot;hi&quot;</span>, <span class="o">{</span><span class="s2">&quot;user&quot;</span>:alice<span class="o">}</span>, <span class="nv">permission</span><span class="o">=</span>carol1<span class="o">)</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>contract_foo.push_action<span class="o">(</span><span class="s2">&quot;hi&quot;</span>, <span class="o">{</span><span class="s2">&quot;user&quot;</span>:alice<span class="o">}</span>, <span class="nv">permission</span><span class="o">=</span>carol<span class="o">)</span>
 </pre></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Error <span class="m">3090004</span>: Missing required authority
@@ -336,7 +336,7 @@ Ensure that you have the related authority inside your transaction!
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/52014dc.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/8d66a48.
     </div>
   </body>
 </html>

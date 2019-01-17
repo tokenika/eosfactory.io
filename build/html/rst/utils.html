@@ -52,7 +52,7 @@
 <dt id="eosfactory.utils.create_project.create_project">
 <code class="descclassname">eosfactory.utils.create_project.</code><code class="descname">create_project</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/utils/create_project.html#create_project"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.utils.create_project.create_project" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
-<dt>usage: python3 eosfactory.utils.create_project [-h] [–vsc]</dt>
+<dt>usage: python3 -m eosfactory.utils.create_project [-h] [–vsc]</dt>
 <dd>[–throw] [–ovr] [–silent]
 name [template]</dd>
 </dl>
@@ -65,11 +65,14 @@ workspace, compatible with Visual Studio Code.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>name</strong> – Project name or directory.</li>
 <li><strong>template</strong> – Template name or directory.</li>
-<li><strong>-h</strong> – Show help message and exit</li>
+<li><strong>--c_cpp_prop</strong> – c_cpp_properties.json file path.</li>
+<li><strong>--include</strong> – Comma-separated list of include folders.</li>
+<li><strong>--libs</strong> – Comma-separated list of libraries.</li>
 <li><strong>--vsc</strong> – Open Visual Studio Code.</li>
 <li><strong>--throw</strong> – Throw error if the project exists.</li>
 <li><strong>--ovr</strong> – Overwrite any existing project.</li>
 <li><strong>--silent</strong> – Do not print info.</li>
+<li><strong>-h</strong> – Show help message and exit</li>
 </ul>
 </td>
 </tr>
@@ -81,17 +84,23 @@ workspace, compatible with Visual Studio Code.</p>
 <dt id="eosfactory.utils.build.build">
 <code class="descclassname">eosfactory.utils.build.</code><code class="descname">build</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/utils/build.html#build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.utils.build.build" title="Permalink to this definition">¶</a></dt>
 <dd><p>usage: python3 -m eosfactory.utils.build [-h] [–compile] [–silent] dir</p>
-<p>Given a contract project directory path which may be relative to the
-<code class="docutils literal notranslate"><span class="pre">contract</span> <span class="pre">workspace</span></code> directory, set on the installation.</p>
+<p>Build a contract.</p>
+<p>The contract is determined with its project directory. The directory may be
+absolute or relative to the <em>contract workspace</em> directory as defined with
+<a class="reference internal" href="core.config.html#eosfactory.core.config.contract_workspace" title="eosfactory.core.config.contract_workspace"><code class="xref py py-func docutils literal notranslate"><span class="pre">core.config.contract_workspace()</span></code></a>. If the <em>dir</em> argument is not set,
+it is substituted with the current working directory.</p>
+<p>The dependencies of the contract are determined with the json file given with the argument <em>c_cpp_prop</em> – if it is set – or with the file
+<em>.vscode/c_opp_properties.json</em> in the project’s directory, otherwise.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>dir</strong> – Contract name or directory.</li>
-<li><strong>-h</strong> – Show help message and exit</li>
+<li><strong>--c_cpp_prop</strong> – c_cpp_properties.json file path.</li>
 <li><strong>--compile</strong> – Do not build, compile only.</li>
 <li><strong>--silent</strong> – Do not print info.</li>
+<li><strong>-h</strong> – Show help message and exit</li>
 </ul>
 </td>
 </tr>
@@ -222,7 +231,7 @@ testnet, e.g. <a class="reference external" href="http://88.99.97.30:38888">http
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/52014dc.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/8d66a48.
     </div>
   </body>
 </html>

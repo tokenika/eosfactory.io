@@ -48,7 +48,6 @@
 
 <span class="kn">import</span> <span class="nn">eosfactory.core.</span> <span class="n">config</span> <span class="k">as</span> <span class="n">config</span>
 <span class="kn">import</span> <span class="nn">eosfactory.core.logger</span> <span class="k">as</span> <span class="nn">logger</span>
-<span class="kn">import</span> <span class="nn">eosfactory.core.errors</span> <span class="k">as</span> <span class="nn">errors</span>
 <span class="kn">import</span> <span class="nn">eosfactory.core.interface</span> <span class="k">as</span> <span class="nn">interface</span>
 <span class="kn">import</span> <span class="nn">eosfactory.core.setup</span> <span class="k">as</span> <span class="nn">setup</span>
 <span class="kn">import</span> <span class="nn">eosfactory.core.teos</span> <span class="k">as</span> <span class="nn">teos</span>
@@ -60,12 +59,12 @@
     <span class="n">logger</span><span class="o">.</span><span class="n">INFO</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">    ######### Reboot EOSFactory session.</span>
 <span class="s1">    &#39;&#39;&#39;</span><span class="p">)</span>
-    <span class="n">stop</span><span class="p">([])</span>
+    <span class="n">stop</span><span class="p">()</span>
     <span class="kn">import</span> <span class="nn">eosfactory.shell.account</span> <span class="k">as</span> <span class="nn">account</span>
     <span class="n">account</span><span class="o">.</span><span class="n">reboot</span><span class="p">()</span>
 
 
-<div class="viewcode-block" id="clear_testnet_cache"><a class="viewcode-back" href="../../../rst/core.manager.html#eosfactory.core.manager.clear_testnet_cache">[docs]</a><span class="k">def</span> <span class="nf">clear_testnet_cache</span><span class="p">(</span><span class="n">verbosity</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="clear_testnet_cache"><a class="viewcode-back" href="../../../rst/core.manager.html#eosfactory.core.manager.clear_testnet_cache">[docs]</a><span class="k">def</span> <span class="nf">clear_testnet_cache</span><span class="p">():</span>
     <span class="sd">&#39;&#39;&#39; Remove wallet files associated with the current testnet.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
@@ -83,7 +82,7 @@
             <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">setup</span><span class="o">.</span><span class="n">file_prefix</span><span class="p">()):</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">file</span><span class="p">))</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">        Cannot remove testnet cache. The error message is:</span>
 <span class="s1">        </span><span class="si">{}</span><span class="s1"></span>
 <span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)))</span>
@@ -160,48 +159,100 @@
     <span class="k">return</span> <span class="n">setup</span><span class="o">.</span><span class="n">is_local_address</span>
 
 
-<span class="k">def</span> <span class="nf">node_start</span><span class="p">(</span><span class="n">clear</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">nodeos_stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbosity</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">node_start</span><span class="p">(</span><span class="n">clear</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">nodeos_stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">teos</span><span class="o">.</span><span class="n">node_start</span><span class="p">(</span><span class="n">clear</span><span class="p">,</span> <span class="n">nodeos_stdout</span><span class="p">,</span> <span class="n">verbosity</span><span class="p">)</span>
-        <span class="n">teos</span><span class="o">.</span><span class="n">node_probe</span><span class="p">(</span><span class="n">verbosity</span><span class="p">)</span>
+        <span class="n">teos</span><span class="o">.</span><span class="n">node_start</span><span class="p">(</span><span class="n">clear</span><span class="p">,</span> <span class="n">nodeos_stdout</span><span class="p">)</span>
+        <span class="n">teos</span><span class="o">.</span><span class="n">node_probe</span><span class="p">()</span>
     <span class="k">except</span><span class="p">:</span>
-        <span class="n">teos</span><span class="o">.</span><span class="n">node_start</span><span class="p">(</span><span class="n">clear</span><span class="p">,</span> <span class="n">nodeos_stdout</span><span class="p">,</span> <span class="n">verbosity</span><span class="p">)</span>
-        <span class="n">teos</span><span class="o">.</span><span class="n">node_probe</span><span class="p">(</span><span class="n">verbosity</span><span class="p">)</span>
-    
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">teos</span><span class="o">.</span><span class="n">node_start</span><span class="p">(</span><span class="n">clear</span><span class="p">,</span> <span class="n">nodeos_stdout</span><span class="p">)</span>
+            <span class="n">teos</span><span class="o">.</span><span class="n">node_probe</span><span class="p">()</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">teos</span><span class="o">.</span><span class="n">on_nodeos_error</span><span class="p">(</span><span class="n">clear</span><span class="p">)</span>
 
-<div class="viewcode-block" id="reset"><a class="viewcode-back" href="../../../rst/core.manager.html#eosfactory.core.manager.reset">[docs]</a><span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="n">nodeos_stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbosity</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39; Start clean the EOSIO local node.</span>
+
+<div class="viewcode-block" id="reset"><a class="viewcode-back" href="../../../rst/core.manager.html#eosfactory.core.manager.reset">[docs]</a><span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="n">nodeos_stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; Start clean the local EOSIO node.</span>
+
+<span class="sd">    The procedure addresses problems with instabilities of EOSIO *nodeos* </span>
+<span class="sd">    executable: it happens that it blocks itself on clean restart. </span>
+
+<span class="sd">    The issue is patched with one subsequent restart if the first attempt </span>
+<span class="sd">    fails. However, it happens that both launches fail, rarely due to </span>
+<span class="sd">    instability of *nodeos*, sometimes because of misconfiguration.</span>
+
+<span class="sd">    When both launch attempts fail, an exception routine passes. At first,</span>
+<span class="sd">    the command line is printed, for *example*::</span>
+
+<span class="sd">        ERROR:</span>
+<span class="sd">        The local ``nodeos`` failed to start twice in sequence. Perhaps, something is</span>
+<span class="sd">        wrong with configuration of the system. See the command line issued:</span>
+
+<span class="sd">        /usr/bin/nodeosx </span>
+<span class="sd">        --http-server-address 127.0.0.1:8888 </span>
+<span class="sd">        --data-dir /mnt/c/Workspaces/EOS/eosfactory/localnode/ </span>
+<span class="sd">        --config-dir /mnt/c/Workspaces/EOS/eosfactory/localnode/ </span>
+<span class="sd">        --chain-state-db-size-mb 200 --contracts-console --verbose-http-errors --enable-stale-production --producer-name eosio </span>
+<span class="sd">        --signature-provider EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV=KEY:5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3 </span>
+<span class="sd">        --plugin eosio::producer_plugin </span>
+<span class="sd">        --plugin eosio::chain_api_plugin </span>
+<span class="sd">        --plugin eosio::http_plugin </span>
+<span class="sd">        --plugin eosio::history_api_plugin </span>
+<span class="sd">        --genesis-json /mnt/c/Workspaces/EOS/eosfactory/localnode/genesis.json</span>
+<span class="sd">        --delete-all-blocks</span>
+
+<span class="sd">    Next, the command line is executed, for *example*::</span>
+
+<span class="sd">        Now, see the result of an execution of the command line.</span>
+<span class="sd">        /bin/sh: 1: /usr/bin/nodeosx: not found</span>
+
+<span class="sd">    The exemplary case is easy, it explains itself. Generally, the command </span>
+<span class="sd">    line given can be executed in a *bash* terminal separately, in order to </span>
+<span class="sd">    understand a problem.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        nodeos_stdout (str): If set, a file where *stdout* stream of</span>
+<span class="sd">            the local *nodeos* is send. Note that the file can be included to </span>
+<span class="sd">            the configuration of EOSFactory, see :func:`.core.config.nodeos_stdout`.</span>
+<span class="sd">            If the file is set with the configuration, and in the same time </span>
+<span class="sd">            it is set with this argument, the argument setting prevails. </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">cleos</span><span class="o">.</span><span class="n">set_local_nodeos_address_if_none</span><span class="p">():</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">INFO</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">        No local nodeos is set: </span><span class="si">{}</span><span class="s1"></span>
-<span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">setup</span><span class="o">.</span><span class="n">nodeos_address</span><span class="p">()),</span> <span class="n">verbosity</span><span class="p">)</span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">setup</span><span class="o">.</span><span class="n">nodeos_address</span><span class="p">()))</span>
 
     <span class="kn">import</span> <span class="nn">eosfactory.shell.account</span> <span class="k">as</span> <span class="nn">account</span>
     <span class="n">teos</span><span class="o">.</span><span class="n">keosd_start</span><span class="p">()</span>
     <span class="n">account</span><span class="o">.</span><span class="n">reboot</span><span class="p">()</span>
     <span class="n">clear_testnet_cache</span><span class="p">()</span>
-    <span class="n">node_start</span><span class="p">(</span>
-        <span class="n">clear</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">nodeos_stdout</span><span class="o">=</span><span class="n">nodeos_stdout</span><span class="p">,</span> <span class="n">verbosity</span><span class="o">=</span><span class="n">verbosity</span><span class="p">)</span></div>
+    <span class="n">node_start</span><span class="p">(</span><span class="n">clear</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">nodeos_stdout</span><span class="o">=</span><span class="n">nodeos_stdout</span><span class="p">)</span></div>
     
 
 
-<div class="viewcode-block" id="resume"><a class="viewcode-back" href="../../../rst/core.manager.html#eosfactory.core.manager.resume">[docs]</a><span class="k">def</span> <span class="nf">resume</span><span class="p">(</span><span class="n">nodeos_stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbosity</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39; Resume the EOSIO local node.</span>
+<div class="viewcode-block" id="resume"><a class="viewcode-back" href="../../../rst/core.manager.html#eosfactory.core.manager.resume">[docs]</a><span class="k">def</span> <span class="nf">resume</span><span class="p">(</span><span class="n">nodeos_stdout</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; Resume the local EOSIO node.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        nodeos_stdout (str): If set, a file where *stdout* stream of</span>
+<span class="sd">            the local *nodeos* is send. Note that the file can be included to </span>
+<span class="sd">            the configuration of EOSFactory, see :func:`.core.config.nodeos_stdout`.</span>
+<span class="sd">            If the file is set with the configuration, and in the same time </span>
+<span class="sd">            it is set with this argument, the argument setting prevails. </span>
 <span class="sd">    &#39;&#39;&#39;</span> 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">cleos</span><span class="o">.</span><span class="n">set_local_nodeos_address_if_none</span><span class="p">():</span>   
         <span class="n">logger</span><span class="o">.</span><span class="n">INFO</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">            Not local nodeos is set: </span><span class="si">{}</span><span class="s1"></span>
-<span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">setup</span><span class="o">.</span><span class="n">nodeos_address</span><span class="p">()),</span> <span class="n">verbosity</span><span class="p">)</span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">setup</span><span class="o">.</span><span class="n">nodeos_address</span><span class="p">()))</span>
 
-    <span class="n">node_start</span><span class="p">(</span><span class="n">nodeos_stdout</span><span class="o">=</span><span class="n">nodeos_stdout</span><span class="p">,</span> <span class="n">verbosity</span><span class="o">=</span><span class="n">verbosity</span><span class="p">)</span></div>
+    <span class="n">node_start</span><span class="p">(</span><span class="n">nodeos_stdout</span><span class="o">=</span><span class="n">nodeos_stdout</span><span class="p">)</span></div>
     
 
 
-<div class="viewcode-block" id="stop"><a class="viewcode-back" href="../../../rst/core.manager.html#eosfactory.core.manager.stop">[docs]</a><span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="n">verbosity</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="stop"><a class="viewcode-back" href="../../../rst/core.manager.html#eosfactory.core.manager.stop">[docs]</a><span class="k">def</span> <span class="nf">stop</span><span class="p">():</span>
     <span class="sd">&#39;&#39;&#39; Stops all running EOSIO nodes.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">teos</span><span class="o">.</span><span class="n">node_stop</span><span class="p">(</span><span class="n">verbosity</span><span class="p">)</span></div>
+    <span class="n">teos</span><span class="o">.</span><span class="n">node_stop</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="status"><a class="viewcode-back" href="../../../rst/core.manager.html#eosfactory.core.manager.status">[docs]</a><span class="k">def</span> <span class="nf">status</span><span class="p">():</span>
@@ -223,28 +274,24 @@
     <span class="n">logger</span><span class="o">.</span><span class="n">INFO</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">cleos_get</span><span class="o">.</span><span class="n">GetInfo</span><span class="p">(</span><span class="n">is_verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)))</span></div>
 
 
-<div class="viewcode-block" id="is_head_block_num"><a class="viewcode-back" href="../../../rst/core.manager.html#eosfactory.core.manager.is_head_block_num">[docs]</a><span class="k">def</span> <span class="nf">is_head_block_num</span><span class="p">():</span>
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Check if testnet is running.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="k">def</span> <span class="nf">verify_testnet_production</span><span class="p">():</span>
+    <span class="n">head_block_num</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">try</span><span class="p">:</span> <span class="c1"># if running, json is produced</span>
         <span class="n">head_block_num</span> <span class="o">=</span> <span class="n">cleos_get</span><span class="o">.</span><span class="n">GetInfo</span><span class="p">(</span><span class="n">is_verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head_block</span>
     <span class="k">except</span><span class="p">:</span>
-        <span class="n">head_block_num</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-    <span class="k">return</span> <span class="n">head_block_num</span> <span class="o">&gt;</span> <span class="mi">0</span></div>
+        <span class="k">pass</span>
 
-<span class="k">def</span> <span class="nf">verify_testnet_production</span><span class="p">():</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">is_head_block_num</span><span class="p">()</span>
     <span class="n">domain</span> <span class="o">=</span> <span class="s2">&quot;LOCAL&quot;</span> <span class="k">if</span> <span class="n">is_local_testnet</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;REMOTE&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">result</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">head_block_num</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">        </span><span class="si">{}</span><span class="s1"> testnet is not running or is not responding @ </span><span class="si">{}</span><span class="s1">.</span>
 <span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="n">setup</span><span class="o">.</span><span class="n">nodeos_address</span><span class="p">()))</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">INFO</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">        </span><span class="si">{}</span><span class="s1"> testnet is active @ </span><span class="si">{}</span><span class="s1">.</span>
 <span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="n">setup</span><span class="o">.</span><span class="n">nodeos_address</span><span class="p">()))</span>
-    <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">return</span> <span class="n">head_block_num</span>
 
 
 <div class="viewcode-block" id="account_map"><a class="viewcode-back" href="../../../rst/core.manager.html#eosfactory.core.manager.account_map">[docs]</a><span class="k">def</span> <span class="nf">account_map</span><span class="p">(</span><span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -283,7 +330,7 @@
                     <span class="n">edit_account_map</span><span class="p">()</span>
                     <span class="k">continue</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">        Use the function &#39;efman.edit_account_map(text_editor=&quot;nano&quot;)&#39;</span>
 <span class="s1">        or the corresponding method of any object of the &#39;eosfactory.wallet.Wallet` </span>
 <span class="s1">        class to edit the file.</span>
@@ -333,7 +380,7 @@
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="ne">FileNotFoundError</span><span class="p">):</span>
                 <span class="k">return</span> <span class="p">{}</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">            The json file </span>
 <span class="s1">            </span><span class="si">{}</span><span class="s1"></span>
 <span class="s1">            is misformed. The error message is:</span>
@@ -348,7 +395,7 @@
                     <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">text_editor</span><span class="p">,</span> <span class="n">path</span><span class="p">])</span>
                     <span class="k">continue</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">                    Use the function &#39;manager.edit_account_map(text_editor=&quot;nano&quot;)&#39; to edit the file.</span>
 <span class="s1">                    &#39;&#39;&#39;</span><span class="p">,</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>                    
                     <span class="k">return</span> <span class="kc">None</span></div>
@@ -408,7 +455,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/52014dc.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/8d66a48.
     </div>
   </body>
 </html>

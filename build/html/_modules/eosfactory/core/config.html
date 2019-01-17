@@ -42,10 +42,8 @@
   <h1>Source code for eosfactory.core.config</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">argparse</span>
-
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="kn">import</span> <span class="nn">eosfactory.core.errors</span> <span class="k">as</span> <span class="nn">errors</span>
 <span class="kn">import</span> <span class="nn">eosfactory.core.logger</span> <span class="k">as</span> <span class="nn">logger</span>
 <span class="kn">import</span> <span class="nn">eosfactory.core.utils</span> <span class="k">as</span> <span class="nn">utils</span>
 
@@ -88,7 +86,6 @@
     <span class="p">[</span><span class="s2">&quot;EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV&quot;</span><span class="p">])</span>
 <span class="n">contract_workspace_</span> <span class="o">=</span> <span class="p">(</span>
     <span class="s2">&quot;EOSIO_CONTRACT_WORKSPACE&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">CONTRACTS_DIR</span><span class="p">])</span>
-<span class="n">is_nodeos_in_window_</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;NODE_IN_WINDOW&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
 
 <div class="viewcode-block" id="eosf_dir"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.eosf_dir">[docs]</a><span class="k">def</span> <span class="nf">eosf_dir</span><span class="p">():</span>
@@ -98,7 +95,7 @@
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">path</span>
 
-    <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">        Cannot determine the root directory of EOSFactory.</span>
 <span class="s1">        It is attempted to be derived from the path of the configuration file</span>
 <span class="s1">            &#39;</span><span class="si">{}</span><span class="s1">&#39;.</span>
@@ -192,18 +189,6 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">)</span></div>
-
-
-<div class="viewcode-block" id="is_nodeos_in_window"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.is_nodeos_in_window">[docs]</a><span class="k">def</span> <span class="nf">is_nodeos_in_window</span><span class="p">():</span>
-    <span class="sd">&#39;&#39;&#39;If set, the local node runs in a GUI window.</span>
-
-<span class="sd">    Affects *Windows* and *Ubuntu* systems.</span>
-
-<span class="sd">    The setting may be changed with </span>
-<span class="sd">    *NODE_IN_WINDOW* entry in the *config.json* file, </span>
-<span class="sd">    see :func:`.current_config`.    </span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="k">return</span> <span class="n">config_value_checked</span><span class="p">(</span><span class="n">is_nodeos_in_window_</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="nodeos_stdout"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.nodeos_stdout">[docs]</a><span class="k">def</span> <span class="nf">nodeos_stdout</span><span class="p">():</span>
@@ -331,9 +316,9 @@
                 <span class="k">else</span><span class="p">:</span>
                     <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
 
-    <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">Cannot find the config file.       </span>
 <span class="s1">    &#39;&#39;&#39;</span><span class="p">)</span></div>
 
@@ -353,7 +338,7 @@
             <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="nb">map</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
         <span class="k">return</span>
 
-    <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">Cannot find the config file.       </span>
 <span class="s1">    &#39;&#39;&#39;</span><span class="p">)</span></div>
     
@@ -407,7 +392,7 @@
     <span class="k">if</span> <span class="ow">not</span> <span class="n">retval</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">retval</span>
 
-    <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">The value of </span><span class="si">{}</span><span class="s1"> is not defined.</span>
 <span class="s1">Define it in the config file</span>
 <span class="si">{}</span><span class="s1">       </span>
@@ -466,7 +451,7 @@
                     <span class="k">return</span> <span class="n">full_path</span>        
 
     <span class="k">if</span> <span class="n">raise_error</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">        Cannot find any path for &#39;</span><span class="si">{}</span><span class="s1">&#39;.</span>
 <span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">config_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span></div>
 
@@ -512,7 +497,7 @@
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">contract_dir_</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">contract_dir_</span><span class="p">)</span>
     
-    <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">        Cannot determine the contract directory.</span>
 <span class="s1">        Tried path list:</span>
 <span class="s1">        </span><span class="si">{}</span><span class="s1"></span>
@@ -557,7 +542,7 @@
     <span class="k">if</span> <span class="n">srcs</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">source_dir</span><span class="p">,</span> <span class="n">srcs</span><span class="p">)</span>            
 
-    <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">        Cannot find any contract source directory.</span>
 <span class="s1">        Tried path list:</span>
 <span class="s1">        </span><span class="si">{}</span><span class="s1"></span>
@@ -622,7 +607,7 @@
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">file</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">contract_file_hint</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">build_dir</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
 
-    <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">        Cannot determine the contract file basing on hints:</span>
 <span class="s1">        contract dir hint: </span><span class="si">{}</span><span class="s1"></span>
 <span class="s1">        contract file hint: </span><span class="si">{}</span><span class="s1"></span>
@@ -653,7 +638,7 @@
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">workspacePath</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">workspacePath</span>
 
-    <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">        Cannot determine the contract workspace.</span>
 <span class="s1">        Tried path list:</span>
 <span class="s1">        </span><span class="si">{}</span><span class="s1"></span>
@@ -758,10 +743,6 @@
     <span class="k">except</span><span class="p">:</span>
         <span class="nb">map</span><span class="p">[</span><span class="n">chain_state_db_size_mb_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="nb">map</span><span class="p">[</span><span class="n">is_nodeos_in_window_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">is_nodeos_in_window</span><span class="p">()</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="nb">map</span><span class="p">[</span><span class="n">is_nodeos_in_window_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="k">try</span><span class="p">:</span>
         <span class="nb">map</span><span class="p">[</span><span class="n">contract_workspace_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">config_value_checked</span><span class="p">(</span><span class="n">contract_workspace_</span><span class="p">)</span>
     <span class="k">except</span><span class="p">:</span>
          <span class="nb">map</span><span class="p">[</span><span class="n">contract_workspace_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
@@ -821,7 +802,32 @@
 
     <span class="k">return</span> <span class="nb">map</span>        </div>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+
+<div class="viewcode-block" id="config"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.config">[docs]</a><span class="k">def</span> <span class="nf">config</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    usage: config.py [-h] [--json]</span>
+
+<span class="sd">    Show the configuration of EOSFactory.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        --json: Print bare JSON only.</span>
+<span class="sd">        -h: Show help message and exit.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">    Show the configuration of EOSFactory.</span>
+<span class="s1">    &#39;&#39;&#39;</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">&quot;--json&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Bare JSON only.&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">)</span>
+
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">json</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span>
+            <span class="n">current_config</span><span class="p">(),</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+        <span class="k">return</span>
+
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">The current configuration of EOSFactory:</span>
 <span class="si">{}</span><span class="s1"></span>
@@ -834,19 +840,28 @@
             <span class="n">current_config</span><span class="p">(),</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span> <span class="n">config_file</span><span class="p">())</span>
     <span class="p">)</span>
 
-    <span class="n">not_defined</span> <span class="o">=</span> <span class="n">not_defined</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">not_defined</span><span class="p">:</span>
+    <span class="n">not_defined_</span> <span class="o">=</span> <span class="n">not_defined</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">not_defined_</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">There are undefined setting:</span>
 <span class="si">{}</span><span class="s1"></span>
-<span class="s1">    &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">not_defined</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)))</span>
+<span class="s1">    &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">not_defined_</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)))</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">The current contents of the configuration file is:</span>
 <span class="si">{}</span><span class="s1"></span>
 <span class="s1">&#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
         <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">config_map</span><span class="p">(),</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
-    <span class="p">)</span>
+    <span class="p">)</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">config</span><span class="p">()</span>
+
+
+
+
+
 </pre></div>
 
           </div>
@@ -883,7 +898,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/52014dc.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/8d66a48.
     </div>
   </body>
 </html>

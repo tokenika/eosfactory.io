@@ -62,7 +62,7 @@
 
 <dl class="class">
 <dt id="eosfactory.core.testnet.Testnet">
-<em class="property">class </em><code class="descclassname">eosfactory.core.testnet.</code><code class="descname">Testnet</code><span class="sig-paren">(</span><em>url=None</em>, <em>account_name=None</em>, <em>owner_key=None</em>, <em>active_key=None</em>, <em>name=None</em>, <em>reset=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/testnet.html#Testnet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.testnet.Testnet" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">eosfactory.core.testnet.</code><code class="descname">Testnet</code><span class="sig-paren">(</span><em>account_name</em>, <em>owner_key</em>, <em>active_key</em>, <em>url=None</em>, <em>name=None</em>, <em>reset=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/testnet.html#Testnet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.testnet.Testnet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Testing <em>nodeos</em> node.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -70,12 +70,12 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>url</strong> (<em>str</em>) – If set, the URL of a remote <em>nodeos</em>, otherwise
-a localhost URL.</li>
 <li><strong>account_name</strong> (<em>str</em>) – If set, the name of the <em>account</em>, otherwise the
 node is considered local, and its name is <em>eosio</em>.</li>
 <li><strong>owner_key</strong> (<em>str</em>) – If set, the public owner key of the <em>account</em>.</li>
 <li><strong>active_key</strong> (<em>str</em>) – If set, the public active key of the <em>account</em>.</li>
+<li><strong>url</strong> (<em>str</em>) – If set, the URL of a remote <em>nodeos</em>, otherwise
+a localhost URL.</li>
 <li><strong>name</strong> (<em>str</em>) – The name of the testnet. If  not set, the name is
 synthesized from the argument <em>url</em>.</li>
 <li><strong>reset</strong> (<em>bool</em>) – If set and if local node, reset the node.</li>
@@ -83,10 +83,10 @@ synthesized from the argument <em>url</em>.</li>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
-<li><strong>url</strong> (<em>str</em>) – The URL of the <em>nodeos</em>.</li>
 <li><strong>account_name</strong> (<em>str</em>) – The name of the <em>account</em>.</li>
 <li><strong>owner_key</strong> (<em>str</em>) – The public owner key of the <em>account</em>.</li>
 <li><strong>active_key</strong> (<em>str</em>) – The public active key of the <em>account</em>.</li>
+<li><strong>url</strong> (<em>str</em>) – The URL of the <em>nodeos</em>.</li>
 <li><strong>name</strong> (<em>str</em>) – The name of the testnet</li>
 </ul>
 </td>
@@ -153,19 +153,19 @@ map.</p>
 
 <dl class="function">
 <dt id="eosfactory.core.testnet.add_to_mapping">
-<code class="descclassname">eosfactory.core.testnet.</code><code class="descname">add_to_mapping</code><span class="sig-paren">(</span><em>url</em>, <em>account_name</em>, <em>owner_key</em>, <em>active_key</em>, <em>name=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/testnet.html#add_to_mapping"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.testnet.add_to_mapping" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">eosfactory.core.testnet.</code><code class="descname">add_to_mapping</code><span class="sig-paren">(</span><em>account_name</em>, <em>owner_key</em>, <em>active_key</em>, <em>url</em>, <em>name=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/testnet.html#add_to_mapping"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.testnet.add_to_mapping" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save a <a class="reference internal" href="#eosfactory.core.testnet.Testnet" title="eosfactory.core.testnet.Testnet"><code class="xref py py-class docutils literal notranslate"><span class="pre">Testnet</span></code></a> object.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>url</strong> (<em>str</em>) – If set, the URL of a remote <em>nodeos</em>, otherwise
-a localhost URL.</li>
 <li><strong>account_name</strong> (<em>str</em>) – If set, the account name, otherwise the node is
 considered local, and the name is <em>eosio</em>.</li>
 <li><strong>owner_key</strong> (<em>str</em>) – If set, the public owner key of the <em>account</em>.</li>
 <li><strong>active_key</strong> (<em>str</em>) – If set, the public active key of the <em>account</em>.</li>
+<li><strong>url</strong> (<em>str</em>) – If set, the URL of a remote <em>nodeos</em>, otherwise
+a localhost URL.</li>
 <li><strong>name</strong> (<em>str</em>) – If set, the name of the testnet.</li>
 </ul>
 </td>
@@ -278,7 +278,7 @@ synthesized from the argument <em>url</em>.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/52014dc.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/8d66a48.
     </div>
   </body>
 </html>

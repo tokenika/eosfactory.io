@@ -40,7 +40,8 @@
           <div class="body" role="main">
             
   <h1>Source code for eosfactory.core.testnet</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">eosfactory.core.setup</span> <span class="k">as</span> <span class="nn">setup</span>
+<span></span><span class="kn">import</span> <span class="nn">eosfactory.core.config</span> <span class="k">as</span> <span class="nn">config</span>
+<span class="kn">import</span> <span class="nn">eosfactory.core.setup</span> <span class="k">as</span> <span class="nn">setup</span>
 <span class="kn">import</span> <span class="nn">eosfactory.core.manager</span> <span class="k">as</span> <span class="nn">manager</span>
 <span class="kn">import</span> <span class="nn">eosfactory.core.logger</span> <span class="k">as</span> <span class="nn">logger</span>
 
@@ -49,49 +50,41 @@
     <span class="sd">&#39;&#39;&#39;Testing *nodeos* node.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        url (str): If set, the URL of a remote *nodeos*, otherwise </span>
-<span class="sd">            a localhost URL.</span>
 <span class="sd">        account_name (str): If set, the name of the *account*, otherwise the </span>
 <span class="sd">            node is considered local, and its name is *eosio*.</span>
 <span class="sd">        owner_key (str): If set, the public owner key of the *account*.</span>
 <span class="sd">        active_key (str): If set, the public active key of the *account*.</span>
+<span class="sd">        url (str): If set, the URL of a remote *nodeos*, otherwise </span>
+<span class="sd">            a localhost URL.</span>
 <span class="sd">        name (str): The name of the testnet. If  not set, the name is </span>
 <span class="sd">            synthesized from the argument *url*.</span>
 <span class="sd">        reset (bool): If set and if local node, reset the node.</span>
 
 <span class="sd">    Attributes:</span>
-<span class="sd">        url (str): The URL of the *nodeos*.</span>
 <span class="sd">        account_name (str): The name of the *account*.</span>
 <span class="sd">        owner_key (str): The public owner key of the *account*.</span>
 <span class="sd">        active_key (str): The public active key of the *account*.</span>
+<span class="sd">        url (str): The URL of the *nodeos*.        </span>
 <span class="sd">        name (str): The name of the testnet</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
-            <span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
-            <span class="n">account_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">owner_key</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">active_key</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="bp">self</span><span class="p">,</span>  
+            <span class="n">account_name</span><span class="p">,</span> <span class="n">owner_key</span><span class="p">,</span> <span class="n">active_key</span><span class="p">,</span>
+            <span class="n">url</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">reset</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">url</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">reset</span><span class="p">:</span>
-                <span class="n">manager</span><span class="o">.</span><span class="n">reset</span><span class="p">(</span><span class="n">verbosity</span><span class="o">=</span><span class="p">[</span><span class="n">logger</span><span class="o">.</span><span class="n">Verbosity</span><span class="o">.</span><span class="n">ERROR</span><span class="p">])</span>
+                <span class="n">manager</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">manager</span><span class="o">.</span><span class="n">resume</span><span class="p">(</span><span class="n">verbosity</span><span class="o">=</span><span class="p">[</span><span class="n">logger</span><span class="o">.</span><span class="n">Verbosity</span><span class="o">.</span><span class="n">ERROR</span><span class="p">])</span>
-            <span class="kn">import</span> <span class="nn">eosfactory.core.account</span> <span class="k">as</span> <span class="nn">account</span>
-            <span class="n">eosio</span> <span class="o">=</span> <span class="n">account</span><span class="o">.</span><span class="n">Eosio</span><span class="p">(</span><span class="s2">&quot;account_master&quot;</span><span class="p">)</span>
+                <span class="n">manager</span><span class="o">.</span><span class="n">resume</span><span class="p">()</span>
             <span class="n">setup</span><span class="o">.</span><span class="n">is_local_address</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="n">account_name</span> <span class="o">=</span> <span class="n">eosio</span><span class="o">.</span><span class="n">name</span>
-            <span class="n">owner_key</span> <span class="o">=</span> <span class="n">eosio</span><span class="o">.</span><span class="n">owner_key</span><span class="o">.</span><span class="n">key_private</span>
-            <span class="n">active_key</span> <span class="o">=</span> <span class="n">eosio</span><span class="o">.</span><span class="n">active_key</span><span class="o">.</span><span class="n">key_private</span>
 
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">account_name</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">owner_key</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">active_key</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">        If the *url* is set, the *account_name* and keys have to be set, as well.</span>
-<span class="s1">            &#39;&#39;&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">url</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">account_name</span> <span class="o">=</span> <span class="n">account_name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">owner_key</span> <span class="o">=</span> <span class="n">owner_key</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">active_key</span> <span class="o">=</span> <span class="n">active_key</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">url</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
 
 <div class="viewcode-block" id="Testnet.configure"><a class="viewcode-back" href="../../../rst/core.testnet.html#eosfactory.core.testnet.Testnet.configure">[docs]</a>    <span class="k">def</span> <span class="nf">configure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -140,14 +133,15 @@
 <span class="sd">        :class:`.Testnet`: a testnet</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">testnet</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">Testnet</span><span class="p">(</span><span class="n">reset</span><span class="o">=</span><span class="n">reset</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Testnet</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">reset</span><span class="o">=</span><span class="n">reset</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
         <span class="n">mapping</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">read_map</span><span class="p">(</span><span class="n">TESTNET_FILE</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">mapping</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">Testnet</span><span class="p">(</span>
-                <span class="n">mapping</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s2">&quot;url&quot;</span><span class="p">],</span> <span class="n">mapping</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s2">&quot;account_name&quot;</span><span class="p">],</span>
+                <span class="n">mapping</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s2">&quot;account_name&quot;</span><span class="p">],</span>
                 <span class="n">mapping</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s2">&quot;owner_key&quot;</span><span class="p">],</span> <span class="n">mapping</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s2">&quot;active_key&quot;</span><span class="p">],</span>
+                <span class="n">mapping</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s2">&quot;url&quot;</span><span class="p">],</span>
                 <span class="n">mapping</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
         <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;JUNGLE&quot;</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">JUNGLE</span>
@@ -175,28 +169,28 @@
 <span class="sd">        testnet (.Testnet): The object to be saved.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">add_to_mapping</span><span class="p">(</span>
-        <span class="n">testnet</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">testnet</span><span class="o">.</span><span class="n">account_name</span><span class="p">,</span> 
-        <span class="n">testnet</span><span class="o">.</span><span class="n">owner_key</span><span class="p">,</span> <span class="n">testnet</span><span class="o">.</span><span class="n">active_key</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></div>
+        <span class="n">testnet</span><span class="o">.</span><span class="n">account_name</span><span class="p">,</span> 
+        <span class="n">testnet</span><span class="o">.</span><span class="n">owner_key</span><span class="p">,</span> <span class="n">testnet</span><span class="o">.</span><span class="n">active_key</span><span class="p">,</span> <span class="n">testnet</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></div>
     
 
-<div class="viewcode-block" id="add_to_mapping"><a class="viewcode-back" href="../../../rst/core.testnet.html#eosfactory.core.testnet.add_to_mapping">[docs]</a><span class="k">def</span> <span class="nf">add_to_mapping</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">account_name</span><span class="p">,</span> <span class="n">owner_key</span><span class="p">,</span> <span class="n">active_key</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="add_to_mapping"><a class="viewcode-back" href="../../../rst/core.testnet.html#eosfactory.core.testnet.add_to_mapping">[docs]</a><span class="k">def</span> <span class="nf">add_to_mapping</span><span class="p">(</span><span class="n">account_name</span><span class="p">,</span> <span class="n">owner_key</span><span class="p">,</span> <span class="n">active_key</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Save a :class:`.Testnet` object.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        url (str): If set, the URL of a remote *nodeos*, otherwise </span>
-<span class="sd">            a localhost URL.</span>
 <span class="sd">        account_name (str): If set, the account name, otherwise the node is</span>
 <span class="sd">            considered local, and the name is *eosio*.</span>
 <span class="sd">        owner_key (str): If set, the public owner key of the *account*.</span>
 <span class="sd">        active_key (str): If set, the public active key of the *account*.</span>
+<span class="sd">        url (str): If set, the URL of a remote *nodeos*, otherwise </span>
+<span class="sd">            a localhost URL.</span>
 <span class="sd">        name (str): If set, the name of the testnet.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">mapping</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">read_map</span><span class="p">(</span><span class="n">TESTNET_FILE</span><span class="p">)</span>
     <span class="n">testnet</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">testnet</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">url</span>
     <span class="n">testnet</span><span class="p">[</span><span class="s2">&quot;account_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">account_name</span>
     <span class="n">testnet</span><span class="p">[</span><span class="s2">&quot;owner_key&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">owner_key</span>
     <span class="n">testnet</span><span class="p">[</span><span class="s2">&quot;active_key&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">active_key</span>
+    <span class="n">testnet</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">url</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span><span class="p">:</span>
         <span class="n">name</span> <span class="o">=</span> <span class="n">setup</span><span class="o">.</span><span class="n">url_prefix</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
     <span class="n">testnet</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
@@ -234,22 +228,31 @@
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%25s</span><span class="s2">: </span><span class="si">%13s</span><span class="s2"> @ </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">testnet</span><span class="p">[</span><span class="s2">&quot;account_name&quot;</span><span class="p">],</span> <span class="n">testnet</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">]))</span></div>
 
 
+<span class="k">def</span> <span class="nf">LOCAL</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">Testnet</span><span class="p">(</span>
+    <span class="s2">&quot;eosio&quot;</span><span class="p">,</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">eosio_key_private</span><span class="p">(),</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">eosio_key_public</span><span class="p">(),</span>
+    <span class="kc">None</span><span class="p">,</span>
+    <span class="s2">&quot;LOCAL&quot;</span><span class="p">)</span>
+
+
 <span class="c1">#: Testnet http;//145.239.133.201;8888</span>
 <span class="n">JUNGLE</span> <span class="o">=</span> <span class="n">Testnet</span><span class="p">(</span>
-    <span class="s2">&quot;http://145.239.133.201:8888&quot;</span><span class="p">,</span>
     <span class="s2">&quot;dgxo1uyhoytn&quot;</span><span class="p">,</span>
     <span class="s2">&quot;5JE9XSurh4Bmdw8Ynz72Eh6ZCKrxf63SmQWKrYJSXf1dEnoiKFY&quot;</span><span class="p">,</span>
     <span class="s2">&quot;5JgLo7jZhmY4huDNXwExmaWQJqyS1hGZrnSjECcpWwGU25Ym8tA&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;http://145.239.133.201:8888&quot;</span><span class="p">,</span>
     <span class="s2">&quot;JUNGLE&quot;</span>
 <span class="p">)</span>
 
 
 <span class="c1">#: Testnet http;//145.239.133.201;9999</span>
 <span class="n">KYLIN</span> <span class="o">=</span> <span class="n">Testnet</span><span class="p">(</span>
-    <span class="s2">&quot;http://145.239.133.201:9999&quot;</span><span class="p">,</span>
     <span class="s2">&quot;xlg3pao3idlq&quot;</span><span class="p">,</span>
     <span class="s2">&quot;5JBbCwe3t6j63yerYmguRVWg7ZVDY3nKXzGYMwkR9y5w4appKhk&quot;</span><span class="p">,</span>
     <span class="s2">&quot;5JYZU9xPS54NhnJrmgQWzVXxZCWpzsVUPS3SBZVZnsPUBFtV5YK&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;http://145.239.133.201:9999&quot;</span><span class="p">,</span>
     <span class="s2">&quot;KYLIN&quot;</span>
 <span class="p">)</span>
 
@@ -289,7 +292,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/52014dc.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/8d66a48.
     </div>
   </body>
 </html>

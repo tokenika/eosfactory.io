@@ -80,7 +80,7 @@
 
         <span class="n">files</span> <span class="o">=</span> <span class="n">cleos</span><span class="o">.</span><span class="n">contract_is_built</span><span class="p">(</span><span class="n">contract_dir</span><span class="p">,</span> <span class="n">wasm_file</span><span class="p">,</span> <span class="n">abi_file</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">files</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">            Cannot determine the contract directory. The clue is </span>
 <span class="s2">            </span><span class="si">{}</span><span class="s2">.</span>
 <span class="s2">            &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">contract_dir</span><span class="p">))</span>
@@ -366,7 +366,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/52014dc.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/8d66a48.
     </div>
   </body>
 </html>

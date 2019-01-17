@@ -61,7 +61,7 @@ editor. Return <code class="docutils literal notranslate"><span class="pre">None
 
 <dl class="function">
 <dt id="eosfactory.core.manager.clear_testnet_cache">
-<code class="descclassname">eosfactory.core.manager.</code><code class="descname">clear_testnet_cache</code><span class="sig-paren">(</span><em>verbosity=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#clear_testnet_cache"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.clear_testnet_cache" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">eosfactory.core.manager.</code><code class="descname">clear_testnet_cache</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#clear_testnet_cache"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.clear_testnet_cache" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove wallet files associated with the current testnet.</p>
 </dd></dl>
 
@@ -69,12 +69,6 @@ editor. Return <code class="docutils literal notranslate"><span class="pre">None
 <dt id="eosfactory.core.manager.info">
 <code class="descclassname">eosfactory.core.manager.</code><code class="descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Display EOS node info.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="eosfactory.core.manager.is_head_block_num">
-<code class="descclassname">eosfactory.core.manager.</code><code class="descname">is_head_block_num</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#is_head_block_num"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.is_head_block_num" title="Permalink to this definition">¶</a></dt>
-<dd><p>Check if testnet is running.</p>
 </dd></dl>
 
 <dl class="function">
@@ -90,14 +84,71 @@ editor. Return <code class="docutils literal notranslate"><span class="pre">None
 
 <dl class="function">
 <dt id="eosfactory.core.manager.reset">
-<code class="descclassname">eosfactory.core.manager.</code><code class="descname">reset</code><span class="sig-paren">(</span><em>nodeos_stdout=None</em>, <em>verbosity=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.reset" title="Permalink to this definition">¶</a></dt>
-<dd><p>Start clean the EOSIO local node.</p>
+<code class="descclassname">eosfactory.core.manager.</code><code class="descname">reset</code><span class="sig-paren">(</span><em>nodeos_stdout=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start clean the local EOSIO node.</p>
+<p>The procedure addresses problems with instabilities of EOSIO <em>nodeos</em>
+executable: it happens that it blocks itself on clean restart.</p>
+<p>The issue is patched with one subsequent restart if the first attempt
+fails. However, it happens that both launches fail, rarely due to
+instability of <em>nodeos</em>, sometimes because of misconfiguration.</p>
+<p>When both launch attempts fail, an exception routine passes. At first,
+the command line is printed, for <em>example</em>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ERROR:
+The local ``nodeos`` failed to start twice in sequence. Perhaps, something is
+wrong with configuration of the system. See the command line issued:
+
+/usr/bin/nodeosx
+--http-server-address 127.0.0.1:8888
+--data-dir /mnt/c/Workspaces/EOS/eosfactory/localnode/
+--config-dir /mnt/c/Workspaces/EOS/eosfactory/localnode/
+--chain-state-db-size-mb 200 --contracts-console --verbose-http-errors --enable-stale-production --producer-name eosio
+--signature-provider EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV=KEY:5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3
+--plugin eosio::producer_plugin
+--plugin eosio::chain_api_plugin
+--plugin eosio::http_plugin
+--plugin eosio::history_api_plugin
+--genesis-json /mnt/c/Workspaces/EOS/eosfactory/localnode/genesis.json
+--delete-all-blocks
+</pre></div>
+</div>
+<p>Next, the command line is executed, for <em>example</em>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Now</span><span class="p">,</span> <span class="n">see</span> <span class="n">the</span> <span class="n">result</span> <span class="n">of</span> <span class="n">an</span> <span class="n">execution</span> <span class="n">of</span> <span class="n">the</span> <span class="n">command</span> <span class="n">line</span><span class="o">.</span>
+<span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">sh</span><span class="p">:</span> <span class="mi">1</span><span class="p">:</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">nodeosx</span><span class="p">:</span> <span class="ow">not</span> <span class="n">found</span>
+</pre></div>
+</div>
+<p>The exemplary case is easy, it explains itself. Generally, the command
+line given can be executed in a <em>bash</em> terminal separately, in order to
+understand a problem.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>nodeos_stdout</strong> (<em>str</em>) – If set, a file where <em>stdout</em> stream of
+the local <em>nodeos</em> is send. Note that the file can be included to
+the configuration of EOSFactory, see <a class="reference internal" href="core.config.html#eosfactory.core.config.nodeos_stdout" title="eosfactory.core.config.nodeos_stdout"><code class="xref py py-func docutils literal notranslate"><span class="pre">core.config.nodeos_stdout()</span></code></a>.
+If the file is set with the configuration, and in the same time
+it is set with this argument, the argument setting prevails.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="eosfactory.core.manager.resume">
-<code class="descclassname">eosfactory.core.manager.</code><code class="descname">resume</code><span class="sig-paren">(</span><em>nodeos_stdout=None</em>, <em>verbosity=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#resume"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.resume" title="Permalink to this definition">¶</a></dt>
-<dd><p>Resume the EOSIO local node.</p>
+<code class="descclassname">eosfactory.core.manager.</code><code class="descname">resume</code><span class="sig-paren">(</span><em>nodeos_stdout=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#resume"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.resume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resume the local EOSIO node.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>nodeos_stdout</strong> (<em>str</em>) – If set, a file where <em>stdout</em> stream of
+the local <em>nodeos</em> is send. Note that the file can be included to
+the configuration of EOSFactory, see <a class="reference internal" href="core.config.html#eosfactory.core.config.nodeos_stdout" title="eosfactory.core.config.nodeos_stdout"><code class="xref py py-func docutils literal notranslate"><span class="pre">core.config.nodeos_stdout()</span></code></a>.
+If the file is set with the configuration, and in the same time
+it is set with this argument, the argument setting prevails.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
@@ -108,7 +159,7 @@ editor. Return <code class="docutils literal notranslate"><span class="pre">None
 
 <dl class="function">
 <dt id="eosfactory.core.manager.stop">
-<code class="descclassname">eosfactory.core.manager.</code><code class="descname">stop</code><span class="sig-paren">(</span><em>verbosity=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#stop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.stop" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">eosfactory.core.manager.</code><code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#stop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.stop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stops all running EOSIO nodes.</p>
 </dd></dl>
 
@@ -167,7 +218,7 @@ editor. Return <code class="docutils literal notranslate"><span class="pre">None
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/52014dc.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/8d66a48.
     </div>
   </body>
 </html>

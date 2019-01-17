@@ -45,7 +45,7 @@
 
 <div class="viewcode-block" id="create_project"><a class="viewcode-back" href="../../../rst/utils.html#eosfactory.utils.create_project.create_project">[docs]</a><span class="k">def</span> <span class="nf">create_project</span><span class="p">():</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    usage: python3 eosfactory.utils.create_project [-h] [--vsc]</span>
+<span class="sd">    usage: python3 -m eosfactory.utils.create_project [-h] [--vsc]</span>
 <span class="sd">                            [--throw] [--ovr] [--silent]</span>
 <span class="sd">                            name [template]</span>
 
@@ -55,11 +55,14 @@
 <span class="sd">    Args:</span>
 <span class="sd">        name: Project name or directory.</span>
 <span class="sd">        template: Template name or directory.</span>
-<span class="sd">        -h: Show help message and exit</span>
+<span class="sd">        --c_cpp_prop: c_cpp_properties.json file path.</span>
+<span class="sd">        --include: Comma-separated list of include folders.</span>
+<span class="sd">        --libs: Comma-separated list of libraries.</span>
 <span class="sd">        --vsc: Open Visual Studio Code.</span>
 <span class="sd">        --throw: Throw error if the project exists.</span>
 <span class="sd">        --ovr: Overwrite any existing project.</span>
 <span class="sd">        --silent: Do not print info.</span>
+<span class="sd">        -h: Show help message and exit        </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">    Given a workspace name and (optional) a template name,</span>
@@ -70,6 +73,12 @@
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
         <span class="s2">&quot;template&quot;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s2">&quot;?&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Template name or directory.&quot;</span><span class="p">,</span> 
         <span class="n">default</span><span class="o">=</span><span class="s2">&quot;01_hello_world&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">&quot;--c_cpp_prop&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;c_cpp_properties.json file path.&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">&quot;--include&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Comma-separated list of include folders&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">&quot;--libs&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Comma-separated list of libraries.&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>    
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
         <span class="s2">&quot;--vsc&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Open Visual Studio Code.&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
@@ -82,7 +91,11 @@
     <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
 
     <span class="n">project_from_template</span><span class="p">(</span>
-        <span class="n">args</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">template</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">template</span><span class="p">,</span> 
+        <span class="n">project_name</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> 
+        <span class="n">template</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">template</span><span class="p">,</span>
+        <span class="n">c_cpp_prop_path</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">c_cpp_prop</span><span class="p">,</span>
+        <span class="n">include</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">include</span><span class="p">,</span>
+        <span class="n">libs</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">libs</span><span class="p">,</span>
         <span class="n">open_vscode</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">vsc</span><span class="p">,</span>
         <span class="n">throw_exists</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">throw</span><span class="p">,</span> <span class="n">remove_existing</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">ovr</span><span class="p">,</span>
         <span class="n">verbosity</span><span class="o">=</span><span class="p">[]</span> <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">silent</span> <span class="k">else</span> <span class="kc">None</span>
@@ -126,7 +139,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/52014dc.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/8d66a48.
     </div>
   </body>
 </html>

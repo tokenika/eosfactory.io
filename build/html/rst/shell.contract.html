@@ -50,7 +50,7 @@
 <span id="shell-contract"></span><h1>shell.contract<a class="headerlink" href="#module-eosfactory.shell.contract" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="eosfactory.shell.contract.Contract">
-<em class="property">class </em><code class="descclassname">eosfactory.shell.contract.</code><code class="descname">Contract</code><span class="sig-paren">(</span><em>account</em>, <em>contract_dir</em>, <em>abi_file=None</em>, <em>wasm_file=None</em>, <em>permission=None</em>, <em>expiration_sec=None</em>, <em>skip_sign=0</em>, <em>dont_broadcast=0</em>, <em>force_unique=0</em>, <em>max_cpu_usage=0</em>, <em>max_net_usage=0</em>, <em>ref_block=None</em>, <em>delay_sec=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#Contract"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.Contract" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">eosfactory.shell.contract.</code><code class="descname">Contract</code><span class="sig-paren">(</span><em>account</em>, <em>contract_dir=None</em>, <em>abi_file=None</em>, <em>wasm_file=None</em>, <em>permission=None</em>, <em>expiration_sec=None</em>, <em>skip_sign=0</em>, <em>dont_broadcast=0</em>, <em>force_unique=0</em>, <em>max_cpu_usage=0</em>, <em>max_net_usage=0</em>, <em>ref_block=None</em>, <em>delay_sec=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#Contract"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.Contract" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#eosfactory.shell.contract.ContractBuilder" title="eosfactory.shell.contract.ContractBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.shell.contract.ContractBuilder</span></code></a></p>
 <p>Add a contract to the given account.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -164,7 +164,7 @@ defaults to last.</li>
 
 <dl class="class">
 <dt id="eosfactory.shell.contract.ContractBuilder">
-<em class="property">class </em><code class="descclassname">eosfactory.shell.contract.</code><code class="descname">ContractBuilder</code><span class="sig-paren">(</span><em>contract_dir</em>, <em>abi_file=None</em>, <em>wasm_file=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#ContractBuilder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.ContractBuilder" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">eosfactory.shell.contract.</code><code class="descname">ContractBuilder</code><span class="sig-paren">(</span><em>contract_dir=None</em>, <em>abi_file=None</em>, <em>wasm_file=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#ContractBuilder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.ContractBuilder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Build or delete a contract project.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -172,7 +172,8 @@ defaults to last.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>contract_dir</strong> (<em>str</em>) – A hint to the root directory of a contract project.</li>
+<li><strong>contract_dir</strong> (<em>str</em>) – If set, a hint to the root directory of a contract
+project, otherwise the current working directory.</li>
 <li><strong>abi_file</strong> (<em>str</em>) – If set, the path to the ABI file, absolute,
 or relative to <em>contract_dir</em>.</li>
 <li><strong>wasm_file</strong> (<em>str</em>) – If set, the path to the WASM file, absolute,
@@ -275,7 +276,7 @@ or relative to <em>contract_dir</em>.</li>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/52014dc.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/8d66a48.
     </div>
   </body>
 </html>

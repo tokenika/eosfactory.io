@@ -349,8 +349,8 @@ resolved, the procedure finishes successfully.</dd>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>account_object_name</strong> (<em>str</em>) – The name of the account object returned.</li>
-<li><strong>account_name</strong> (<em>str</em>) – The name of an valid EOSIO account. Must be set if
-the testnode is not local.</li>
+<li><strong>account_name</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.testnet.html#eosfactory.core.testnet.Testnet" title="eosfactory.core.testnet.Testnet"><em>core.testnet.Testnet</em></a>) – The name of an valid EOSIO
+account. Must be set if the testnode is not local.</li>
 <li><strong>owner_key</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Key" title="eosfactory.core.interface.Key"><em>core.interface.Key</em></a>) – The owner public key. Must
 be set if the testnode is not local.</li>
 <li><strong>active_key</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Key" title="eosfactory.core.interface.Key"><em>core.interface.Key</em></a>) – The active public key. Must
@@ -366,6 +366,31 @@ be set if the testnode is not local.</li>
 <dt id="eosfactory.shell.account.reboot">
 <code class="descclassname">eosfactory.shell.account.</code><code class="descname">reboot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/account.html#reboot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.account.reboot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the <a class="reference internal" href="#module-eosfactory.shell.account" title="eosfactory.shell.account"><code class="xref py py-mod docutils literal notranslate"><span class="pre">shell.account</span></code></a> module.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.shell.account.restore_account">
+<code class="descclassname">eosfactory.shell.account.</code><code class="descname">restore_account</code><span class="sig-paren">(</span><em>account_object_name</em>, <em>testnet_account</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/account.html#restore_account"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.account.restore_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a restored account object in caller’s global namespace.</p>
+<p>Start a singleton <a class="reference internal" href="shell.wallet.html#eosfactory.shell.wallet.Wallet" title="eosfactory.shell.wallet.Wallet"><code class="xref py py-class docutils literal notranslate"><span class="pre">shell.wallet.Wallet</span></code></a> object if there is no one
+in the global namespace already.</p>
+<p>If a local testnet is running, create an account object representing
+the <em>eosio</em> account. Put the account into the wallet. Put the account
+object into the global namespace of the caller, and return.</p>
+<p>Otherwise, an outer testnet has to be defined with the function
+<a class="reference internal" href="core.setup.html#eosfactory.core.setup.set_nodeos_address" title="eosfactory.core.setup.set_nodeos_address"><code class="xref py py-func docutils literal notranslate"><span class="pre">core.setup.set_nodeos_address()</span></code></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>account_object_name</strong> (<em>str</em>) – The name of the account object returned.</li>
+<li><strong>testnet_account</strong> (<a class="reference internal" href="core.testnet.html#eosfactory.core.testnet.Testnet" title="eosfactory.core.testnet.Testnet"><em>core.testnet.Testnet</em></a>) – A testnet object defining the account to restore.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -423,7 +448,7 @@ be set if the testnode is not local.</li>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/52014dc.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/8d66a48.
     </div>
   </body>
 </html>

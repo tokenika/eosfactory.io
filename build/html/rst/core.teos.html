@@ -75,6 +75,28 @@
 </dd></dl>
 
 <dl class="function">
+<dt id="eosfactory.core.teos.node_start">
+<code class="descclassname">eosfactory.core.teos.</code><code class="descname">node_start</code><span class="sig-paren">(</span><em>clear=False</em>, <em>nodeos_stdout=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/teos.html#node_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.teos.node_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start the local EOSIO node.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>clear</strong> (<em>bool</em>) – If set, the blockchain is deleted and then re-created.</li>
+<li><strong>nodeos_stdout</strong> (<em>str</em>) – If set, a file where <em>stdout</em> stream of
+the local <em>nodeos</em> is send. Note that the file can be included to
+the configuration of EOSFactory, see <a class="reference internal" href="core.config.html#eosfactory.core.config.nodeos_stdout" title="eosfactory.core.config.nodeos_stdout"><code class="xref py py-func docutils literal notranslate"><span class="pre">core.config.nodeos_stdout()</span></code></a>.
+If the file is set with the configuration, and in the same time
+it is set with this argument, the argument setting prevails.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
 <dt id="eosfactory.core.teos.project_from_template">
 <code class="descclassname">eosfactory.core.teos.</code><code class="descname">project_from_template</code><span class="sig-paren">(</span><em>project_name</em>, <em>template=None</em>, <em>workspace_dir=None</em>, <em>c_cpp_prop_path=None</em>, <em>include=None</em>, <em>libs=None</em>, <em>remove_existing=False</em>, <em>open_vscode=False</em>, <em>throw_exists=False</em>, <em>verbosity=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/teos.html#project_from_template"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.teos.project_from_template" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given the project name and template name, create a smart contract project.</p>
@@ -85,6 +107,8 @@
 template: The name of the template used.
 workspace_dir: If set, the folder for the work-space. Defaults to the
     value returned by the config.contract_workspace() function.
+include: If set, comma-separated list of include folders.
+libs: If set, comma-separated list of libraries.
 remove_existing: If set, overwrite any existing project.
 visual_studio_code: If set, open the ``VSCode``, if available.
 verbosity: The logging configuration.
@@ -149,7 +173,7 @@ verbosity: The logging configuration.
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/52014dc.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/8d66a48.
     </div>
   </body>
 </html>

@@ -44,32 +44,51 @@
 <span class="kn">import</span> <span class="nn">eosfactory.core.teos</span> <span class="k">as</span> <span class="nn">teos</span>
 
 <span class="k">def</span> <span class="nf">build_</span><span class="p">(</span>
-        <span class="n">contract_dir_hint</span><span class="p">,</span> <span class="n">compile_only</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">silent</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">contract_dir_hint</span><span class="p">,</span>
+        <span class="n">c_cpp_properties_path</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> 
+        <span class="n">compile_only</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">silent</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 
     <span class="n">verbosity</span><span class="o">=</span><span class="p">[]</span> <span class="k">if</span> <span class="n">silent</span> <span class="k">else</span> <span class="kc">None</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">compile_only</span><span class="p">:</span>
-        <span class="n">teos</span><span class="o">.</span><span class="n">ABI</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">verbosity</span><span class="p">)</span>
-    <span class="n">teos</span><span class="o">.</span><span class="n">WASM</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">compile_only</span><span class="p">,</span> <span class="n">verbosity</span><span class="p">)</span>
+        <span class="n">teos</span><span class="o">.</span><span class="n">ABI</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">,</span> <span class="n">c_cpp_properties_path</span><span class="p">,</span> <span class="n">verbosity</span><span class="p">)</span>
+    <span class="n">teos</span><span class="o">.</span><span class="n">WASM</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">,</span> <span class="n">c_cpp_properties_path</span><span class="p">,</span> <span class="n">compile_only</span><span class="p">,</span> <span class="n">verbosity</span><span class="p">)</span>
 
 <div class="viewcode-block" id="build"><a class="viewcode-back" href="../../../rst/utils.html#eosfactory.utils.build.build">[docs]</a><span class="k">def</span> <span class="nf">build</span><span class="p">():</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    usage: python3 -m eosfactory.utils.build [-h] [--compile] [--silent] dir</span>
 
-<span class="sd">    Given a contract project directory path which may be relative to the</span>
-<span class="sd">    ``contract workspace`` directory, set on the installation.</span>
+<span class="sd">    Build a contract.</span>
+
+<span class="sd">    The contract is determined with its project directory. The directory may be</span>
+<span class="sd">    absolute or relative to the *contract workspace* directory as defined with</span>
+<span class="sd">    :func:`.core.config.contract_workspace()`. If the *dir* argument is not set,</span>
+<span class="sd">    it is substituted with the current working directory.</span>
+
+<span class="sd">    The dependencies of the contract are determined with the json file given with the argument *c_cpp_prop* -- if it is set -- or with the file</span>
+<span class="sd">    *.vscode/c_opp_properties.json* in the project&#39;s directory, otherwise.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        dir: Contract name or directory.</span>
-<span class="sd">        -h: Show help message and exit</span>
+<span class="sd">        --c_cpp_prop: c_cpp_properties.json file path.        </span>
 <span class="sd">        --compile: Do not build, compile only.</span>
 <span class="sd">        --silent: Do not print info.</span>
+<span class="sd">        -h: Show help message and exit</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">    Given a contract project directory path which may be relative to the </span>
-<span class="s1">    ``contract workspace`` directory, set on the installation.</span>
+<span class="s1">    Build a contract.</span>
+
+<span class="s1">    The contract is determined with its project directory. The directory may be</span>
+<span class="s1">    absolute or relative to the *contract workspace* directory as defined with</span>
+<span class="s1">    :func:`.core.config.contract_workspace(). If the *dir* argument is not set,</span>
+<span class="s1">    it is substituted with the current working directory.</span>
+
+<span class="s1">    The dependencies of the contract are determined with the json file given with the argument *c_cpp_prop* -- if it is set -- or with the file</span>
+<span class="s1">    *.vscode/c_opp_properties.json* in the project&#39;s directory, otherwise.</span>
 <span class="s1">    &#39;&#39;&#39;</span><span class="p">)</span>
 
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;dir&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Contract name or directory.&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">&quot;--c_cpp_prop&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;c_cpp_properties.json file path.&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
         <span class="s2">&quot;--compile&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Do not build, compile only.&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
@@ -77,7 +96,7 @@
 
 
     <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
-    <span class="n">build_</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">dir</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">compile</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">silent</span><span class="p">)</span>    </div>
+    <span class="n">build_</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">dir</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">c_cpp_prop</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">compile</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">silent</span><span class="p">)</span>    </div>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">build</span><span class="p">()</span>
@@ -117,7 +136,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/52014dc.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/8d66a48.
     </div>
   </body>
 </html>
