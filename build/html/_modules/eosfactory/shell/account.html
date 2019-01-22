@@ -558,13 +558,13 @@
 
     <span class="k">if</span> <span class="n">manager</span><span class="o">.</span><span class="n">is_local_testnet</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">teos</span><span class="o">.</span><span class="n">is_local_node_process_running</span><span class="p">():</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">    There is an local testnode process running, but its &#39;eosio` account is not like </span>
 <span class="s1">    expected.</span>
 <span class="s1">            &#39;&#39;&#39;</span><span class="p">)</span>
             <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
 
-            <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">    If the local testnet is not running, an outer testnet has to be defined with </span>
 <span class="s1">    `setup.set_nodeos_address(&lt;url&gt;)`: use &#39;setup.set_nodeos_address(&lt;URL&gt;)&#39;</span>
 <span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span>
@@ -582,7 +582,7 @@
 
         <span class="k">if</span> <span class="n">first_while</span> <span class="ow">and</span> <span class="n">account_name</span> <span class="ow">and</span> <span class="n">owner_key</span> <span class="ow">and</span> <span class="n">active_key</span> \
                         <span class="ow">and</span> <span class="ow">not</span> <span class="n">account_object</span><span class="o">.</span><span class="n">exists</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">            There is no account named ``</span><span class="si">{}</span><span class="s1">`` in the blockchain.</span>
 <span class="s1">            &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">account_name</span><span class="p">))</span>
 
@@ -884,7 +884,7 @@
         <span class="n">wallet_singleton</span> <span class="o">=</span> <span class="n">wallet</span><span class="o">.</span><span class="n">Wallet</span><span class="o">.</span><span class="n">wallet_single</span>
 
         <span class="k">if</span> <span class="n">wallet_singleton</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">                Cannot find any `Wallet` object.</span>
 <span class="s1">                &#39;&#39;&#39;</span><span class="p">)</span>
 
@@ -957,7 +957,7 @@
 <span class="k">def</span> <span class="nf">is_in_globals</span><span class="p">(</span><span class="n">account_object_name</span><span class="p">,</span> <span class="nb">globals</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">account_object_name</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">globals</span><span class="p">[</span><span class="n">account_object_name</span><span class="p">],</span> <span class="n">interface</span><span class="o">.</span><span class="n">Account</span><span class="p">):</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">    The name of the account name is to be &#39;</span><span class="si">{}</span><span class="s1">&#39;, but there is already a global </span>
 <span class="s1">    variable of this name. Its type is &#39;</span><span class="si">{}</span><span class="s1">&#39;. </span>
 <span class="s1">    Change the first argument in the function &#39;create_account&#39;.</span>
@@ -1002,7 +1002,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/8d66a48.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/4aaf30e.
     </div>
   </body>
 </html>

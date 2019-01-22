@@ -46,7 +46,9 @@
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">re</span>
 
-<span class="kn">import</span> <span class="nn">eosfactory.core.</span> <span class="n">config</span> <span class="k">as</span> <span class="n">config</span>
+<span class="kn">import</span> <span class="nn">eosfactory.core.utils</span> <span class="k">as</span> <span class="nn">utils</span>
+<span class="kn">import</span> <span class="nn">eosfactory.core.config</span> <span class="k">as</span> <span class="nn">config</span>
+<span class="kn">import</span> <span class="nn">eosfactory.core.errors</span> <span class="k">as</span> <span class="nn">errors</span>
 <span class="kn">import</span> <span class="nn">eosfactory.core.logger</span> <span class="k">as</span> <span class="nn">logger</span>
 <span class="kn">import</span> <span class="nn">eosfactory.core.interface</span> <span class="k">as</span> <span class="nn">interface</span>
 <span class="kn">import</span> <span class="nn">eosfactory.core.setup</span> <span class="k">as</span> <span class="nn">setup</span>
@@ -82,7 +84,7 @@
             <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">setup</span><span class="o">.</span><span class="n">file_prefix</span><span class="p">()):</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">file</span><span class="p">))</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+        <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">        Cannot remove testnet cache. The error message is:</span>
 <span class="s1">        </span><span class="si">{}</span><span class="s1"></span>
 <span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)))</span>
@@ -217,6 +219,7 @@
 <span class="sd">            If the file is set with the configuration, and in the same time </span>
 <span class="sd">            it is set with this argument, the argument setting prevails. </span>
 <span class="sd">    &#39;&#39;&#39;</span>
+
     <span class="k">if</span> <span class="ow">not</span> <span class="n">cleos</span><span class="o">.</span><span class="n">set_local_nodeos_address_if_none</span><span class="p">():</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">INFO</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">        No local nodeos is set: </span><span class="si">{}</span><span class="s1"></span>
@@ -283,7 +286,7 @@
 
     <span class="n">domain</span> <span class="o">=</span> <span class="s2">&quot;LOCAL&quot;</span> <span class="k">if</span> <span class="n">is_local_testnet</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;REMOTE&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">head_block_num</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+        <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">        </span><span class="si">{}</span><span class="s1"> testnet is not running or is not responding @ </span><span class="si">{}</span><span class="s1">.</span>
 <span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="n">setup</span><span class="o">.</span><span class="n">nodeos_address</span><span class="p">()))</span>
     <span class="k">else</span><span class="p">:</span>
@@ -330,7 +333,7 @@
                     <span class="n">edit_account_map</span><span class="p">()</span>
                     <span class="k">continue</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+                    <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">        Use the function &#39;efman.edit_account_map(text_editor=&quot;nano&quot;)&#39;</span>
 <span class="s1">        or the corresponding method of any object of the &#39;eosfactory.wallet.Wallet` </span>
 <span class="s1">        class to edit the file.</span>
@@ -353,8 +356,7 @@
 
 
 <span class="k">def</span> <span class="nf">edit_map</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">text_editor</span><span class="o">=</span><span class="s2">&quot;nano&quot;</span><span class="p">):</span>
-    <span class="kn">import</span> <span class="nn">subprocess</span>
-    <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">text_editor</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+    <span class="n">utils</span><span class="o">.</span><span class="n">process</span><span class="p">([</span><span class="n">text_editor</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
                                     <span class="n">config</span><span class="o">.</span><span class="n">keosd_wallet_dir</span><span class="p">(),</span> <span class="n">file_name</span><span class="p">)])</span>
     <span class="n">read_map</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">text_editor</span><span class="p">)</span>
 
@@ -380,7 +382,7 @@
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="ne">FileNotFoundError</span><span class="p">):</span>
                 <span class="k">return</span> <span class="p">{}</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+                <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">            The json file </span>
 <span class="s1">            </span><span class="si">{}</span><span class="s1"></span>
 <span class="s1">            is misformed. The error message is:</span>
@@ -391,11 +393,10 @@
                     
                 <span class="n">answer</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;y/n &lt;&lt;&lt; &quot;</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">answer</span> <span class="o">==</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span>
-                    <span class="kn">import</span> <span class="nn">subprocess</span>
-                    <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="n">text_editor</span><span class="p">,</span> <span class="n">path</span><span class="p">])</span>
+                    <span class="n">utils</span><span class="o">.</span><span class="n">process</span><span class="p">([</span><span class="n">text_editor</span><span class="p">,</span> <span class="n">path</span><span class="p">])</span>
                     <span class="k">continue</span>
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+                    <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">                    Use the function &#39;manager.edit_account_map(text_editor=&quot;nano&quot;)&#39; to edit the file.</span>
 <span class="s1">                    &#39;&#39;&#39;</span><span class="p">,</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>                    
                     <span class="k">return</span> <span class="kc">None</span></div>
@@ -455,7 +456,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/8d66a48.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/4aaf30e.
     </div>
   </body>
 </html>

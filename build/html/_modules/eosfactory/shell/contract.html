@@ -43,6 +43,7 @@
 <span></span><span class="kn">import</span> <span class="nn">shutil</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
+<span class="kn">import</span> <span class="nn">eosfactory.core.errors</span> <span class="k">as</span> <span class="nn">errors</span>
 <span class="kn">import</span> <span class="nn">eosfactory.core.logger</span> <span class="k">as</span> <span class="nn">logger</span>
 <span class="kn">import</span> <span class="nn">eosfactory.core.config</span> <span class="k">as</span> <span class="nn">config</span>
 <span class="kn">import</span> <span class="nn">eosfactory.core.setup</span> <span class="k">as</span> <span class="nn">setup</span>
@@ -74,7 +75,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">contract_dir</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">contract_dir</span><span class="p">(</span><span class="n">contract_dir</span><span class="p">)</span>
         
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">contract_dir</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">                Cannot determine the contract directory. The path is </span>
 <span class="s2">                ``</span><span class="si">{}</span><span class="s2">``.</span>
 <span class="s2">                &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">contract_dir</span><span class="p">))</span>
@@ -146,7 +147,7 @@
             <span class="n">delay_sec</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">account</span><span class="p">,</span> <span class="n">eosfactory</span><span class="o">.</span><span class="n">shell</span><span class="o">.</span><span class="n">account</span><span class="o">.</span><span class="n">Account</span><span class="p">):</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">            The account object has to be of the type </span>
 <span class="s2">            ``eosfactory.shell.account.Account``.</span>
 <span class="s2">            &quot;&quot;&quot;</span><span class="p">)</span>
@@ -171,7 +172,7 @@
         <span class="sd">&#39;&#39;&#39;Deploy the contract.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_built</span><span class="p">():</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">            Contract needs to be built before deployment.</span>
 <span class="s1">            &#39;&#39;&#39;</span><span class="p">)</span>
             <span class="k">return</span>
@@ -341,7 +342,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/8d66a48.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/4aaf30e.
     </div>
   </body>
 </html>

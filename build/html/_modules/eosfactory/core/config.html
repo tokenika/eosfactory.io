@@ -44,6 +44,7 @@
 <span class="kn">import</span> <span class="nn">argparse</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
+<span class="kn">import</span> <span class="nn">eosfactory.core.errors</span> <span class="k">as</span> <span class="nn">errors</span>
 <span class="kn">import</span> <span class="nn">eosfactory.core.logger</span> <span class="k">as</span> <span class="nn">logger</span>
 <span class="kn">import</span> <span class="nn">eosfactory.core.utils</span> <span class="k">as</span> <span class="nn">utils</span>
 
@@ -95,7 +96,7 @@
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">path</span>
 
-    <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+    <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">        Cannot determine the root directory of EOSFactory.</span>
 <span class="s1">        It is attempted to be derived from the path of the configuration file</span>
 <span class="s1">            &#39;</span><span class="si">{}</span><span class="s1">&#39;.</span>
@@ -316,9 +317,9 @@
                 <span class="k">else</span><span class="p">:</span>
                     <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+            <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
 
-    <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+    <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">Cannot find the config file.       </span>
 <span class="s1">    &#39;&#39;&#39;</span><span class="p">)</span></div>
 
@@ -338,7 +339,7 @@
             <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="nb">map</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
         <span class="k">return</span>
 
-    <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+    <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">Cannot find the config file.       </span>
 <span class="s1">    &#39;&#39;&#39;</span><span class="p">)</span></div>
     
@@ -392,7 +393,7 @@
     <span class="k">if</span> <span class="ow">not</span> <span class="n">retval</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">retval</span>
 
-    <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+    <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">The value of </span><span class="si">{}</span><span class="s1"> is not defined.</span>
 <span class="s1">Define it in the config file</span>
 <span class="si">{}</span><span class="s1">       </span>
@@ -451,7 +452,7 @@
                     <span class="k">return</span> <span class="n">full_path</span>        
 
     <span class="k">if</span> <span class="n">raise_error</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+        <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">        Cannot find any path for &#39;</span><span class="si">{}</span><span class="s1">&#39;.</span>
 <span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">config_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span></div>
 
@@ -497,7 +498,7 @@
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">contract_dir_</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">contract_dir_</span><span class="p">)</span>
     
-    <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+    <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">        Cannot determine the contract directory.</span>
 <span class="s1">        Tried path list:</span>
 <span class="s1">        </span><span class="si">{}</span><span class="s1"></span>
@@ -542,7 +543,7 @@
     <span class="k">if</span> <span class="n">srcs</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">source_dir</span><span class="p">,</span> <span class="n">srcs</span><span class="p">)</span>            
 
-    <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+    <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">        Cannot find any contract source directory.</span>
 <span class="s1">        Tried path list:</span>
 <span class="s1">        </span><span class="si">{}</span><span class="s1"></span>
@@ -607,7 +608,7 @@
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">file</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">contract_file_hint</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">build_dir</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
 
-    <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+    <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">        Cannot determine the contract file basing on hints:</span>
 <span class="s1">        contract dir hint: </span><span class="si">{}</span><span class="s1"></span>
 <span class="s1">        contract file hint: </span><span class="si">{}</span><span class="s1"></span>
@@ -638,7 +639,7 @@
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">workspacePath</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">workspacePath</span>
 
-    <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+    <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">        Cannot determine the contract workspace.</span>
 <span class="s1">        Tried path list:</span>
 <span class="s1">        </span><span class="si">{}</span><span class="s1"></span>
@@ -898,7 +899,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/8d66a48.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/4aaf30e.
     </div>
   </body>
 </html>
