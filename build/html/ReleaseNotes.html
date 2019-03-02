@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>EOSFactory Release Notes - v2.4 &#8212; EOSFactory 2.4 documentation</title>
+    <title>EOSFactory Release Notes - v3.0.0 &#8212; EOSFactory 3.0.0 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
@@ -37,7 +37,7 @@
         <li class="right" >
           <a href="rst/core.utils.html" title="core.utils"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">EOSFactory 2.4 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">EOSFactory 3.0.0 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -46,58 +46,19 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="eosfactory-release-notes-v2-4">
-<span id="eosfactory-release-notes-v2-4"></span><h1>EOSFactory Release Notes - v2.4<a class="headerlink" href="#eosfactory-release-notes-v2-4" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="eosfactory-release-notes-v3-0-0">
+<h1>EOSFactory Release Notes - v3.0.0<a class="headerlink" href="#eosfactory-release-notes-v3-0-0" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="compatibility">
-<span id="compatibility"></span><h2>Compatibility<a class="headerlink" href="#compatibility" title="Permalink to this headline">¶</a></h2>
-<p>EOSFactory <a class="reference external" href="https://github.com/tokenika/eosfactory/releases/tag/v2.4">v2.4</a> is compatible with EOS <a class="reference external" href="https://github.com/EOSIO/eos/releases/tag/v1.5.0">v1.5.x</a>.</p>
+<h2>Compatibility<a class="headerlink" href="#compatibility" title="Permalink to this headline">¶</a></h2>
+<p>EOSFactory <a class="reference external" href="https://github.com/tokenika/eosfactory/releases/tag/v3.0.0">v3.0.0</a> is compatible with EOS <a class="reference external" href="https://github.com/EOSIO/eos/releases/tag/v1.6.0">v1.6.0</a> and eosio.cdt <a class="reference external" href="https://github.com/EOSIO/eosio.cdt/releases/tag/v1.5.0">v1.5.0</a>.</p>
 </div>
-<div class="section" id="new-features-in-v2-4">
-<span id="new-features-in-v2-4"></span><h2>New features in v2.4<a class="headerlink" href="#new-features-in-v2-4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="new-features-in-v3-0-0">
+<h2>New features in v3.0.0<a class="headerlink" href="#new-features-in-v3-0-0" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>General code overhaul &amp; clean-up.</li>
-<li>Documentation improved &amp; revised.</li>
-<li>Introduction of code patterns.</li>
-<li>Several bug fixes.</li>
-</ul>
-</div>
-<div class="section" id="features-available-in-previous-releases">
-<span id="features-available-in-previous-releases"></span><h2>Features available in previous releases<a class="headerlink" href="#features-available-in-previous-releases" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Launch a single-node private testnet and fully control it: stop it and then continue running it or completely reset it.</li>
-<li>Initialize a testnet with the <code class="docutils literal notranslate"><span class="pre">bios</span></code> contract and several test accounts (available as <code class="docutils literal notranslate"><span class="pre">sess.alice</span></code>, <code class="docutils literal notranslate"><span class="pre">sess.bob</span></code> and <code class="docutils literal notranslate"><span class="pre">sess.carol</span></code>).</li>
-<li>Create additional test accounts (their keys are automatically imported into the wallet).</li>
-<li>Manage the wallet (locking, unlocking etc).</li>
-<li>Have an easy access to demo contracts stored in the <code class="docutils literal notranslate"><span class="pre">contracts</span></code> folder of the <em>EOSIO</em> source code (you can instantiate them in EOSFactory by passing their folder name in the <code class="docutils literal notranslate"><span class="pre">Contract</span></code> class constructor).</li>
-<li>Compile a contract, both <code class="docutils literal notranslate"><span class="pre">ABI</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">WAST</span></code> (but please note that the ABI compiler has an experimental status in <em>EOSIO</em> repository).</li>
-<li>Create a new contract from a pre-defined template (this includes the creation of its <a class="reference external" href="https://cmake.org/">CMake</a> files).</li>
-<li>Deploy a contract (the account holding the contract is created behind the scenes).</li>
-<li>Interact with a contract by pushing actions to it.</li>
-<li>Extract data from a contract’s table.</li>
-<li>Integration with Python <a class="reference external" href="https://docs.python.org/2/library/unittest.html">UnitTest</a> standard library.</li>
-<li>User-defined workspace for smart-contract storage.</li>
-<li>Support for debugging via logger output containing file name &amp; line number.</li>
-<li>Preliminary code verification with <code class="docutils literal notranslate"><span class="pre">CLANG</span></code>.</li>
-<li><a class="reference external" href="https://code.visualstudio.com/">Visual Studio Code</a> integration, including <a class="reference external" href="https://cmake.org/">CMake</a> builds and automated tasks.</li>
-<li>Color differentiation in console output.</li>
-<li>Support for <code class="docutils literal notranslate"><span class="pre">keosd</span></code>, the official wallet management tool.</li>
-<li>Full compatibility with production version of EOS (<a class="reference external" href="https://github.com/EOSIO/eos/releases/tag/v1.2.0">v1.2.0</a> or higher).</li>
-<li>Seamless integration with public testnets (e.g. <a class="reference external" href="http://dev.remote_testnet.io/">Jungle Testnet</a> or <a class="reference external" href="https://tools.cryptokylin.io">Kylin Testnet</a>).</li>
-<li>The entire wallet management migrated to <code class="docutils literal notranslate"><span class="pre">keosd</span></code>, as for security reasons this feature is no longer supported by <code class="docutils literal notranslate"><span class="pre">nodeos</span></code>.</li>
-<li>Radically improved mechanism for mapping random account names to human-friendly aliases, including symbolic translation of <em>EOS</em> logger messages.</li>
-<li>New mechanism for caching public testnet settings.</li>
-<li><a class="reference external" href="https://github.com/tokenika/eosfactory/blob/master/eosfactory/eosf.py">Developer API</a> reduced to less than 20 basic commands and classes.</li>
-<li>Radially improved logger messaging, including highly customizable verbosity.</li>
-<li>Local testnet running in a headless mode (this allows you to run EOSFactory in a GUI-less environment, e.g. Ubuntu Server, or via SSH).</li>
-<li>All functionality ported to Python, no need to compile any C++ code.</li>
-<li>Precise error catching in unit tests, utilizing Python’s <code class="docutils literal notranslate"><span class="pre">assertRaises(Error)</span></code> feature.</li>
-<li>Completely removed dependence on system variables: entries in the <code class="docutils literal notranslate"><span class="pre">~/.profile</span></code> or <code class="docutils literal notranslate"><span class="pre">~/.bash_profile</span></code> files are no longer needed.</li>
-<li>Radically improved (and simplified) installation process: the Python modules are now installed with <code class="docutils literal notranslate"><span class="pre">setuptools</span></code>.</li>
-<li>While using EOSFactory with <em>Visual Studio Code</em> is highly recommended, EOSFactory has become independent from any particular IDE and does not impose any particular folder structure inside your smart-contract project. The only requirement is having a folder called <code class="docutils literal notranslate"><span class="pre">build</span></code> on the same level or one level up from your C++ source files.</li>
-<li>Support for binary version of <em>EOSIO</em> (while support for a source code build is maintained).</li>
-<li>Smart-contract are built using <em>EOSIO Contract Development Toolkit</em> (CDT).</li>
-<li>Support for setting account and action permissions.</li>
-<li>Optional <code class="docutils literal notranslate"><span class="pre">nodeos</span></code> output to file.</li>
+<li>New alternative syntax introduced for creating references to EOS accounts: <code class="docutils literal notranslate"><span class="pre">foo</span> <span class="pre">=</span> <span class="pre">new_account(...)</span></code>.</li>
+<li>EOSFactory package can be installed from PyPi repository.</li>
+<li>Compatibility with python linter: now linter doesn’t raise warnings about dynamically created account objects.</li>
+<li>Cleaner code, better documented.</li>
 </ul>
 </div>
 </div>
@@ -110,10 +71,9 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">EOSFactory Release Notes - v2.4</a><ul>
+<li><a class="reference internal" href="#">EOSFactory Release Notes - v3.0.0</a><ul>
 <li><a class="reference internal" href="#compatibility">Compatibility</a></li>
-<li><a class="reference internal" href="#new-features-in-v2-4">New features in v2.4</a></li>
-<li><a class="reference internal" href="#features-available-in-previous-releases">Features available in previous releases</a></li>
+<li><a class="reference internal" href="#new-features-in-v3-0-0">New features in v3.0.0</a></li>
 </ul>
 </li>
 </ul>
@@ -137,6 +97,8 @@
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -160,12 +122,12 @@
         <li class="right" >
           <a href="rst/core.utils.html" title="core.utils"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">EOSFactory 2.4 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">EOSFactory 3.0.0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/52014dc.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
     </div>
   </body>
 </html>

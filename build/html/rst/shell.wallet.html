@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>shell.wallet &#8212; EOSFactory 2.4 documentation</title>
+    <title>shell.wallet &#8212; EOSFactory 3.0.0 documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
@@ -37,7 +37,7 @@
         <li class="right" >
           <a href="shell.contract.html" title="shell.contract"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 2.4 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.0.0 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -193,13 +193,6 @@ Returns <cite>WalletOpen</cite> object</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="eosfactory.shell.wallet.Wallet.private_keys">
-<code class="descname">private_keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/wallet.html#Wallet.private_keys"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.wallet.Wallet.private_keys" title="Permalink to this definition">¶</a></dt>
-<dd><p>Lists public keys from all unlocked wallets.
-Returns <cite>cleos.WalletKeys</cite> object.</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="eosfactory.shell.wallet.Wallet.remove_key">
 <code class="descname">remove_key</code><span class="sig-paren">(</span><em>account_or_key</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/wallet.html#Wallet.remove_key"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.wallet.Wallet.remove_key" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove key from wallet.</p>
@@ -239,7 +232,7 @@ Returns <cite>WalletUnlock</cite> object.</p>
 
 <dl class="function">
 <dt id="eosfactory.shell.wallet.create_wallet">
-<code class="descclassname">eosfactory.shell.wallet.</code><code class="descname">create_wallet</code><span class="sig-paren">(</span><em>name=None</em>, <em>password=None</em>, <em>file=False</em>, <em>globals=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/wallet.html#create_wallet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.wallet.create_wallet" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">eosfactory.shell.wallet.</code><code class="descname">create_wallet</code><span class="sig-paren">(</span><em>name=None</em>, <em>password=None</em>, <em>file=False</em>, <em>wallet_globals=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/wallet.html#create_wallet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.wallet.create_wallet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a singleton <a class="reference internal" href="#eosfactory.shell.wallet.Wallet" title="eosfactory.shell.wallet.Wallet"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wallet</span></code></a> object.</p>
 <p>It is not usual to use this function. Instead, it is called automatically
 on the first use of either <a class="reference internal" href="shell.account.html#eosfactory.shell.account.create_master_account" title="eosfactory.shell.account.create_master_account"><code class="xref py py-func docutils literal notranslate"><span class="pre">shell.account.create_master_account()</span></code></a>
@@ -273,6 +266,8 @@ or <a class="reference internal" href="shell.account.html#eosfactory.shell.accou
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -296,12 +291,12 @@ or <a class="reference internal" href="shell.account.html#eosfactory.shell.accou
         <li class="right" >
           <a href="shell.contract.html" title="shell.contract"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 2.4 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.0.0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/4aaf30e.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
     </div>
   </body>
 </html>

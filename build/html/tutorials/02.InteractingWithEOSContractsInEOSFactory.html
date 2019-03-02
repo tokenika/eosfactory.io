@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Interacting with EOS Contracts in EOSFactory &#8212; EOSFactory 2.4 documentation</title>
+    <title>Interacting with EOS Contracts in EOSFactory &#8212; EOSFactory 3.0.0 documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
@@ -37,7 +37,7 @@
         <li class="right" >
           <a href="01.InstallingEOSFactory.html" title="Installing EOSFactory"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 2.4 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.0.0 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -47,17 +47,17 @@
           <div class="body" role="main">
             
   <div class="section" id="interacting-with-eos-contracts-in-eosfactory">
-<span id="interacting-with-eos-contracts-in-eosfactory"></span><h1>Interacting with EOS Contracts in <em>EOSFactory</em><a class="headerlink" href="#interacting-with-eos-contracts-in-eosfactory" title="Permalink to this headline">¶</a></h1>
+<h1>Interacting with EOS Contracts in <em>EOSFactory</em><a class="headerlink" href="#interacting-with-eos-contracts-in-eosfactory" title="Permalink to this headline">¶</a></h1>
 <p>The purpose of this tutorial is to demonstrate how <em>EOSFactory</em> and its Python CLI can be used to make interacting with EOS easy &amp; intuitive.</p>
 <div class="section" id="prerequisites">
-<span id="prerequisites"></span><h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>This tutorial assumes that you have successfully installed <em>EOSFactory</em>. If it’s not the case, please refer to <a class="reference external" href="01.InstallingEOSFactory.html">Installing EOSFactory</a>.</li>
 <li>We also assume that you are familiar with the official <a class="reference external" href="https://developers.eos.io/eosio-cpp/docs/introduction-to-smart-contracts">EOS tutorials</a>, as they will give you a broader context and explain the rationale behind EOS smart-contracts.</li>
 </ul>
 </div>
 <div class="section" id="run-python-cli">
-<span id="run-python-cli"></span><h2>Run Python CLI<a class="headerlink" href="#run-python-cli" title="Permalink to this headline">¶</a></h2>
+<h2>Run Python CLI<a class="headerlink" href="#run-python-cli" title="Permalink to this headline">¶</a></h2>
 <p>Open a bash terminal (or if you are on Windows, open an Ubuntu bash terminal supplied by <em>Windows Subsystem for Linux</em>) and run Python CLI:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3
 </pre></div>
@@ -68,11 +68,12 @@
 </div>
 </div>
 <div class="section" id="start-local-testnet">
-<span id="start-local-testnet"></span><h2>Start local testnet<a class="headerlink" href="#start-local-testnet" title="Permalink to this headline">¶</a></h2>
+<h2>Start local testnet<a class="headerlink" href="#start-local-testnet" title="Permalink to this headline">¶</a></h2>
 <p>To start your own single-node local testnet:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">reset</span><span class="p">()</span>
 </pre></div>
 </div>
+<p>Besides starting a reset <code class="docutils literal notranslate"><span class="pre">nodeos</span></code> executable, the command reset() cleans EOSFactory: deletes account objects, wallets, etc.</p>
 <p>On MacOS the <em>EOSIO</em> process is run in the background with no visible interface. However in Ubuntu &amp; Windows it’s launched in a separate window.</p>
 <p>To verify the <em>EOSIO</em> node is running or to get information about the current state of the testnet:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">info</span><span class="p">()</span>
@@ -80,7 +81,7 @@
 </div>
 </div>
 <div class="section" id="manage-local-testnet">
-<span id="manage-local-testnet"></span><h2>Manage local testnet<a class="headerlink" href="#manage-local-testnet" title="Permalink to this headline">¶</a></h2>
+<h2>Manage local testnet<a class="headerlink" href="#manage-local-testnet" title="Permalink to this headline">¶</a></h2>
 <p>To stop the current testnet:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stop</span><span class="p">()</span>
 </pre></div>
@@ -95,7 +96,7 @@
 </div>
 </div>
 <div class="section" id="initialize-workspace">
-<span id="initialize-workspace"></span><h2>Initialize workspace<a class="headerlink" href="#initialize-workspace" title="Permalink to this headline">¶</a></h2>
+<h2>Initialize workspace<a class="headerlink" href="#initialize-workspace" title="Permalink to this headline">¶</a></h2>
 <p>First, make sure a local testnet is running:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">reset</span><span class="p">()</span>
 </pre></div>
@@ -104,36 +105,51 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">create_master_account</span><span class="p">(</span><span class="s2">&quot;master&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>As a result, a global variable called <code class="docutils literal notranslate"><span class="pre">master</span></code> (or whatever name you pass as the parameter) is created and from now on you can use it anywhere in the code, for example:</p>
+<p>As a result, a global (in the current script) variable called <code class="docutils literal notranslate"><span class="pre">master</span></code> (or whatever name you pass as the parameter) is created and from now on you can use it anywhere in the code, for example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">master</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>NOTE:</strong> The name <code class="docutils literal notranslate"><span class="pre">master</span></code> is just a name of a global variable, not the actual name of the account created on the blockchain.</p>
+<blockquote>
+<div><strong>NOTE:</strong> The name <code class="docutils literal notranslate"><span class="pre">master</span></code> is just a name of a variable, not the actual name of the account created on the blockchain. The actual (physical) name of the account is <code class="docutils literal notranslate"><span class="pre">str(master)</span></code>.</div></blockquote>
 <p>You don’t need to worry about locking or unlocking the wallet, managing its password or importing private keys into it. All of this is being taken care of by EOS Factory behind the scenes.</p>
 </div>
 <div class="section" id="create-accounts">
-<span id="create-accounts"></span><h2>Create accounts<a class="headerlink" href="#create-accounts" title="Permalink to this headline">¶</a></h2>
+<h2>Create accounts<a class="headerlink" href="#create-accounts" title="Permalink to this headline">¶</a></h2>
 <p>If you need to create test accounts, here is how you do it:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">create_account</span><span class="p">(</span><span class="s2">&quot;charlie&quot;</span><span class="p">,</span> <span class="n">master</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Again, a global variable, this time called <code class="docutils literal notranslate"><span class="pre">charlie</span></code>, is created and from now on you can use it anywhere in the code, for example:</p>
+<blockquote>
+<div><p>A lot actions happen:</p>
+<ul class="simple">
+<li>the given account name is checked for uniqueness, if positive, break;</li>
+<li>a random physical name of the new account is determined;</li>
+<li>two pairs of cryptographic keys are produced;</li>
+<li>a wallet is opened and unlocked;</li>
+<li>two private keys are imported to the wallet;</li>
+<li>a new account is send to the blockchain;</li>
+<li>confirmation from the blockchain is received.</li>
+</ul>
+</div></blockquote>
+<p>Again, a global (in the current script) variable, this time called <code class="docutils literal notranslate"><span class="pre">charlie</span></code>, is created and from now on you can use it anywhere in the code, for example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">charlie</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>NOTE:</strong> If you don’t specify the <code class="docutils literal notranslate"><span class="pre">account_name</span></code> parameter in <code class="docutils literal notranslate"><span class="pre">create_account()</span></code>, a random name is applied, which is useful on a public testnet where extra restrictions apply.</p>
+<blockquote>
+<div><strong>NOTE:</strong> If you don’t specify the <code class="docutils literal notranslate"><span class="pre">account_name</span></code> parameter in <code class="docutils literal notranslate"><span class="pre">create_account()</span></code> which is the third parameter, a random name is applied, which is useful on a public testnet where extra restrictions apply. You can see it: <code class="docutils literal notranslate"><span class="pre">str(charlie)</span></code></div></blockquote>
 <p>However, if you want to assign a specific name to an account, you can still do it, for example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">create_account</span><span class="p">(</span><span class="s2">&quot;charlie2&quot;</span><span class="p">,</span> <span class="n">master</span><span class="p">,</span> <span class="n">account_name</span><span class="o">=</span><span class="s2">&quot;charlie4eos&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>NOTE:</strong> You cannot create the same account variable twice, that’s why we use a different name for the variable to be created, i.e. <code class="docutils literal notranslate"><span class="pre">charlie2</span></code>.</p>
+<blockquote>
+<div><strong>NOTE:</strong> You cannot create the same account variable twice (EOSFactory protect yourself against non-uniqueness), that’s why we use a different name for the variable to be created, i.e. <code class="docutils literal notranslate"><span class="pre">charlie2</span></code>.</div></blockquote>
 <p>And then run the <code class="docutils literal notranslate"><span class="pre">info()</span></code> command to verify that the <code class="docutils literal notranslate"><span class="pre">charlie4eos</span></code> name is actually assigned to the account referenced by the <code class="docutils literal notranslate"><span class="pre">charlie2</span></code> variable:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">charlie2</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="create-reference-to-an-existing-contract">
-<span id="create-reference-to-an-existing-contract"></span><h2>Create reference to an existing contract<a class="headerlink" href="#create-reference-to-an-existing-contract" title="Permalink to this headline">¶</a></h2>
+<h2>Create reference to an existing contract<a class="headerlink" href="#create-reference-to-an-existing-contract" title="Permalink to this headline">¶</a></h2>
 <p>We assume that a local testnet is running and initialized:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">reset</span><span class="p">()</span>
 <span class="n">create_master_account</span><span class="p">(</span><span class="s2">&quot;master&quot;</span><span class="p">)</span>
@@ -144,23 +160,23 @@
 </pre></div>
 </div>
 <p>And then create a reference to the contract by supplying the host account and the path to the folder where the contract is located, for example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">contract</span> <span class="o">=</span> <span class="n">Contract</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="s2">&quot;/mnt/d/Workspaces/EOS/eosfactory/contracts/02_eosio_token&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">contract</span> <span class="o">=</span> <span class="n">Contract</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="s2">&quot;/mnt/d/Workspaces/EOS/eosfactory/contracts/eosio_token&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Alternatively, supply just the name of the folder, if it can be found in the standard location, i.e. <code class="docutils literal notranslate"><span class="pre">eosfactory/contracts</span></code>, for example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">contract</span> <span class="o">=</span> <span class="n">Contract</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="s2">&quot;02_eosio_token&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">contract</span> <span class="o">=</span> <span class="n">Contract</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="s2">&quot;eosio_token&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="build-the-contract">
-<span id="build-the-contract"></span><h2>Build the contract<a class="headerlink" href="#build-the-contract" title="Permalink to this headline">¶</a></h2>
+<h2>Build the contract<a class="headerlink" href="#build-the-contract" title="Permalink to this headline">¶</a></h2>
 <p>Before deploying the contract needs to be built from the source code. To build the contract invoke its <code class="docutils literal notranslate"><span class="pre">build()</span></code> method:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">contract</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="deploy-the-contract">
-<span id="deploy-the-contract"></span><h2>Deploy the contract<a class="headerlink" href="#deploy-the-contract" title="Permalink to this headline">¶</a></h2>
+<h2>Deploy the contract<a class="headerlink" href="#deploy-the-contract" title="Permalink to this headline">¶</a></h2>
 <p>At this stage the contract has no code deployed. You can check it by running its <code class="docutils literal notranslate"><span class="pre">code()</span></code> method:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">contract</span><span class="o">.</span><span class="n">code</span><span class="p">()</span>
 </pre></div>
@@ -175,7 +191,7 @@
 </div>
 </div>
 <div class="section" id="create-the-token">
-<span id="create-the-token"></span><h2>Create the token<a class="headerlink" href="#create-the-token" title="Permalink to this headline">¶</a></h2>
+<h2>Create the token<a class="headerlink" href="#create-the-token" title="Permalink to this headline">¶</a></h2>
 <p>To create a new token we call the <code class="docutils literal notranslate"><span class="pre">create</span></code> action on the <code class="docutils literal notranslate"><span class="pre">eosio.token</span></code> contract:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">host</span><span class="o">.</span><span class="n">push_action</span><span class="p">(</span>
     <span class="s2">&quot;create&quot;</span><span class="p">,</span> 
@@ -188,8 +204,10 @@
     <span class="p">},</span> <span class="p">[</span><span class="n">master</span><span class="p">,</span> <span class="n">host</span><span class="p">])</span>
 </pre></div>
 </div>
-<p><strong>NOTE:</strong> The <code class="docutils literal notranslate"><span class="pre">push_action</span></code> method takes three arguments: the action’s name, the action’s arguments in JSON format and the accounts whose permission is needed, in this case <code class="docutils literal notranslate"><span class="pre">master</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">host</span></code>.</p>
-<p><strong>NOTE:</strong> If you want to see the actual transaction without broadcasting it, use the <code class="docutils literal notranslate"><span class="pre">show_action</span></code> method instead of <code class="docutils literal notranslate"><span class="pre">push_action</span></code>, for example:</p>
+<blockquote>
+<div><strong>NOTE:</strong> The <code class="docutils literal notranslate"><span class="pre">push_action</span></code> method takes three arguments: the action’s name, the action’s arguments in JSON format and the accounts whose permission is needed, in this case <code class="docutils literal notranslate"><span class="pre">master</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">host</span></code>.</div></blockquote>
+<blockquote>
+<div><strong>NOTE:</strong> If you want to see the actual transaction without broadcasting it, use the <code class="docutils literal notranslate"><span class="pre">show_action</span></code> method instead of <code class="docutils literal notranslate"><span class="pre">push_action</span></code>, for example:</div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">host</span><span class="o">.</span><span class="n">show_action</span><span class="p">(</span>
     <span class="s2">&quot;create&quot;</span><span class="p">,</span> 
     <span class="p">{</span>
@@ -203,7 +221,7 @@
 </div>
 </div>
 <div class="section" id="create-more-accounts">
-<span id="create-more-accounts"></span><h2>Create more accounts<a class="headerlink" href="#create-more-accounts" title="Permalink to this headline">¶</a></h2>
+<h2>Create more accounts<a class="headerlink" href="#create-more-accounts" title="Permalink to this headline">¶</a></h2>
 <p>We’ll need two accounts. To create them just run:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">create_account</span><span class="p">(</span><span class="s2">&quot;alice&quot;</span><span class="p">,</span> <span class="n">master</span><span class="p">)</span>
 <span class="n">create_account</span><span class="p">(</span><span class="s2">&quot;carol&quot;</span><span class="p">,</span> <span class="n">master</span><span class="p">)</span>
@@ -211,7 +229,7 @@
 </div>
 </div>
 <div class="section" id="issue-tokens">
-<span id="issue-tokens"></span><h2>Issue tokens<a class="headerlink" href="#issue-tokens" title="Permalink to this headline">¶</a></h2>
+<h2>Issue tokens<a class="headerlink" href="#issue-tokens" title="Permalink to this headline">¶</a></h2>
 <p>Now that we have created the token, the issuer can issue new tokens to <code class="docutils literal notranslate"><span class="pre">alice</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">host</span><span class="o">.</span><span class="n">push_action</span><span class="p">(</span>
     <span class="s2">&quot;issue&quot;</span><span class="p">,</span>
@@ -221,10 +239,11 @@
     <span class="n">master</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>NOTE:</strong> In this case the permission is assigned to the default <code class="docutils literal notranslate"><span class="pre">master</span></code> account.</p>
+<blockquote>
+<div><strong>NOTE:</strong> In this case the permission is assigned to the default <code class="docutils literal notranslate"><span class="pre">master</span></code> account.</div></blockquote>
 </div>
 <div class="section" id="transfer-tokens">
-<span id="transfer-tokens"></span><h2>Transfer tokens<a class="headerlink" href="#transfer-tokens" title="Permalink to this headline">¶</a></h2>
+<h2>Transfer tokens<a class="headerlink" href="#transfer-tokens" title="Permalink to this headline">¶</a></h2>
 <p>Now that <code class="docutils literal notranslate"><span class="pre">alice</span></code> has tokens, we will transfer some of them to <code class="docutils literal notranslate"><span class="pre">carol</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">host</span><span class="o">.</span><span class="n">push_action</span><span class="p">(</span>
     <span class="s2">&quot;transfer&quot;</span><span class="p">,</span>
@@ -235,10 +254,11 @@
     <span class="n">alice</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>NOTE:</strong> As the third argument we pass the reference to the <code class="docutils literal notranslate"><span class="pre">alice</span></code> account to indicate that she is the one who authorized this action.</p>
+<blockquote>
+<div><strong>NOTE:</strong> As the third argument we pass the reference to the <code class="docutils literal notranslate"><span class="pre">alice</span></code> account to indicate that she is the one who authorized this action.</div></blockquote>
 </div>
 <div class="section" id="check-the-contract-table">
-<span id="check-the-contract-table"></span><h2>Check the contract table<a class="headerlink" href="#check-the-contract-table" title="Permalink to this headline">¶</a></h2>
+<h2>Check the contract table<a class="headerlink" href="#check-the-contract-table" title="Permalink to this headline">¶</a></h2>
 <p>From the contract’s ABI we know that the table keeping track of the token balances is called <code class="docutils literal notranslate"><span class="pre">accounts</span></code>.</p>
 <p>Let’s check the state of both accounts involved in the previous transaction:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">host</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="s2">&quot;accounts&quot;</span><span class="p">,</span> <span class="n">alice</span><span class="p">)</span>
@@ -247,7 +267,8 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">host</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="s2">&quot;accounts&quot;</span><span class="p">,</span> <span class="n">carol</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>NOTE:</strong> The <code class="docutils literal notranslate"><span class="pre">table()</span></code> method takes two arguments: the name of the table as specified by the contract ABI and the scope within the contract in which the table is found.</p>
+<blockquote>
+<div><strong>NOTE:</strong> The <code class="docutils literal notranslate"><span class="pre">table()</span></code> method takes two arguments: the name of the table as specified by the contract ABI and the scope within the contract in which the table is found.</div></blockquote>
 <p>This is the result you should get for <code class="docutils literal notranslate"><span class="pre">alice</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="p">[{</span>
@@ -270,7 +291,7 @@
 </div>
 </div>
 <div class="section" id="stop-testnet-and-exit-python">
-<span id="stop-testnet-and-exit-python"></span><h2>Stop testnet and exit Python<a class="headerlink" href="#stop-testnet-and-exit-python" title="Permalink to this headline">¶</a></h2>
+<h2>Stop testnet and exit Python<a class="headerlink" href="#stop-testnet-and-exit-python" title="Permalink to this headline">¶</a></h2>
 <p>To stop the local testnet:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stop</span><span class="p">()</span>
 </pre></div>
@@ -282,9 +303,9 @@
 <p>Alternatively, use the <code class="docutils literal notranslate"><span class="pre">ctrl-D</span></code> shortcut.</p>
 </div>
 <div class="section" id="run-the-tutorial">
-<span id="run-the-tutorial"></span><h2>Run the tutorial<a class="headerlink" href="#run-the-tutorial" title="Permalink to this headline">¶</a></h2>
+<h2>Run the tutorial<a class="headerlink" href="#run-the-tutorial" title="Permalink to this headline">¶</a></h2>
 <p>The python blocks in the current Markdown document can be executed with a provided bash tool. While the working directory is the root of the <code class="docutils literal notranslate"><span class="pre">EOSFactory</span></code> installation, do:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>eosfactory/utils/pythonmd.sh docs/tutorials/02.InteractingWithEOSContractsInEOSFactory.md
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>eosfactory/pythonmd.sh docs/tutorials/02.InteractingWithEOSContractsInEOSFactory.md
 </pre></div>
 </div>
 </div>
@@ -338,6 +359,8 @@
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -361,12 +384,12 @@
         <li class="right" >
           <a href="01.InstallingEOSFactory.html" title="Installing EOSFactory"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 2.4 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.0.0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/52014dc.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
     </div>
   </body>
 </html>

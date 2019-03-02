@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>shell.account &#8212; EOSFactory 2.4 documentation</title>
+    <title>shell.account &#8212; EOSFactory 3.0.0 documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
@@ -37,7 +37,7 @@
         <li class="right" >
           <a href="utils.html" title="utils"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 2.4 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.0.0 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -52,8 +52,7 @@
 <dt id="eosfactory.shell.account.Account">
 <em class="property">class </em><code class="descclassname">eosfactory.shell.account.</code><code class="descname">Account</code><a class="reference internal" href="../_modules/eosfactory/shell/account.html#Account"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.account.Account" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Methods to be ascribed to account objects, produced with
-<a class="reference internal" href="#eosfactory.shell.account.create_master_account" title="eosfactory.shell.account.create_master_account"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_master_account()</span></code></a> factories and <a class="reference internal" href="#eosfactory.shell.account.create_account" title="eosfactory.shell.account.create_account"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_account()</span></code></a>.</p>
+<p>Methods to be ascribed to account objects.</p>
 <dl class="classmethod">
 <dt id="eosfactory.shell.account.Account.add_methods_and_finalize">
 <em class="property">classmethod </em><code class="descname">add_methods_and_finalize</code><span class="sig-paren">(</span><em>account_object_name</em>, <em>account</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/account.html#Account.add_methods_and_finalize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.account.Account.add_methods_and_finalize" title="Permalink to this definition">¶</a></dt>
@@ -121,7 +120,7 @@ execute on the contract.</li>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Variables:</th><td class="field-body"><ul class="first last simple">
-<li><strong>account_name</strong> (<em>str</em>) – The EOSIO name of the contract’s account.</li>
+<li><a class="reference internal" href="core.cleos.html#eosfactory.core.cleos.account_name" title="eosfactory.core.cleos.account_name"><strong>account_name</strong></a> (<em>str</em>) – The EOSIO name of the contract’s account.</li>
 <li><strong>console</strong> (<em>str</em>) – <em>[“processed”][“action_traces”][0][“console”]</em>                 component of EOSIO cleos responce.</li>
 <li><strong>data</strong> (<em>str</em>) – <em>[“processed”][“action_traces”][0][“act”][“data”]</em>                 component of EOSIO cleos responce.</li>
 </ul>
@@ -237,16 +236,16 @@ contract-dir.</li>
 
 <dl class="method">
 <dt id="eosfactory.shell.account.Account.table">
-<code class="descname">table</code><span class="sig-paren">(</span><em>table_name</em>, <em>scope=''</em>, <em>binary=False</em>, <em>limit=10</em>, <em>key=''</em>, <em>lower=''</em>, <em>upper=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/account.html#Account.table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.account.Account.table" title="Permalink to this definition">¶</a></dt>
+<code class="descname">table</code><span class="sig-paren">(</span><em>table_name</em>, <em>scope=''</em>, <em>binary=False</em>, <em>limit=10</em>, <em>lower=''</em>, <em>upper=''</em>, <em>index=''</em>, <em>key_type=''</em>, <em>encode_type=''</em>, <em>reverse=False</em>, <em>show_payer=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/account.html#Account.table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.account.Account.table" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve the contents of a database table</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>table</strong> (<em>str</em>) – The name of the table as specified by the contract abi.</li>
 <li><strong>scope</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Account" title="eosfactory.core.interface.Account"><em>interface.Account</em></a>) – The scope within the account in
 which the table is found.</li>
-<li><strong>table</strong> (<em>str</em>) – The name of the table as specified by the contract abi.</li>
 <li><strong>binary</strong> (<em>bool</em>) – Return the value as BINARY rather than using abi to
 interpret as JSON. Default is <em>False</em>.</li>
 <li><strong>limit</strong> (<em>int</em>) – The maximum number of rows to return. Default is 10.</li>
@@ -254,6 +253,20 @@ interpret as JSON. Default is <em>False</em>.</li>
 defaults to first.</li>
 <li><strong>upper</strong> (<em>str</em>) – JSON representation of upper bound value value of key,
 defaults to last.</li>
+<li><strong>index</strong> (<em>int</em><em> or </em><em>str</em>) – Index number, 1 - primary (first), 2 - secondary
+index (in order defined by multi_index), 3 - third index, etc.
+Number or name of index can be specified,
+e.g. ‘secondary’ or ‘2’.</li>
+<li><strong>key_type</strong> (<em>str</em>) – The key type of –index, primary only supports
+(i64), all others support (i64, i128, i256, float64, float128,
+ripemd160, sha256).
+Special type ‘name’ indicates an account name.</li>
+<li><strong>encode_type</strong> (<em>str</em>) – The encoding type of key_type
+(i64 , i128 , float64, float128) only support decimal
+encoding e.g. ‘dec’i256 - supports both ‘dec’ and ‘hex’,
+ripemd160 and sha256 is ‘hex’ only.</li>
+<li><strong>reverse</strong> (<em>bool</em>) – Iterate in reverse order.</li>
+<li><strong>show_payer</strong> (<em>bool</em>) – Show RAM payer.</li>
 </ul>
 </td>
 </tr>
@@ -266,10 +279,17 @@ defaults to last.</li>
 
 </dd></dl>
 
+<dl class="class">
+<dt id="eosfactory.shell.account.MasterAccount">
+<em class="property">class </em><code class="descclassname">eosfactory.shell.account.</code><code class="descname">MasterAccount</code><span class="sig-paren">(</span><em>account_object_name=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/account.html#MasterAccount"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.account.MasterAccount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.core.account.Eosio</span></code></p>
+<p>Dummy class for declaring master account objects.</p>
+</dd></dl>
+
 <dl class="function">
 <dt id="eosfactory.shell.account.create_account">
 <code class="descclassname">eosfactory.shell.account.</code><code class="descname">create_account</code><span class="sig-paren">(</span><em>account_object_name</em>, <em>creator</em>, <em>account_name=''</em>, <em>owner_key=''</em>, <em>active_key=''</em>, <em>stake_net=3</em>, <em>stake_cpu=3</em>, <em>permission=None</em>, <em>expiration_sec=None</em>, <em>skip_sign=0</em>, <em>dont_broadcast=0</em>, <em>force_unique=0</em>, <em>max_cpu_usage=0</em>, <em>max_net_usage=0</em>, <em>ref_block=None</em>, <em>delay_sec=0</em>, <em>buy_ram_kbytes=8</em>, <em>buy_ram=''</em>, <em>transfer=False</em>, <em>restore=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/account.html#create_account"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.account.create_account" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create master account object in caller’s global namespace.</p>
+<dd><p>Create account object in caller’s global namespace.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -363,6 +383,82 @@ be set if the testnode is not local.</li>
 </dd></dl>
 
 <dl class="function">
+<dt id="eosfactory.shell.account.new_account">
+<code class="descclassname">eosfactory.shell.account.</code><code class="descname">new_account</code><span class="sig-paren">(</span><em>creator</em>, <em>account_name=''</em>, <em>owner_key=''</em>, <em>active_key=''</em>, <em>stake_net=3</em>, <em>stake_cpu=3</em>, <em>permission=None</em>, <em>expiration_sec=None</em>, <em>skip_sign=0</em>, <em>dont_broadcast=0</em>, <em>force_unique=0</em>, <em>max_cpu_usage=0</em>, <em>max_net_usage=0</em>, <em>ref_block=None</em>, <em>delay_sec=0</em>, <em>buy_ram_kbytes=8</em>, <em>buy_ram=''</em>, <em>transfer=False</em>, <em>restore=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/account.html#new_account"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.account.new_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create account object in caller’s global namespace.</p>
+<p>Wraps the account factory function <a class="reference internal" href="#eosfactory.shell.account.create_account" title="eosfactory.shell.account.create_account"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_account()</span></code></a> so that the
+following statements are equivalent:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">foo</span> <span class="o">=</span> <span class="n">create_account</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="n">MASTER</span><span class="p">)</span>
+<span class="n">foo</span> <span class="o">=</span> <span class="n">new_account</span><span class="p">(</span><span class="n">MASTER</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>NOTE:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>With the `create_` syntax it is enough to state
+`create_account(&quot;foo&quot;, MASTER)` in order to create the account object `foo`.
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>creator</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Account" title="eosfactory.core.interface.Account"><em>core.interface.Account</em></a>) – The account creating the new
+account</li>
+<li><strong>account_name</strong> (<em>str</em>) – The name of an valid EOSIO account. If not set, it
+is random.</li>
+<li><strong>owner_key</strong> (<a class="reference internal" href="core.interface.html#eosfactory.core.interface.Key" title="eosfactory.core.interface.Key"><em>core.interface.Key</em></a>) – The <em>owner</em> key pair. If not set, it
+is random.</li>
+<li><strong>active_key</strong> (<a class="reference internal" href="core.interface.html#eosfactory.core.interface.Key" title="eosfactory.core.interface.Key"><em>core.interface.Key</em></a>) – The <em>active</em> key pair. If not set,
+and the <em>owner_key</em> is set, it is substituted with the <em>owner_key</em>.
+Otherwise, it is random.</li>
+<li><strong>stake_net</strong> (<em>int</em>) – The amount of EOS delegated for net bandwidth.</li>
+<li><strong>stake_cpu</strong> (<em>int</em>) – The amount of EOS delegated for CPU bandwidth.</li>
+<li><strong>buy_ram_kbytes</strong> (<em>int</em>) – The amount of RAM bytes to purchase.</li>
+<li><strong>transfer</strong> (<em>bool</em>) – Transfer voting power and right to unstake EOS to
+receiver.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>See definitions of the remaining parameters:     <a class="reference internal" href="core.cleos.html#eosfactory.core.cleos.common_parameters" title="eosfactory.core.cleos.common_parameters"><code class="xref py py-func docutils literal notranslate"><span class="pre">cleos.common_parameters()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.shell.account.new_master_account">
+<code class="descclassname">eosfactory.shell.account.</code><code class="descname">new_master_account</code><span class="sig-paren">(</span><em>account_name=None</em>, <em>owner_key=None</em>, <em>active_key=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/account.html#new_master_account"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.account.new_master_account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create master account object in caller’s global namespace.</p>
+<p>Wraps the account factory function <a class="reference internal" href="#eosfactory.shell.account.create_master_account" title="eosfactory.shell.account.create_master_account"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_master_account()</span></code></a> so that
+the following statements are equivalent:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MASTER</span> <span class="o">=</span> <span class="n">create_master_account</span><span class="p">(</span><span class="s2">&quot;MASTER&quot;</span><span class="p">)</span>
+<span class="n">MASTER</span> <span class="o">=</span> <span class="n">new_master_account</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>NOTE:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>With the `create_` syntax it is enough to state
+`create_master_account(&quot;MASTER&quot;)` in order to create the account object
+`MASTER`.
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>account_name</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.testnet.html#eosfactory.core.testnet.Testnet" title="eosfactory.core.testnet.Testnet"><em>core.testnet.Testnet</em></a>) – The name of an valid EOSIO
+account. Must be set if the testnode is not local.</li>
+<li><strong>owner_key</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Key" title="eosfactory.core.interface.Key"><em>core.interface.Key</em></a>) – The owner public key. Must
+be set if the testnode is not local.</li>
+<li><strong>active_key</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Key" title="eosfactory.core.interface.Key"><em>core.interface.Key</em></a>) – The active public key. Must
+be set if the testnode is not local.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
 <dt id="eosfactory.shell.account.reboot">
 <code class="descclassname">eosfactory.shell.account.</code><code class="descname">reboot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/account.html#reboot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.account.reboot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset the <a class="reference internal" href="#module-eosfactory.shell.account" title="eosfactory.shell.account"><code class="xref py py-mod docutils literal notranslate"><span class="pre">shell.account</span></code></a> module.</p>
@@ -420,6 +516,8 @@ object into the global namespace of the caller, and return.</p>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -443,12 +541,12 @@ object into the global namespace of the caller, and return.</p>
         <li class="right" >
           <a href="utils.html" title="utils"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 2.4 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.0.0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/4aaf30e.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
     </div>
   </body>
 </html>

@@ -1,0 +1,309 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Uninstalling eosfactory Python package &#8212; EOSFactory 3.0.0 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.0.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="uninstalling-eosfactory-python-package">
+<h1>Uninstalling eosfactory Python package<a class="headerlink" href="#uninstalling-eosfactory-python-package" title="Permalink to this headline">¶</a></h1>
+<p>Un-installation command…</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip3 uninstall eosfactory-tokenika
+</pre></div>
+</div>
+<p>…results:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Uninstalling eosfactory-tokenika-2.1.1:
+  Would remove:
+    /usr/local/eosfactory/config.ini
+    /usr/local/eosfactory/config.json
+    /usr/local/eosfactory/genesis.json
+    /usr/local/eosfactory/templates/contracts/hello_world/.vscode/c_cpp_properties.json
+    /usr/local/eosfactory/templates/contracts/hello_world/.vscode/settings.json
+    /usr/local/eosfactory/templates/contracts/hello_world/.vscode/tasks.json
+    /usr/local/eosfactory/templates/contracts/hello_world/CMakeLists.txt
+    /usr/local/eosfactory/templates/contracts/hello_world/resources/CONTRACT_NAME.clauses.md
+    /usr/local/eosfactory/templates/contracts/hello_world/resources/CONTRACT_NAME.contracts.md
+    /usr/local/eosfactory/templates/contracts/hello_world/src/CONTRACT_NAME.cpp
+    /usr/local/eosfactory/templates/contracts/hello_world/src/logger.hpp
+    /usr/local/eosfactory/templates/contracts/hello_world/tests/test1.py
+    /usr/local/eosfactory/templates/contracts/hello_world/tests/unittest1.py
+    ....................................
+    ....................................
+    /usr/local/lib/python3.5/dist-packages/eosfactory/*
+    /usr/local/lib/python3.5/dist-packages/eosfactory_tokenika-2.1.1-py3.5.egg-info
+Proceed <span class="o">(</span>y/n<span class="o">)</span> y
+Successfully uninstalled eosfactory-tokenika-2.1.1
+</pre></div>
+</div>
+</div>
+<div class="section" id="eosfactory-python-package-link">
+<h1>EOSFactory Python package link<a class="headerlink" href="#eosfactory-python-package-link" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div>The <code class="docutils literal notranslate"><span class="pre">easy-install.pth</span></code> list is automatically pre-pended to the <code class="docutils literal notranslate"><span class="pre">system.path</span></code> python list, and, therefore, EOSFactory there obscures one installed as a regular package. See <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">nano</span> <span class="pre">/usr/local/lib/python3.7/site-packages/easy-install.pth</span></code></div></blockquote>
+<div class="section" id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 setup.py sdist bdist_wheel
+sudo  -H python3 -m pip install -e .
+</pre></div>
+</div>
+<p>The result is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Obtaining file:///mnt/c/Workspaces/EOS/eosfactory
+Requirement already satisfied: termcolor in /usr/local/lib/python3.7/site-packages <span class="o">(</span>from eosfactory-tokenika<span class="o">==</span><span class="m">2</span>.0.0<span class="o">)</span> <span class="o">(</span><span class="m">1</span>.1.0<span class="o">)</span>
+Installing collected packages: eosfactory-tokenika
+  Found existing installation: eosfactory-tokenika <span class="m">2</span>.0.0
+    Can not uninstall <span class="s1">&#39;eosfactory-tokenika&#39;</span>. No files were found to uninstall.
+  Running setup.py develop <span class="k">for</span> eosfactory-tokenika
+Successfully installed eosfactory-tokenika
+</pre></div>
+</div>
+<p>The relevant entry is in the file <code class="docutils literal notranslate"><span class="pre">easy-install.pth</span></code></p>
+</div>
+<div class="section" id="uninstall">
+<h2>Uninstall<a class="headerlink" href="#uninstall" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo -H pip3 uninstall eosfactory-tokenika
+</pre></div>
+</div>
+<p>The result is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Uninstalling eosfactory-tokenika-2.0.0:
+  Would remove:
+    /usr/local/lib/python3.7/site-packages/eosfactory-tokenika.egg-link
+Proceed <span class="o">(</span>y/n<span class="o">)</span>? y
+  Successfully uninstalled eosfactory-tokenika-2.0.0
+</pre></div>
+</div>
+<p>The entry in the file <code class="docutils literal notranslate"><span class="pre">easy-install.pth</span></code> removed.</p>
+</div>
+</div>
+<div class="section" id="alternative-install">
+<h1>Alternative install<a class="headerlink" href="#alternative-install" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo python3 setup_develop.py develop
+</pre></div>
+</div>
+<p>The result is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>running develop
+running egg_info
+creating eosfactory_tokenika.egg-info
+writing eosfactory_tokenika.egg-info/PKG-INFO
+writing dependency_links to eosfactory_tokenika.egg-info/dependency_links.txt
+writing requirements to eosfactory_tokenika.egg-info/requires.txt
+writing top-level names to eosfactory_tokenika.egg-info/top_level.txt
+writing manifest file <span class="s1">&#39;eosfactory_tokenika.egg-info/SOURCES.txt&#39;</span>
+reading manifest file <span class="s1">&#39;eosfactory_tokenika.egg-info/SOURCES.txt&#39;</span>
+reading manifest template <span class="s1">&#39;MANIFEST.in&#39;</span>
+writing manifest file <span class="s1">&#39;eosfactory_tokenika.egg-info/SOURCES.txt&#39;</span>
+running build_ext
+Creating /usr/local/lib/python3.7/site-packages/eosfactory-tokenika.egg-link <span class="o">(</span>link to .<span class="o">)</span>
+Adding eosfactory-tokenika <span class="m">2</span>.1.0 to easy-install.pth file
+
+Installed /mnt/c/Workspaces/EOS/eosfactory
+Processing dependencies <span class="k">for</span> eosfactory-tokenika<span class="o">==</span><span class="m">2</span>.1.0
+Searching <span class="k">for</span> <span class="nv">termcolor</span><span class="o">==</span><span class="m">1</span>.1.0
+Best match: termcolor <span class="m">1</span>.1.0
+Adding termcolor <span class="m">1</span>.1.0 to easy-install.pth file
+
+Using /usr/local/lib/python3.7/site-packages
+Finished processing dependencies <span class="k">for</span> eosfactory-tokenika<span class="o">==</span><span class="m">2</span>.1.0
+</pre></div>
+</div>
+<p>The relevant entry is in the file <code class="docutils literal notranslate"><span class="pre">easy-install.pth</span></code></p>
+<p>Uninstall:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo -H pip3 uninstall eosfactory-tokenika
+</pre></div>
+</div>
+<p>The entry in the file easy-install.pth removed.</p>
+</div>
+<div class="section" id="making-distribution">
+<h1>Making distribution<a class="headerlink" href="#making-distribution" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 setup.py sdist bdist_wheel
+</pre></div>
+</div>
+</div>
+<div class="section" id="installing-python-package">
+<h1>Installing Python package<a class="headerlink" href="#installing-python-package" title="Permalink to this headline">¶</a></h1>
+<p>Pip version has to be precisely defined, otherwise uses the highest available one.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip3 install --user dist/eosfactory_tokenika*.tar.gz
+</pre></div>
+</div>
+<p>The result is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Processing ./dist/eosfactory_tokenika-2.1.1.tar.gz
+Requirement already satisfied: termcolor in /usr/local/lib/python3.7/site-packages <span class="o">(</span>from eosfactory-tokenika<span class="o">==</span><span class="m">2</span>.1.1<span class="o">)</span> <span class="o">(</span><span class="m">1</span>.1.0<span class="o">)</span>
+Building wheels <span class="k">for</span> collected packages: eosfactory-tokenika
+  Building wheel <span class="k">for</span> eosfactory-tokenika <span class="o">(</span>setup.py<span class="o">)</span> ... <span class="k">done</span>
+  Stored in directory: /root/.cache/pip/wheels/ef/92/33/b7e1e9f6a6ab63affc942f451f8474f7f864ad2c16e632d28d
+Successfully built eosfactory-tokenika
+Installing collected packages: eosfactory-tokenika
+  Found existing installation: eosfactory-tokenika <span class="m">2</span>.1.1
+    Uninstalling eosfactory-tokenika-2.1.1:
+      Successfully uninstalled eosfactory-tokenika-2.1.1
+Successfully installed eosfactory-tokenika-2.1.1
+</pre></div>
+</div>
+</div>
+<div class="section" id="uploading">
+<h1>Uploading<a class="headerlink" href="#uploading" title="Permalink to this headline">¶</a></h1>
+<p>Bash command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+</pre></div>
+</div>
+<p>Command result:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Enter your username: tokenika
+Enter your password:
+Uploading distributions to https://test.pypi.org/legacy/
+Uploading eosfactory_tokenika-2.1.1-py3-none-any.whl
+<span class="m">100</span>%<span class="p">|</span>███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████<span class="p">|</span> 106k/106k <span class="o">[</span><span class="m">00</span>:02&lt;<span class="m">00</span>:00, <span class="m">45</span>.1kB/s<span class="o">]</span>Uploading eosfactory_tokenika-2.1.1.tar.gz
+<span class="m">100</span>%<span class="p">|</span>█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████<span class="p">|</span> <span class="m">75</span>.4k/75.4k <span class="o">[</span><span class="m">00</span>:01&lt;<span class="m">00</span>:00, <span class="m">43</span>.9kB/s<span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="viewing-repository">
+<h1>Viewing repository<a class="headerlink" href="#viewing-repository" title="Permalink to this headline">¶</a></h1>
+<p>Once uploaded your package should be viewable on TestPyPI, for example,
+https://test.pypi.org/project/eosfactory-tokenika</p>
+</div>
+<div class="section" id="importing-package">
+<h1>Importing package<a class="headerlink" href="#importing-package" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip3 install -i https://test.pypi.org/simple/ eosfactory-tokenika
+</pre></div>
+</div>
+</div>
+<div class="section" id="thrash">
+<h1>thrash<a class="headerlink" href="#thrash" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># python3 setup_develop.py develop</span>
+<span class="c1"># pip freeze -- output installed packages in requirements format.</span>
+<span class="c1"># </span>
+pip freeze
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># ..........................</span>
+<span class="nv">docutils</span><span class="o">==</span><span class="m">0</span>.14
+-e git+https://github.com/tokenika/eosfactory.git@4b81198a3a9fb9c80f2b46fbfa91ec56dd4b360e#egg<span class="o">=</span>eosfactory_tokenika
+<span class="nv">idna</span><span class="o">==</span><span class="m">2</span>.6
+<span class="c1"># ..........................</span>
+</pre></div>
+</div>
+<p>This shall list names of all packages, you have installed (and which were detected by pip). The name can be sometime long, then use just the name of the package being shown at the and after #egg=. You can also in most cases ignore the version part (whatever follows == or -).
+Then uninstall the package:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip3 uninstall eosfactory-tokenika==2.0
+</pre></div>
+</div>
+<p>If it asks for confirmation about removing the package, then you are lucky guy and it will be removed.</p>
+</div>
+<div class="section" id="id1">
+<h1><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>You could install the package and make it available for any of your Python apps with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 setup.py install --user
+</pre></div>
+</div>
+<p>If you publish the above structure on a public repository, e.g. on Gibhub, anyone could easily install it with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://www.github.com/yourname/yourpackage
+<span class="nb">cd</span> yourpackage
+python setup.py install --user
+</pre></div>
+</div>
+<div class="section" id="where-eosfactory-data">
+<h2>Where eosfactory data<a class="headerlink" href="#where-eosfactory-data" title="Permalink to this headline">¶</a></h2>
+<p>The /usr/local hierarchy is for use by the system administrator when installing software locally. It needs to be safe from being overwritten when the system software is updated. It may be used for programs and data that are shareable amongst a group of hosts, but not found in /usr</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Uninstalling eosfactory Python package</a></li>
+<li><a class="reference internal" href="#eosfactory-python-package-link">EOSFactory Python package link</a><ul>
+<li><a class="reference internal" href="#install">Install</a></li>
+<li><a class="reference internal" href="#uninstall">Uninstall</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#alternative-install">Alternative install</a></li>
+<li><a class="reference internal" href="#making-distribution">Making distribution</a></li>
+<li><a class="reference internal" href="#installing-python-package">Installing Python package</a></li>
+<li><a class="reference internal" href="#uploading">Uploading</a></li>
+<li><a class="reference internal" href="#viewing-repository">Viewing repository</a></li>
+<li><a class="reference internal" href="#importing-package">Importing package</a></li>
+<li><a class="reference internal" href="#thrash">thrash</a></li>
+<li><a class="reference internal" href="#id1"></a><ul>
+<li><a class="reference internal" href="#where-eosfactory-data">Where eosfactory data</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/tokenika_blogs/pypi_repository.md.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.0.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Tokenika.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
+    </div>
+  </body>
+</html>

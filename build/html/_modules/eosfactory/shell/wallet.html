@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>eosfactory.shell.wallet &#8212; EOSFactory 2.4 documentation</title>
+    <title>eosfactory.shell.wallet &#8212; EOSFactory 3.0.0 documentation</title>
     <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
@@ -29,7 +29,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 2.4 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.0.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
       </ul>
     </div>  
@@ -63,7 +63,7 @@
 <span class="sd">        password (str): The password to the wallet, if the wallet exists. </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">wallet_single</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="nb">globals</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="nb">globals</span> <span class="o">=</span> <span class="p">{}</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 
@@ -79,7 +79,6 @@
 <span class="s1">                It can be only one ``Wallet`` object in the script; there is one</span>
 <span class="s1">                named ``</span><span class="si">{}</span><span class="s1">``.</span>
 <span class="s1">                &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Wallet</span><span class="o">.</span><span class="n">wallet_single</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
-                <span class="k">return</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">wallet_dir</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">keosd_wallet_dir</span><span class="p">()</span>
 
@@ -135,7 +134,7 @@
         <span class="sd">&#39;&#39;&#39; Opens the wallet.</span>
 <span class="sd">        Returns `WalletOpen` object</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">cleos</span><span class="o">.</span><span class="n">WalletOpen</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">is_verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">cleos</span><span class="o">.</span><span class="n">WalletOpen</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">is_verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">TRACE</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">        * Wallet ``</span><span class="si">{}</span><span class="s1">`` opened.</span>
 <span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span></div>
@@ -144,21 +143,21 @@
         <span class="sd">&#39;&#39;&#39; Lock the wallet.</span>
 <span class="sd">        Returns `cleos.WalletLock` object.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">cleos</span><span class="o">.</span><span class="n">WalletLock</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">is_verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">cleos</span><span class="o">.</span><span class="n">WalletLock</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">is_verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">TRACE</span><span class="p">(</span><span class="s2">&quot;Wallet `</span><span class="si">{}</span><span class="s2">` locked.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="Wallet.lock_all"><a class="viewcode-back" href="../../../rst/shell.wallet.html#eosfactory.shell.wallet.Wallet.lock_all">[docs]</a>    <span class="k">def</span> <span class="nf">lock_all</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39; Lock the wallet.</span>
 <span class="sd">        Returns `cleos.WalletLock` object.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">cleos</span><span class="o">.</span><span class="n">WalletLockAll</span><span class="p">(</span><span class="n">is_verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">cleos</span><span class="o">.</span><span class="n">WalletLockAll</span><span class="p">(</span><span class="n">is_verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">TRACE</span><span class="p">(</span><span class="s2">&quot;All wallets locked.&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Wallet.unlock"><a class="viewcode-back" href="../../../rst/shell.wallet.html#eosfactory.shell.wallet.Wallet.unlock">[docs]</a>    <span class="k">def</span> <span class="nf">unlock</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39; Unlock the wallet.</span>
 <span class="sd">        Returns `WalletUnlock` object.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">cleos</span><span class="o">.</span><span class="n">WalletUnlock</span><span class="p">(</span>
+        <span class="n">cleos</span><span class="o">.</span><span class="n">WalletUnlock</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">password</span><span class="p">,</span> <span class="n">is_verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">TRACE</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">        * Wallet ``</span><span class="si">{}</span><span class="s1">`` unlocked.</span>
@@ -187,21 +186,21 @@
             <span class="n">cleos</span><span class="o">.</span><span class="n">WalletRemove_key</span><span class="p">(</span>
                 <span class="n">interface</span><span class="o">.</span><span class="n">key_arg</span><span class="p">(</span>
                     <span class="n">account_or_key</span><span class="p">,</span> <span class="n">is_owner_key</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">is_private_key</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> 
-                <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">is_verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">password</span><span class="p">,</span> <span class="n">is_verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
             <span class="n">removed_keys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">interface</span><span class="o">.</span><span class="n">key_arg</span><span class="p">(</span>
                     <span class="n">account_or_key</span><span class="p">,</span> <span class="n">is_owner_key</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">is_private_key</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
 
             <span class="n">cleos</span><span class="o">.</span><span class="n">WalletRemove_key</span><span class="p">(</span>
                 <span class="n">interface</span><span class="o">.</span><span class="n">key_arg</span><span class="p">(</span>
                     <span class="n">account_or_key</span><span class="p">,</span> <span class="n">is_owner_key</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">is_private_key</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> 
-                <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">is_verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">password</span><span class="p">,</span> <span class="n">is_verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
             <span class="n">removed_keys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">interface</span><span class="o">.</span><span class="n">key_arg</span><span class="p">(</span>
                     <span class="n">account_or_key</span><span class="p">,</span> <span class="n">is_owner_key</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">is_private_key</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">cleos</span><span class="o">.</span><span class="n">WalletRemove_key</span><span class="p">(</span>
                 <span class="n">interface</span><span class="o">.</span><span class="n">key_arg</span><span class="p">(</span>
                     <span class="n">account_or_key</span><span class="p">,</span> <span class="n">is_private_key</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> 
-                <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">is_verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">password</span><span class="p">,</span> <span class="n">is_verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
             <span class="n">removed_keys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">interface</span><span class="o">.</span><span class="n">key_arg</span><span class="p">(</span>
                     <span class="n">account_or_key</span><span class="p">,</span> <span class="n">is_private_key</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
 
@@ -243,12 +242,11 @@
 <span class="sd">                imported.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">open_unlock</span><span class="p">()</span>
-
         <span class="n">imported_keys</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">account_name</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">account_or_key</span><span class="p">,</span> <span class="n">interface</span><span class="o">.</span><span class="n">Account</span><span class="p">):</span>
             <span class="n">account_name</span> <span class="o">=</span> <span class="n">account_or_key</span><span class="o">.</span><span class="n">name</span>
-            <span class="n">wallet_import</span> <span class="o">=</span> <span class="n">cleos</span><span class="o">.</span><span class="n">WalletImport</span><span class="p">(</span>
+            <span class="n">cleos</span><span class="o">.</span><span class="n">WalletImport</span><span class="p">(</span>
                 <span class="n">interface</span><span class="o">.</span><span class="n">key_arg</span><span class="p">(</span>
                     <span class="n">account_or_key</span><span class="p">,</span> <span class="n">is_owner_key</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">is_private_key</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> 
                 <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">is_verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -352,7 +350,7 @@
 
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">account_map</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">account_map</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">object_name</span> <span class="ow">in</span> <span class="n">account_map</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">account_object</span><span class="p">,</span> <span class="n">object_name</span> <span class="ow">in</span> <span class="n">account_map</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">del</span> <span class="n">Wallet</span><span class="o">.</span><span class="n">globals</span><span class="p">[</span><span class="n">object_name</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="Wallet.stop"><a class="viewcode-back" href="../../../rst/shell.wallet.html#eosfactory.shell.wallet.Wallet.stop">[docs]</a>    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -365,28 +363,28 @@
 <span class="sd">        Returns `cleos.WalletKeys` object.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">open_unlock</span><span class="p">()</span>
-
         <span class="n">wallet_keys</span> <span class="o">=</span> <span class="n">cleos</span><span class="o">.</span><span class="n">WalletKeys</span><span class="p">(</span><span class="n">is_verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">TRACE</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">            Keys in all open walets:</span>
 <span class="s1">            </span><span class="si">{}</span><span class="s1"></span>
-<span class="s1">            &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">wallet_keys</span><span class="o">.</span><span class="n">out_msg</span><span class="p">))</span></div>
+<span class="s1">            &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">wallet_keys</span><span class="o">.</span><span class="n">out_msg</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">wallet_keys</span></div>
 
-<div class="viewcode-block" id="Wallet.private_keys"><a class="viewcode-back" href="../../../rst/shell.wallet.html#eosfactory.shell.wallet.Wallet.private_keys">[docs]</a>    <span class="k">def</span> <span class="nf">private_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39; Lists public keys from all unlocked wallets.</span>
-<span class="sd">        Returns `cleos.WalletKeys` object.</span>
-<span class="sd">        &#39;&#39;&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">open_unlock</span><span class="p">()</span>
+    <span class="c1"># def private_keys(self):</span>
+    <span class="c1">#     &#39;&#39;&#39; Lists public keys from all unlocked wallets.</span>
+    <span class="c1">#     Returns `cleos.WalletKeys` object.</span>
+    <span class="c1">#     &#39;&#39;&#39;</span>
+    <span class="c1">#     self.open_unlock()</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">wallet_private_keys</span> <span class="o">=</span> <span class="n">cleos</span><span class="o">.</span><span class="n">WalletPrivateKeys</span><span class="p">(</span><span class="n">is_verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">TRACE</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">            Keys in all open walets:</span>
-<span class="s1">            </span><span class="si">{}</span><span class="s1"></span>
-<span class="s1">            &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">wallet_private_keys</span><span class="o">.</span><span class="n">json</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)))</span>    </div>
+    <span class="c1">#     self.wallet_private_keys = cleos.WalletPrivateKeys(is_verbose=False)</span>
+    <span class="c1">#     logger.TRACE(&#39;&#39;&#39;</span>
+    <span class="c1">#         Keys in all open walets:</span>
+    <span class="c1">#         {}</span>
+    <span class="c1">#         &#39;&#39;&#39;.format(json.dumps(</span>
+    <span class="c1">#             self.wallet_private_keys.json, indent=4)))    </span>
 
     <span class="k">def</span> <span class="nf">edit_account_map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text_editor</span><span class="o">=</span><span class="s2">&quot;nano&quot;</span><span class="p">):</span>
-        <span class="n">manager</span><span class="o">.</span><span class="n">edit_account_map</span><span class="p">(</span><span class="n">text_editor</span><span class="p">)</span>
+        <span class="n">manager</span><span class="o">.</span><span class="n">edit_account_map</span><span class="p">()</span>
 
 <div class="viewcode-block" id="Wallet.is_name_taken"><a class="viewcode-back" href="../../../rst/shell.wallet.html#eosfactory.shell.wallet.Wallet.is_name_taken">[docs]</a>    <span class="k">def</span> <span class="nf">is_name_taken</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">account_object_name</span><span class="p">,</span> <span class="n">account_name</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;Check whether the given name is available is a name of an account</span>
@@ -493,15 +491,15 @@
 
 <div class="viewcode-block" id="create_wallet"><a class="viewcode-back" href="../../../rst/shell.wallet.html#eosfactory.shell.wallet.create_wallet">[docs]</a><span class="k">def</span> <span class="nf">create_wallet</span><span class="p">(</span>
         <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="nb">globals</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">wallet_globals</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Create a singleton :class:`.Wallet` object.</span>
 
 <span class="sd">    It is not usual to use this function. Instead, it is called automatically </span>
 <span class="sd">    on the first use of either :func:`.shell.account.create_master_account`</span>
 <span class="sd">    or :func:`.shell.account.create_account` functions.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="k">if</span> <span class="nb">globals</span><span class="p">:</span>
-        <span class="n">Wallet</span><span class="o">.</span><span class="n">globals</span> <span class="o">=</span> <span class="nb">globals</span>
+    <span class="k">if</span> <span class="n">wallet_globals</span><span class="p">:</span>
+        <span class="n">Wallet</span><span class="o">.</span><span class="n">globals</span> <span class="o">=</span> <span class="n">wallet_globals</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">Wallet</span><span class="o">.</span><span class="n">globals</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">stack</span><span class="p">()[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">f_globals</span>
     <span class="n">Wallet</span><span class="o">.</span><span class="n">wallet_single</span> <span class="o">=</span> <span class="n">Wallet</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
@@ -523,6 +521,8 @@
     <form class="search" action="../../../search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -540,13 +540,13 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 2.4 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.0.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/4aaf30e.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
     </div>
   </body>
 </html>

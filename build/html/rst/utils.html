@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>utils &#8212; EOSFactory 2.4 documentation</title>
+    <title>utils &#8212; EOSFactory 3.0.0 documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
@@ -37,7 +37,7 @@
         <li class="right" >
           <a href="../patterns/set/set_action_permission.html" title="Set Action Permission"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 2.4 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.0.0 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -46,13 +46,13 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-eosfactory.utils.create_project">
-<span id="utils"></span><h1>utils<a class="headerlink" href="#module-eosfactory.utils.create_project" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-eosfactory.create_project">
+<span id="utils"></span><h1>utils<a class="headerlink" href="#module-eosfactory.create_project" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
-<dt id="eosfactory.utils.create_project.create_project">
-<code class="descclassname">eosfactory.utils.create_project.</code><code class="descname">create_project</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/utils/create_project.html#create_project"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.utils.create_project.create_project" title="Permalink to this definition">¶</a></dt>
+<dt id="eosfactory.create_project.main">
+<code class="descclassname">eosfactory.create_project.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/create_project.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.create_project.main" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
-<dt>usage: python3 -m eosfactory.utils.create_project [-h] [–vsc]</dt>
+<dt>usage: python3 -m eosfactory.create_project [-h] [–vsc]</dt>
 <dd>[–throw] [–ovr] [–silent]
 name [template]</dd>
 </dl>
@@ -80,14 +80,14 @@ workspace, compatible with Visual Studio Code.</p>
 </table>
 </dd></dl>
 
-<span class="target" id="module-eosfactory.utils.build"></span><dl class="function">
-<dt id="eosfactory.utils.build.build">
-<code class="descclassname">eosfactory.utils.build.</code><code class="descname">build</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/utils/build.html#build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.utils.build.build" title="Permalink to this definition">¶</a></dt>
-<dd><p>usage: python3 -m eosfactory.utils.build [-h] [–compile] [–silent] dir</p>
+<span class="target" id="module-eosfactory.build"></span><dl class="function">
+<dt id="eosfactory.build.main">
+<code class="descclassname">eosfactory.build.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/build.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.build.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>usage: python3 -m eosfactory.build [-h] [–compile] [–silent] dir</p>
 <p>Build a contract.</p>
 <p>The contract is determined with its project directory. The directory may be
 absolute or relative to the <em>contract workspace</em> directory as defined with
-<a class="reference internal" href="core.config.html#eosfactory.core.config.contract_workspace" title="eosfactory.core.config.contract_workspace"><code class="xref py py-func docutils literal notranslate"><span class="pre">core.config.contract_workspace()</span></code></a>. If the <em>dir</em> argument is not set,
+<a class="reference internal" href="core.config.html#eosfactory.core.config.contract_workspace_dir" title="eosfactory.core.config.contract_workspace_dir"><code class="xref py py-func docutils literal notranslate"><span class="pre">core.config.contract_workspace_dir()</span></code></a>. If the <em>dir</em> argument is not set,
 it is substituted with the current working directory.</p>
 <p>The dependencies of the contract are determined with the json file given with the argument <em>c_cpp_prop</em> – if it is set – or with the file
 <em>.vscode/c_opp_properties.json</em> in the project’s directory, otherwise.</p>
@@ -108,33 +108,39 @@ it is substituted with the current working directory.</p>
 </table>
 </dd></dl>
 
-<span class="target" id="module-eosfactory.utils.testnets"></span><dl class="function">
-<dt id="eosfactory.utils.testnets.testnets">
-<code class="descclassname">eosfactory.utils.testnets.</code><code class="descname">testnets</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/utils/testnets.html#testnets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.utils.testnets.testnets" title="Permalink to this definition">¶</a></dt>
-<dd><p>usage: python3 -m eosfactory.utils.testnets [-h]</p>
+<span class="target" id="module-eosfactory.testnets"></span><dl class="function">
+<dt id="eosfactory.testnets.main">
+<code class="descclassname">eosfactory.testnets.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/testnets.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.testnets.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>usage: testnets.py [-h] [–name NAME] [–remove]</p>
 <p>List saved testnets.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>-h</strong> – show help message and exit</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>--name</strong> – print a testent of the given name</li>
+<li><strong>--remove</strong> – remove a testent of the given name</li>
+<li><strong>-h</strong> – show help message and exit</li>
+</ul>
+</td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
-<span class="target" id="module-eosfactory.utils.register_testnet"></span><dl class="function">
-<dt id="eosfactory.utils.register_testnet.register_testnet">
-<code class="descclassname">eosfactory.utils.register_testnet.</code><code class="descname">register_testnet</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/utils/register_testnet.html#register_testnet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.utils.register_testnet.register_testnet" title="Permalink to this definition">¶</a></dt>
-<dd><p>usage: python3 -m eosfactory.utils.register_testnet [-h]     [-a ACCOUNT ACCOUNT ACCOUNT] url [alias]</p>
+<span class="target" id="module-eosfactory.register_testnet"></span><dl class="function">
+<dt id="eosfactory.register_testnet.main">
+<code class="descclassname">eosfactory.register_testnet.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/register_testnet.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.register_testnet.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Thank you for your contribution. We include it to the next edition of EOSFactory.
+usage: python3 -m eosfactory.register_testnet [-h]     [-a ACCOUNT ACCOUNT ACCOUNT] url [alias]</p>
 <p>Given an url and an testnet alias (not obligatory), get registration data.
 Apply the data to the registration form of the testnet. Enter ‘go’ when ready.</p>
 <p>Example:</p>
-<p>python3 -m eosfactory.utils.register_testnet <a class="reference external" href="http://88.99.97.30:38888">http://88.99.97.30:38888</a> jungle</p>
+<p>python3 -m eosfactory.register_testnet <a class="reference external" href="http://88.99.97.30:38888">http://88.99.97.30:38888</a> jungle</p>
 <p>If additional arguments are given, denoted as <code class="docutils literal notranslate"><span class="pre">--account</span></code>, then the given
 account is checked for existence, and then added as a testnet master
 account, for example:</p>
-<p>python3 -m eosfactory.utils.register_testnet <a class="reference external" href="http://88.99.97.30:38888">http://88.99.97.30:38888</a> jungle -a
+<p>python3 -m eosfactory.register_testnet <a class="reference external" href="http://88.99.97.30:38888">http://88.99.97.30:38888</a> jungle -a
 dgxo1uyhoytn 5K4rezbmuoDUyBUntM3PqxwutPU3rYKrNzgF4f3djQDjfXF3Q67
 5JCvLMJVR24WWvC6qD6VbLpdUMsjhiXmcrk4i7bdPfjDfNMNAeX</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -154,10 +160,10 @@ testnet, e.g. <a class="reference external" href="http://88.99.97.30:38888">http
 </table>
 </dd></dl>
 
-<span class="target" id="module-eosfactory.utils.register_testnet_via_faucet"></span><dl class="function">
-<dt id="eosfactory.utils.register_testnet_via_faucet.register_testnet_via_faucet">
-<code class="descclassname">eosfactory.utils.register_testnet_via_faucet.</code><code class="descname">register_testnet_via_faucet</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/utils/register_testnet_via_faucet.html#register_testnet_via_faucet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.utils.register_testnet_via_faucet.register_testnet_via_faucet" title="Permalink to this definition">¶</a></dt>
-<dd><p>usage: python3 -m eosfactory.utils.register_testnet_via_faucet [-h]     faucet url [alias]</p>
+<span class="target" id="module-eosfactory.register_testnet_via_faucet"></span><dl class="function">
+<dt id="eosfactory.register_testnet_via_faucet.main">
+<code class="descclassname">eosfactory.register_testnet_via_faucet.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/register_testnet_via_faucet.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.register_testnet_via_faucet.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>usage: python3 -m eosfactory.register_testnet_via_faucet [-h]     faucet url [alias]</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -203,6 +209,8 @@ testnet, e.g. <a class="reference external" href="http://88.99.97.30:38888">http
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -226,12 +234,12 @@ testnet, e.g. <a class="reference external" href="http://88.99.97.30:38888">http
         <li class="right" >
           <a href="../patterns/set/set_action_permission.html" title="Set Action Permission"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 2.4 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.0.0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/4aaf30e.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
     </div>
   </body>
 </html>

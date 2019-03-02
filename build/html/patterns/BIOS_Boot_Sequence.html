@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>BIOS Boot Sequence &#8212; EOSFactory 2.4 documentation</title>
+    <title>BIOS Boot Sequence &#8212; EOSFactory 3.0.0 documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
@@ -37,7 +37,7 @@
         <li class="right" >
           <a href="README.html" title="Patterns"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 2.4 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.0.0 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -47,11 +47,11 @@
           <div class="body" role="main">
             
   <div class="section" id="bios-boot-sequence">
-<span id="bios-boot-sequence"></span><h1>BIOS Boot Sequence<a class="headerlink" href="#bios-boot-sequence" title="Permalink to this headline">¶</a></h1>
+<h1>BIOS Boot Sequence<a class="headerlink" href="#bios-boot-sequence" title="Permalink to this headline">¶</a></h1>
 <p>This article follows a <a class="reference external" href="https://developers.eos.io/eosio-nodeos/docs/bios-boot-sequence">document</a> from eosio archives.</p>
 <p><strong>NOTE</strong>: The Python code listed below is executable, as explained <a class="reference external" href="../README.html">here</a>.</p>
 <div class="section" id="step-0-the-system-contracts">
-<span id="step-0-the-system-contracts"></span><h2>Step 0 The system contracts<a class="headerlink" href="#step-0-the-system-contracts" title="Permalink to this headline">¶</a></h2>
+<h2>Step 0 The system contracts<a class="headerlink" href="#step-0-the-system-contracts" title="Permalink to this headline">¶</a></h2>
 <p>Execution of the presented code depends on definitions given in <a class="reference external" href="https://github.com/EOSIO/eosio.contracts">eosio.contracts repository</a>, hence, if running the code, as explained <a class="reference external" href="./README.html">here</a> for the first time, you will be asked for the root directory of the repository (build).</p>
 <p>The following chunk of code serves the prompt.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
@@ -117,7 +117,7 @@
 </div>
 </div>
 <div class="section" id="steps-1-2-setup">
-<span id="steps-1-2-setup"></span><h2>Steps 1 - 2 Setup<a class="headerlink" href="#steps-1-2-setup" title="Permalink to this headline">¶</a></h2>
+<h2>Steps 1 - 2 Setup<a class="headerlink" href="#steps-1-2-setup" title="Permalink to this headline">¶</a></h2>
 <p>Start nodeos, create a wallet.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">reset</span><span class="p">()</span>
 
@@ -126,7 +126,7 @@
 </div>
 </div>
 <div class="section" id="step-3-create-important-system-accounts">
-<span id="step-3-create-important-system-accounts"></span><h2>Step 3: Create important system accounts<a class="headerlink" href="#step-3-create-important-system-accounts" title="Permalink to this headline">¶</a></h2>
+<h2>Step 3: Create important system accounts<a class="headerlink" href="#step-3-create-important-system-accounts" title="Permalink to this headline">¶</a></h2>
 <p>There are several system accounts that are needed. They are created with a third argument of the <code class="docutils literal notranslate"><span class="pre">create_account</span></code> factory function, in order to force the names of the new accounts.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">COMMENT</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;Create important system accounts&#39;&#39;&#39;</span><span class="p">)</span>
 
@@ -143,7 +143,7 @@
 </div>
 </div>
 <div class="section" id="step-4-install-the-eosio-token-contract">
-<span id="step-4-install-the-eosio-token-contract"></span><h2>Step 4: Install the eosio.token contract<a class="headerlink" href="#step-4-install-the-eosio-token-contract" title="Permalink to this headline">¶</a></h2>
+<h2>Step 4: Install the eosio.token contract<a class="headerlink" href="#step-4-install-the-eosio-token-contract" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">eosio.token</span></code> contract enables you to create, issue, transfer, and get information about tokens.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">COMMENT</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;Install the eosio.token contract&#39;&#39;&#39;</span><span class="p">)</span>
 <span class="n">contract</span> <span class="o">=</span> <span class="s2">&quot;eosio.token&quot;</span>
@@ -157,7 +157,7 @@
 </div>
 </div>
 <div class="section" id="step-5-set-the-eosio-msig-contract">
-<span id="step-5-set-the-eosio-msig-contract"></span><h2>Step 5: Set the eosio.msig contract<a class="headerlink" href="#step-5-set-the-eosio-msig-contract" title="Permalink to this headline">¶</a></h2>
+<h2>Step 5: Set the eosio.msig contract<a class="headerlink" href="#step-5-set-the-eosio-msig-contract" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">eosio.msig</span></code> contract enables and simplifies defining and managing permission levels and performing multi-signature actions.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">COMMENT</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;Set the eosio.msig contract&#39;&#39;&#39;</span><span class="p">)</span>
 
@@ -172,7 +172,7 @@
 </div>
 </div>
 <div class="section" id="step-6-create-and-allocate-the-sys-currency">
-<span id="step-6-create-and-allocate-the-sys-currency"></span><h2>Step 6: Create and allocate the SYS currency<a class="headerlink" href="#step-6-create-and-allocate-the-sys-currency" title="Permalink to this headline">¶</a></h2>
+<h2>Step 6: Create and allocate the SYS currency<a class="headerlink" href="#step-6-create-and-allocate-the-sys-currency" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">COMMENT</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;Create and allocate the SYS currency&#39;&#39;&#39;</span><span class="p">)</span>
 
 <span class="n">eosio_token</span><span class="o">.</span><span class="n">push_action</span><span class="p">(</span>
@@ -191,7 +191,7 @@
 <p>As a point of interest, from an economic point of view, moving token from reserve into circulation, such as by issuing tokens, is an inflationary action. Issuing tokens is just one way that inflation can occur.</p>
 </div>
 <div class="section" id="step-7-set-the-eosio-system-contract">
-<span id="step-7-set-the-eosio-system-contract"></span><h2>Step 7: Set the eosio.system contract<a class="headerlink" href="#step-7-set-the-eosio-system-contract" title="Permalink to this headline">¶</a></h2>
+<h2>Step 7: Set the eosio.system contract<a class="headerlink" href="#step-7-set-the-eosio-system-contract" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">eosio.system</span></code> contract provides the actions for pretty much all token-based operational behavior. Prior to installing the system contract, actions are done independent of accounting. Once the system contract is enabled, <strong>actions now have an economic element to them</strong>. Resources (cpu, network, memory) must be paid for. Likewise, new accounts must be paid for. The system contract enables tokens to be staked and unstaked, resources to be purchased, potential producers to be registered and subsequently voted on, producer rewards to be claimed, privileges and limits to be set, and more.</p>
 <p>Therefore, with the <code class="docutils literal notranslate"><span class="pre">eosio.system</span></code> contract, all the simple tests in the EOSFactory distribution, using the simple signature of the <code class="docutils literal notranslate"><span class="pre">create_account</span></code> account factory function, will fail.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">COMMENT</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;Set the eosio.system contract&#39;&#39;&#39;</span><span class="p">)</span>
@@ -250,6 +250,8 @@
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -273,12 +275,12 @@
         <li class="right" >
           <a href="README.html" title="Patterns"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 2.4 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.0.0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/52014dc.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
     </div>
   </body>
 </html>

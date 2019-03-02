@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Set Account Permission &#8212; EOSFactory 2.4 documentation</title>
+    <title>Set Account Permission &#8212; EOSFactory 3.0.0 documentation</title>
     <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
@@ -37,7 +37,7 @@
         <li class="right" >
           <a href="../BIOS_Boot_Sequence.html" title="BIOS Boot Sequence"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">EOSFactory 2.4 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../../index.html">EOSFactory 3.0.0 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -47,7 +47,7 @@
           <div class="body" role="main">
             
   <div class="section" id="set-account-permission">
-<span id="set-account-permission"></span><h1>Set Account Permission<a class="headerlink" href="#set-account-permission" title="Permalink to this headline">¶</a></h1>
+<h1>Set Account Permission<a class="headerlink" href="#set-account-permission" title="Permalink to this headline">¶</a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">set_account_permission</span></code> command creates or updates an account’s permission. You might want to see the plain <code class="docutils literal notranslate"><span class="pre">cleos</span></code> approach <a class="reference external" href="https://developers.eos.io/eosio-cleos/v1.2.0/reference#cleos-set-account">here</a>.</p>
 <p><strong>NOTE</strong>: The Python code listed below is executable, as explained <a class="reference external" href="../README.html">here</a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">eosfactory.eosf</span> <span class="kn">import</span> <span class="o">*</span>
@@ -67,7 +67,7 @@
 </pre></div>
 </div>
 <div class="section" id="set-new-key-to-a-permission">
-<span id="set-new-key-to-a-permission"></span><h2>Set new key to a permission<a class="headerlink" href="#set-new-key-to-a-permission" title="Permalink to this headline">¶</a></h2>
+<h2>Set new key to a permission<a class="headerlink" href="#set-new-key-to-a-permission" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">COMMENT</span><span class="p">(</span><span class="s2">&quot;Set new key to a permission:&quot;</span><span class="p">)</span>
 <span class="n">key</span> <span class="o">=</span> <span class="n">CreateKey</span><span class="p">(</span><span class="n">is_verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 <span class="n">setup</span><span class="o">.</span><span class="n">is_print_command_line</span> <span class="o">=</span> <span class="bp">True</span>
@@ -86,7 +86,7 @@
 </div>
 </div>
 <div class="section" id="set-an-account-instead-of-a-key-as-authority-for-a-permission">
-<span id="set-an-account-instead-of-a-key-as-authority-for-a-permission"></span><h2>Set an account (instead of a key) as authority for a permission<a class="headerlink" href="#set-an-account-instead-of-a-key-as-authority-for-a-permission" title="Permalink to this headline">¶</a></h2>
+<h2>Set an account (instead of a key) as authority for a permission<a class="headerlink" href="#set-an-account-instead-of-a-key-as-authority-for-a-permission" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">COMMENT</span><span class="p">(</span><span class="s2">&quot;Set an account (instead of a key) as authority for a permission:&quot;</span><span class="p">)</span>
 <span class="n">create_account</span><span class="p">(</span><span class="s2">&quot;bob&quot;</span><span class="p">,</span> <span class="n">master</span><span class="p">)</span>
 <span class="n">setup</span><span class="o">.</span><span class="n">is_print_command_line</span> <span class="o">=</span> <span class="bp">True</span>
@@ -105,7 +105,7 @@
 </div>
 </div>
 <div class="section" id="weights-and-threshold">
-<span id="weights-and-threshold"></span><h2>Weights and Threshold<a class="headerlink" href="#weights-and-threshold" title="Permalink to this headline">¶</a></h2>
+<h2>Weights and Threshold<a class="headerlink" href="#weights-and-threshold" title="Permalink to this headline">¶</a></h2>
 <p>Note that actors have to be sorted in the <code class="docutils literal notranslate"><span class="pre">authority</span></code> JSON.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">COMMENT</span><span class="p">(</span><span class="s2">&quot;Weights and Threshold:&quot;</span><span class="p">)</span>
 <span class="n">create_account</span><span class="p">(</span><span class="s2">&quot;carol&quot;</span><span class="p">,</span> <span class="n">master</span><span class="p">)</span>
@@ -125,7 +125,7 @@
                         <span class="p">},</span>
                     <span class="s2">&quot;weight&quot;</span><span class="p">:</span><span class="mi">25</span>
                 <span class="p">},</span> 
-                <span class="p">{</span>   
+                <span class="p">{</span>	
                     <span class="s2">&quot;permission&quot;</span><span class="p">:</span>
                         <span class="p">{</span>
                             <span class="s2">&quot;actor&quot;</span><span class="p">:</span><span class="n">actors</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
@@ -148,7 +148,7 @@
 </div>
 </div>
 <div class="section" id="set-two-weighted-keys">
-<span id="set-two-weighted-keys"></span><h2>Set two-weighted keys<a class="headerlink" href="#set-two-weighted-keys" title="Permalink to this headline">¶</a></h2>
+<h2>Set two-weighted keys<a class="headerlink" href="#set-two-weighted-keys" title="Permalink to this headline">¶</a></h2>
 <p>Note that keys have to be sorted in the <code class="docutils literal notranslate"><span class="pre">authority</span></code> JSON.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">COMMENT</span><span class="p">(</span><span class="s2">&quot;Set two weighted keys:&quot;</span><span class="p">)</span>
 <span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="n">bob</span><span class="o">.</span><span class="n">owner</span><span class="p">(),</span> <span class="n">carol</span><span class="o">.</span><span class="n">owner</span><span class="p">()]</span>
@@ -222,6 +222,8 @@
     <form class="search" action="../../search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -245,12 +247,12 @@
         <li class="right" >
           <a href="../BIOS_Boot_Sequence.html" title="BIOS Boot Sequence"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">EOSFactory 2.4 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../../index.html">EOSFactory 3.0.0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/52014dc.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
     </div>
   </body>
 </html>

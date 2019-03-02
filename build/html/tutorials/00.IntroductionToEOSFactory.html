@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Introduction to EOSFactory &#8212; EOSFactory 2.4 documentation</title>
+    <title>Introduction to EOSFactory &#8212; EOSFactory 3.0.0 documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
@@ -37,7 +37,7 @@
         <li class="right" >
           <a href="../index.html" title="Welcome to EOSFactory’s documentation!"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 2.4 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.0.0 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -47,28 +47,27 @@
           <div class="body" role="main">
             
   <div class="section" id="introduction-to-eosfactory">
-<span id="introduction-to-eosfactory"></span><h1>Introduction to <em>EOSFactory</em><a class="headerlink" href="#introduction-to-eosfactory" title="Permalink to this headline">¶</a></h1>
+<h1>Introduction to <em>EOSFactory</em><a class="headerlink" href="#introduction-to-eosfactory" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://github.com/tokenika/eosfactory">EOSFactory</a> is a Python-based <a class="reference external" href="https://eos.io">EOS</a> smart-contract development &amp; testing framework, created by <a class="reference external" href="https://tokenika.io">TOKENIKA</a>.</p>
-<p>The goal is to achieve a similar functionality to Ethereum’s <a class="reference external" href="http://truffleframework.com/">Truffle Framework</a>.</p>
 <p>With a single command-line interface you can create a private testnet and then compile, test and deploy EOS smart-contracts.</p>
 <p>All of this using simple yet powerful <a class="reference external" href="https://www.python.org/">Python3</a> syntax.</p>
 <div class="section" id="why-it-s-needed">
-<span id="why-it-s-needed"></span><h2>Why it’s needed?<a class="headerlink" href="#why-it-s-needed" title="Permalink to this headline">¶</a></h2>
+<h2>Why it’s needed?<a class="headerlink" href="#why-it-s-needed" title="Permalink to this headline">¶</a></h2>
 <p>Code development and testing involve tasks that need to be executed hundreds of times, and each time in exactly the same way and exactly the same context. Therefore those tasks need to be fully automated, as otherwise a lot of time is being wasted and, what’s even worse, a lot of additional uncertainty is introduced. Manually performed actions are prone to errors.</p>
 <p>And this is what <em>EOSFactory</em> actually brings to the table: an easy &amp; intuitive way to automate the process of dealing with smart-contracts. Write down, in the form of a Python script, what needs to be done multiple times in exactly the same way and exactly the same context, and then just run the script. <em>EOSFactory</em> will take care of everything else: it will compile your smart-contract, create a new testnet, deploy the contract, invoke its methods and verify the response, then tear down the testnet, and finally report the results. And all of this done in a couple of seconds.</p>
 </div>
 <div class="section" id="main-features">
-<span id="main-features"></span><h2>Main features<a class="headerlink" href="#main-features" title="Permalink to this headline">¶</a></h2>
+<h2>Main features<a class="headerlink" href="#main-features" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="simple-syntax">
-<span id="simple-syntax"></span><h3>1. Simple syntax<a class="headerlink" href="#simple-syntax" title="Permalink to this headline">¶</a></h3>
+<h3>1. Simple syntax<a class="headerlink" href="#simple-syntax" title="Permalink to this headline">¶</a></h3>
 <p>The front-end of <em>EOSFactory</em> is simply a Python3 Command Line Interface. This way you can interact with EOS smart-contract, and prove it works as expected, instead having to deal with the raw primitives of the EOSIO <code class="docutils literal notranslate"><span class="pre">cleos</span></code>. In most cases Python syntax is immediately clear for everyone.</p>
 </div>
 <div class="section" id="real-testnet">
-<span id="real-testnet"></span><h3>2. Real testnet<a class="headerlink" href="#real-testnet" title="Permalink to this headline">¶</a></h3>
-<p>As EOS full node is very quick we don’t need to rely on a testnet simulator similar to <a class="reference external" href="https://github.com/trufflesuite/ganache-cli">TestRPC</a> in Ethereum. Instead, we can work with a real testnet (both local and remote) and this makes testing much more reliable. Thus <em>EOSFactory</em> lets you fully test your smart-contract in a couple of seconds and do it over and over again without much hassle.</p>
+<h3>2. Real testnet<a class="headerlink" href="#real-testnet" title="Permalink to this headline">¶</a></h3>
+<p>We can work with a real testnet (both local and remote) and this makes testing  reliable. Thus <em>EOSFactory</em> lets you fully test your smart-contract in a couple of seconds and do it over and over again without much hassle.</p>
 </div>
 <div class="section" id="truly-cross-platform">
-<span id="truly-cross-platform"></span><h3>3. Truly cross-platform<a class="headerlink" href="#truly-cross-platform" title="Permalink to this headline">¶</a></h3>
+<h3>3. Truly cross-platform<a class="headerlink" href="#truly-cross-platform" title="Permalink to this headline">¶</a></h3>
 <p>We make sure everything we do is fully compatible with Windows - our toolset enables you to run an EOS node and interact with it on any operating system, including Windows, MacOS and Linux.</p>
 </div>
 </div>
@@ -113,6 +112,8 @@
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -136,12 +137,12 @@
         <li class="right" >
           <a href="../index.html" title="Welcome to EOSFactory’s documentation!"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 2.4 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.0.0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.0.0+/52014dc.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
     </div>
   </body>
 </html>
