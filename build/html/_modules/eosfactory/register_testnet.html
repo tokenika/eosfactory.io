@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>eosfactory.register_testnet &#8212; EOSFactory 3.0.2 documentation</title>
+    <title>eosfactory.register_testnet &#8212; EOSFactory 3.0.3 documentation</title>
     <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
@@ -29,7 +29,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">EOSFactory 3.0.2 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">EOSFactory 3.0.3 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
       </ul>
     </div>  
@@ -68,28 +68,27 @@
 
 <div class="viewcode-block" id="main"><a class="viewcode-back" href="../../rst/utils.html#eosfactory.register_testnet.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Thank you for your contribution. We include it to the next edition of EOSFactory.</span>
 <span class="sd">    usage: python3 -m eosfactory.register_testnet [-h] \</span>
 <span class="sd">    [-a ACCOUNT ACCOUNT ACCOUNT] url [alias]</span>
 
 <span class="sd">    Given an url and an testnet alias (not obligatory), get registration data.</span>
 <span class="sd">    Apply the data to the registration form of the testnet. Enter &#39;go&#39; when ready.</span>
 <span class="sd">    </span>
-<span class="sd">    Example: </span>
+<span class="sd">    Example using the jungle testnet https://monitor.jungletestnet.io/: </span>
 <span class="sd">    </span>
-<span class="sd">    python3 -m eosfactory.register_testnet http://88.99.97.30:38888 jungle </span>
+<span class="sd">    python3 -m eosfactory.register_testnet http://jungle2.cryptolions.io:80 jungle </span>
 <span class="sd">    </span>
 <span class="sd">    If additional arguments are given, denoted as ``--account``, then the given</span>
 <span class="sd">    account is checked for existence, and then added as a testnet master </span>
 <span class="sd">    account, for example:</span>
 
-<span class="sd">    python3 -m eosfactory.register_testnet http://88.99.97.30:38888 jungle -a</span>
+<span class="sd">    python3 -m eosfactory.register_testnet http://jungle2.cryptolions.io:80 jungle -a</span>
 <span class="sd">    dgxo1uyhoytn 5K4rezbmuoDUyBUntM3PqxwutPU3rYKrNzgF4f3djQDjfXF3Q67</span>
 <span class="sd">    5JCvLMJVR24WWvC6qD6VbLpdUMsjhiXmcrk4i7bdPfjDfNMNAeX</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        url: An URL of a public node offering access to the</span>
-<span class="sd">                                testnet, e.g. http://88.99.97.30:38888</span>
+<span class="sd">                                testnet, e.g. http://jungle2.cryptolions.io:80</span>
 <span class="sd">        alias: Testnet alias</span>
 <span class="sd">        -h: show this help message and exit</span>
 <span class="sd">        -a (ACCOUNT ACCOUNT ACCOUNT): &lt;name&gt; &lt;owner key&gt; &lt;active key&gt;</span>
@@ -100,12 +99,12 @@
 <span class="s1">    Enter &#39;go&#39; when ready.</span>
 
 <span class="s1">    Example:</span>
-<span class="s1">        python3 -m eosfactory.register_testnet.py http://88.99.97.30:38888 jungle</span>
+<span class="s1">        python3 -m eosfactory.register_testnet.py http://jungle2.cryptolions.io:80 jungle</span>
 
 <span class="s1">    If additional arguments are given, denoted as ``--account``, then the given </span>
 <span class="s1">    account is checked for existence, and then added as a testnet master account.</span>
 
-<span class="s1">        python3 -m eosfactory.register_testnet.py http://88.99.97.30:38888 jungle </span><span class="se">\</span>
+<span class="s1">        python3 -m eosfactory.register_testnet.py http://jungle2.cryptolions.io:80 jungle </span><span class="se">\</span>
 <span class="s1">        -a dgxo1uyhoytn </span><span class="se">\</span>
 <span class="s1">        5K4rezbmuoDUyBUntM3PqxwutPU3rYKrNzgF4f3djQDjfXF3Q67 </span><span class="se">\</span>
 <span class="s1">        5JCvLMJVR24WWvC6qD6VbLpdUMsjhiXmcrk4i7bdPfjDfNMNAeX</span>
@@ -167,7 +166,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">EOSFactory 3.0.2 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">EOSFactory 3.0.3 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
       </ul>
     </div>

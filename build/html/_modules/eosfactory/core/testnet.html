@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>eosfactory.core.testnet &#8212; EOSFactory 3.0.2 documentation</title>
+    <title>eosfactory.core.testnet &#8212; EOSFactory 3.0.3 documentation</title>
     <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
@@ -29,7 +29,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.0.2 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.0.3 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
       </ul>
     </div>  
@@ -79,7 +79,8 @@
             <span class="k">if</span> <span class="n">reset</span><span class="p">:</span>
                 <span class="n">manager</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">manager</span><span class="o">.</span><span class="n">resume</span><span class="p">()</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">verify_production</span><span class="p">(</span><span class="n">throw_error</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+                    <span class="n">manager</span><span class="o">.</span><span class="n">resume</span><span class="p">()</span>
             <span class="n">setup</span><span class="o">.</span><span class="n">is_local_address</span> <span class="o">=</span> <span class="kc">True</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">account_name</span> <span class="o">=</span> <span class="n">account_name</span>
@@ -96,13 +97,13 @@
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">setup</span><span class="o">.</span><span class="n">set_nodeos_address</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">prefix</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Testnet.verify_production"><a class="viewcode-back" href="../../../rst/core.testnet.html#eosfactory.core.testnet.Testnet.verify_production">[docs]</a>    <span class="k">def</span> <span class="nf">verify_production</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Testnet.verify_production"><a class="viewcode-back" href="../../../rst/core.testnet.html#eosfactory.core.testnet.Testnet.verify_production">[docs]</a>    <span class="k">def</span> <span class="nf">verify_production</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">throw_error</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;Check whether the node is active.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: Whether the node is active.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="k">return</span> <span class="n">manager</span><span class="o">.</span><span class="n">verify_testnet_production</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="n">manager</span><span class="o">.</span><span class="n">verify_testnet_production</span><span class="p">(</span><span class="n">throw_error</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Testnet.clear_cache"><a class="viewcode-back" href="../../../rst/core.testnet.html#eosfactory.core.testnet.Testnet.clear_cache">[docs]</a>    <span class="k">def</span> <span class="nf">clear_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;Remove all the saved interaction with the testnet.</span>
@@ -296,7 +297,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.0.2 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.0.3 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li> 
       </ul>
     </div>

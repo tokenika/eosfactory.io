@@ -16,6 +16,7 @@ Tutorials
 .. toctree::
     :maxdepth: 1
 
+    tutorials/five_minutes
     tutorials/00.IntroductionToEOSFactory
     tutorials/01.InstallingEOSFactory
     tutorials/02.InteractingWithEOSContractsInEOSFactory

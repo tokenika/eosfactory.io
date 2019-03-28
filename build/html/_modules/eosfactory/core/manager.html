@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>eosfactory.core.manager &#8212; EOSFactory 3.0.2 documentation</title>
+    <title>eosfactory.core.manager &#8212; EOSFactory 3.0.3 documentation</title>
     <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
@@ -29,7 +29,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.0.2 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.0.3 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
       </ul>
     </div>  
@@ -219,7 +219,6 @@
 <span class="sd">            it is set with this argument, the argument setting prevails. </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="kn">import</span> <span class="nn">eosfactory.shell.account</span> <span class="k">as</span> <span class="nn">account</span>
-    <span class="n">teos</span><span class="o">.</span><span class="n">keosd_start</span><span class="p">()</span>
     <span class="n">account</span><span class="o">.</span><span class="n">reboot</span><span class="p">()</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">cleos</span><span class="o">.</span><span class="n">set_local_nodeos_address_if_none</span><span class="p">():</span>
@@ -275,7 +274,7 @@
     <span class="n">logger</span><span class="o">.</span><span class="n">INFO</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">cleos_get</span><span class="o">.</span><span class="n">GetInfo</span><span class="p">(</span><span class="n">is_verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)))</span></div>
 
 
-<span class="k">def</span> <span class="nf">verify_testnet_production</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">verify_testnet_production</span><span class="p">(</span><span class="n">throw_error</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="n">head_block_num</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">try</span><span class="p">:</span> <span class="c1"># if running, json is produced</span>
         <span class="n">head_block_num</span> <span class="o">=</span> <span class="n">cleos_get</span><span class="o">.</span><span class="n">GetInfo</span><span class="p">(</span><span class="n">is_verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head_block</span>
@@ -284,6 +283,8 @@
 
     <span class="n">domain</span> <span class="o">=</span> <span class="s2">&quot;LOCAL&quot;</span> <span class="k">if</span> <span class="n">is_local_testnet</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;REMOTE&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">head_block_num</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">throw_error</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
         <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">        </span><span class="si">{}</span><span class="s1"> testnet is not running or is not responding @ </span><span class="si">{}</span><span class="s1">.</span>
 <span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="n">setup</span><span class="o">.</span><span class="n">nodeos_address</span><span class="p">()))</span>
@@ -409,7 +410,7 @@
                 <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONEncoder</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">data</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span>
 
     <span class="n">data_json_</span> <span class="o">=</span> <span class="n">data</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
@@ -451,7 +452,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.0.2 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.0.3 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li> 
       </ul>
     </div>
