@@ -17,6 +17,8 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
+    <script type="text/javascript" src="../../../_static/sidebar.js"></script>
+    
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
   </head><body>
@@ -63,7 +65,6 @@
 
 <span class="n">TEMPLATE_NAME</span> <span class="o">=</span> <span class="s2">&quot;CONTRACT_NAME&quot;</span>
 <span class="n">TEMPLATE_HOME</span> <span class="o">=</span> <span class="s2">&quot;$</span><span class="si">{HOME}</span><span class="s2">&quot;</span>
-<span class="n">TEMPLATE_ROOT</span> <span class="o">=</span> <span class="s2">&quot;$</span><span class="si">{ROOT}</span><span class="s2">&quot;</span>
 <span class="n">C_CPP_PROP</span> <span class="o">=</span> <span class="s2">&quot;$</span><span class="si">{c_cpp_prop}</span><span class="s2">&quot;</span>
 <span class="n">TASK_JSON</span> <span class="o">=</span> <span class="s2">&quot;$</span><span class="si">{tasks}</span><span class="s2">&quot;</span>
 <span class="n">CONFIGURATIONS</span> <span class="o">=</span> <span class="s2">&quot;configurations&quot;</span>
@@ -72,17 +73,20 @@
 <span class="n">WORKSPACE_FOLDER</span> <span class="o">=</span> <span class="s2">&quot;$</span><span class="si">{workspaceFolder}</span><span class="s2">&quot;</span>
 <span class="n">EOSIO_CPP_INCLUDE</span> <span class="o">=</span> <span class="s2">&quot;eosio.cdt&quot;</span>
 <span class="n">EOSIO_DISPATCH</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;void\s*apply\s*\(|EOSIO_DISPATCH&quot;</span>
+<span class="n">ROOT</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">wsl_root</span><span class="p">()</span>
+<span class="n">HOME</span> <span class="o">=</span> <span class="n">ROOT</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;HOME&quot;</span><span class="p">]</span>
 
-<span class="k">def</span> <span class="nf">replace_templates</span><span class="p">(</span><span class="n">string</span><span class="p">):</span> 
-    <span class="n">home</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;HOME&quot;</span><span class="p">]</span>
-    <span class="n">root</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">utils</span><span class="o">.</span><span class="n">is_windows_ubuntu</span><span class="p">():</span>
-        <span class="n">home</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">wsl_root</span><span class="p">()</span> <span class="o">+</span> <span class="n">home</span>
-        <span class="n">root</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">wsl_root</span><span class="p">()</span>
 
-    <span class="n">string</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">TEMPLATE_HOME</span><span class="p">,</span> <span class="n">home</span><span class="p">)</span>
-    <span class="n">string</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">TEMPLATE_ROOT</span><span class="p">,</span> <span class="n">root</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">string</span>                                                      
+<span class="k">def</span> <span class="nf">resolve_home</span><span class="p">(</span><span class="n">string</span><span class="p">):</span> 
+    <span class="n">string</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">TEMPLATE_HOME</span><span class="p">,</span> <span class="n">HOME</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">string</span>
+
+
+<span class="k">def</span> <span class="nf">naturalize_path</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">TEMPLATE_HOME</span><span class="p">,</span> <span class="n">HOME</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;/mnt/&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">ROOT</span> <span class="o">+</span> <span class="n">path</span>
+    <span class="k">return</span> <span class="n">utils</span><span class="o">.</span><span class="n">wslMapLinuxWindows</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">back_slash</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">get_c_cpp_properties</span><span class="p">(</span><span class="n">contract_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">c_cpp_properties_path</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -107,7 +111,7 @@
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">replace_templates</span><span class="p">(</span><span class="n">vscode</span><span class="o">.</span><span class="n">c_cpp_properties</span><span class="p">()))</span>
+        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">resolve_home</span><span class="p">(</span><span class="n">vscode</span><span class="o">.</span><span class="n">c_cpp_properties</span><span class="p">()))</span>
 
 
 <div class="viewcode-block" id="ABI"><a class="viewcode-back" href="../../../rst/core.teos.html#eosfactory.core.teos.ABI">[docs]</a><span class="k">def</span> <span class="nf">ABI</span><span class="p">(</span>
@@ -115,6 +119,7 @@
         <span class="n">verbosity</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Given a hint to a contract directory, produce ABI file.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
+    <span class="kn">import</span> <span class="nn">pdb</span><span class="p">;</span> <span class="n">pdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
     <span class="n">contract_dir</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">contract_dir</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">)</span>
     <span class="c1"># source_files[0] is directory, source_files[1] is contents:</span>
     <span class="n">contract_source_files</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">contract_source_files</span><span class="p">(</span><span class="n">contract_dir</span><span class="p">)</span>
@@ -280,7 +285,7 @@
 <div class="viewcode-block" id="project_from_template"><a class="viewcode-back" href="../../../rst/core.teos.html#eosfactory.core.teos.project_from_template">[docs]</a><span class="k">def</span> <span class="nf">project_from_template</span><span class="p">(</span>
         <span class="n">project_name</span><span class="p">,</span> <span class="n">template</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">workspace_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">c_cpp_prop_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">include</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">includes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">libs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
         <span class="n">remove_existing</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
         <span class="n">open_vscode</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">throw_exists</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
@@ -294,7 +299,7 @@
 <span class="sd">        template: The name of the template used.</span>
 <span class="sd">        workspace_dir: If set, the folder for the work-space. Defaults to the </span>
 <span class="sd">            value returned by the config.contract_workspace_dir() function.</span>
-<span class="sd">        include: If set, comma-separated list of include folders.</span>
+<span class="sd">        includes: If set, comma-separated list of include folders.</span>
 <span class="sd">        libs: If set, comma-separated list of libraries.</span>
 <span class="sd">        remove_existing: If set, overwrite any existing project.</span>
 <span class="sd">        visual_studio_code: If set, open the ``VSCode``, if available.</span>
@@ -322,28 +327,35 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">c_cpp_properties</span> <span class="o">=</span> <span class="n">vscode</span><span class="o">.</span><span class="n">c_cpp_properties</span><span class="p">()</span>
     
-    <span class="k">if</span> <span class="n">include</span><span class="p">:</span>
-        <span class="n">temp</span> <span class="o">=</span> <span class="n">include</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>
+    <span class="n">c_cpp_properties_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">c_cpp_properties</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">includes</span><span class="p">:</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">includes</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>
         <span class="n">temp_</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">temp</span><span class="p">:</span>
-            <span class="n">temp_</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TEMPLATE_ROOT</span> <span class="o">+</span> <span class="n">entry</span><span class="p">)</span>
+            <span class="n">temp_</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">naturalize_path</span><span class="p">(</span><span class="n">entry</span><span class="p">))</span>
 
-        <span class="n">c_cpp_properties_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">c_cpp_properties</span><span class="p">)</span>
         <span class="n">c_cpp_properties_json</span><span class="p">[</span><span class="n">CONFIGURATIONS</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="n">INCLUDE_PATH</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">temp_</span><span class="p">)</span>
         <span class="n">c_cpp_properties_json</span><span class="p">[</span><span class="n">CONFIGURATIONS</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="n">BROWSE</span><span class="p">][</span><span class="s2">&quot;path&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">temp_</span><span class="p">)</span>
-        <span class="n">c_cpp_properties</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">c_cpp_properties_json</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>                                                
 
+    <span class="n">c_cpp_properties_json</span><span class="p">[</span><span class="n">CONFIGURATIONS</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="n">INCLUDE_PATH</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                                <span class="n">naturalize_path</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">eoside_includes_dir</span><span class="p">()))</span>
+    
     <span class="k">if</span> <span class="n">libs</span><span class="p">:</span>
         <span class="n">temp</span> <span class="o">=</span> <span class="n">libs</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>
         <span class="n">temp_</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">libraries</span><span class="p">:</span>
-            <span class="n">temp_</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TEMPLATE_ROOT</span> <span class="o">+</span> <span class="n">entry</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">libs</span><span class="p">:</span>
+            <span class="n">temp_</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">naturalize_path</span><span class="p">(</span><span class="n">entry</span><span class="p">))</span>
             
-        <span class="n">c_cpp_properties_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">c_cpp_properties</span><span class="p">)</span>
         <span class="n">c_cpp_properties_json</span><span class="p">[</span><span class="n">CONFIGURATIONS</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;libs&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">temp_</span><span class="p">)</span>
-        <span class="n">c_cpp_properties</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">c_cpp_properties_json</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 
-    <span class="n">c_cpp_properties</span> <span class="o">=</span> <span class="n">replace_templates</span><span class="p">(</span><span class="n">c_cpp_properties</span><span class="p">)</span>
+    <span class="n">eoside_libs</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">eoside_libs_dir</span><span class="p">())</span>
+    <span class="k">for</span> <span class="n">lib</span> <span class="ow">in</span> <span class="n">eoside_libs</span><span class="p">:</span>
+        <span class="n">c_cpp_properties_json</span><span class="p">[</span><span class="n">CONFIGURATIONS</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;libs&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                                                        <span class="n">naturalize_path</span><span class="p">(</span><span class="n">lib</span><span class="p">))</span>
+
+    <span class="n">c_cpp_properties</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">c_cpp_properties_json</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">c_cpp_properties</span> <span class="o">=</span> <span class="n">resolve_home</span><span class="p">(</span><span class="n">c_cpp_properties</span><span class="p">)</span>
     
     <span class="n">split</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">project_name</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">split</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
@@ -415,11 +427,8 @@
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">template_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="nb">input</span><span class="p">:</span>
             <span class="n">template</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
-        <span class="k">if</span> <span class="n">TEMPLATE_HOME</span> <span class="ow">in</span> <span class="n">template</span> <span class="ow">or</span> <span class="n">TEMPLATE_ROOT</span> <span class="ow">in</span> <span class="n">template</span><span class="p">:</span>
-            <span class="n">home</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;HOME&quot;</span><span class="p">]</span>
-            <span class="n">root</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-            <span class="k">if</span> <span class="n">utils</span><span class="o">.</span><span class="n">is_windows_ubuntu</span><span class="p">():</span>
-                <span class="n">replace_templates</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">TEMPLATE_HOME</span> <span class="ow">in</span> <span class="n">template</span><span class="p">:</span>
+            <span class="n">resolve_home</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
 
         <span class="n">template</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;${&quot;</span> <span class="o">+</span> <span class="n">TEMPLATE_NAME</span> <span class="o">+</span> <span class="s2">&quot;}&quot;</span><span class="p">,</span> <span class="n">project_name</span><span class="p">)</span>
         <span class="n">template</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">C_CPP_PROP</span><span class="p">,</span> <span class="n">c_cpp_properties</span><span class="p">)</span>

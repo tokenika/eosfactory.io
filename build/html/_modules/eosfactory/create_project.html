@@ -17,6 +17,8 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/language_data.js"></script>
     
+    <script type="text/javascript" src="../../_static/sidebar.js"></script>
+    
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
   </head><body>
@@ -56,7 +58,7 @@
 <span class="sd">        name: Project name or directory.</span>
 <span class="sd">        template: Template name or directory.</span>
 <span class="sd">        --c_cpp_prop: c_cpp_properties.json file path.</span>
-<span class="sd">        --include: Comma-separated list of include folders.</span>
+<span class="sd">        --includes: Comma-separated list of include folders.</span>
 <span class="sd">        --libs: Comma-separated list of libraries.</span>
 <span class="sd">        --vsc: Open Visual Studio Code.</span>
 <span class="sd">        --throw: Throw error if the project exists.</span>
@@ -76,7 +78,7 @@
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
         <span class="s2">&quot;--c_cpp_prop&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;c_cpp_properties.json file path.&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
-        <span class="s2">&quot;--include&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Comma-separated list of include folders&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="s2">&quot;--includes&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Comma-separated list of includes folders&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
         <span class="s2">&quot;--libs&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Comma-separated list of libraries.&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>    
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
@@ -94,7 +96,7 @@
         <span class="n">project_name</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> 
         <span class="n">template</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">template</span><span class="p">,</span>
         <span class="n">c_cpp_prop_path</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">c_cpp_prop</span><span class="p">,</span>
-        <span class="n">include</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">include</span><span class="p">,</span>
+        <span class="n">includes</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">includes</span><span class="p">,</span>
         <span class="n">libs</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">libs</span><span class="p">,</span>
         <span class="n">open_vscode</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">vsc</span><span class="p">,</span>
         <span class="n">throw_exists</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">throw</span><span class="p">,</span> <span class="n">remove_existing</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">ovr</span><span class="p">,</span>

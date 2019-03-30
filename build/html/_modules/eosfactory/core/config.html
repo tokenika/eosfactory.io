@@ -17,6 +17,8 @@
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
+    <script type="text/javascript" src="../../../_static/sidebar.js"></script>
+    
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
   </head><body>
@@ -86,6 +88,8 @@
 
 <span class="n">wsl_root_</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;WSL_ROOT&quot;</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">])</span>
 <span class="n">nodeos_stdout_</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;NODEOS_STDOUT&quot;</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">])</span>
+<span class="n">includes_</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;INCLUDE&quot;</span><span class="p">,</span> <span class="s2">&quot;includes&quot;</span><span class="p">)</span>
+<span class="n">libs_</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;LIBS&quot;</span><span class="p">,</span> <span class="s2">&quot;libs&quot;</span><span class="p">)</span>
 
 
 <span class="n">cli_exe_</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;EOSIO_CLI_EXECUTABLE&quot;</span><span class="p">,</span> 
@@ -229,6 +233,44 @@
 <span class="si">{}</span><span class="s1"></span>
 <span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">dir</span><span class="p">),</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">dir</span>
+
+
+<div class="viewcode-block" id="eoside_includes_dir"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.eoside_includes_dir">[docs]</a><span class="k">def</span> <span class="nf">eoside_includes_dir</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39;The directory for contract definition includes.</span>
+
+<span class="sd">    It may be set with </span>
+<span class="sd">    *INCLUDE* entry in the *config.json* file, </span>
+<span class="sd">    see :func:`.current_config`.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="nb">dir</span> <span class="o">=</span> <span class="n">includes_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="nb">dir</span><span class="p">):</span>
+        <span class="nb">dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">get_app_data_dir</span><span class="p">(),</span> <span class="n">includes_</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="nb">dir</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">Cannot find the include directory</span>
+<span class="si">{}</span><span class="s1">.</span>
+<span class="s1">It may be set with </span><span class="si">{}</span><span class="s1"> entry in the config.json file.</span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">includes_</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">dir</span>    </div>
+
+
+<div class="viewcode-block" id="eoside_libs_dir"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.eoside_libs_dir">[docs]</a><span class="k">def</span> <span class="nf">eoside_libs_dir</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39;The directory for contract links.</span>
+
+<span class="sd">    It may be set with </span>
+<span class="sd">    *LIBS* entry in the *config.json* file, </span>
+<span class="sd">    see :func:`.current_config`.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="nb">dir</span> <span class="o">=</span> <span class="n">libs_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="nb">dir</span><span class="p">):</span>
+        <span class="nb">dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">get_app_data_dir</span><span class="p">(),</span> <span class="n">libs_</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="nb">dir</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">Cannot find the libs directory</span>
+<span class="si">{}</span><span class="s1">.</span>
+<span class="s1">It may be set with </span><span class="si">{}</span><span class="s1"> entry in the config.json file.</span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">libs_</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">dir</span>    </div>
 
 
 <div class="viewcode-block" id="contract_workspace_dir"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.contract_workspace_dir">[docs]</a><span class="k">def</span> <span class="nf">contract_workspace_dir</span><span class="p">():</span>
@@ -1132,11 +1174,18 @@
         <span class="nb">map</span><span class="p">[</span><span class="n">eosio_cpp_includes_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">eosio_cpp_includes</span><span class="p">()</span>
     <span class="k">except</span><span class="p">:</span>
         <span class="nb">map</span><span class="p">[</span><span class="n">eosio_cpp_includes_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>        
-                                      
     <span class="k">try</span><span class="p">:</span>   
         <span class="nb">map</span><span class="p">[</span><span class="n">genesis_json_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">genesis_json</span><span class="p">()</span>
     <span class="k">except</span><span class="p">:</span>
         <span class="nb">map</span><span class="p">[</span><span class="n">genesis_json_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">try</span><span class="p">:</span>   
+        <span class="nb">map</span><span class="p">[</span><span class="n">includes_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">eoside_includes_dir</span><span class="p">()</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="nb">map</span><span class="p">[</span><span class="n">libs_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">try</span><span class="p">:</span>   
+        <span class="nb">map</span><span class="p">[</span><span class="n">libs_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">eoside_libs_dir</span><span class="p">()</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="nb">map</span><span class="p">[</span><span class="n">libs_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>    
 
     <span class="nb">map</span><span class="p">[</span><span class="n">nodeos_stdout_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">nodeos_stdout</span><span class="p">()</span>
     
