@@ -1,0 +1,183 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>core.teos &#8212; EOSFactory 3.0.3 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="core.cleos" href="core.cleos.html" />
+    <link rel="prev" title="core.logger" href="core.logger.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="core.cleos.html" title="core.cleos"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="core.logger.html" title="core.logger"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.0.3 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-eosfactory.core.teos">
+<span id="core-teos"></span><h1>core.teos<a class="headerlink" href="#module-eosfactory.core.teos" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="eosfactory.core.teos.ABI">
+<code class="descclassname">eosfactory.core.teos.</code><code class="descname">ABI</code><span class="sig-paren">(</span><em>contract_dir_hint=None</em>, <em>c_cpp_properties_path=None</em>, <em>verbosity=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/teos.html#ABI"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.teos.ABI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a hint to a contract directory, produce ABI file.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.teos.WASM">
+<code class="descclassname">eosfactory.core.teos.</code><code class="descname">WASM</code><span class="sig-paren">(</span><em>contract_dir_hint</em>, <em>c_cpp_properties_path=None</em>, <em>compile_only=False</em>, <em>verbosity=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/teos.html#WASM"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.teos.WASM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Produce WASM code.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.teos.get_pid">
+<code class="descclassname">eosfactory.core.teos.</code><code class="descname">get_pid</code><span class="sig-paren">(</span><em>name=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/teos.html#get_pid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.teos.get_pid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return process ids found by (partial) name or regex.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_process_id</span><span class="p">(</span><span class="s1">&#39;kthreadd&#39;</span><span class="p">)</span>
+<span class="go">[2]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_process_id</span><span class="p">(</span><span class="s1">&#39;watchdog&#39;</span><span class="p">)</span>
+<span class="go">[10, 11, 16, 21, 26, 31, 36, 41, 46, 51, 56, 61]  # ymmv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">get_process_id</span><span class="p">(</span><span class="s1">&#39;non-existent process&#39;</span><span class="p">)</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.teos.node_start">
+<code class="descclassname">eosfactory.core.teos.</code><code class="descname">node_start</code><span class="sig-paren">(</span><em>clear=False</em>, <em>nodeos_stdout=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/teos.html#node_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.teos.node_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start the local EOSIO node.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>clear</strong> (<em>bool</em>) – If set, the blockchain is deleted and then re-created.</li>
+<li><strong>nodeos_stdout</strong> (<em>str</em>) – If set, a file where <em>stdout</em> stream of
+the local <em>nodeos</em> is send. Note that the file can be included to
+the configuration of EOSFactory, see <a class="reference internal" href="core.config.html#eosfactory.core.config.nodeos_stdout" title="eosfactory.core.config.nodeos_stdout"><code class="xref py py-func docutils literal notranslate"><span class="pre">core.config.nodeos_stdout()</span></code></a>.
+If the file is set with the configuration, and in the same time
+it is set with this argument, the argument setting prevails.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.teos.project_from_template">
+<code class="descclassname">eosfactory.core.teos.</code><code class="descname">project_from_template</code><span class="sig-paren">(</span><em>project_name</em>, <em>template=None</em>, <em>workspace_dir=None</em>, <em>c_cpp_prop_path=None</em>, <em>includes=None</em>, <em>libs=None</em>, <em>remove_existing=False</em>, <em>open_vscode=False</em>, <em>throw_exists=False</em>, <em>verbosity=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/teos.html#project_from_template"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.teos.project_from_template" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given the project name and template name, create a smart contract project.</p>
+<ul>
+<li><p class="first"><strong>parameters</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>project_name: The name of the project, or an existing path to
+    a directory.
+template: The name of the template used.
+workspace_dir: If set, the folder for the work-space. Defaults to the
+    value returned by the config.contract_workspace_dir() function.
+includes: If set, comma-separated list of include folders.
+libs: If set, comma-separated list of libraries.
+remove_existing: If set, overwrite any existing project.
+visual_studio_code: If set, open the ``VSCode``, if available.
+verbosity: The logging configuration.
+</pre></div>
+</div>
+</li>
+</ul>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="core.logger.html"
+                        title="previous chapter">core.logger</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="core.cleos.html"
+                        title="next chapter">core.cleos</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/rst/core.teos.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="core.cleos.html" title="core.cleos"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="core.logger.html" title="core.logger"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.0.3 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Tokenika.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
+    </div>
+  </body>
+</html>
