@@ -20,4 +20,6 @@ If EOSFactory is in the system and it is functional then EOSIDE should start ful
 
 EOSIDE can be uninstalled as any other VSCode extension. In the *Extensions* view select *EOS IDE*, then click *Uninstall* button in the EOSIDE's front page.
 
-<video src="_static/installing_edited.mp4" width="854" height="480" controls preload></video>
+## Short movie
+
+There is [available](https://eosfactory.io/eoside/html/_static/installing_edited.mp4) a short video, showing the process of installation.
