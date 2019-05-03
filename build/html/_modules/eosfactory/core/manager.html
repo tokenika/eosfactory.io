@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>eosfactory.core.manager &#8212; EOSFactory 3.0.3 documentation</title>
+    <title>eosfactory.core.manager &#8212; EOSFactory 3.1.0 documentation</title>
     <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
@@ -31,7 +31,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.0.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
       </ul>
     </div>  
@@ -43,10 +43,10 @@
             
   <h1>Source code for eosfactory.core.manager</h1><div class="highlight"><pre>
 <span></span><span class="ch">#!/usr/bin/python3</span>
-<span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">time</span>
 
 <span class="kn">import</span> <span class="nn">eosfactory.core.utils</span> <span class="k">as</span> <span class="nn">utils</span>
 <span class="kn">import</span> <span class="nn">eosfactory.core.config</span> <span class="k">as</span> <span class="nn">config</span>
@@ -78,12 +78,12 @@
 <span class="s1">    &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">setup</span><span class="o">.</span><span class="n">file_prefix</span><span class="p">()))</span>
 
     <span class="n">kill_keosd</span><span class="p">()</span> <span class="c1"># otherwise the manager may protects the wallet files</span>
-    <span class="nb">dir</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">keosd_wallet_dir</span><span class="p">()</span>
-    <span class="n">files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="nb">dir</span><span class="p">)</span>
+    <span class="n">wallet_dir</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">keosd_wallet_dir</span><span class="p">()</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">wallet_dir</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">setup</span><span class="o">.</span><span class="n">file_prefix</span><span class="p">()):</span>
-                <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">file</span><span class="p">))</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">wallet_dir</span><span class="p">,</span> <span class="n">file</span><span class="p">))</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">        Cannot remove testnet cache. The error message is:</span>
@@ -99,9 +99,9 @@
         <span class="k">return</span> <span class="n">sentence</span>
         
     <span class="n">exceptions</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;eosio&quot;</span><span class="p">]</span>
-    <span class="nb">map</span> <span class="o">=</span> <span class="n">account_map</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">map</span><span class="p">:</span>
-        <span class="n">account_object_name</span> <span class="o">=</span> <span class="nb">map</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+    <span class="n">map_</span> <span class="o">=</span> <span class="n">account_map</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">map_</span><span class="p">:</span>
+        <span class="n">account_object_name</span> <span class="o">=</span> <span class="n">map_</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">exceptions</span><span class="p">:</span>
             <span class="k">continue</span>
         <span class="n">sentence</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">account_object_name</span><span class="p">)</span>
@@ -123,9 +123,9 @@
 
 
 <span class="k">def</span> <span class="nf">object_names_2_accout_names</span><span class="p">(</span><span class="n">sentence</span><span class="p">):</span>
-    <span class="nb">map</span> <span class="o">=</span> <span class="n">account_map</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">map</span><span class="p">:</span>
-        <span class="n">account_object_name</span> <span class="o">=</span> <span class="nb">map</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+    <span class="n">map_</span> <span class="o">=</span> <span class="n">account_map</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">map_</span><span class="p">:</span>
+        <span class="n">account_object_name</span> <span class="o">=</span> <span class="n">map_</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
         <span class="n">sentence</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">account_object_name</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">sentence</span>
@@ -168,6 +168,7 @@
         <span class="n">teos</span><span class="o">.</span><span class="n">node_probe</span><span class="p">()</span>
     <span class="k">except</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
             <span class="n">teos</span><span class="o">.</span><span class="n">node_start</span><span class="p">(</span><span class="n">clear</span><span class="p">,</span> <span class="n">nodeos_stdout</span><span class="p">)</span>
             <span class="n">teos</span><span class="o">.</span><span class="n">node_probe</span><span class="p">()</span>
         <span class="k">except</span><span class="p">:</span>
@@ -298,7 +299,7 @@
     <span class="k">return</span> <span class="n">head_block_num</span>
 
 
-<div class="viewcode-block" id="account_map"><a class="viewcode-back" href="../../../rst/core.manager.html#eosfactory.core.manager.account_map">[docs]</a><span class="k">def</span> <span class="nf">account_map</span><span class="p">(</span><span class="n">logger</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="account_map"><a class="viewcode-back" href="../../../rst/core.manager.html#eosfactory.core.manager.account_map">[docs]</a><span class="k">def</span> <span class="nf">account_map</span><span class="p">():</span>
     <span class="sd">&#39;&#39;&#39;Return json account map</span>
 
 <span class="sd">Attempt to open the account map file named ``setup.account_map``, located </span>
@@ -335,25 +336,24 @@
                     <span class="k">continue</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">        Use the function &#39;efman.edit_account_map(text_editor=&quot;nano&quot;)&#39;</span>
+<span class="s1">        Use the function &#39;manager.edit_account_map()&#39;</span>
 <span class="s1">        or the corresponding method of any object of the &#39;eosfactory.wallet.Wallet` </span>
 <span class="s1">        class to edit the file.</span>
-<span class="s1">                    &#39;&#39;&#39;</span><span class="p">)</span>                    
-                    <span class="k">return</span> <span class="kc">None</span></div>
+<span class="s1">                    &#39;&#39;&#39;</span><span class="p">)</span>                    </div>
 
 
-<span class="k">def</span> <span class="nf">save_account_map</span><span class="p">(</span><span class="nb">map</span><span class="p">):</span>
-    <span class="n">save_map</span><span class="p">(</span><span class="nb">map</span><span class="p">,</span> <span class="n">setup</span><span class="o">.</span><span class="n">account_map</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">save_account_map</span><span class="p">(</span><span class="n">map_</span><span class="p">):</span>
+    <span class="n">save_map</span><span class="p">(</span><span class="n">map_</span><span class="p">,</span> <span class="n">setup</span><span class="o">.</span><span class="n">account_map</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">edit_account_map</span><span class="p">():</span>
     <span class="n">edit_map</span><span class="p">(</span><span class="n">setup</span><span class="o">.</span><span class="n">account_map</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">save_map</span><span class="p">(</span><span class="nb">map</span><span class="p">,</span> <span class="n">file_name</span><span class="p">):</span>
-    <span class="nb">map</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="nb">map</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">save_map</span><span class="p">(</span><span class="n">map_</span><span class="p">,</span> <span class="n">file_name</span><span class="p">):</span>
+    <span class="n">map_</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">map_</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">keosd_wallet_dir</span><span class="p">(),</span> <span class="n">file_name</span><span class="p">),</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
-        <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">map</span><span class="p">)</span>            
+        <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">map_</span><span class="p">)</span>            
 
 
 <span class="k">def</span> <span class="nf">edit_map</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">text_editor</span><span class="o">=</span><span class="s2">&quot;nano&quot;</span><span class="p">):</span>
@@ -383,7 +383,7 @@
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="ne">FileNotFoundError</span><span class="p">):</span>
                 <span class="k">return</span> <span class="p">{}</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">            The json file </span>
 <span class="s1">            </span><span class="si">{}</span><span class="s1"></span>
 <span class="s1">            is misformed. The error message is:</span>
@@ -398,13 +398,14 @@
                     <span class="k">continue</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">                    Use the function &#39;manager.edit_account_map(text_editor=&quot;nano&quot;)&#39; to edit the file.</span>
-<span class="s1">                    &#39;&#39;&#39;</span><span class="p">,</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>                    
-                    <span class="k">return</span> <span class="kc">None</span></div>
+<span class="s1">                    Use the function &#39;manager.edit_account_map()&#39; to edit the file.</span>
+<span class="s1">                    &#39;&#39;&#39;</span><span class="p">,</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>                    </div>
 
 
 <span class="k">def</span> <span class="nf">data_json</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
     <span class="k">class</span> <span class="nc">Encoder</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">JSONEncoder</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;Redefine the method &#39;default&#39;.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">def</span> <span class="nf">default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">interface</span><span class="o">.</span><span class="n">Account</span><span class="p">):</span>
                 <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
@@ -419,7 +420,7 @@
         <span class="n">data_json_</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">Encoder</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-            <span class="n">data_json_</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;\s+|</span><span class="se">\n</span><span class="s2">+|</span><span class="se">\t</span><span class="s2">+&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+            <span class="n">data_json_</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\s+|\n+|\t+&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
             <span class="n">data_json_</span> <span class="o">=</span> <span class="n">object_names_2_accout_names</span><span class="p">(</span><span class="n">data_json_</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">data_json_</span>
 </pre></div>
@@ -454,7 +455,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.0.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li> 
       </ul>
     </div>

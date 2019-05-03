@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>eosfactory.core.config &#8212; EOSFactory 3.0.3 documentation</title>
+    <title>eosfactory.core.config &#8212; EOSFactory 3.1.0 documentation</title>
     <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
@@ -31,7 +31,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.0.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
       </ul>
     </div>  
@@ -43,27 +43,26 @@
             
   <h1>Source code for eosfactory.core.config</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">stat</span>
 <span class="kn">import</span> <span class="nn">argparse</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
 
+<span class="kn">import</span> <span class="nn">eosfactory</span>
 <span class="kn">import</span> <span class="nn">eosfactory.core.errors</span> <span class="k">as</span> <span class="nn">errors</span>
 <span class="kn">import</span> <span class="nn">eosfactory.core.logger</span> <span class="k">as</span> <span class="nn">logger</span>
 <span class="kn">import</span> <span class="nn">eosfactory.core.utils</span> <span class="k">as</span> <span class="nn">utils</span>
 
 
-<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">&quot;3.0.3&quot;</span>
-<span class="n">EOSIO_VERSION</span> <span class="o">=</span> <span class="s2">&quot;1.6.0&quot;</span>
-<span class="n">EOSIO_CDT_VERSION</span> <span class="o">=</span> <span class="s2">&quot;1.5.0&quot;</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">&quot;3.1.0&quot;</span>
+<span class="n">EOSIO_VERSION</span> <span class="o">=</span> <span class="s2">&quot;1.7.1&quot;</span>
+<span class="n">EOSIO_CDT_VERSION</span> <span class="o">=</span> <span class="s2">&quot;1.6.1&quot;</span>
 <span class="n">PYTHON_VERSION</span> <span class="o">=</span> <span class="s2">&quot;3.5 or higher&quot;</span>
 <span class="n">EOSFACTORY_DIR</span> <span class="o">=</span> <span class="s2">&quot;eosfactory/&quot;</span>
-<span class="n">APP_DATA_DIR_USER</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expandvars</span><span class="p">(</span><span class="s2">&quot;$</span><span class="si">{HOME}</span><span class="s2">/.local/&quot;</span> <span class="o">+</span> <span class="n">EOSFACTORY_DIR</span><span class="p">),</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expandvars</span><span class="p">(</span><span class="s2">&quot;$</span><span class="si">{HOME}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="p">)</span>
-<span class="n">APP_DATA_DIR_SUDO</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;/usr/local/&quot;</span> <span class="o">+</span> <span class="n">EOSFACTORY_DIR</span><span class="p">,</span> <span class="s2">&quot;/usr/local/&quot;</span><span class="p">)</span>
-<span class="n">APP_CWD_DIR</span> <span class="o">=</span> <span class="s2">&quot;/tmp/eosfactory/&quot;</span>
+<span class="n">TMP</span> <span class="o">=</span> <span class="s2">&quot;/tmp/eosfactory/&quot;</span>
 <span class="n">SETUPTOOLS_NAME</span> <span class="o">=</span> <span class="s2">&quot;eosfactory_tokenika&quot;</span>
+<span class="n">VERSION_PATTERN</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;.+/eosio\.cdt/(\d\.\d\.\d)/.*$&quot;</span>
 
 <span class="n">LOCALHOST_HTTP_ADDRESS</span> <span class="o">=</span> <span class="s2">&quot;127.0.0.1:8888&quot;</span>
 <span class="n">DEFAULT_TEMPLATE</span> <span class="o">=</span> <span class="s2">&quot;hello_world&quot;</span>
@@ -71,9 +70,12 @@
 <span class="n">CONFIG_DIR</span> <span class="o">=</span> <span class="s2">&quot;config&quot;</span>
 <span class="n">CONFIG_JSON</span> <span class="o">=</span> <span class="s2">&quot;config.json&quot;</span>
 <span class="n">CONTRACTS_DIR</span> <span class="o">=</span> <span class="s2">&quot;contracts/&quot;</span>
-<span class="n">TEMPLATE_DIR</span> <span class="o">=</span> <span class="s2">&quot;templates/contracts&quot;</span>
-<span class="n">EOSIO_CPP_DIR</span> <span class="o">=</span> <span class="s2">&quot;/usr/opt/eosio.cdt/0.0.0/&quot;</span>
+<span class="n">TEMPLATE_DIR</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;TEMPLATE_DIR&quot;</span><span class="p">,</span> <span class="s2">&quot;templates/contracts&quot;</span><span class="p">)</span>
 
+<span class="n">eosfactory_data_</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;EOSFACTORY_DATA_DIR&quot;</span><span class="p">,</span> 
+            <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expandvars</span><span class="p">(</span><span class="s2">&quot;$</span><span class="si">{HOME}</span><span class="s2">/.local/&quot;</span> <span class="o">+</span> <span class="n">EOSFACTORY_DIR</span><span class="p">),</span>\
+                <span class="s2">&quot;/usr/local/&quot;</span> <span class="o">+</span> <span class="n">EOSFACTORY_DIR</span><span class="p">,],</span>
+            <span class="p">[])</span>
 <span class="n">node_address_</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;LOCAL_NODE_ADDRESS&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">LOCALHOST_HTTP_ADDRESS</span><span class="p">])</span>
 <span class="n">wallet_address_</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;WALLET_MANAGER_ADDRESS&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">LOCALHOST_HTTP_ADDRESS</span><span class="p">])</span>
 <span class="n">genesis_json_</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;EOSIO_GENESIS_JSON&quot;</span><span class="p">,</span> 
@@ -100,10 +102,12 @@
                         <span class="p">[</span><span class="s2">&quot;nodeos&quot;</span><span class="p">,</span><span class="s2">&quot;/usr/bin/nodeos&quot;</span><span class="p">,</span> <span class="s2">&quot;/usr/local/bin/nodeos&quot;</span><span class="p">])</span>
 <span class="n">eosio_cpp_</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;EOSIO_CPP&quot;</span><span class="p">,</span> 
             <span class="p">[</span><span class="s2">&quot;eosio-cpp&quot;</span><span class="p">,</span> <span class="s2">&quot;/usr/bin/eosio-cpp&quot;</span><span class="p">,</span> <span class="s2">&quot;/usr/local/bin/eosio-cpp&quot;</span><span class="p">])</span>
-<span class="n">eosio_cpp_dir_</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;EOSIO_CPP_DIR&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">EOSIO_CPP_DIR</span><span class="p">])</span>
+<span class="n">eosio_cdt_root_</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;EOSIO_CDT_ROOT&quot;</span><span class="p">,</span> 
+    <span class="p">[</span><span class="s2">&quot;/usr/opt/eosio.cdt/0.0.0/&quot;</span><span class="p">,</span> <span class="s2">&quot;/usr/local/Cellar/eosio.cdt/0.0.0/opt/eosio.cdt/&quot;</span><span class="p">])</span>
 <span class="n">eosio_cpp_includes_</span> <span class="o">=</span> <span class="p">(</span>
     <span class="s2">&quot;EOSIO_CPP_INCLUDES&quot;</span><span class="p">,</span> 
-    <span class="p">[[</span><span class="s2">&quot;include&quot;</span><span class="p">,</span> <span class="s2">&quot;include/eosiolib&quot;</span><span class="p">,</span> <span class="s2">&quot;include/libc&quot;</span><span class="p">,</span> <span class="s2">&quot;include/libcxx&quot;</span><span class="p">]])</span>
+    <span class="p">[[</span><span class="s2">&quot;include&quot;</span><span class="p">,</span> <span class="s2">&quot;include/libcxx&quot;</span><span class="p">,</span> <span class="s2">&quot;include/eosiolib/core&quot;</span><span class="p">,</span> \
+                                                <span class="s2">&quot;include/eosiolib/contracts&quot;</span><span class="p">]])</span>
 
 <span class="n">key_private_</span> <span class="o">=</span> <span class="p">(</span>
     <span class="s2">&quot;EOSIO_KEY_PRIVATE&quot;</span><span class="p">,</span> 
@@ -115,49 +119,81 @@
     <span class="s2">&quot;EOSIO_CONTRACT_WORKSPACE&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">CONTRACTS_DIR</span><span class="p">])</span>
 
 
-<span class="k">def</span> <span class="nf">get_app_data_dir</span><span class="p">():</span>
-    <span class="k">if</span> <span class="n">APP_DATA_DIR_SUDO</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="vm">__file__</span><span class="p">:</span>
-        <span class="n">app_data_dir</span> <span class="o">=</span> <span class="n">APP_DATA_DIR_SUDO</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">elif</span>  <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expandvars</span><span class="p">(</span><span class="n">APP_DATA_DIR_USER</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="ow">in</span> <span class="vm">__file__</span><span class="p">:</span>
-        <span class="n">app_data_dir</span> <span class="o">=</span> <span class="n">APP_DATA_DIR_USER</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">app_data_dir</span> <span class="o">=</span> <span class="n">eosf_dir</span><span class="p">()</span>
-    
-    <span class="k">if</span> <span class="n">app_data_dir</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">app_data_dir</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">app_data_dir</span>
+<div class="viewcode-block" id="eosfactory_data"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.eosfactory_data">[docs]</a><span class="k">def</span> <span class="nf">eosfactory_data</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39;Data directory.</span>
 
-    <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">    Cannot determine the directory of application data. Tried:</span>
+<span class="sd">    For developer&#39;s installation, data is in the root of the installation.</span>
+<span class="sd">    .: wsl_root.sh</span>
+<span class="sd">    config: config.ini, config.json, genesis.json, ...</span>
+<span class="sd">    contracts: eosio_token, hello_world, tic_tac_toe, ...</span>
+<span class="sd">    templates: contracts, ...</span>
+<span class="sd">    includes: eoside, ...</span>
+<span class="sd">    libs: ...</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">tested</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">is_not_linked</span> <span class="o">=</span> <span class="n">is_site_package</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_not_linked</span><span class="p">:</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">eosf_dir</span><span class="p">()</span>
+        <span class="n">tested</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;config&quot;</span><span class="p">,</span> <span class="s2">&quot;config.ini&quot;</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="n">path</span>
+    <span class="k">elif</span> <span class="n">is_not_linked</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">eosfactory_data_</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">tested</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;config&quot;</span><span class="p">,</span> <span class="s2">&quot;config.ini&quot;</span><span class="p">)):</span>
+                <span class="k">return</span> <span class="n">path</span>
+    <span class="k">elif</span> <span class="n">is_not_linked</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">eosfactory_data_</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span>
+            <span class="n">tested</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;config&quot;</span><span class="p">,</span> <span class="s2">&quot;config.ini&quot;</span><span class="p">)):</span>
+                <span class="k">return</span> <span class="n">path</span>
+
+    <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Cannot determine the directory of application data. Tried:&quot;</span>
+    <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">tested</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span><span class="si">{}</span><span class="s1"></span>
 <span class="s1">    </span><span class="si">{}</span><span class="s1"></span>
-<span class="s1">    </span><span class="si">{}</span><span class="s1"></span>
-<span class="s1">    </span><span class="si">{}</span><span class="s1"></span>
-<span class="s1">    &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="n">APP_DATA_DIR_SUDO</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">APP_DATA_DIR_USER</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">eosf_dir</span><span class="p">()),</span>
-            <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+
+    <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 
 
-<span class="k">def</span> <span class="nf">is_linked_package</span><span class="p">():</span>
-    <span class="n">is_linked</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">eosf_dir</span><span class="p">(),</span> <span class="n">CONFIG_DIR</span><span class="p">))</span>
-    <span class="n">is_copied</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">is_linked</span> <span class="ow">and</span> <span class="n">get_app_data_dir</span><span class="p">()</span>
-    <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">is_linked</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="n">is_copied</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">is_site_package</span><span class="p">():</span>
+    <span class="n">is_local_or_system</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">eosfactory_path</span> <span class="o">=</span> <span class="n">eosfactory</span><span class="o">.</span><span class="n">__path__</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">eosfactory_path</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;site-packages&quot;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;local&quot;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+                <span class="n">is_local_or_system</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">is_local_or_system</span> <span class="o">=</span> <span class="mi">2</span>
+
+            <span class="k">break</span>
+        
+        <span class="k">if</span> <span class="s2">&quot;eosfactory/eosfactory&quot;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">:</span>
+            <span class="n">is_local_or_system</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># No EOSFactory:</span>
+<span class="c1"># import eosfactory</span>
+<span class="c1"># Traceback (most recent call last):</span>
+<span class="c1">#   File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span>
+<span class="c1"># ModuleNotFoundError: No module named &#39;eosfactory&#39;</span>
+
+<span class="c1"># developer&#39;s installation:</span>
+<span class="c1"># &gt;&gt;&gt; import eosfactory</span>
+<span class="c1"># &gt;&gt;&gt; print(eosfactory.__path__)</span>
+<span class="c1"># [&#39;/mnt/c/Workspaces/EOS/eosfactory/eosfactory&#39;]</span>
+
+    <span class="k">if</span> <span class="n">is_local_or_system</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">        Cannot determine the configuration directory.</span>
-<span class="s1">        </span><span class="si">{}</span><span class="s1"></span>
-<span class="s1">        </span><span class="si">{}</span><span class="s1"></span>
-<span class="s1">        </span><span class="si">{}</span><span class="s1"></span>
-<span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">eosf_dir</span><span class="p">(),</span> <span class="n">CONFIG_DIR</span><span class="p">),</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">APP_DATA_DIR_USER</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">CONFIG_DIR</span><span class="p">),</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">APP_DATA_DIR_SUDO</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">CONFIG_DIR</span><span class="p">)</span>
-            <span class="p">),</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="s1">Cannot determine the configuration directory. &#39;eosfactory.__path__&#39; is</span>
+<span class="s1">    </span><span class="si">{}</span><span class="s1"></span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eosfactory_path</span><span class="p">),</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">is_linked</span> <span class="ow">and</span> <span class="n">is_copied</span><span class="p">:</span>
-        <span class="n">is_linked</span> <span class="o">=</span> <span class="kc">True</span>
-
-    <span class="k">return</span> <span class="n">is_linked</span>
+    <span class="k">return</span> <span class="n">is_local_or_system</span>
 
 
-<span class="k">def</span> <span class="nf">set_contract_workspace_dir</span><span class="p">(</span><span class="n">contract_workspace_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">set_contract_workspace_dir</span><span class="p">(</span><span class="n">contract_workspace_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">is_set</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="kn">from</span> <span class="nn">termcolor</span> <span class="k">import</span> <span class="n">cprint</span><span class="p">,</span> <span class="n">colored</span>
     <span class="kn">import</span> <span class="nn">pathlib</span>
 
@@ -165,13 +201,13 @@
         <span class="k">return</span> <span class="n">tilde_path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;~&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()))</span>
 
     <span class="k">def</span> <span class="nf">set</span><span class="p">(</span><span class="n">contract_workspace_dir</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">contract_workspace_dir</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span>
-                <span class="n">contract_workspace_dir</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span>
-                    <span class="n">contract_workspace_dir</span><span class="p">):</span>
-            <span class="nb">map</span> <span class="o">=</span> <span class="n">config_map</span><span class="p">()</span>
-            <span class="nb">map</span><span class="p">[</span><span class="n">contract_workspace_dir_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">contract_workspace_dir</span>
-            <span class="n">write_config_map</span><span class="p">(</span><span class="nb">map</span><span class="p">)</span>
-            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="n">contract_workspace_dir</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">wslMapWindowsLinux</span><span class="p">(</span><span class="n">contract_workspace_dir</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+                <span class="nb">map</span> <span class="o">=</span> <span class="n">config_map</span><span class="p">()</span>
+                <span class="nb">map</span><span class="p">[</span><span class="n">contract_workspace_dir_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">path</span>
+                <span class="n">write_config_map</span><span class="p">(</span><span class="nb">map</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">True</span>
 
         <span class="k">return</span> <span class="kc">False</span>
 
@@ -188,19 +224,19 @@
         <span class="k">if</span> <span class="n">contract_workspace_dir_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="nb">map</span><span class="p">:</span>
             <span class="n">contract_workspace_dir</span> <span class="o">=</span> <span class="nb">map</span><span class="p">[</span><span class="n">contract_workspace_dir_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">contract_workspace_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">APP_CWD_DIR</span><span class="p">,</span> <span class="n">CONTRACTS_DIR</span><span class="p">)</span>
+            <span class="n">contract_workspace_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">TMP</span><span class="p">,</span> <span class="n">CONTRACTS_DIR</span><span class="p">)</span>
             
         <span class="n">new_dir</span> <span class="o">=</span> <span class="n">tilde</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">heredoc</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">            Where do you prefer to keep your smart-contract projects?</span>
-<span class="s1">            The current location of the is:</span>
-<span class="s1">            &#39;</span><span class="si">{}</span><span class="s1">&#39;</span>
-<span class="s1">            Otherwise, input another existing directory path, or nothing to </span>
-<span class="s1">            keep the current one:</span>
+<span class="s1">Where do you prefer to keep your smart-contract projects?</span>
+<span class="s1">The current location of the is:</span>
+<span class="s1">    </span><span class="si">{}</span><span class="s1"></span>
+<span class="s1">Otherwise, input another existing directory path, or nothing to </span>
+<span class="s1">keep the current one:</span>
 <span class="s1">            &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="n">colored</span><span class="p">(</span><span class="n">contract_workspace_dir</span><span class="p">,</span> <span class="n">current_path_color</span><span class="p">)</span>
                 <span class="p">)</span>
             <span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span>
-        
+
         <span class="k">if</span> <span class="ow">not</span> <span class="n">new_dir</span><span class="p">:</span>
             <span class="n">new_dir</span> <span class="o">=</span> <span class="n">contract_workspace_dir</span>
         
@@ -209,30 +245,30 @@
             <span class="k">break</span>
         <span class="k">else</span><span class="p">:</span>        
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">utils</span><span class="o">.</span><span class="n">heredoc</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">            The path you entered:</span>
-<span class="s1">            </span><span class="si">{}</span><span class="s1"></span>
-<span class="s1">            doesn&#39;t seem to exist!</span>
+<span class="s1">The path you entered:</span>
+<span class="s1">    </span><span class="si">{}</span><span class="s1"></span>
+<span class="s1">doesn&#39;t seem to exist!</span>
 <span class="s1">            &#39;&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">colored</span><span class="p">(</span><span class="n">new_dir</span><span class="p">,</span> <span class="n">error_path_color</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">config_dir</span><span class="p">():</span>
-    <span class="nb">dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">get_app_data_dir</span><span class="p">(),</span> <span class="n">CONFIG_DIR</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="nb">dir</span><span class="p">):</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">eosfactory_data</span><span class="p">(),</span> <span class="n">CONFIG_DIR</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
         <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">Cannot find the configuration directory</span>
 <span class="si">{}</span><span class="s1"></span>
-<span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">dir</span><span class="p">),</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nb">dir</span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">path</span>
 
 
 <span class="k">def</span> <span class="nf">template_dir</span><span class="p">():</span>
-    <span class="nb">dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">get_app_data_dir</span><span class="p">(),</span> <span class="n">TEMPLATE_DIR</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="nb">dir</span><span class="p">):</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">eosfactory_data</span><span class="p">(),</span> <span class="n">TEMPLATE_DIR</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
         <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">Cannot find the template directory</span>
 <span class="si">{}</span><span class="s1"></span>
-<span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">dir</span><span class="p">),</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nb">dir</span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">path</span>
 
 
 <div class="viewcode-block" id="eoside_includes_dir"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.eoside_includes_dir">[docs]</a><span class="k">def</span> <span class="nf">eoside_includes_dir</span><span class="p">():</span>
@@ -242,16 +278,12 @@
 <span class="sd">    *INCLUDE* entry in the *config.json* file, </span>
 <span class="sd">    see :func:`.current_config`.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="nb">dir</span> <span class="o">=</span> <span class="n">includes_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="nb">dir</span><span class="p">):</span>
-        <span class="nb">dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">get_app_data_dir</span><span class="p">(),</span> <span class="n">includes_</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="nb">dir</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">Cannot find the include directory</span>
-<span class="si">{}</span><span class="s1">.</span>
-<span class="s1">It may be set with </span><span class="si">{}</span><span class="s1"> entry in the config.json file.</span>
-<span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">includes_</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nb">dir</span>    </div>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">includes_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">eosfactory_data</span><span class="p">(),</span> <span class="n">includes_</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">path</span>    </div>
 
 
 <div class="viewcode-block" id="eoside_libs_dir"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.eoside_libs_dir">[docs]</a><span class="k">def</span> <span class="nf">eoside_libs_dir</span><span class="p">():</span>
@@ -261,19 +293,15 @@
 <span class="sd">    *LIBS* entry in the *config.json* file, </span>
 <span class="sd">    see :func:`.current_config`.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="nb">dir</span> <span class="o">=</span> <span class="n">libs_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="nb">dir</span><span class="p">):</span>
-        <span class="nb">dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">get_app_data_dir</span><span class="p">(),</span> <span class="n">libs_</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="nb">dir</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">Cannot find the libs directory</span>
-<span class="si">{}</span><span class="s1">.</span>
-<span class="s1">It may be set with </span><span class="si">{}</span><span class="s1"> entry in the config.json file.</span>
-<span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="n">libs_</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nb">dir</span>    </div>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">libs_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">eosfactory_data</span><span class="p">(),</span> <span class="n">libs_</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">path</span>    </div>
 
 
-<div class="viewcode-block" id="contract_workspace_dir"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.contract_workspace_dir">[docs]</a><span class="k">def</span> <span class="nf">contract_workspace_dir</span><span class="p">():</span>
+<div class="viewcode-block" id="contract_workspace_dir"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.contract_workspace_dir">[docs]</a><span class="k">def</span> <span class="nf">contract_workspace_dir</span><span class="p">(</span><span class="n">dont_set_workspace</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;The absolute path to the contract workspace.</span>
 
 <span class="sd">    The contract workspace is a directory where automatically created projects</span>
@@ -283,31 +311,39 @@
 <span class="sd">    subdirectory (typically *contracts/*) of the EOSFActory installation, if </span>
 <span class="sd">    EOSFactory is installed from its GitHub repository, otherwise, they go to </span>
 <span class="sd">    a directory specified as </span>
-<span class="sd">    `join(.config.APP_CWD_DIR, .config.CONTRACTS_DIR)`. </span>
+<span class="sd">    `join(.config.TMP, .config.CONTRACTS_DIR)`. </span>
 
 <span class="sd">    The setting may be changed with </span>
 <span class="sd">    *EOSIO_CONTRACT_WORKSPACE* entry in the *config.json* file, </span>
 <span class="sd">    see :func:`.current_config`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        dont_set_workspace (bool): If set., do not query for empty workspace </span>
+<span class="sd">            directory.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">dont_set_workspace</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">config_map</span><span class="p">()[</span><span class="n">contract_workspace_dir_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+
     <span class="k">if</span> <span class="ow">not</span> <span class="n">contract_workspace_dir_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">config_map</span><span class="p">():</span>
         <span class="n">set_contract_workspace_dir</span><span class="p">()</span>
-
-    <span class="n">path</span> <span class="o">=</span> <span class="n">config_value</span><span class="p">(</span><span class="n">contract_workspace_dir_</span><span class="p">)</span>
+    
+    <span class="n">workspace_dir</span> <span class="o">=</span> <span class="n">config_value</span><span class="p">(</span><span class="n">contract_workspace_dir_</span><span class="p">)</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">wslMapWindowsLinux</span><span class="p">(</span><span class="n">workspace_dir</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
             <span class="k">return</span> <span class="n">path</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">            The path</span>
-<span class="s1">            &#39;</span><span class="si">{}</span><span class="s1">&#39;,</span>
-<span class="s1">            set as the contract workspace directory, does not exist.</span>
+<span class="s1">The path</span>
+<span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;,</span>
+<span class="s1">set as the contract workspace directory, does not exist.</span>
 <span class="s1">            &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">is_linked_package</span><span class="p">():</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_site_package</span><span class="p">():</span>
             <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">eosf_dir</span><span class="p">(),</span> <span class="n">path</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">APP_CWD_DIR</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">TMP</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
@@ -315,10 +351,10 @@
             <span class="k">return</span> <span class="n">path</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">        The path</span>
-<span class="s1">        &#39;</span><span class="si">{}</span><span class="s1">&#39;</span>
-<span class="s1">        resolved as the contract workspace directory directory does not exist.</span>
-<span class="s1">            &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="s1">The path</span>
+<span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&#39;</span>
+<span class="s1">resolved as the contract workspace directory directory does not exist.</span>
+<span class="s1">            &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">workspace_dir</span><span class="p">,</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
             <span class="p">)</span>
     <span class="k">return</span> <span class="n">path</span></div>
 
@@ -340,16 +376,19 @@
 <div class="viewcode-block" id="eosf_dir"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.eosf_dir">[docs]</a><span class="k">def</span> <span class="nf">eosf_dir</span><span class="p">():</span>
     <span class="sd">&#39;&#39;&#39;The absolute directory of the EOSFactory installation.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="n">FROM_HERE_TO_EOSF_DIR</span><span class="p">))</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="n">FROM_HERE_TO_EOSF_DIR</span><span class="p">))</span>
+    
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">path</span>
 
     <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">        Cannot determine the root directory of EOSFactory.</span>
-<span class="s1">        It is attempted to be derived from the path of the configuration file</span>
-<span class="s1">            &#39;</span><span class="si">{}</span><span class="s1">&#39;.</span>
-<span class="s1">        Therefore, this file has to remain in its original position.</span>
-<span class="s1">        Currently, its path is &#39;</span><span class="si">{}</span><span class="s1">&#39;.</span>
+<span class="s1">Cannot determine the root directory of the EOSFactory installation.</span>
+<span class="s1">The path to the file &#39;config.py&#39; is</span>
+<span class="s1">    &#39;</span><span class="si">{}</span><span class="s1">&#39;.</span>
+<span class="s1">The expected installation path, which is </span>
+<span class="s1">    &#39;</span><span class="si">{}</span><span class="s1">&#39;,</span>
+<span class="s1">is reported as non-existent.</span>
 <span class="s1">    &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="vm">__file__</span><span class="p">,</span> <span class="n">path</span><span class="p">),</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 
 
@@ -396,9 +435,9 @@
 <span class="sd">    *LOCAL_NODE_CONFIG_DIR* entry in the *config.json* file, </span>
 <span class="sd">    see :func:`.current_config`.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="nb">dir</span> <span class="o">=</span> <span class="n">first_valid_path</span><span class="p">(</span><span class="n">config_dir_</span><span class="p">,</span> <span class="n">raise_error</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">dir</span><span class="p">:</span>
-        <span class="k">return</span> <span class="nb">dir</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">first_valid_path</span><span class="p">(</span><span class="n">config_dir_</span><span class="p">,</span> <span class="n">raise_error</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">path</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">path</span>
 
     <span class="k">return</span> <span class="n">config_dir</span><span class="p">()</span></div>
 
@@ -415,9 +454,9 @@
         <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config_dir</span><span class="p">(),</span> <span class="s2">&quot;genesis.json&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
         <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">        Cannot find any path for &#39;</span><span class="si">{}</span><span class="s1">&#39;.</span>
-<span class="s1">        Tried:</span>
-<span class="s1">        </span><span class="si">{}</span><span class="s1"></span>
+<span class="s1">Cannot find any path for &#39;</span><span class="si">{}</span><span class="s1">&#39;.</span>
+<span class="s1">Tried:</span>
+<span class="si">{}</span><span class="s1"></span>
 <span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">genesis_json_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">genesis_json_</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">path</span></div>
@@ -448,9 +487,9 @@
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">utils</span><span class="o">.</span><span class="n">is_windows_ubuntu</span><span class="p">():</span>
         <span class="k">return</span> <span class="s2">&quot;&quot;</span>
-    
+
     <span class="n">wsl_root_sh</span> <span class="o">=</span> <span class="s2">&quot;wsl_root.sh&quot;</span>
-    <span class="n">wsl_root_sh</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">get_app_data_dir</span><span class="p">(),</span> <span class="n">wsl_root_sh</span><span class="p">)</span>
+    <span class="n">wsl_root_sh</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">eosfactory_data</span><span class="p">(),</span> <span class="n">wsl_root_sh</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">wsl_root_</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
@@ -485,9 +524,6 @@
                     <span class="k">break</span>
         
         <span class="n">wsl_root_</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">)</span>
-        <span class="c1"># map = config_map()</span>
-        <span class="c1"># map[config.wsl_root_[0]] = wsl_root_[1][0]</span>
-        <span class="c1"># write_config_map(map)</span>
 
     <span class="k">return</span> <span class="n">wsl_root_</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span></div>
 
@@ -569,33 +605,72 @@
     <span class="k">return</span> <span class="n">first_valid_which</span><span class="p">(</span><span class="n">eosio_cpp_</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="eosio_cpp_dir"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.eosio_cpp_dir">[docs]</a><span class="k">def</span> <span class="nf">eosio_cpp_dir</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">eosio_version</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">version</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">(</span>
+            <span class="s2">&quot;echo $(</span><span class="si">{}</span><span class="s2"> --version)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">node_exe</span><span class="p">()),</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+                    <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ISO-8859-1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;v&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">retval</span> <span class="o">=</span> <span class="p">[</span><span class="n">version</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">version</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">EOSIO_VERSION</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[:</span><span class="mi">2</span><span class="p">]:</span>
+            <span class="n">retval</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">EOSIO_VERSION</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">retval</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">EOSIO_VERSION</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">eosio_cpp_version</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">version</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">eosio_cpp</span><span class="p">(),</span> <span class="s2">&quot;-version&quot;</span><span class="p">],</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ISO-8859-1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;eosio-cpp version &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">retval</span> <span class="o">=</span> <span class="p">[</span><span class="n">version</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">version</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">EOSIO_CDT_VERSION</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[:</span><span class="mi">2</span><span class="p">]:</span>
+            <span class="n">retval</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">EOSIO_CDT_VERSION</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">retval</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">EOSIO_CDT_VERSION</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="eosio_cdt_root"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.eosio_cdt_root">[docs]</a><span class="k">def</span> <span class="nf">eosio_cdt_root</span><span class="p">():</span>
     <span class="sd">&#39;&#39;&#39;The path to the *eosio-cpp* installation directory.</span>
 <span class="sd">    </span>
 <span class="sd">    The setting may be changed with </span>
 <span class="sd">    *EOSIO_CPP* entry in the *config.json* file, </span>
 <span class="sd">    see :func:`.current_config`.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">eosio_cpp_version</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span>
-            <span class="p">[</span><span class="n">eosio_cpp</span><span class="p">(),</span> <span class="s2">&quot;-version&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;Cannot determine the version of the installed &#39;eosio.cpp&#39; pckage.&quot;</span>
-        <span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;eosio-cpp version &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="c1"># find /usr -wholename &quot;*/eosio.cdt/1.6.1&quot;</span>
+    <span class="n">config_json</span> <span class="o">=</span> <span class="n">config_map</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">eosio_cdt_root_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">config_json</span> <span class="ow">and</span> <span class="n">config_json</span><span class="p">[</span><span class="n">eosio_cdt_root_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]:</span>
+        <span class="k">return</span> <span class="n">config_json</span><span class="p">[</span><span class="n">eosio_cdt_root_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
 
-    <span class="n">version_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;.+/eosio\.cdt/(\d\.\d\.\d)/$&quot;</span><span class="p">)</span>
-    <span class="nb">dir</span> <span class="o">=</span> <span class="n">eosio_cpp_dir_</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>    
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">version_pattern</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="nb">dir</span><span class="p">):</span>
+    <span class="n">eosio_cpp_version_</span> <span class="o">=</span> <span class="n">eosio_cpp_version</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">eosio_cpp_version_</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span>
             <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">The assumed pattern</span>
-<span class="sd">{}</span>
-<span class="sd">does not match the directory template &#39;core.config.EOSIO_CPP_DIR&#39;</span>
-<span class="sd">{}</span>
-<span class="sd">            &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">version_pattern</span><span class="p">,</span> <span class="n">EOSIO_CPP_DIR</span><span class="p">),</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span>
-        <span class="p">)</span>
-    <span class="nb">dir</span> <span class="o">=</span> <span class="nb">dir</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-        <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">version_pattern</span><span class="p">,</span> <span class="nb">dir</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">eosio_cpp_version</span><span class="p">)</span> 
+<span class="sd">            &#39;eosio-cpp&#39; does not response.</span>
+<span class="sd">            &#39;&#39;&#39;</span><span class="p">)</span>        
 
-    <span class="k">return</span> <span class="nb">dir</span>   </div>
+    <span class="n">version_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">VERSION_PATTERN</span><span class="p">)</span>
+    <span class="n">tested</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">eosio_cdt_root_</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">tested</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">version_pattern</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+                <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">version_pattern</span><span class="p">,</span> <span class="n">path</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">eosio_cpp_version_</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">)):</span>
+                <span class="k">return</span> <span class="n">path</span>
+
+    <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Cannot determine the installation directory of &#39;eosio-cdt. Tried:&quot;</span>
+    <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">tested</span><span class="p">:</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span><span class="si">{}</span><span class="s1"></span>
+<span class="s1">    </span><span class="si">{}</span><span class="s1"></span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span><span class="si">{}</span><span class="s1"></span>
+<span class="s1">Define it in the config file</span>
+<span class="si">{}</span><span class="s1"> </span>
+<span class="s1">    &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">config_file</span><span class="p">())</span>
+    <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> </div>
 
 
 <div class="viewcode-block" id="eosio_cpp_includes"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.eosio_cpp_includes">[docs]</a><span class="k">def</span> <span class="nf">eosio_cpp_includes</span><span class="p">():</span>
@@ -605,9 +680,9 @@
 <span class="sd">    file, see :func:`.current_config`.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="nb">list</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="nb">dir</span> <span class="o">=</span> <span class="n">eosio_cpp_dir</span><span class="p">()</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">eosio_cdt_root</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">include</span> <span class="ow">in</span> <span class="n">eosio_cpp_includes_</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span>
-        <span class="nb">list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dir</span> <span class="o">+</span> <span class="n">include</span><span class="p">)</span>
+        <span class="nb">list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="n">include</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">list</span></div>
 
 
@@ -622,7 +697,21 @@
 <span class="sd">    Raises:</span>
 <span class="sd">        .core.errors.Error: If the directory does not exist.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="k">return</span> <span class="n">first_valid_path</span><span class="p">(</span><span class="n">keosd_wallet_dir_</span><span class="p">,</span> <span class="n">raise_error</span><span class="o">=</span><span class="n">raise_error</span><span class="p">)</span></div>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">first_valid_path</span><span class="p">(</span><span class="n">keosd_wallet_dir_</span><span class="p">,</span> <span class="n">raise_error</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">eosfactory.core.cleos</span> <span class="k">import</span> <span class="n">WalletList</span>
+        <span class="n">WalletList</span><span class="p">()</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">first_valid_path</span><span class="p">(</span><span class="n">keosd_wallet_dir_</span><span class="p">,</span> <span class="n">raise_error</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">raise_error</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">Cannot find any path for &#39;</span><span class="si">{}</span><span class="s1">&#39;.</span>
+<span class="s1">Tried:</span>
+<span class="si">{}</span><span class="s1"></span>
+<span class="s1">                &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">keosd_wallet_dir_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">keosd_wallet_dir_</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> 
+                                                            <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">path</span></div>
 
 
 <div class="viewcode-block" id="config_file"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.config_file">[docs]</a><span class="k">def</span> <span class="nf">config_file</span><span class="p">():</span>
@@ -772,9 +861,9 @@
     <span class="k">if</span> <span class="n">raise_error</span><span class="p">:</span>
         <span class="n">config_values</span><span class="p">(</span><span class="n">config_list</span><span class="p">)</span>
         <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">        Cannot find any path for &#39;</span><span class="si">{}</span><span class="s1">&#39;.</span>
-<span class="s1">        Tried:</span>
-<span class="s1">        </span><span class="si">{}</span><span class="s1"></span>
+<span class="s1">Cannot find any path for &#39;</span><span class="si">{}</span><span class="s1">&#39;.</span>
+<span class="s1">Tried:</span>
+<span class="si">{}</span><span class="s1"></span>
 <span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">config_list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">config_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">None</span></div>
@@ -826,9 +915,9 @@
 
     <span class="k">if</span> <span class="n">raise_error</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">        Cannot find any path for &#39;</span><span class="si">{}</span><span class="s1">&#39;.</span>
-<span class="s1">        Tried:</span>
-<span class="s1">        </span><span class="si">{}</span><span class="s1"></span>
+<span class="s1">Cannot find any path for &#39;</span><span class="si">{}</span><span class="s1">&#39;.</span>
+<span class="s1">Tried:</span>
+<span class="si">{}</span><span class="s1"></span>
 <span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">config_list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">config_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">None</span></div>
@@ -866,18 +955,18 @@
         <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">contract_dir_</span><span class="p">)</span>
 
     <span class="c1"># ? the relative path to a contract directory, relative to </span>
-    <span class="c1"># &#39;get_app_data_dir()/contracts&#39;</span>
+    <span class="c1"># &#39;eosfactory_data()/contracts&#39;</span>
     <span class="n">contract_dir_</span> <span class="o">=</span>  <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-                <span class="n">get_app_data_dir</span><span class="p">(),</span> <span class="n">CONTRACTS_DIR</span><span class="p">,</span> <span class="n">contract_dir_hint</span><span class="p">)</span>
+                <span class="n">eosfactory_data</span><span class="p">(),</span> <span class="n">CONTRACTS_DIR</span><span class="p">,</span> <span class="n">contract_dir_hint</span><span class="p">)</span>
 
     <span class="n">trace</span> <span class="o">=</span> <span class="n">trace</span> <span class="o">+</span> <span class="n">contract_dir_</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">contract_dir_</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">contract_dir_</span><span class="p">)</span>
     
     <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">        Cannot determine the contract directory.</span>
-<span class="s1">        Tried:</span>
-<span class="s1">        </span><span class="si">{}</span><span class="s1"></span>
+<span class="s1">Cannot determine the contract directory.</span>
+<span class="s1">Tried:</span>
+<span class="si">{}</span><span class="s1"></span>
 <span class="s1">    &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">trace</span><span class="p">),</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 
 
@@ -920,9 +1009,9 @@
         <span class="k">return</span> <span class="p">(</span><span class="n">source_dir</span><span class="p">,</span> <span class="n">srcs</span><span class="p">)</span>            
 
     <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">        Cannot find any contract source directory.</span>
-<span class="s1">        Tried:</span>
-<span class="s1">        </span><span class="si">{}</span><span class="s1"></span>
+<span class="s1">Cannot find any contract source directory.</span>
+<span class="s1">Tried:</span>
+<span class="si">{}</span><span class="s1"></span>
 <span class="s1">    &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">trace</span><span class="p">),</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 
 
@@ -985,11 +1074,11 @@
             <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">build_dir</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
 
     <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">        Cannot determine the contract file basing on hints:</span>
-<span class="s1">        contract dir hint: </span><span class="si">{}</span><span class="s1"></span>
-<span class="s1">        contract file hint: </span><span class="si">{}</span><span class="s1"></span>
-<span class="s1">        Tried:</span>
-<span class="s1">        </span><span class="si">{}</span><span class="s1"></span>
+<span class="s1">Cannot determine the contract file basing on hints:</span>
+<span class="s1">contract dir hint: </span><span class="si">{}</span><span class="s1"></span>
+<span class="s1">contract file hint: </span><span class="si">{}</span><span class="s1"></span>
+<span class="s1">Tried:</span>
+<span class="si">{}</span><span class="s1"></span>
 <span class="s1">    &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">,</span> <span class="n">contract_file_hint</span><span class="p">,</span> <span class="n">trace</span><span class="p">),</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  </div>
 
 
@@ -1021,73 +1110,57 @@
         <span class="n">contract_file</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">,</span> <span class="s2">&quot;.wasm&quot;</span><span class="p">),</span> <span class="n">contract_dir_hint</span><span class="p">)</span></div>
 
 
-<span class="k">def</span> <span class="nf">update_eosio_cpp_includes</span><span class="p">(</span><span class="n">c_cpp_properties_path</span><span class="p">,</span> <span class="n">root</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">update_eosio_cpp_includes</span><span class="p">(</span><span class="n">c_cpp_properties_path</span><span class="p">):</span>
     <span class="n">c_cpp_properties_path</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">wslMapWindowsLinux</span><span class="p">(</span><span class="n">c_cpp_properties_path</span><span class="p">)</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">c_cpp_properties_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">c_cpp_properties</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-    <span class="n">dir_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
-        <span class="s1">&#39;^.*</span><span class="si">{}</span><span class="s1">(/.+/eosio\.cdt/\d\.\d\.\d/).+&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">root</span><span class="p">),</span> <span class="n">re</span><span class="o">.</span><span class="n">M</span><span class="p">)</span>
+        
+    <span class="n">version_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">VERSION_PATTERN</span><span class="p">)</span>
 
-    <span class="nb">dir</span> <span class="o">=</span> <span class="n">eosio_cpp_dir</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">dir_pattern</span><span class="p">,</span> <span class="n">c_cpp_properties</span><span class="p">):</span>
-        <span class="n">new</span> <span class="o">=</span> <span class="n">c_cpp_properties</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span>
-                                        <span class="n">dir_pattern</span><span class="p">,</span> <span class="n">c_cpp_properties</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">dir</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">version_pattern</span><span class="p">,</span> <span class="n">c_cpp_properties</span><span class="p">):</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">c_cpp_properties</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+                <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">version_pattern</span><span class="p">,</span> <span class="n">c_cpp_properties</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">eosio_cpp_version</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+
         <span class="k">if</span> <span class="ow">not</span> <span class="n">new</span> <span class="o">==</span> <span class="n">c_cpp_properties</span><span class="p">:</span>
             <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">c_cpp_properties_path</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
                 <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">new</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">not_defined</span><span class="p">():</span>
-    <span class="nb">map</span> <span class="o">=</span> <span class="n">current_config</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">not_defined</span><span class="p">(</span><span class="n">config_map</span><span class="p">):</span>
     <span class="n">retval</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">map</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">config_map</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">retval</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
     <span class="k">return</span> <span class="n">retval</span>
 
 
-<div class="viewcode-block" id="installation_dependencies"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.installation_dependencies">[docs]</a><span class="k">def</span> <span class="nf">installation_dependencies</span><span class="p">():</span>
+<div class="viewcode-block" id="installation_dependencies"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.installation_dependencies">[docs]</a><span class="k">def</span> <span class="nf">installation_dependencies</span><span class="p">(</span><span class="n">config_map</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Verify whether &#39;eosio&#39; and &#39;eosio.cpp&#39; packages are properly installed.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="kn">import</span> <span class="nn">subprocess</span>
-
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">eosio_version</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">(</span>
-            <span class="s2">&quot;echo $(</span><span class="si">{}</span><span class="s2"> --version)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">node_exe</span><span class="p">()),</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
-                                    <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ISO-8859-1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-
-        <span class="n">eosio_version</span> <span class="o">=</span> <span class="n">eosio_version</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;v&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">eosio_version</span> <span class="o">==</span> <span class="n">EOSIO_VERSION</span><span class="p">:</span>
+    <span class="n">eosio_version_</span> <span class="o">=</span> <span class="n">config_map</span><span class="p">[</span><span class="s2">&quot;EOSIO_VERSION&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">eosio_version_</span> <span class="ow">and</span> <span class="n">eosio_version_</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">eosio_version_</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;NOTE!</span>
-<span class="s1">The version of the installed &#39;eosio&#39; package is </span><span class="si">{}</span><span class="s1"> while the expected</span>
-<span class="s1">version is </span><span class="si">{}</span><span class="s1"></span>
-<span class="s1">            &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eosio_version</span><span class="p">,</span> <span class="n">EOSIO_VERSION</span><span class="p">))</span>        
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;ERROR!</span>
-<span class="s1">Cannot determine the version of the installed &#39;eosio&#39; package.</span>
-<span class="s1">The error message:</span>
-<span class="si">{}</span><span class="s1"></span>
-<span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)))</span>
+<span class="s1">The version of the installed &#39;eosio&#39; package is </span><span class="si">{}</span><span class="s1"> while EOSFactory was tested</span>
+<span class="s1">with version </span><span class="si">{}</span><span class="s1"></span>
+<span class="s1">            &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">eosio_version_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">eosio_version_</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;Cannot determine the version of the installed &#39;eosio&#39; package as &#39;nodeos&#39; does not response.</span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span>
 
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">eosio_cpp_version</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">(</span>
-            <span class="p">[</span><span class="n">eosio_cpp</span><span class="p">(),</span> <span class="s2">&quot;-version&quot;</span><span class="p">],</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ISO-8859-1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-
-        <span class="n">eosio_cpp_version</span> <span class="o">=</span> <span class="n">eosio_cpp_version</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;eosio-cpp version &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">eosio_cpp_version</span> <span class="o">==</span> <span class="n">EOSIO_CDT_VERSION</span><span class="p">:</span>
+    <span class="n">eosio_cpp_version_</span> <span class="o">=</span> <span class="n">config_map</span><span class="p">[</span><span class="s2">&quot;EOSIO_CDT_VERSION&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">eosio_cpp_version_</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">eosio_cpp_version_</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;NOTE!</span>
-<span class="s1">The version of the installed &#39;eosio.cdt&#39; package is </span><span class="si">{}</span><span class="s1"> while the expected</span>
-<span class="s1">version is </span><span class="si">{}</span><span class="s1"></span>
-<span class="s1">            &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eosio_cpp_version</span><span class="p">,</span> <span class="n">EOSIO_CDT_VERSION</span><span class="p">))</span>     
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;ERROR!</span>
-<span class="s1">Cannot determine the version of the installed &#39;eosio.cpp&#39; package.</span>
-<span class="s1">The error message:</span>
-<span class="si">{}</span><span class="s1"></span>
-<span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)))</span>   </div>
+<span class="s1">The version of the installed &#39;eosio.cdt&#39; package is </span><span class="si">{}</span><span class="s1"> while EOSFactory was tested with version </span><span class="si">{}</span><span class="s1"></span>
+<span class="s1">            &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eosio_cpp_version_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">eosio_cpp_version_</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;Cannot determine the version of the installed &#39;eosio.cdt&#39; package as &#39;eosio-cpp&#39; does not response.</span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span>        </div>
 
 
-<div class="viewcode-block" id="current_config"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.current_config">[docs]</a><span class="k">def</span> <span class="nf">current_config</span><span class="p">(</span><span class="n">contract_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="current_config"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.current_config">[docs]</a><span class="k">def</span> <span class="nf">current_config</span><span class="p">(</span><span class="n">contract_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dont_set_workspace</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Present the current configuration.</span>
 
 <span class="sd">    The current configuration result from both the *config.json* file setting</span>
@@ -1104,11 +1177,11 @@
     <span class="nb">map</span> <span class="o">=</span> <span class="p">{}</span>
     
     <span class="nb">map</span><span class="p">[</span><span class="s2">&quot;CONFIG_FILE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">config_file</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">is_linked_package</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_site_package</span><span class="p">():</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="nb">map</span><span class="p">[</span><span class="s2">&quot;EOS_FACTORY_DIR&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">eosf_dir</span><span class="p">()</span>
+            <span class="nb">map</span><span class="p">[</span><span class="s2">&quot;EOSFACTORY_DIR&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">eosf_dir</span><span class="p">()</span>
         <span class="k">except</span><span class="p">:</span>
-            <span class="nb">map</span><span class="p">[</span><span class="s2">&quot;EOS_FACTORY_DIR&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="nb">map</span><span class="p">[</span><span class="s2">&quot;EOSFACTORY_DIR&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="nb">map</span><span class="p">[</span><span class="n">node_address_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">http_server_address</span><span class="p">()</span>
     <span class="k">except</span><span class="p">:</span>
@@ -1135,7 +1208,8 @@
     <span class="k">except</span><span class="p">:</span>
         <span class="nb">map</span><span class="p">[</span><span class="n">chain_state_db_size_mb_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="nb">map</span><span class="p">[</span><span class="n">contract_workspace_dir_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">contract_workspace_dir</span><span class="p">()</span>
+        <span class="nb">map</span><span class="p">[</span><span class="n">contract_workspace_dir_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">contract_workspace_dir</span><span class="p">(</span>
+                                                            <span class="n">dont_set_workspace</span><span class="p">)</span>
     <span class="k">except</span><span class="p">:</span>
          <span class="nb">map</span><span class="p">[</span><span class="n">contract_workspace_dir_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">try</span><span class="p">:</span>
@@ -1167,9 +1241,9 @@
     <span class="k">except</span><span class="p">:</span>
         <span class="nb">map</span><span class="p">[</span><span class="n">eosio_cpp_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">try</span><span class="p">:</span> 
-        <span class="nb">map</span><span class="p">[</span><span class="n">eosio_cpp_dir_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">eosio_cpp_dir</span><span class="p">()</span>
+        <span class="nb">map</span><span class="p">[</span><span class="n">eosio_cdt_root_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">eosio_cdt_root</span><span class="p">()</span>
     <span class="k">except</span><span class="p">:</span>
-        <span class="nb">map</span><span class="p">[</span><span class="n">eosio_cpp_dir_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="nb">map</span><span class="p">[</span><span class="n">eosio_cdt_root_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">try</span><span class="p">:</span> 
         <span class="nb">map</span><span class="p">[</span><span class="n">eosio_cpp_includes_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">eosio_cpp_includes</span><span class="p">()</span>
     <span class="k">except</span><span class="p">:</span>
@@ -1185,7 +1259,19 @@
     <span class="k">try</span><span class="p">:</span>   
         <span class="nb">map</span><span class="p">[</span><span class="n">libs_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">eoside_libs_dir</span><span class="p">()</span>
     <span class="k">except</span><span class="p">:</span>
-        <span class="nb">map</span><span class="p">[</span><span class="n">libs_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>    
+        <span class="nb">map</span><span class="p">[</span><span class="n">libs_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">try</span><span class="p">:</span>   
+        <span class="nb">map</span><span class="p">[</span><span class="n">eosfactory_data_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">eosfactory_data</span><span class="p">()</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="nb">map</span><span class="p">[</span><span class="n">eosfactory_data_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">try</span><span class="p">:</span>   
+        <span class="nb">map</span><span class="p">[</span><span class="n">TEMPLATE_DIR</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">template_dir</span><span class="p">()</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="nb">map</span><span class="p">[</span><span class="n">TEMPLATE_DIR</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+        
+
+    <span class="nb">map</span><span class="p">[</span><span class="s2">&quot;EOSIO_VERSION&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">eosio_version</span><span class="p">()</span>
+    <span class="nb">map</span><span class="p">[</span><span class="s2">&quot;EOSIO_CDT_VERSION&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">eosio_cpp_version</span><span class="p">()</span>
 
     <span class="nb">map</span><span class="p">[</span><span class="n">nodeos_stdout_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">nodeos_stdout</span><span class="p">()</span>
     
@@ -1220,53 +1306,45 @@
 <span class="s1">Python version </span><span class="si">{}</span><span class="s1"></span>
 <span class="s1">    &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">VERSION</span><span class="p">,</span> <span class="n">EOSIO_VERSION</span><span class="p">,</span> <span class="n">EOSIO_CDT_VERSION</span><span class="p">,</span> <span class="n">PYTHON_VERSION</span><span class="p">)</span>
     <span class="p">)</span>
+    <span class="n">is_not_linked</span> <span class="o">=</span> <span class="n">is_site_package</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_not_linked</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span>
+    <span class="sd">&#39;&#39;&#39;EOSFactory package is installed as a link to the directory:</span>
+<span class="sd">    &#39;{}&#39;</span>
+<span class="sd">    &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">eosf_dir</span><span class="p">(),</span> <span class="n">EOSFACTORY_DIR</span><span class="p">))</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="n">is_not_linked</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span>
+    <span class="sd">&#39;&#39;&#39;EOSFactory is installed as a site package locally.</span>
+<span class="sd">    &#39;&#39;&#39;</span>            
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="n">is_not_linked</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span>
+    <span class="sd">&#39;&#39;&#39;EOSFactory is installed as a site package globally.</span>
+<span class="sd">    &#39;&#39;&#39;</span>            
+        <span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">is_linked_package</span><span class="p">():</span>
-        <span class="nb">print</span><span class="p">(</span>
-            <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">            EOSFactory package is installed as a link to the directory:</span>
-<span class="sd">            &#39;{}&#39;</span>
-<span class="sd">            &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">eosf_dir</span><span class="p">(),</span> <span class="n">EOSFACTORY_DIR</span><span class="p">))</span>
-        <span class="p">)</span>
-    <span class="k">elif</span> <span class="n">APP_DATA_DIR_USER</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">get_app_data_dir</span><span class="p">():</span>
-        <span class="nb">print</span><span class="p">(</span>
-        <span class="sd">&#39;&#39;&#39;EOSFactory is installed as a PyPi package locally.</span>
-<span class="sd">        &#39;&#39;&#39;</span>            
-        <span class="p">)</span>
-    <span class="k">elif</span> <span class="n">APP_DATA_DIR_SUDO</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">get_app_data_dir</span><span class="p">():</span>
-        <span class="nb">print</span><span class="p">(</span>
-        <span class="sd">&#39;&#39;&#39;EOSFactory is installed as a PyPi package globally.</span>
-<span class="sd">        &#39;&#39;&#39;</span>            
-        <span class="p">)</span>
-
-    <span class="n">installation_dependencies</span><span class="p">()</span>
+    <span class="n">config_map</span> <span class="o">=</span> <span class="n">current_config</span><span class="p">()</span>
+    <span class="n">installation_dependencies</span><span class="p">(</span><span class="n">config_map</span><span class="p">)</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">The current configuration of EOSFactory:</span>
 <span class="si">{}</span><span class="s1"></span>
 
-<span class="s1">You are free to overwrite the above settings with entries in the configuration </span>
+<span class="s1">You can overwrite the above settings with entries in the configuration </span>
 <span class="s1">file located here:</span>
 <span class="si">{}</span><span class="s1"></span>
 <span class="s1">&#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
         <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span>
-            <span class="n">current_config</span><span class="p">(),</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span> <span class="n">config_file</span><span class="p">())</span>
+            <span class="n">config_map</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span> <span class="n">config_file</span><span class="p">())</span>
     <span class="p">)</span>
 
-    <span class="n">not_defined_</span> <span class="o">=</span> <span class="n">not_defined</span><span class="p">()</span>
+    <span class="n">not_defined_</span> <span class="o">=</span> <span class="n">not_defined</span><span class="p">(</span><span class="n">config_map</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">not_defined_</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">There are undefined setting:</span>
 <span class="si">{}</span><span class="s1"></span>
 <span class="s1">    &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">not_defined_</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)))</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">The current contents of the configuration file is:</span>
-<span class="si">{}</span><span class="s1"></span>
-<span class="s1">&#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-        <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">config_map</span><span class="p">(),</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
-    <span class="p">)</span>
-
 
 <div class="viewcode-block" id="main"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -1276,37 +1354,40 @@
 <span class="sd">    Show the configuration of EOSFactory or set contract workspace.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        -h, --help            show this help message and exit</span>
-<span class="sd">        --wsl_root            show set the root of the WSL and exit.</span>
-<span class="sd">        --dependencies        list dependencies of EOSFactory and exit.</span>
-<span class="sd">        --json                bare config JSON and exit.</span>
-<span class="sd">        --workspace WORKSPACE</span>
-<span class="sd">                                set contract workspace and exit.</span>
+<span class="sd">        -h, --help              Show this help message and exit</span>
+<span class="sd">        --wsl_root              Show set the root of the WSL and exit.</span>
+<span class="sd">        --dependencies          List dependencies of EOSFactory and exit.</span>
+<span class="sd">        --dont_set_workspace    Ignore empty workspace directory.</span>
+<span class="sd">        --json                  Bare config JSON and exit.</span>
+<span class="sd">        --workspace WORKSPACE   Set contract workspace and exit.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">    Show the configuration of EOSFactory or set contract workspace.</span>
 <span class="s1">    &#39;&#39;&#39;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
-        <span class="s2">&quot;--wsl_root&quot;</span><span class="p">,</span>  <span class="n">help</span><span class="o">=</span><span class="s2">&quot;show set the root of the WSL and exit.&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;--wsl_root&quot;</span><span class="p">,</span>  <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Show set the root of the WSL and exit.&quot;</span><span class="p">,</span> 
         <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
-        <span class="s2">&quot;--dependencies&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;list dependencies of EOSFactory and exit.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;--dependencies&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;List dependencies of EOSFactory and exit.&quot;</span><span class="p">,</span>
         <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
-        <span class="s2">&quot;--json&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;bare config JSON and exit.&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;--dont_set_workspace&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Ignore empty workspace directory.&quot;</span><span class="p">,</span> 
+        <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">)</span>    
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">&quot;--json&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Bare config JSON and exit.&quot;</span><span class="p">,</span> 
         <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
-        <span class="s2">&quot;--workspace&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;set contract workspace and exit.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;--workspace&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Set contract workspace and exit.&quot;</span><span class="p">,</span>
         <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">)</span>
 
     <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
-
     <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">dependencies</span><span class="p">:</span>
-        <span class="n">installation_dependencies</span><span class="p">()</span>
+        <span class="n">installation_dependencies</span><span class="p">(</span><span class="n">current_config</span><span class="p">())</span>
     <span class="k">elif</span> <span class="n">args</span><span class="o">.</span><span class="n">json</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span>
-            <span class="n">current_config</span><span class="p">(),</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+            <span class="n">current_config</span><span class="p">(</span><span class="n">dont_set_workspace</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">dont_set_workspace</span><span class="p">),</span> 
+            <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
     <span class="k">elif</span> <span class="n">args</span><span class="o">.</span><span class="n">wsl_root</span><span class="p">:</span>
         <span class="n">wsl_root</span><span class="p">()</span>
     <span class="k">elif</span> <span class="n">args</span><span class="o">.</span><span class="n">workspace</span><span class="p">:</span>
@@ -1348,7 +1429,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.0.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li> 
       </ul>
     </div>

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>core.teos &#8212; EOSFactory 3.0.3 documentation</title>
+    <title>core.teos &#8212; EOSFactory 3.1.0 documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="core.logger.html" title="core.logger"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.0.3 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.1.0 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -51,15 +51,49 @@
   <div class="section" id="module-eosfactory.core.teos">
 <span id="core-teos"></span><h1>core.teos<a class="headerlink" href="#module-eosfactory.core.teos" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
-<dt id="eosfactory.core.teos.ABI">
-<code class="descclassname">eosfactory.core.teos.</code><code class="descname">ABI</code><span class="sig-paren">(</span><em>contract_dir_hint=None</em>, <em>c_cpp_properties_path=None</em>, <em>verbosity=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/teos.html#ABI"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.teos.ABI" title="Permalink to this definition">¶</a></dt>
-<dd><p>Given a hint to a contract directory, produce ABI file.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="eosfactory.core.teos.WASM">
-<code class="descclassname">eosfactory.core.teos.</code><code class="descname">WASM</code><span class="sig-paren">(</span><em>contract_dir_hint</em>, <em>c_cpp_properties_path=None</em>, <em>compile_only=False</em>, <em>verbosity=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/teos.html#WASM"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.teos.WASM" title="Permalink to this definition">¶</a></dt>
-<dd><p>Produce WASM code.</p>
+<dt id="eosfactory.core.teos.build">
+<code class="descclassname">eosfactory.core.teos.</code><code class="descname">build</code><span class="sig-paren">(</span><em>contract_dir_hint</em>, <em>c_cpp_properties_path=None</em>, <em>compile_only=False</em>, <em>verbosity=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/teos.html#build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.teos.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Produce ABI and WASM files.</p>
+<p>Compiler options come with the argument ‘c_cpp_properties_path’, as
+components of ‘compilerOptions’ list. Option can be any of the ‘eosio-cpp’
+options, plus the following ones:</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>–no-src - if set, the contract source file is not automatically detected</dt>
+<dd>as the only source file in the ‘src’ directory</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>–src - list of the source files, absolute or relative to ‘src’ or</dt>
+<dd>project directories, for example:
+–src hello.cpp tests/hello_test.cpp</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>-o - the same as the corresponding eosio-cpp option, but may be relative</dt>
+<dd>to ‘build’ directory</dd>
+</dl>
+</li>
+</ul>
+<p>Without any option set, the only source file is determined as a result of the function <a class="reference internal" href="core.config.html#eosfactory.core.config.contract_source_files" title="eosfactory.core.config.contract_source_files"><code class="xref py py-func docutils literal notranslate"><span class="pre">core.config.contract_source_files()</span></code></a>, if the result is a
+single file. If it is not, an error is thrown, stating that the source file has to be specified with the ‘–src’ option.</p>
+<p>The ABI and WASM targets are named after the contract source file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>contract_dir_hint</strong> (<em>str</em>) – Path, may be partial, to the project directory.</li>
+<li><strong>c_cpp_properties_path</strong> (<em>str</em>) – If set, the path to a c_cpp_properties json
+file in ‘.vscode’ folder in the project directory.</li>
+<li><strong>compile_only</strong> (<em>bool</em>) – If set, do not link.</li>
+<li><strong>verbosity</strong> (<em>(</em><em>[</em><a class="reference internal" href="core.logger.html#eosfactory.core.logger.Verbosity" title="eosfactory.core.logger.Verbosity"><em>core.logger.Verbosity</em></a><em>]</em><em>)</em>) – Verbosity parameter, used in
+loggers.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
@@ -172,7 +206,7 @@ verbosity: The logging configuration.
         <li class="right" >
           <a href="core.logger.html" title="core.logger"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.0.3 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.1.0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

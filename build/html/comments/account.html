@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Account Object &#8212; EOSFactory 3.0.3 documentation</title>
+    <title>Account Object &#8212; EOSFactory 3.1.0 documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="symbolic_names.html" title="Symbolic Names"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.0.3 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.1.0 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -147,13 +147,13 @@ EOSIO account, or two different local objects, if account objects could be not g
 <div class="section" id="create-a-contract-object">
 <h3>Create a contract object<a class="headerlink" href="#create-a-contract-object" title="Permalink to this headline">¶</a></h3>
 <p>Create an instance of the <code class="docutils literal notranslate"><span class="pre">Contract</span></code> class and associate it with the <code class="docutils literal notranslate"><span class="pre">HOST</span></code> account:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">contract</span> <span class="o">=</span> <span class="n">Contract</span><span class="p">(</span><span class="n">HOST</span><span class="p">,</span> <span class="s2">&quot;hello_world&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">smart</span> <span class="o">=</span> <span class="n">Contract</span><span class="p">(</span><span class="n">HOST</span><span class="p">,</span> <span class="s2">&quot;hello_world&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The second argument of the creator of the <code class="docutils literal notranslate"><span class="pre">Contract</span></code> class identifies the location of the contract’s source code (you can supply the entire path, but in case of standard locations, e.g. <em>EOSFactory</em> demo contracts or your predefined workspace, you can just specify the folder name).</p>
 <p>Next, let’s build and deploy the contract:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">contract</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
-<span class="n">contract</span><span class="o">.</span><span class="n">deploy</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">smart</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+<span class="n">smart</span><span class="o">.</span><span class="n">deploy</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -260,7 +260,7 @@ EOSIO account, or two different local objects, if account objects could be not g
         <li class="right" >
           <a href="symbolic_names.html" title="Symbolic Names"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.0.3 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.1.0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>&lt;no title&gt; &#8212; EOSFactory 3.0.3 documentation</title>
+    <title>Release 0.8 on 17 May 2018 &#8212; EOSFactory 3.1.0 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
@@ -31,7 +31,7 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">EOSFactory 3.0.3 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">EOSFactory 3.1.0 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -40,7 +40,9 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <ul class="simple">
+  <div class="section" id="release-0-8-on-17-may-2018">
+<h1>Release 0.8 on 17 May 2018<a class="headerlink" href="#release-0-8-on-17-may-2018" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
 <li>Launch a single-node private testnet and fully control it: stop it and then continue running it or completely reset it.</li>
 <li>Initialize a testnet with the <code class="docutils literal notranslate"><span class="pre">bios</span></code> contract and several test accounts (available as <code class="docutils literal notranslate"><span class="pre">sess.alice</span></code>, <code class="docutils literal notranslate"><span class="pre">sess.bob</span></code> and <code class="docutils literal notranslate"><span class="pre">sess.carol</span></code>).</li>
 <li>Create additional test accounts (their keys are automatically imported into the wallet).</li>
@@ -51,31 +53,88 @@
 <li>Deploy a contract (the account holding the contract is created behind the scenes).</li>
 <li>Interact with a contract by pushing actions to it.</li>
 <li>Extract data from a contract’s table.</li>
-<li>Integration with Python <a class="reference external" href="https://docs.python.org/2/library/unittest.html">UnitTest</a> standard library.</li>
+</ul>
+</div>
+<div class="section" id="release-1-0-on-6-jun-2018">
+<h1>Release 1.0 on 6 Jun 2018<a class="headerlink" href="#release-1-0-on-6-jun-2018" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>Integration with Python UnitTest standard library.</li>
 <li>User-defined workspace for smart-contract storage.</li>
 <li>Support for debugging via logger output containing file name &amp; line number.</li>
-<li>Preliminary code verification with <code class="docutils literal notranslate"><span class="pre">CLANG</span></code>.</li>
-<li><a class="reference external" href="https://code.visualstudio.com/">Visual Studio Code</a> integration, including <a class="reference external" href="https://cmake.org/">CMake</a> builds and automated tasks.</li>
+<li>Preliminary code verification with CLANG.</li>
+<li>Visual Studio Code integration, including CMake builds and automated tasks.</li>
+</ul>
+</div>
+<div class="section" id="release-1-1-on-11-jul-2018">
+<h1>Release 1.1 on 11 Jul 2018<a class="headerlink" href="#release-1-1-on-11-jul-2018" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>Full compatibility with production version of EOS (v1.0.8 or higher).</li>
+<li>Ability to interact with a public testnet (e.g. Jungle Testnet).</li>
+<li>Support for keosd, the official wallet management tool.</li>
+<li>Built-in mechanism for mapping random account names to fixed names needed for smart-contract testing.</li>
 <li>Color differentiation in console output.</li>
-<li>Support for <code class="docutils literal notranslate"><span class="pre">keosd</span></code>, the official wallet management tool.</li>
-<li>Full compatibility with production version of EOS (<a class="reference external" href="https://github.com/EOSIO/eos/releases/tag/v1.2.0">v1.2.0</a> or higher).</li>
-<li>Seamless integration with public testnets (e.g. <a class="reference external" href="http://dev.remote_testnet.io/">Jungle Testnet</a> or <a class="reference external" href="https://tools.cryptokylin.io">Kylin Testnet</a>).</li>
-<li>The entire wallet management migrated to <code class="docutils literal notranslate"><span class="pre">keosd</span></code>, as for security reasons this feature is no longer supported by <code class="docutils literal notranslate"><span class="pre">nodeos</span></code>.</li>
-<li>Radically improved mechanism for mapping random account names to human-friendly aliases, including symbolic translation of <em>EOS</em> logger messages.</li>
+<li>Improved error reporting.</li>
+</ul>
+</div>
+<div class="section" id="release-2-0-on-13-sep-2018">
+<h1>Release 2.0 on 13 Sep 2018<a class="headerlink" href="#release-2-0-on-13-sep-2018" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>Full compatibility with production version of EOS (v1.2.0 or higher).</li>
+<li>Seamless integration with public testnets (e.g. Jungle Testnet or Kylin Testnet).</li>
+<li>The entire wallet management migrated to keosd.</li>
+<li>Radically improved mechanism for mapping random account names to human-friendly aliases, including symbolic translation of EOS logger messages.</li>
 <li>New mechanism for caching public testnet settings.</li>
-<li><a class="reference external" href="https://github.com/tokenika/eosfactory/blob/master/eosfactory/eosf.py">Developer API</a> reduced to less than 20 basic commands and classes.</li>
+<li>Developer API reduced to less than 20 basic commands and classes.</li>
 <li>Radially improved logger messaging, including highly customizable verbosity.</li>
+</ul>
+</div>
+<div class="section" id="release-2-1-on-25-sep-2018">
+<h1>Release 2.1 on 25 Sep 2018<a class="headerlink" href="#release-2-1-on-25-sep-2018" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
 <li>Local testnet running in a headless mode (this allows you to run EOSFactory in a GUI-less environment, e.g. Ubuntu Server, or via SSH).</li>
 <li>All functionality ported to Python, no need to compile any C++ code.</li>
-<li>Precise error catching in unit tests, utilizing Python’s <code class="docutils literal notranslate"><span class="pre">assertRaises(Error)</span></code> feature.</li>
-<li>Completely removed dependence on system variables: entries in the <code class="docutils literal notranslate"><span class="pre">~/.profile</span></code> or <code class="docutils literal notranslate"><span class="pre">~/.bash_profile</span></code> files are no longer needed.</li>
-<li>Radically improved (and simplified) installation process: the Python modules are now installed with <code class="docutils literal notranslate"><span class="pre">setuptools</span></code>.</li>
-<li>While using EOSFactory with <em>Visual Studio Code</em> is highly recommended, EOSFactory has become independent from any particular IDE and does not impose any particular folder structure inside your smart-contract project. The only requirement is having a folder called <code class="docutils literal notranslate"><span class="pre">build</span></code> on the same level or one level up from your C++ source files.</li>
-<li>Support for binary version of <em>EOSIO</em> (while support for a source code build is maintained).</li>
-<li>Smart-contract are built using <em>EOSIO Contract Development Toolkit</em> (CDT).</li>
-<li>Support for setting account and action permissions.</li>
-<li>Optional <code class="docutils literal notranslate"><span class="pre">nodeos</span></code> output to file.</li>
+<li>Precise error catching in unit tests, utilizing Python’s assertRaises(Error) feature.</li>
+<li>Improved folder structure within Python modules.</li>
+<li>Simplified syntax for logger management.</li>
 </ul>
+</div>
+<div class="section" id="release-2-2-on-30-oct-2018">
+<h1>Release 2.2 on 30 Oct 2018<a class="headerlink" href="#release-2-2-on-30-oct-2018" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>Completely removed dependence on system variables: entries in the ~/.profile or ~/.bash_profile files are no longer needed.</li>
+<li>Radically improved (and simplified) installation process: the Python modules are now installed with setuptools.</li>
+<li>While using EOSFactory with Visual Studio Code is highly recommended, EOSFactory has become independent from any particular IDE and does not impose any particular folder structure inside your smart-contract project. The only requirement is having a folder called build on the same level or one level up from your C++ source files.</li>
+</ul>
+</div>
+<div class="section" id="release-2-3-on-10-dec-2018">
+<h1>Release 2.3 on 10 Dec 2018<a class="headerlink" href="#release-2-3-on-10-dec-2018" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>Compatibility with EOSIO v1.5.0</li>
+<li>Support for binary version of EOSIO (while support for a source code build is maintained)</li>
+<li>Smart-contract are built using EOSIO Contract Development Toolkit (CDT)</li>
+<li>Support for setting account and action permissions</li>
+<li>Optional nodeos output to file</li>
+<li>Several bug fixes</li>
+</ul>
+</div>
+<div class="section" id="release-2-4-on-4-jan-2019">
+<h1>Release 2.4 on 4 Jan 2019<a class="headerlink" href="#release-2-4-on-4-jan-2019" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>General code overhaul &amp; clean-up.</li>
+<li>Documentation improved &amp; revised.</li>
+<li>Introduction of code patterns.</li>
+<li>Several bug fixes.</li>
+</ul>
+</div>
+<div class="section" id="release-3-0-2-on-5-mar-2019">
+<h1>Release 3.0.2 on 5 Mar 2019<a class="headerlink" href="#release-3-0-2-on-5-mar-2019" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>New alternative syntax introduced for creating references to EOS accounts: <code class="docutils literal notranslate"><span class="pre">foo</span> <span class="pre">=</span> <span class="pre">new_account(...)</span></code>.</li>
+<li>EOSFactory package can be installed from PyPi repository.</li>
+<li>Compatibility with python linter: now linter doesn’t raise warnings about dynamically created account objects.</li>
+<li>Cleaner code, better documented.</li>
+</ul>
+</div>
 
 
           </div>
@@ -83,6 +142,19 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Release 0.8 on 17 May 2018</a></li>
+<li><a class="reference internal" href="#release-1-0-on-6-jun-2018">Release 1.0 on 6 Jun 2018</a></li>
+<li><a class="reference internal" href="#release-1-1-on-11-jul-2018">Release 1.1 on 11 Jul 2018</a></li>
+<li><a class="reference internal" href="#release-2-0-on-13-sep-2018">Release 2.0 on 13 Sep 2018</a></li>
+<li><a class="reference internal" href="#release-2-1-on-25-sep-2018">Release 2.1 on 25 Sep 2018</a></li>
+<li><a class="reference internal" href="#release-2-2-on-30-oct-2018">Release 2.2 on 30 Oct 2018</a></li>
+<li><a class="reference internal" href="#release-2-3-on-10-dec-2018">Release 2.3 on 10 Dec 2018</a></li>
+<li><a class="reference internal" href="#release-2-4-on-4-jan-2019">Release 2.4 on 4 Jan 2019</a></li>
+<li><a class="reference internal" href="#release-3-0-2-on-5-mar-2019">Release 3.0.2 on 5 Mar 2019</a></li>
+</ul>
+
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -115,7 +187,7 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">EOSFactory 3.0.3 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">EOSFactory 3.1.0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Installing EOSFactory &#8212; EOSFactory 3.0.3 documentation</title>
+    <title>Installing EOSFactory &#8212; EOSFactory 3.1.0 documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="00.IntroductionToEOSFactory.html" title="Introduction to EOSFactory"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.0.3 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.1.0 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -57,13 +57,11 @@
 <li>MacOS 10.13 (High Sierra)</li>
 <li>Windows 10 (version 1803)</li>
 </ul>
-<blockquote>
-<div><strong>NOTE:</strong> <em>EOSFactory</em> is compatible with <em>EOSIO</em> <a class="reference external" href="https://github.com/EOSIO/eos/releases/tag/v1.6.0">v1.6.0</a>.</div></blockquote>
 <div class="section" id="general-prerequisites">
 <h2>General prerequisites<a class="headerlink" href="#general-prerequisites" title="Permalink to this headline">¶</a></h2>
-<p>We assume that you have successfully installed <a class="reference external" href="https://github.com/EOSIO/eos"><em>EOSIO</em></a> v1.6.0 on your machine. Binary installation suffices.</p>
+<p>We assume that you have successfully installed <a class="reference external" href="https://github.com/EOSIO/eos"><em>EOSIO</em></a> v1.7.1 on your machine. Binary installation suffices.</p>
 <p><em>EOSIO</em> deployed in Docker is NOT supported.</p>
-<p>Also, we assume that you have installed <a class="reference external" href="https://github.com/EOSIO/eosio.cdt"><em>eosio.cdt</em></a> v1.5.0. Binary installation suffices.</p>
+<p>Also, we assume that you have installed <a class="reference external" href="https://github.com/EOSIO/eosio.cdt"><em>eosio.cdt</em></a> v1.6.1. Binary installation suffices.</p>
 </div>
 <div class="section" id="prerequisites-for-ubuntu-macos">
 <h2>Prerequisites for Ubuntu &amp; MacOS<a class="headerlink" href="#prerequisites-for-ubuntu-macos" title="Permalink to this headline">¶</a></h2>
@@ -157,19 +155,24 @@ python3 tests/tic_tac_toe.py
 </pre></div>
 </div>
 <p>In the printout, you’ll see a note about the nature of the active package:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>EOSFactory version <span class="m">3</span>.0.0
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>EOSFactory version <span class="m">3</span>.1.0.
 Dependencies:
-https://github.com/EOSIO/eos version <span class="m">1</span>.6.0
-https://github.com/EOSIO/eosio.cdt version <span class="m">1</span>.5.0
+https://github.com/EOSIO/eos version <span class="m">1</span>.7.1
+https://github.com/EOSIO/eosio.cdt version <span class="m">1</span>.6.1
 Python version <span class="m">3</span>.5 or higher
 
-EOSFactory is installed as a PyPi package.
+    EOSFactory is installed as a PyPi package.
 
 The current configuration of EOSFactory:
 <span class="o">{</span>
-    <span class="s2">&quot;CONFIG_FILE&quot;</span>: <span class="s2">&quot;/home/cartman/.local/eosfactory/config/config.json&quot;</span>,
-    <span class="s2">&quot;EOSIO_CLI_EXECUTABLE&quot;</span>: <span class="s2">&quot;/usr/bin/cleos&quot;</span>,
-    <span class="s2">&quot;EOSIO_CONTRACT_WORKSPACE&quot;</span>: <span class="s2">&quot;/mnt/&quot;</span>,    
+    <span class="s2">&quot;CONFIG_FILE&quot;</span>: <span class="s2">&quot;/mnt/c/Workspaces/EOS/eosfactory/config/config.json&quot;</span>,
+    <span class="s2">&quot;EOSIO_CDT_VERSION&quot;</span>: <span class="o">[</span>
+        <span class="s2">&quot;1.6.1&quot;</span>
+    <span class="o">]</span>,
+    <span class="s2">&quot;EOSIO_CLI_EXECUTABLE&quot;</span>: <span class="s2">&quot;cleos&quot;</span>,
+    <span class="s2">&quot;EOSIO_CONTRACT_WORKSPACE&quot;</span>: <span class="s2">&quot;/mnt/c/Workspaces/EOS/contracts&quot;</span>,
+    <span class="s2">&quot;EOSIO_CPP&quot;</span>: <span class="s2">&quot;eosio-cpp&quot;</span>,
+    <span class="s2">&quot;EOSIO_CPP_DIR&quot;</span>: <span class="s2">&quot;/usr/opt/eosio.cdt/1.6.1/&quot;</span>,
 ..........................................
 ..........................................
 </pre></div>
@@ -187,7 +190,7 @@ The current configuration of EOSFactory:
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./uninstall.sh
 </pre></div>
 </div>
-<p>or</p>
+<p>Or, anywhere in the system, do</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip3 uninstall eosfactory-tokenika
 </pre></div>
 </div>
@@ -215,33 +218,64 @@ Command <span class="s1">&#39;[&#39;</span>/usr/bin/nodeos<span class="s1">&#39;
 </pre></div>
 </div>
 <p>As a result, you should get data similar to this:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>The current configuration of EOSFactory:
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>EOSFactory version <span class="m">3</span>.1.0.
+Dependencies:
+https://github.com/EOSIO/eos version <span class="m">1</span>.7.1
+https://github.com/EOSIO/eosio.cdt version <span class="m">1</span>.6.1
+Python version <span class="m">3</span>.5 or higher
+
+
+    EOSFactory package is installed as a link to the directory:
+    <span class="s1">&#39;/mnt/c/Workspaces/EOS/eosfactory/eosfactory/&#39;</span>
+
+
+The current configuration of EOSFactory:
 <span class="o">{</span>
     <span class="s2">&quot;CONFIG_FILE&quot;</span>: <span class="s2">&quot;/mnt/c/Workspaces/EOS/eosfactory/config/config.json&quot;</span>,
-    <span class="s2">&quot;EOSIO_CLI_EXECUTABLE&quot;</span>: <span class="s2">&quot;/usr/bin/cleos&quot;</span>,
-    <span class="s2">&quot;EOSIO_CONTRACT_WORKSPACE&quot;</span>: <span class="s2">&quot;/mnt/c/Workspaces/EOS/eosfactory/contracts_windows&quot;</span>,
-    <span class="s2">&quot;EOSIO_CPP&quot;</span>: <span class="s2">&quot;/usr/bin/eosio-cpp&quot;</span>,
-    <span class="s2">&quot;EOSIO_CPP_DIR&quot;</span>: <span class="s2">&quot;/usr/opt/eosio.cdt/1.5.0/&quot;</span>,
+    <span class="s2">&quot;EOSIO_CDT_VERSION&quot;</span>: <span class="o">[</span>
+        <span class="s2">&quot;1.6.1&quot;</span>
+    <span class="o">]</span>,
+    <span class="s2">&quot;EOSIO_CLI_EXECUTABLE&quot;</span>: <span class="s2">&quot;cleos&quot;</span>,
+    <span class="s2">&quot;EOSIO_CONTRACT_WORKSPACE&quot;</span>: <span class="s2">&quot;/mnt/c/Workspaces/EOS/contracts&quot;</span>,
+    <span class="s2">&quot;EOSIO_CPP&quot;</span>: <span class="s2">&quot;eosio-cpp&quot;</span>,
+    <span class="s2">&quot;EOSIO_CPP_DIR&quot;</span>: <span class="s2">&quot;/usr/opt/eosio.cdt/1.6.1/&quot;</span>,
     <span class="s2">&quot;EOSIO_CPP_INCLUDES&quot;</span>: <span class="o">[</span>
-        <span class="s2">&quot;/usr/opt/eosio.cdt/1.5.0/include&quot;</span>,
-        <span class="s2">&quot;/usr/opt/eosio.cdt/1.5.0/include/eosiolib&quot;</span>,
-        <span class="s2">&quot;/usr/opt/eosio.cdt/1.5.0/include/libc&quot;</span>,
-        <span class="s2">&quot;/usr/opt/eosio.cdt/1.5.0/include/libcxx&quot;</span>
+        <span class="s2">&quot;/usr/opt/eosio.cdt/1.6.1/include&quot;</span>,
+        <span class="s2">&quot;/usr/opt/eosio.cdt/1.6.1/include/libcxx&quot;</span>,
+        <span class="s2">&quot;/usr/opt/eosio.cdt/1.6.1/include/eosiolib/core&quot;</span>,
+        <span class="s2">&quot;/usr/opt/eosio.cdt/1.6.1/include/eosiolib/contracts&quot;</span>
     <span class="o">]</span>,
     <span class="s2">&quot;EOSIO_GENESIS_JSON&quot;</span>: <span class="s2">&quot;/home/cartman/.local/share/eosio/nodeos/config/genesis.json&quot;</span>,
     <span class="s2">&quot;EOSIO_KEY_PRIVATE&quot;</span>: <span class="s2">&quot;5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3&quot;</span>,
     <span class="s2">&quot;EOSIO_KEY_PUBLIC&quot;</span>: <span class="s2">&quot;EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV&quot;</span>,
-    <span class="s2">&quot;EOSIO_SHARED_MEMORY_SIZE_MB&quot;</span>: <span class="s2">&quot;200&quot;</span>,
+    <span class="s2">&quot;EOSIO_SHARED_MEMORY_SIZE_MB&quot;</span>: <span class="s2">&quot;300&quot;</span>,
+    <span class="s2">&quot;EOSIO_VERSION&quot;</span>: <span class="o">[</span>
+        <span class="s2">&quot;1.7.1&quot;</span>
+    <span class="o">]</span>,
     <span class="s2">&quot;EOS_FACTORY_DIR&quot;</span>: <span class="s2">&quot;/mnt/c/Workspaces/EOS/eosfactory&quot;</span>,
-    <span class="s2">&quot;KEOSD_EXECUTABLE&quot;</span>: <span class="s2">&quot;/usr/bin/keosd&quot;</span>,
+    <span class="s2">&quot;INCLUDE&quot;</span>: <span class="s2">&quot;/mnt/c/Workspaces/EOS/eosfactory/includes&quot;</span>,
+    <span class="s2">&quot;KEOSD_EXECUTABLE&quot;</span>: <span class="s2">&quot;keosd&quot;</span>,
     <span class="s2">&quot;KEOSD_WALLET_DIR&quot;</span>: <span class="s2">&quot;/home/cartman/eosio-wallet/&quot;</span>,
+    <span class="s2">&quot;LIBS&quot;</span>: null,
     <span class="s2">&quot;LOCAL_NODE_ADDRESS&quot;</span>: <span class="s2">&quot;127.0.0.1:8888&quot;</span>,
     <span class="s2">&quot;LOCAL_NODE_CONFIG_DIR&quot;</span>: <span class="s2">&quot;/mnt/c/Workspaces/EOS/eosfactory/config&quot;</span>,
     <span class="s2">&quot;LOCAL_NODE_DATA_DIR&quot;</span>: <span class="s2">&quot;/home/cartman/.local/share/eosio/nodeos/data/&quot;</span>,
-    <span class="s2">&quot;LOCAL_NODE_EXECUTABLE&quot;</span>: <span class="s2">&quot;/usr/bin/nodeos&quot;</span>,
+    <span class="s2">&quot;LOCAL_NODE_EXECUTABLE&quot;</span>: <span class="s2">&quot;nodeos&quot;</span>,
     <span class="s2">&quot;NODEOS_STDOUT&quot;</span>: null,
+    <span class="s2">&quot;TEMPLATE_DIR&quot;</span>: <span class="s2">&quot;/mnt/c/Workspaces/EOS/eosfactory/templates/contracts&quot;</span>,
     <span class="s2">&quot;WALLET_MANAGER_ADDRESS&quot;</span>: <span class="s2">&quot;127.0.0.1:8888&quot;</span>,
     <span class="s2">&quot;WSL_ROOT&quot;</span>: <span class="s2">&quot;C:/Users/cartman/AppData/Local/Packages/CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc/LocalState/rootfs&quot;</span>
+<span class="o">}</span>
+
+You can overwrite the above settings with entries in the configuration
+file located here:
+/mnt/c/Workspaces/EOS/eosfactory/config/config.json
+
+
+There are undefined setting:
+<span class="o">{</span>
+    <span class="s2">&quot;LIBS&quot;</span>: null,
+    <span class="s2">&quot;NODEOS_STDOUT&quot;</span>: null
 <span class="o">}</span>
 </pre></div>
 </div>
@@ -260,8 +294,8 @@ Command <span class="s1">&#39;[&#39;</span>/usr/bin/nodeos<span class="s1">&#39;
 <p>Technically, EOSFactory wraps EOSIO executables – namely <code class="docutils literal notranslate"><span class="pre">cleos</span></code>, <code class="docutils literal notranslate"><span class="pre">keos</span></code>, <code class="docutils literal notranslate"><span class="pre">nodeos</span></code> – with its own API. Therefore, in error conditions, it makes sense to inspect command lines sent to the EOSIO executables. The boolean variable <code class="docutils literal notranslate"><span class="pre">eosfactory.core.setup.is_print_command_line</span></code> sets the debugging status. For example, if deployment of the contract in the test script <code class="docutils literal notranslate"><span class="pre">hello_world.py</span></code> fails, modify the script:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>        <span class="kn">import</span> <span class="nn">eosfactory.core.setup</span> <span class="kn">as</span> <span class="nn">setUp</span>   <span class="c1">## added</span>
         <span class="n">setup</span><span class="o">.</span><span class="n">is_print_command_line</span> <span class="o">=</span> <span class="bp">True</span>      <span class="c1">## added</span>
-        <span class="n">contract</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
-        <span class="n">contract</span><span class="o">.</span><span class="n">deploy</span><span class="p">()</span>
+        <span class="n">smart</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+        <span class="n">smart</span><span class="o">.</span><span class="n">deploy</span><span class="p">()</span>
         <span class="n">setup</span><span class="o">.</span><span class="n">is_print_command_line</span> <span class="o">=</span> <span class="bp">False</span>     <span class="c1">## added</span>
 </pre></div>
 </div>
@@ -282,8 +316,8 @@ WASM file writen to file:
         <span class="n">setup</span><span class="o">.</span><span class="n">is_print_command_line</span> <span class="o">=</span> <span class="bp">True</span>      <span class="c1">## added</span>
         <span class="n">setup</span><span class="o">.</span><span class="n">is_print_request</span> <span class="o">=</span> <span class="bp">True</span>           <span class="c1">## added</span>
         <span class="c1"># setup.is_print_response = True        ## volume printout</span>
-        <span class="n">contract</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
-        <span class="n">contract</span><span class="o">.</span><span class="n">deploy</span><span class="p">()</span>
+        <span class="n">smart</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+        <span class="n">smart</span><span class="o">.</span><span class="n">deploy</span><span class="p">()</span>
         <span class="n">setup</span><span class="o">.</span><span class="n">is_print_request</span> <span class="o">=</span> <span class="bp">False</span>          <span class="c1">## added</span>
         <span class="n">setup</span><span class="o">.</span><span class="n">is_print_command_line</span> <span class="o">=</span> <span class="bp">False</span>     <span class="c1">## added</span>
         <span class="n">setup</span><span class="o">.</span><span class="n">is_print_response</span> <span class="o">=</span> <span class="bp">False</span>         <span class="c1">## added</span>
@@ -383,7 +417,7 @@ git pull
         <li class="right" >
           <a href="00.IntroductionToEOSFactory.html" title="Introduction to EOSFactory"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.0.3 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.1.0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

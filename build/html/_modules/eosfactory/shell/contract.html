@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>eosfactory.shell.contract &#8212; EOSFactory 3.0.3 documentation</title>
+    <title>eosfactory.shell.contract &#8212; EOSFactory 3.1.0 documentation</title>
     <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
@@ -31,7 +31,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.0.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
       </ul>
     </div>  
@@ -48,7 +48,6 @@
 <span class="kn">import</span> <span class="nn">eosfactory.core.errors</span> <span class="k">as</span> <span class="nn">errors</span>
 <span class="kn">import</span> <span class="nn">eosfactory.core.logger</span> <span class="k">as</span> <span class="nn">logger</span>
 <span class="kn">import</span> <span class="nn">eosfactory.core.config</span> <span class="k">as</span> <span class="nn">config</span>
-<span class="kn">import</span> <span class="nn">eosfactory.core.setup</span> <span class="k">as</span> <span class="nn">setup</span>
 <span class="kn">import</span> <span class="nn">eosfactory.core.teos</span> <span class="k">as</span> <span class="nn">teos</span>
 <span class="kn">import</span> <span class="nn">eosfactory.core.cleos</span> <span class="k">as</span> <span class="nn">cleos</span>
 <span class="kn">import</span> <span class="nn">eosfactory.core.cleos_set</span> <span class="k">as</span> <span class="nn">cleos_set</span>
@@ -60,7 +59,9 @@
 
 <span class="sd">    Args:</span>
 <span class="sd">        contract_dir (str): If set, a hint to the root directory of a contract </span>
-<span class="sd">            project, otherwise the current working directory. </span>
+<span class="sd">            project, otherwise the current working directory.</span>
+<span class="sd">        c_cpp_properties_path (str): If set, the directory of a C/CPP VSCode </span>
+<span class="sd">            extension configuration file.</span>
 <span class="sd">        abi_file (str): If set, the path to the ABI file, absolute, </span>
 <span class="sd">            or relative to *contract_dir*.</span>
 <span class="sd">        wasm_file (str): If set, the path to the WASM file, absolute, </span>
@@ -68,40 +69,37 @@
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">contract_dir</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">c_cpp_properties_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">abi_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">wasm_file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">contract_dir</span><span class="p">:</span>
             <span class="n">contract_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+            
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">c_cpp_properties_path</span><span class="p">:</span>
+            <span class="n">c_cpp_properties_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                            <span class="n">contract_dir</span><span class="p">,</span> <span class="s2">&quot;.vscode&quot;</span><span class="p">,</span> <span class="s2">&quot;c_cpp_properties.json&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">c_cpp_properties_path</span><span class="p">):</span>
+                <span class="n">c_cpp_properties_path</span> <span class="o">=</span> <span class="kc">None</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">contract_dir</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">contract_dir</span><span class="p">(</span><span class="n">contract_dir</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">c_cpp_properties_path</span> <span class="o">=</span> <span class="n">c_cpp_properties_path</span>
         
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">contract_dir</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">                Cannot determine the contract directory. The path is </span>
 <span class="s2">                ``</span><span class="si">{}</span><span class="s2">``.</span>
 <span class="s2">                &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">contract_dir</span><span class="p">))</span>
-            <span class="k">return</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">abi_file</span> <span class="o">=</span> <span class="n">abi_file</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">wasm_file</span> <span class="o">=</span> <span class="n">wasm_file</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wasm_file</span> <span class="o">=</span> <span class="n">wasm_file</span>        
 
-<div class="viewcode-block" id="ContractBuilder.build_wast"><a class="viewcode-back" href="../../../rst/shell.contract.html#eosfactory.shell.contract.ContractBuilder.build_wast">[docs]</a>    <span class="k">def</span> <span class="nf">build_wast</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;Make the WAST file.</span>
-<span class="sd">        &#39;&#39;&#39;</span>
-        <span class="n">teos</span><span class="o">.</span><span class="n">WASM</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">contract_dir</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="ContractBuilder.build_abi"><a class="viewcode-back" href="../../../rst/shell.contract.html#eosfactory.shell.contract.ContractBuilder.build_abi">[docs]</a>    <span class="k">def</span> <span class="nf">build_abi</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;Make the ABI file.</span>
-<span class="sd">        &#39;&#39;&#39;</span>
-        <span class="n">teos</span><span class="o">.</span><span class="n">ABI</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">contract_dir</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ContractBuilder.build"><a class="viewcode-back" href="../../../rst/shell.contract.html#eosfactory.shell.contract.ContractBuilder.build">[docs]</a>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;Make both, ABI and WASM files.</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">if</span> <span class="n">force</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_built</span><span class="p">():</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">build_abi</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">build_wast</span><span class="p">()</span></div>
+            <span class="n">teos</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">contract_dir</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">c_cpp_properties_path</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ContractBuilder.is_built"><a class="viewcode-back" href="../../../rst/shell.contract.html#eosfactory.shell.contract.ContractBuilder.is_built">[docs]</a>    <span class="k">def</span> <span class="nf">is_built</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;Check whether both the ABI and WASM files exist.</span>
@@ -157,6 +155,7 @@
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="n">contract_dir</span><span class="p">,</span> <span class="n">abi_file</span><span class="o">=</span><span class="n">abi_file</span><span class="p">,</span> <span class="n">wasm_file</span><span class="o">=</span><span class="n">wasm_file</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">account</span> <span class="o">=</span> <span class="n">account</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">permission</span> <span class="o">=</span> <span class="n">permission</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">expiration_sec</span> <span class="o">=</span> <span class="n">expiration_sec</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">skip_sign</span> <span class="o">=</span> <span class="n">skip_sign</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dont_broadcast</span> <span class="o">=</span> <span class="n">dont_broadcast</span>
@@ -187,7 +186,9 @@
             <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">            Contract needs to be built before deployment.</span>
 <span class="s1">            &#39;&#39;&#39;</span><span class="p">)</span>
-            <span class="k">return</span>
+
+        <span class="k">if</span> <span class="n">permission</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">permission</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">permission</span>
         <span class="k">if</span> <span class="n">dont_broadcast</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">dont_broadcast</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dont_broadcast</span>
         <span class="k">try</span><span class="p">:</span>
@@ -352,7 +353,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.0.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li> 
       </ul>
     </div>
