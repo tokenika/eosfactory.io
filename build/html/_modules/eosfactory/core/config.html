@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>eosfactory.core.config &#8212; EOSFactory 3.1.0 documentation</title>
+    <title>eosfactory.core.config &#8212; EOSFactory 3.1.1 documentation</title>
     <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
@@ -31,7 +31,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.1.1 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
       </ul>
     </div>  
@@ -55,7 +55,7 @@
 <span class="kn">import</span> <span class="nn">eosfactory.core.utils</span> <span class="k">as</span> <span class="nn">utils</span>
 
 
-<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">&quot;3.1.0&quot;</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">&quot;3.1.1&quot;</span>
 <span class="n">EOSIO_VERSION</span> <span class="o">=</span> <span class="s2">&quot;1.7.1&quot;</span>
 <span class="n">EOSIO_CDT_VERSION</span> <span class="o">=</span> <span class="s2">&quot;1.6.1&quot;</span>
 <span class="n">PYTHON_VERSION</span> <span class="o">=</span> <span class="s2">&quot;3.5 or higher&quot;</span>
@@ -970,17 +970,19 @@
 <span class="s1">    &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">trace</span><span class="p">),</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="source_files"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.source_files">[docs]</a><span class="k">def</span> <span class="nf">source_files</span><span class="p">(</span><span class="n">source_dir</span><span class="p">):</span>
+<div class="viewcode-block" id="source_files"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.source_files">[docs]</a><span class="k">def</span> <span class="nf">source_files</span><span class="p">(</span><span class="n">search_dir</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;List files CPP/C and ABI files from the given directory</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">srcs</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;.cpp&quot;</span><span class="p">,</span> <span class="s2">&quot;.cxx&quot;</span><span class="p">,</span> <span class="s2">&quot;.c&quot;</span><span class="p">,</span> <span class="s2">&quot;.abi&quot;</span><span class="p">]</span>
-    <span class="n">files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">source_dir</span><span class="p">)</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">search_dir</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">source_dir</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">file</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">extensions</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">search_dir</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">file</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">extensions</span><span class="p">:</span>
                 <span class="n">srcs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">srcs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">source_files</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">srcs</span></div>
     
 
@@ -997,16 +999,16 @@
     <span class="n">contract_dir_</span> <span class="o">=</span> <span class="n">contract_dir</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">wslMapWindowsLinux</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">))</span>
     <span class="n">trace</span> <span class="o">=</span> <span class="n">contract_dir_</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
 
-    <span class="n">source_dir</span> <span class="o">=</span> <span class="n">contract_dir_</span>
-    <span class="n">srcs</span> <span class="o">=</span> <span class="n">source_files</span><span class="p">(</span><span class="n">source_dir</span><span class="p">)</span>
+    <span class="n">search_dir</span> <span class="o">=</span> <span class="n">contract_dir_</span>
+    <span class="n">srcs</span> <span class="o">=</span> <span class="n">source_files</span><span class="p">(</span><span class="n">search_dir</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">srcs</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">source_dir</span><span class="p">,</span> <span class="n">srcs</span><span class="p">)</span>            
+        <span class="k">return</span> <span class="p">(</span><span class="n">search_dir</span><span class="p">,</span> <span class="n">srcs</span><span class="p">)</span>            
 
-    <span class="n">source_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">contract_dir_</span><span class="p">,</span> <span class="s2">&quot;src&quot;</span><span class="p">)</span>
-    <span class="n">trace</span> <span class="o">=</span> <span class="n">trace</span> <span class="o">+</span> <span class="n">source_dir</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
-    <span class="n">srcs</span> <span class="o">=</span> <span class="n">source_files</span><span class="p">(</span><span class="n">source_dir</span><span class="p">)</span>
+    <span class="n">search_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">contract_dir_</span><span class="p">,</span> <span class="s2">&quot;src&quot;</span><span class="p">)</span>
+    <span class="n">trace</span> <span class="o">=</span> <span class="n">trace</span> <span class="o">+</span> <span class="n">search_dir</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">srcs</span> <span class="o">=</span> <span class="n">source_files</span><span class="p">(</span><span class="n">search_dir</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">srcs</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">source_dir</span><span class="p">,</span> <span class="n">srcs</span><span class="p">)</span>            
+        <span class="k">return</span> <span class="p">(</span><span class="n">search_dir</span><span class="p">,</span> <span class="n">srcs</span><span class="p">)</span>            
 
     <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">Cannot find any contract source directory.</span>
@@ -1429,7 +1431,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.1.1 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li> 
       </ul>
     </div>
