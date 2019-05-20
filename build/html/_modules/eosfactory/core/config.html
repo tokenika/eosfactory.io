@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>eosfactory.core.config &#8212; EOSFactory 3.1.1 documentation</title>
+    <title>eosfactory.core.config &#8212; EOSFactory 3.1.2 documentation</title>
     <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
@@ -31,7 +31,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.1.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.1.2 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
       </ul>
     </div>  
@@ -55,7 +55,7 @@
 <span class="kn">import</span> <span class="nn">eosfactory.core.utils</span> <span class="k">as</span> <span class="nn">utils</span>
 
 
-<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">&quot;3.1.1&quot;</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">&quot;3.1.2&quot;</span>
 <span class="n">EOSIO_VERSION</span> <span class="o">=</span> <span class="s2">&quot;1.7.1&quot;</span>
 <span class="n">EOSIO_CDT_VERSION</span> <span class="o">=</span> <span class="s2">&quot;1.6.1&quot;</span>
 <span class="n">PYTHON_VERSION</span> <span class="o">=</span> <span class="s2">&quot;3.5 or higher&quot;</span>
@@ -63,6 +63,10 @@
 <span class="n">TMP</span> <span class="o">=</span> <span class="s2">&quot;/tmp/eosfactory/&quot;</span>
 <span class="n">SETUPTOOLS_NAME</span> <span class="o">=</span> <span class="s2">&quot;eosfactory_tokenika&quot;</span>
 <span class="n">VERSION_PATTERN</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;.+/eosio\.cdt/(\d\.\d\.\d)/.*$&quot;</span>
+<span class="n">BUILD</span> <span class="o">=</span> <span class="s2">&quot;build&quot;</span>
+<span class="n">IGNORE_FILE</span> <span class="o">=</span> <span class="s2">&quot;.eosideignore&quot;</span>
+<span class="n">IGNORE_LIST</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;.vscode/ipch/*&quot;</span><span class="p">,</span> <span class="s2">&quot;.vscode/settings.json&quot;</span><span class="p">,</span> <span class="s2">&quot;.vscode/tasks.json&quot;</span><span class="p">,</span>\
+                <span class="s2">&quot;build/*&quot;</span><span class="p">,</span><span class="s2">&quot;command_lines.txt&quot;</span><span class="p">]</span>
 
 <span class="n">LOCALHOST_HTTP_ADDRESS</span> <span class="o">=</span> <span class="s2">&quot;127.0.0.1:8888&quot;</span>
 <span class="n">DEFAULT_TEMPLATE</span> <span class="o">=</span> <span class="s2">&quot;hello_world&quot;</span>
@@ -225,17 +229,23 @@
             <span class="n">contract_workspace_dir</span> <span class="o">=</span> <span class="nb">map</span><span class="p">[</span><span class="n">contract_workspace_dir_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">contract_workspace_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">TMP</span><span class="p">,</span> <span class="n">CONTRACTS_DIR</span><span class="p">)</span>
-            
-        <span class="n">new_dir</span> <span class="o">=</span> <span class="n">tilde</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">heredoc</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+
+        <span class="n">input_msg</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">heredoc</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">Where do you prefer to keep your smart-contract projects?</span>
-<span class="s1">The current location of the is:</span>
+<span class="s1">The current location is:</span>
 <span class="s1">    </span><span class="si">{}</span><span class="s1"></span>
 <span class="s1">Otherwise, input another existing directory path, or nothing to </span>
 <span class="s1">keep the current one:</span>
-<span class="s1">            &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="n">colored</span><span class="p">(</span><span class="n">contract_workspace_dir</span><span class="p">,</span> <span class="n">current_path_color</span><span class="p">)</span>
-                <span class="p">)</span>
-            <span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span>
+<span class="s1">            &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">colored</span><span class="p">(</span><span class="n">contract_workspace_dir</span><span class="p">,</span> <span class="n">current_path_color</span><span class="p">))</span>
+            <span class="p">)</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">contract_workspace_dir</span><span class="p">)</span> <span class="k">else</span> <span class="n">utils</span><span class="o">.</span><span class="n">heredoc</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">Where do you prefer to keep your smart-contract projects?</span>
+<span class="s1">The set location is:</span>
+<span class="s1">    </span><span class="si">{}</span><span class="s1"></span>
+<span class="s1">but it does not exist. Input an existing directory path:</span>
+<span class="s1">            &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">colored</span><span class="p">(</span><span class="n">contract_workspace_dir</span><span class="p">,</span> <span class="n">current_path_color</span><span class="p">))</span>
+            <span class="p">)</span>
+            
+        <span class="n">new_dir</span> <span class="o">=</span> <span class="n">tilde</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="n">input_msg</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">new_dir</span><span class="p">:</span>
             <span class="n">new_dir</span> <span class="o">=</span> <span class="n">contract_workspace_dir</span>
@@ -318,7 +328,7 @@
 <span class="sd">    see :func:`.current_config`.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        dont_set_workspace (bool): If set., do not query for empty workspace </span>
+<span class="sd">        dont_set_workspace (bool): If set, do not query for empty workspace </span>
 <span class="sd">            directory.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="n">dont_set_workspace</span><span class="p">:</span>
@@ -357,20 +367,6 @@
 <span class="s1">            &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">workspace_dir</span><span class="p">,</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
             <span class="p">)</span>
     <span class="k">return</span> <span class="n">path</span></div>
-
-
-<div class="viewcode-block" id="abi_file"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.abi_file">[docs]</a><span class="k">def</span> <span class="nf">abi_file</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;Given a contract directory hint, return the ABI file path.</span>
-<span class="sd">    See :func:`contract_file`.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        contract_dir_hint: A directory path, may be not absolute.</span>
-
-<span class="sd">    Raises:</span>
-<span class="sd">        .core.errors.Error: If the result is not defined.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span>
-        <span class="n">contract_file</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">,</span> <span class="s2">&quot;.abi&quot;</span><span class="p">),</span> <span class="n">contract_dir_hint</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="eosf_dir"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.eosf_dir">[docs]</a><span class="k">def</span> <span class="nf">eosf_dir</span><span class="p">():</span>
@@ -944,7 +940,8 @@
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">):</span>
         <span class="n">contract_dir_hint</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">)</span>
 
     <span class="c1"># ? the relative path to a contract directory, relative to the directory </span>
     <span class="c1"># set with the &#39;contract_workspace_dir()&#39; function</span>
@@ -952,7 +949,8 @@
         <span class="n">contract_workspace_dir</span><span class="p">(),</span> <span class="n">contract_dir_hint</span><span class="p">)</span>
     <span class="n">trace</span> <span class="o">=</span> <span class="n">trace</span> <span class="o">+</span> <span class="n">contract_dir_</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">contract_dir_</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">contract_dir_</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">contract_dir_</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">contract_dir_</span><span class="p">)</span>
 
     <span class="c1"># ? the relative path to a contract directory, relative to </span>
     <span class="c1"># &#39;eosfactory_data()/contracts&#39;</span>
@@ -961,33 +959,33 @@
 
     <span class="n">trace</span> <span class="o">=</span> <span class="n">trace</span> <span class="o">+</span> <span class="n">contract_dir_</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">contract_dir_</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">contract_dir_</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">contract_dir_</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">contract_dir_</span><span class="p">)</span>
     
     <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">Cannot determine the contract directory.</span>
 <span class="s1">Tried:</span>
-<span class="si">{}</span><span class="s1"></span>
+<span class="s1">    </span><span class="si">{}</span><span class="s1"></span>
 <span class="s1">    &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">trace</span><span class="p">),</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="source_files"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.source_files">[docs]</a><span class="k">def</span> <span class="nf">source_files</span><span class="p">(</span><span class="n">search_dir</span><span class="p">):</span>
+<div class="viewcode-block" id="source_files"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.source_files">[docs]</a><span class="k">def</span> <span class="nf">source_files</span><span class="p">(</span><span class="n">search_dir</span><span class="p">,</span> <span class="n">extensions</span><span class="p">,</span> <span class="n">recursively</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;List files CPP/C and ABI files from the given directory</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">srcs</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;.cpp&quot;</span><span class="p">,</span> <span class="s2">&quot;.cxx&quot;</span><span class="p">,</span> <span class="s2">&quot;.c&quot;</span><span class="p">,</span> <span class="s2">&quot;.abi&quot;</span><span class="p">]</span>
-    <span class="n">files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">search_dir</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+    <span class="n">paths</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">search_dir</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">paths</span><span class="p">:</span>
         <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">search_dir</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">file</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="n">extensions</span><span class="p">:</span>
                 <span class="n">srcs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">srcs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">source_files</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="n">recursively</span><span class="p">:</span>
+            <span class="n">srcs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">source_files</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">extensions</span><span class="p">,</span> <span class="n">recursively</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">srcs</span></div>
     
 
 <div class="viewcode-block" id="contract_source_files"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.contract_source_files">[docs]</a><span class="k">def</span> <span class="nf">contract_source_files</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;List files CPP/C and ABI files from directory given with a hint.</span>
+    <span class="sd">&#39;&#39;&#39;List files CPP/C and ABI files from directory given a hint.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        contract_dir_hint (str): An argument to the function </span>
@@ -996,19 +994,13 @@
 <span class="sd">    Raises:</span>
 <span class="sd">        .core.errors.Error: If the list is empty.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">contract_dir_</span> <span class="o">=</span> <span class="n">contract_dir</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">wslMapWindowsLinux</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">))</span>
+    <span class="n">contract_dir_</span> <span class="o">=</span> <span class="n">contract_dir</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">)</span>
     <span class="n">trace</span> <span class="o">=</span> <span class="n">contract_dir_</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
 
     <span class="n">search_dir</span> <span class="o">=</span> <span class="n">contract_dir_</span>
-    <span class="n">srcs</span> <span class="o">=</span> <span class="n">source_files</span><span class="p">(</span><span class="n">search_dir</span><span class="p">)</span>
+    <span class="n">srcs</span> <span class="o">=</span> <span class="n">source_files</span><span class="p">(</span><span class="n">search_dir</span><span class="p">,</span>  <span class="p">[</span><span class="s2">&quot;.c&quot;</span><span class="p">,</span> <span class="s2">&quot;.cpp&quot;</span><span class="p">,</span><span class="s2">&quot;.cxx&quot;</span><span class="p">,</span> <span class="s2">&quot;.c++&quot;</span><span class="p">],</span> <span class="n">recursively</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">srcs</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">search_dir</span><span class="p">,</span> <span class="n">srcs</span><span class="p">)</span>            
-
-    <span class="n">search_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">contract_dir_</span><span class="p">,</span> <span class="s2">&quot;src&quot;</span><span class="p">)</span>
-    <span class="n">trace</span> <span class="o">=</span> <span class="n">trace</span> <span class="o">+</span> <span class="n">search_dir</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
-    <span class="n">srcs</span> <span class="o">=</span> <span class="n">source_files</span><span class="p">(</span><span class="n">search_dir</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">srcs</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">search_dir</span><span class="p">,</span> <span class="n">srcs</span><span class="p">)</span>            
+        <span class="k">return</span> <span class="p">(</span><span class="n">search_dir</span><span class="p">,</span> <span class="n">srcs</span><span class="p">)</span>
 
     <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">Cannot find any contract source directory.</span>
@@ -1017,85 +1009,39 @@
 <span class="s1">    &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">trace</span><span class="p">),</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="contract_file"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.contract_file">[docs]</a><span class="k">def</span> <span class="nf">contract_file</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">,</span> <span class="n">contract_file_hint</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39; Given contract directory and contract file hints, determine a contract </span>
-<span class="sd">    file.</span>
-
-<span class="sd">    The contract directory is determined with the function </span>
-<span class="sd">    :func:`.contract_dir`, basing on the *contract_dir_hint* argument.</span>
-
-<span class="sd">    Contract files are ABI or WASM ones. Contract file hint is an absolute path</span>
-<span class="sd">    to a contract file, or it is relative to the contract dir, ir it is </span>
-<span class="sd">    a file extension.</span>
-
-<span class="sd">    Any contract directory considered to be structured according to one of the </span>
-<span class="sd">    following patterns:</span>
-
-<span class="sd">        - all the files in the contract directory,</span>
-<span class="sd">        - contract files in the *build* subdirectory.  </span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        contract_dir_hint (path): A directory path, may be not absolute.</span>
-<span class="sd">        contract_file_hint (str or path): A file extension, or file path, </span>
-<span class="sd">            may be not absolute.</span>
-
-<span class="sd">    Raises:</span>
-<span class="sd">        .core.errors.Error: If the result is not defined.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">contract_dir_hint</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">wslMapWindowsLinux</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">)</span>
-    <span class="n">contract_file_hint</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">wslMapWindowsLinux</span><span class="p">(</span><span class="n">contract_file_hint</span><span class="p">)</span>
-
-    <span class="c1"># Contract file hint is an absolute path to a contract file:</span>
-    <span class="n">trace</span> <span class="o">=</span> <span class="n">contract_file_hint</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> 
-    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">contract_file_hint</span><span class="p">)</span> \
-                                    <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">contract_file_hint</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">contract_file_hint</span>
-
-    <span class="n">contract_dir_</span> <span class="o">=</span> <span class="n">contract_dir</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">)</span>
-
-    <span class="c1"># All the files in the contract directory:</span>
-    <span class="n">contract_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">contract_dir_</span><span class="p">,</span> <span class="n">contract_file_hint</span><span class="p">)</span>
-    <span class="n">trace</span> <span class="o">=</span> <span class="n">trace</span> <span class="o">+</span> <span class="n">contract_file</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
-    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">contract_file</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">contract_file</span>
-
-    <span class="c1"># Contract files in the *build* subdirectory,</span>
-    <span class="c1"># and *contract_file_hint* is a relative file</span>
-    <span class="n">contract_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">contract_dir_</span><span class="p">,</span> <span class="s2">&quot;build&quot;</span><span class="p">,</span> <span class="n">contract_file_hint</span><span class="p">)</span>
-    <span class="n">trace</span> <span class="o">=</span> <span class="n">trace</span> <span class="o">+</span> <span class="n">contract_file</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
-    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">contract_file</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">contract_file</span>
-
-    <span class="c1"># Contract files in the *build* subdirectory,</span>
-    <span class="c1"># and *contract_file_hint* is a file extension merely</span>
-    <span class="n">build_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">contract_dir_</span><span class="p">,</span> <span class="s2">&quot;build&quot;</span><span class="p">)</span>
-    <span class="n">trace</span> <span class="o">=</span> <span class="n">trace</span> <span class="o">+</span> <span class="n">build_dir</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
-    <span class="n">files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">build_dir</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">file</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">contract_file_hint</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">build_dir</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
-
-    <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">Cannot determine the contract file basing on hints:</span>
-<span class="s1">contract dir hint: </span><span class="si">{}</span><span class="s1"></span>
-<span class="s1">contract file hint: </span><span class="si">{}</span><span class="s1"></span>
-<span class="s1">Tried:</span>
-<span class="si">{}</span><span class="s1"></span>
-<span class="s1">    &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">,</span> <span class="n">contract_file_hint</span><span class="p">,</span> <span class="n">trace</span><span class="p">),</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  </div>
-
-
-<div class="viewcode-block" id="wast_file"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.wast_file">[docs]</a><span class="k">def</span> <span class="nf">wast_file</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;Given the contract directory, return the WAST file path.</span>
+<div class="viewcode-block" id="abi_file"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.abi_file">[docs]</a><span class="k">def</span> <span class="nf">abi_file</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Given the contract directory, return the ABI file path.</span>
 <span class="sd">    See :func:`contract_file`.</span>
-
+<span class="sd">    </span>
 <span class="sd">    Args:</span>
 <span class="sd">        contract_dir_hint: A directory path, may be not absolute.</span>
 
 <span class="sd">    Raises:</span>
 <span class="sd">        .core.errors.Error: If the result is not defined.    </span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span>
-        <span class="n">contract_file</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">,</span> <span class="s2">&quot;.wast&quot;</span><span class="p">),</span> <span class="n">contract_dir_hint</span><span class="p">)</span></div>
+    <span class="n">search_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">contract_dir</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">),</span> <span class="n">BUILD</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">search_dir</span><span class="p">):</span>
+        <span class="k">return</span>
+
+    <span class="n">files_</span> <span class="o">=</span> <span class="n">source_files</span><span class="p">(</span><span class="n">search_dir</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;.abi&quot;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">files_</span><span class="p">:</span>
+        <span class="k">return</span>
+
+    <span class="n">files</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">file_</span> <span class="ow">in</span> <span class="n">files_</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">file_</span><span class="p">))</span> <span class="o">==</span> <span class="n">BUILD</span>\
+                                    <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">file_</span><span class="p">)</span> <span class="o">==</span> <span class="n">search_dir</span><span class="p">:</span>
+            <span class="n">files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file_</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">There is too many ABI files in the contract build folder</span>
+<span class="s1">    </span><span class="si">{}</span><span class="s1"></span>
+<span class="s1">There are files:</span>
+<span class="si">{}</span><span class="s1"></span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">search_dir</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">files</span><span class="p">)))</span>
+
+    <span class="k">return</span> <span class="n">files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="wasm_file"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.wasm_file">[docs]</a><span class="k">def</span> <span class="nf">wasm_file</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">):</span>
@@ -1107,9 +1053,30 @@
 
 <span class="sd">    Raises:</span>
 <span class="sd">        .core.errors.Error: If the result is not defined.    </span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span>
-        <span class="n">contract_file</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">,</span> <span class="s2">&quot;.wasm&quot;</span><span class="p">),</span> <span class="n">contract_dir_hint</span><span class="p">)</span></div>
+<span class="sd">    &#39;&#39;&#39;</span>    
+    <span class="n">search_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">contract_dir</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">),</span> <span class="n">BUILD</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">search_dir</span><span class="p">):</span>
+        <span class="k">return</span>
+        
+    <span class="n">files_</span> <span class="o">=</span> <span class="n">source_files</span><span class="p">(</span><span class="n">search_dir</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;.wasm&quot;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">files_</span><span class="p">:</span>
+        <span class="k">return</span>
+    
+    <span class="n">files</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">file_</span> <span class="ow">in</span> <span class="n">files_</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">file_</span><span class="p">))</span> <span class="o">==</span> <span class="n">BUILD</span>\
+                                    <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">file_</span><span class="p">)</span> <span class="o">==</span> <span class="n">search_dir</span><span class="p">:</span>
+            <span class="n">files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file_</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">There is too many WASM files in the contract build folder</span>
+<span class="s1">    </span><span class="si">{}</span><span class="s1"></span>
+<span class="s1">There are files:</span>
+<span class="si">{}</span><span class="s1"></span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">search_dir</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">files</span><span class="p">)))</span>        
+
+    <span class="k">return</span> <span class="n">files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 
 <span class="k">def</span> <span class="nf">update_eosio_cpp_includes</span><span class="p">(</span><span class="n">c_cpp_properties_path</span><span class="p">):</span>
@@ -1431,7 +1398,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.1.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.1.2 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li> 
       </ul>
     </div>

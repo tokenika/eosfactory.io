@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Installing EOSFactory &#8212; EOSFactory 3.1.1 documentation</title>
+    <title>Installing EOSFactory &#8212; EOSFactory 3.1.2 documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="00.IntroductionToEOSFactory.html" title="Introduction to EOSFactory"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.1.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.1.2 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -60,6 +60,8 @@
 <div class="section" id="general-prerequisites">
 <h2>General prerequisites<a class="headerlink" href="#general-prerequisites" title="Permalink to this headline">¶</a></h2>
 <p>We assume that you have successfully installed <a class="reference external" href="https://github.com/EOSIO/eos"><em>EOSIO</em></a> v1.7.1 on your machine. Binary installation suffices.</p>
+<blockquote>
+<div><strong>NOTE:</strong> On <em>MacOS</em> <a class="reference external" href="https://brew.sh/">Brew</a> is required for the EOSIO instalation.</div></blockquote>
 <p><em>EOSIO</em> deployed in Docker is NOT supported.</p>
 <p>Also, we assume that you have installed <a class="reference external" href="https://github.com/EOSIO/eosio.cdt"><em>eosio.cdt</em></a> v1.6.1. Binary installation suffices.</p>
 </div>
@@ -81,7 +83,7 @@
 </div>
 <div class="section" id="python-dependencies">
 <h2>Python dependencies<a class="headerlink" href="#python-dependencies" title="Permalink to this headline">¶</a></h2>
-<p>EOSFactory depends on the following not standard Python packages:</p>
+<p>EOSFactory depends on the <em>termcolor</em> nonstandard Python package. It can be installed by running:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip3 install --user termcolor
 </pre></div>
 </div>
@@ -111,19 +113,43 @@
 <blockquote>
 <div><strong>NOTE:</strong> We recommend keeping <em>EOSFactory</em> in the Windows file structure that is accessible to WSL.</div></blockquote>
 <p>Open a WSL bash terminal and navigate to the <code class="docutils literal notranslate"><span class="pre">eosfactory</span></code> folder:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /mnt/d/Workspaces/EOS/eosfactory
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /mnt/c/Workspaces/EOS/eosfactory
 </pre></div>
 </div>
 <p>Then run the <code class="docutils literal notranslate"><span class="pre">install</span></code> script by pointing it to the <em>EOSIO</em> source code:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./install.sh
 </pre></div>
 </div>
-<p>When prompted, supply the path pointing to the location of your smart-contract workspace, e.g. <code class="docutils literal notranslate"><span class="pre">/mnt/d/Workspaces/EOS/contracts</span></code>. It has to be existent, so if you don’t have it already, you need to create it manually.</p>
+<p>When prompted, supply the path pointing to the location of your smart-contract workspace, e.g. <code class="docutils literal notranslate"><span class="pre">/mnt/c/Workspaces/EOS/contracts</span></code>. It has to be existent, so if you don’t have it already, you need to create it manually.</p>
 </div>
 <div class="section" id="verify-the-installation">
 <h2>Verify the installation<a class="headerlink" href="#verify-the-installation" title="Permalink to this headline">¶</a></h2>
 <p>Now let’s verify that EOSFactory works and is properly hooked up to <em>EOSIO</em>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 -m eosfactory.config
+</pre></div>
+</div>
+<p>The correct output should be similar to this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>EOSFactory version <span class="m">3</span>.1.1.
+Dependencies:
+https://github.com/EOSIO/eos version <span class="m">1</span>.7.1
+https://github.com/EOSIO/eosio.cdt version <span class="m">1</span>.6.1
+Python version <span class="m">3</span>.5 or higher
+
+    EOSFactory package is installed as a link to the directory:
+    <span class="s1">&#39;/mnt/c/Workspaces/EOS/eosfactory/eosfactory/&#39;</span>
+
+The current configuration of EOSFactory:
+<span class="o">{</span>
+    <span class="s2">&quot;CONFIG_FILE&quot;</span>: <span class="s2">&quot;/mnt/c/Workspaces/EOS/eosfactory/config/config.json&quot;</span>,
+    <span class="s2">&quot;EOSIO_CDT_VERSION&quot;</span>: <span class="o">[</span>
+        <span class="s2">&quot;1.6.1&quot;</span>
+    <span class="o">]</span>,
+    <span class="s2">&quot;EOSIO_CLI_EXECUTABLE&quot;</span>: <span class="s2">&quot;cleos&quot;</span>,
+    <span class="s2">&quot;EOSIO_CONTRACT_WORKSPACE&quot;</span>: <span class="s2">&quot;/mnt/c/Workspaces/EOS/contracts&quot;</span>,
+    <span class="s2">&quot;EOSIO_CPP&quot;</span>: <span class="s2">&quot;eosio-cpp&quot;</span>,
+    <span class="s2">&quot;EOSIO_CPP_DIR&quot;</span>: <span class="s2">&quot;/usr/opt/eosio.cdt/1.6.1/&quot;</span>,
+..........................................
+..........................................
 </pre></div>
 </div>
 <p>Now, you can try tests. Make sure your working directory is switched to <code class="docutils literal notranslate"><span class="pre">eosfactory</span></code>:</p>
@@ -139,7 +165,7 @@ python3 tests/tic_tac_toe.py
 </div>
 <div class="section" id="install-from-pypi-repository">
 <h2>Install from PyPi repository<a class="headerlink" href="#install-from-pypi-repository" title="Permalink to this headline">¶</a></h2>
-<p>Since the <code class="docutils literal notranslate"><span class="pre">v3.0.0</span></code> release, <em>EOSFactory</em> supports installation with the <code class="docutils literal notranslate"><span class="pre">pip3</span></code> installer. <em>EOSFactory</em> installed as a plain Python module is stripped of the goods that come with the GitHub repository, mentioned above:</p>
+<p>Since the <code class="docutils literal notranslate"><span class="pre">v3.0.0</span></code> release, <em>EOSFactory</em> supports installation with the <code class="docutils literal notranslate"><span class="pre">pip3</span></code> installer. <em>EOSFactory</em> installed as a plain Python module does not contain such additional features that can be obtained via the GitHub repository only:</p>
 <ul class="simple">
 <li>test scripts,</li>
 <li>tutorials, some of them executable.</li>
@@ -155,7 +181,7 @@ python3 tests/tic_tac_toe.py
 </pre></div>
 </div>
 <p>In the printout, you’ll see a note about the nature of the active package:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>EOSFactory version <span class="m">3</span>.1.1.
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>EOSFactory version <span class="m">3</span>.1.2.
 Dependencies:
 https://github.com/EOSIO/eos version <span class="m">1</span>.7.1
 https://github.com/EOSIO/eosio.cdt version <span class="m">1</span>.6.1
@@ -218,7 +244,7 @@ Command <span class="s1">&#39;[&#39;</span>/usr/bin/nodeos<span class="s1">&#39;
 </pre></div>
 </div>
 <p>As a result, you should get data similar to this:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>EOSFactory version <span class="m">3</span>.1.1.
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>EOSFactory version <span class="m">3</span>.1.2.
 Dependencies:
 https://github.com/EOSIO/eos version <span class="m">1</span>.7.1
 https://github.com/EOSIO/eosio.cdt version <span class="m">1</span>.6.1
@@ -291,12 +317,12 @@ There are undefined setting:
 </div>
 <div class="section" id="verify-command-lines">
 <h3>Verify command lines<a class="headerlink" href="#verify-command-lines" title="Permalink to this headline">¶</a></h3>
-<p>Technically, EOSFactory wraps EOSIO executables – namely <code class="docutils literal notranslate"><span class="pre">cleos</span></code>, <code class="docutils literal notranslate"><span class="pre">keos</span></code>, <code class="docutils literal notranslate"><span class="pre">nodeos</span></code> – with its own API. Therefore, in error conditions, it makes sense to inspect command lines sent to the EOSIO executables. The boolean variable <code class="docutils literal notranslate"><span class="pre">eosfactory.core.setup.is_print_command_line</span></code> sets the debugging status. For example, if deployment of the contract in the test script <code class="docutils literal notranslate"><span class="pre">hello_world.py</span></code> fails, modify the script:</p>
+<p>Technically, EOSFactory wraps EOSIO executables – namely <code class="docutils literal notranslate"><span class="pre">cleos</span></code>, <code class="docutils literal notranslate"><span class="pre">keos</span></code>, <code class="docutils literal notranslate"><span class="pre">nodeos</span></code> – with its own API. Therefore, in error conditions, it makes sense to inspect command lines sent to the EOSIO executables. The boolean variable <code class="docutils literal notranslate"><span class="pre">eosfactory.core.setup.is_print_command_lines</span></code> sets the debugging status. For example, if deployment of the contract in the test script <code class="docutils literal notranslate"><span class="pre">hello_world.py</span></code> fails, modify the script:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>        <span class="kn">import</span> <span class="nn">eosfactory.core.setup</span> <span class="kn">as</span> <span class="nn">setUp</span>   <span class="c1">## added</span>
-        <span class="n">setup</span><span class="o">.</span><span class="n">is_print_command_line</span> <span class="o">=</span> <span class="bp">True</span>      <span class="c1">## added</span>
+        <span class="n">setup</span><span class="o">.</span><span class="n">is_print_command_lines</span> <span class="o">=</span> <span class="bp">True</span>      <span class="c1">## added</span>
         <span class="n">smart</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
         <span class="n">smart</span><span class="o">.</span><span class="n">deploy</span><span class="p">()</span>
-        <span class="n">setup</span><span class="o">.</span><span class="n">is_print_command_line</span> <span class="o">=</span> <span class="bp">False</span>     <span class="c1">## added</span>
+        <span class="n">setup</span><span class="o">.</span><span class="n">is_print_command_lines</span> <span class="o">=</span> <span class="bp">False</span>     <span class="c1">## added</span>
 </pre></div>
 </div>
 <p>Now, if you run the script, you can see raw bash commands that can be inspected and tried:</p>
@@ -308,18 +334,19 @@ WASM file writen to file:
 /usr/bin/cleos --url http://127.0.0.1:8888 <span class="nb">set</span> contract kswquviprmbi /mnt/c/Workspaces/EOS/eosfactory/contracts_windows/_wslqwjvacdyugodewiyd build/_wslqwjvacdyugodewiyd.wasm build/_wslqwjvacdyugodewiyd.abi
 </pre></div>
 </div>
+<p>Note that there is another facility, corresponding to the <code class="docutils literal notranslate"><span class="pre">eosfactory.core.setup.is_print_command_lines</span></code> setting: it is <code class="docutils literal notranslate"><span class="pre">eosfactory.core.setup.is_save_command_lines</span></code>. If set, all the command lines are printed to the file <code class="docutils literal notranslate"><span class="pre">command_lines.txt</span></code> in the current working directory.</p>
 </div>
 <div class="section" id="verify-communication-with-cleos">
 <h3>Verify communication with cleos<a class="headerlink" href="#verify-communication-with-cleos" title="Permalink to this headline">¶</a></h3>
 <p>EOSFactory offers another debugging tool: printing requests send by <code class="docutils literal notranslate"><span class="pre">cleos</span></code> to <code class="docutils literal notranslate"><span class="pre">nodeos</span></code>, and responses from <code class="docutils literal notranslate"><span class="pre">nodeos</span></code>. For example, if deployment of the contract in the test script <code class="docutils literal notranslate"><span class="pre">hello_world.py</span></code> fails, modify the script:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>        <span class="kn">import</span> <span class="nn">eosfactory.core.setup</span> <span class="kn">as</span> <span class="nn">setUp</span>   <span class="c1">## added</span>
-        <span class="n">setup</span><span class="o">.</span><span class="n">is_print_command_line</span> <span class="o">=</span> <span class="bp">True</span>      <span class="c1">## added</span>
+        <span class="n">setup</span><span class="o">.</span><span class="n">is_print_command_lines</span> <span class="o">=</span> <span class="bp">True</span>      <span class="c1">## added</span>
         <span class="n">setup</span><span class="o">.</span><span class="n">is_print_request</span> <span class="o">=</span> <span class="bp">True</span>           <span class="c1">## added</span>
         <span class="c1"># setup.is_print_response = True        ## volume printout</span>
         <span class="n">smart</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
         <span class="n">smart</span><span class="o">.</span><span class="n">deploy</span><span class="p">()</span>
         <span class="n">setup</span><span class="o">.</span><span class="n">is_print_request</span> <span class="o">=</span> <span class="bp">False</span>          <span class="c1">## added</span>
-        <span class="n">setup</span><span class="o">.</span><span class="n">is_print_command_line</span> <span class="o">=</span> <span class="bp">False</span>     <span class="c1">## added</span>
+        <span class="n">setup</span><span class="o">.</span><span class="n">is_print_command_lines</span> <span class="o">=</span> <span class="bp">False</span>     <span class="c1">## added</span>
         <span class="n">setup</span><span class="o">.</span><span class="n">is_print_response</span> <span class="o">=</span> <span class="bp">False</span>         <span class="c1">## added</span>
 </pre></div>
 </div>
@@ -417,7 +444,7 @@ git pull
         <li class="right" >
           <a href="00.IntroductionToEOSFactory.html" title="Introduction to EOSFactory"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.1.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.1.2 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

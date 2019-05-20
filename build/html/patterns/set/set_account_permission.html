@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Set Account Permission &#8212; EOSFactory 3.1.1 documentation</title>
+    <title>Set Account Permission &#8212; EOSFactory 3.1.2 documentation</title>
     <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="../BIOS_Boot_Sequence.html" title="BIOS Boot Sequence"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">EOSFactory 3.1.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../../index.html">EOSFactory 3.1.2 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -72,11 +72,11 @@
 <h2>Set new key to a permission<a class="headerlink" href="#set-new-key-to-a-permission" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">COMMENT</span><span class="p">(</span><span class="s2">&quot;Set new key to a permission:&quot;</span><span class="p">)</span>
 <span class="n">key</span> <span class="o">=</span> <span class="n">CreateKey</span><span class="p">(</span><span class="n">is_verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-<span class="n">setup</span><span class="o">.</span><span class="n">is_print_command_line</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">setup</span><span class="o">.</span><span class="n">is_print_command_lines</span> <span class="o">=</span> <span class="bp">True</span>
 <span class="n">alice</span><span class="o">.</span><span class="n">set_account_permission</span><span class="p">(</span>
     <span class="n">Permission</span><span class="o">.</span><span class="n">ACTIVE</span><span class="p">,</span> <span class="n">key</span><span class="o">.</span><span class="n">key_public</span><span class="p">,</span> <span class="n">Permission</span><span class="o">.</span><span class="n">OWNER</span><span class="p">,</span> 
     <span class="p">(</span><span class="n">alice</span><span class="p">,</span> <span class="n">Permission</span><span class="o">.</span><span class="n">OWNER</span><span class="p">))</span>
-<span class="n">setup</span><span class="o">.</span><span class="n">is_print_command_line</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">setup</span><span class="o">.</span><span class="n">is_print_command_lines</span> <span class="o">=</span> <span class="bp">False</span>
 <span class="n">alice</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -91,11 +91,11 @@
 <h2>Set an account (instead of a key) as authority for a permission<a class="headerlink" href="#set-an-account-instead-of-a-key-as-authority-for-a-permission" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">COMMENT</span><span class="p">(</span><span class="s2">&quot;Set an account (instead of a key) as authority for a permission:&quot;</span><span class="p">)</span>
 <span class="n">create_account</span><span class="p">(</span><span class="s2">&quot;bob&quot;</span><span class="p">,</span> <span class="n">master</span><span class="p">)</span>
-<span class="n">setup</span><span class="o">.</span><span class="n">is_print_command_line</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">setup</span><span class="o">.</span><span class="n">is_print_command_lines</span> <span class="o">=</span> <span class="bp">True</span>
 <span class="n">alice</span><span class="o">.</span><span class="n">set_account_permission</span><span class="p">(</span>
     <span class="n">Permission</span><span class="o">.</span><span class="n">ACTIVE</span><span class="p">,</span> <span class="n">bob</span><span class="p">,</span> <span class="n">Permission</span><span class="o">.</span><span class="n">OWNER</span><span class="p">,</span> 
     <span class="p">(</span><span class="n">alice</span><span class="p">,</span> <span class="n">Permission</span><span class="o">.</span><span class="n">OWNER</span><span class="p">))</span>
-<span class="n">setup</span><span class="o">.</span><span class="n">is_print_command_line</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">setup</span><span class="o">.</span><span class="n">is_print_command_lines</span> <span class="o">=</span> <span class="bp">False</span>
 <span class="n">alice</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -249,7 +249,7 @@
         <li class="right" >
           <a href="../BIOS_Boot_Sequence.html" title="BIOS Boot Sequence"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">EOSFactory 3.1.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../../index.html">EOSFactory 3.1.2 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
