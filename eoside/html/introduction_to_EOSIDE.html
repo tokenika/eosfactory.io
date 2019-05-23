@@ -71,10 +71,10 @@
 <p><img alt="_images/get_started.png" src="_images/get_started.png" />Get Started view</p>
 <p>Let’s go through its options:</p>
 <ul class="simple">
-<li><em>Get Started</em> contains links to tutorials and other documentation.</li>
+<li><em>Get Started</em> contains links to tutorials and other documentation. Especially, the <code class="docutils literal notranslate"><span class="pre">README</span></code> entry highlights a special issue.</li>
 <li><em>New project</em> lets you create a new project from a template.</li>
 <li><em>Recent</em> lists existing projects.</li>
-<li><em>Open</em> triggers specific actions.</li>
+<li><em>Open</em> triggers specified actions.</li>
 <li>And the two menu buttons located in the title bar, namely <code class="docutils literal notranslate"><span class="pre">EOSIDE</span></code> and <code class="docutils literal notranslate"><span class="pre">Setup</span></code>, display corresponding views.</li>
 </ul>
 </div>
@@ -111,14 +111,16 @@
 </li>
 <li><p class="first"><em>Libs</em> lists libraries resolving outer dependencies of the project.</p>
 </li>
-<li><p class="first"><em>Compiler Options</em> lists parameters of the WASM compiler.</p>
+<li><p class="first"><em>Code Options</em> lists parameters of the WASM compiler/builder.</p>
+</li>
+<li><p class="first"><em>Tests Options</em> lists parameters of the native compiler/builder.</p>
 </li>
 <li><p class="first"><em>Contract Account</em> defines the account that holds the smart-contract. Its name has to be chosen from a list given with the bash command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 -m eosfactory.testnets
 </pre></div>
 </div>
 </li>
-<li><p class="first">The buttons in the top, labelled <code class="docutils literal notranslate"><span class="pre">Compile</span></code>, <code class="docutils literal notranslate"><span class="pre">Build</span></code>, <code class="docutils literal notranslate"><span class="pre">EOSIDE</span></code> and <code class="docutils literal notranslate"><span class="pre">Bash</span></code>, trigger corresponding actions. The <code class="docutils literal notranslate"><span class="pre">Bash</span></code> button, available on Windows only, starts a new bash terminal. All these actions can be invoked with keyboard shortcuts or with extension commands.</p>
+<li><p class="first">The buttons in the top, labelled <code class="docutils literal notranslate"><span class="pre">Compile</span></code>, <code class="docutils literal notranslate"><span class="pre">Build</span></code>, <code class="docutils literal notranslate"><span class="pre">Compile</span> <span class="pre">Test</span></code>, <code class="docutils literal notranslate"><span class="pre">Build</span> <span class="pre">and</span> <span class="pre">Run</span> <span class="pre">Test</span></code>, <code class="docutils literal notranslate"><span class="pre">EOSIDE</span></code> and <code class="docutils literal notranslate"><span class="pre">Bash</span></code>, trigger corresponding actions. The <code class="docutils literal notranslate"><span class="pre">Bash</span></code> button, available on Windows only, starts a new bash terminal. The <code class="docutils literal notranslate"><span class="pre">Zip</span></code> button compresses, with defined exclusions, the project. All these actions can be invoked with keyboard shortcuts or with extension commands.</p>
 </li>
 </ul>
 <p>All the dependencies are stored in the <code class="docutils literal notranslate"><span class="pre">.vscode/c_cpp_properties.json</span></code> file. This file feeds the compile procedures, build procedures and the <em>IntelliSense</em> features of VSC.</p>

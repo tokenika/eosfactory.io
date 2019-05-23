@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>eosfactory.core.cleos_set &#8212; EOSFactory 3.1.2 documentation</title>
+    <title>eosfactory.core.cleos_set &#8212; EOSFactory 3.1.3 documentation</title>
     <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
@@ -31,7 +31,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.1.2 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.1.3 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
       </ul>
     </div>  
@@ -139,14 +139,18 @@
     <span class="sd">&#39;&#39;&#39;Set parameters dealing with account permissions.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        account (str or .interface.Account): The account to set/delete a permission </span>
-<span class="sd">            authority for.</span>
+<span class="sd">        account (str or .interface.Account): The account to set/delete a </span>
+<span class="sd">            permission authority for.</span>
 <span class="sd">        permission_name (str or .Permission): The permission to set/delete an </span>
 <span class="sd">            authority for.</span>
 <span class="sd">        parent_permission_name (str or .Permission): The permission name of </span>
 <span class="sd">            this parents permission (defaults to: &quot;active&quot;).</span>
 <span class="sd">        authority (str or dict or filename):  None to delete.</span>
-
+<span class="sd">        add_code (bool): If set, add &#39;eosio.code&#39; permission to specified </span>
+<span class="sd">            permission authority. Default is false.</span>
+<span class="sd">        remove_code (bool): If set, remove &#39;eosio.code&#39; permission from </span>
+<span class="sd">            specified permission authority. Default is false.</span>
+<span class="sd">        </span>
 <span class="sd">    Exemplary values of the argument *authority*::</span>
 
 <span class="sd">        # bob, carol are account objects created with </span>
@@ -183,8 +187,12 @@
 <span class="sd">            component of EOSIO cleos responce.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
-            <span class="bp">self</span><span class="p">,</span> <span class="n">account</span><span class="p">,</span> <span class="n">permission_name</span><span class="p">,</span> <span class="n">authority</span><span class="p">,</span> <span class="n">parent_permission_name</span><span class="p">,</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">account</span><span class="p">,</span> <span class="n">permission_name</span><span class="p">,</span> 
+            <span class="n">authority</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+            <span class="n">parent_permission_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">permission</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">add_code</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">remove_code</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">expiration_sec</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
             <span class="n">skip_sign</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dont_broadcast</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">return_packed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">force_unique</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
             <span class="n">max_cpu_usage</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_net_usage</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
@@ -206,20 +214,27 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">authority</span> <span class="o">=</span>  <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\s+&#39;</span><span class="p">),</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">authority</span><span class="p">)</span>
                 <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">authority</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;NULL&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parent_permission_name</span><span class="p">,</span> <span class="n">interface</span><span class="o">.</span><span class="n">Permission</span><span class="p">):</span>
             <span class="n">parent_permission_name</span> <span class="o">=</span> <span class="n">parent_permission_name</span><span class="o">.</span><span class="n">value</span>
-        <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parent_permission_name</span><span class="p">)</span>        
+                
+        <span class="k">if</span> <span class="n">parent_permission_name</span><span class="p">:</span>
+            <span class="n">parent_permission_name</span> <span class="o">=</span> <span class="n">interface</span><span class="o">.</span><span class="n">permission_arg</span><span class="p">(</span>
+                <span class="n">parent_permission_name</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parent_permission_name</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">json</span><span class="p">:</span>
             <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--json&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">permission</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        
+        <span class="k">if</span> <span class="n">permission</span><span class="p">:</span>
             <span class="n">p</span> <span class="o">=</span> <span class="n">interface</span><span class="o">.</span><span class="n">permission_arg</span><span class="p">(</span><span class="n">permission</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">perm</span> <span class="ow">in</span> <span class="n">p</span><span class="p">:</span>
                 <span class="n">args</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;--permission&quot;</span><span class="p">,</span> <span class="n">perm</span><span class="p">])</span>
-
+        
+        <span class="k">if</span> <span class="n">add_code</span><span class="p">:</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--add-code&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">remove_code</span><span class="p">:</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--remove-code&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">expiration_sec</span><span class="p">:</span>
             <span class="n">args</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;--expiration&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">expiration_sec</span><span class="p">)])</span>
         <span class="k">if</span> <span class="n">skip_sign</span><span class="p">:</span>
@@ -366,7 +381,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.1.2 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.1.3 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li> 
       </ul>
     </div>
