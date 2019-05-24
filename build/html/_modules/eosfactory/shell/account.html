@@ -193,7 +193,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">set_contract</span> <span class="o">=</span> <span class="n">result</span></div>
 
 <div class="viewcode-block" id="Account.set_account_permission"><a class="viewcode-back" href="../../../rst/shell.account.html#eosfactory.shell.account.Account.set_account_permission">[docs]</a>    <span class="k">def</span> <span class="nf">set_account_permission</span><span class="p">(</span>
-                <span class="bp">self</span><span class="p">,</span> <span class="n">permission_name</span><span class="p">,</span> 
+                <span class="bp">self</span><span class="p">,</span> 
+                <span class="n">permission_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
                 <span class="n">authority</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
                 <span class="n">parent_permission_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                 <span class="n">permission</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -213,7 +214,7 @@
 
 <span class="sd">        Args:</span>
 <span class="sd">            permission_name (str or .Permission): The permission to set/delete an </span>
-<span class="sd">                authority for.</span>
+<span class="sd">                authority for (defaults to: &quot;active&quot;).</span>
 <span class="sd">            parent_permission_name (str or .Permission): The permission name of </span>
 <span class="sd">                this parents permission (defaults to: &quot;active&quot;).</span>
 <span class="sd">            authority (str or dict or filename):  None to delete.</span>

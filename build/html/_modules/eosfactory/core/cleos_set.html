@@ -142,7 +142,7 @@
 <span class="sd">        account (str or .interface.Account): The account to set/delete a </span>
 <span class="sd">            permission authority for.</span>
 <span class="sd">        permission_name (str or .Permission): The permission to set/delete an </span>
-<span class="sd">            authority for.</span>
+<span class="sd">            authority for (defaults to: &quot;active&quot;).</span>
 <span class="sd">        parent_permission_name (str or .Permission): The permission name of </span>
 <span class="sd">            this parents permission (defaults to: &quot;active&quot;).</span>
 <span class="sd">        authority (str or dict or filename):  None to delete.</span>
@@ -203,6 +203,8 @@
         <span class="n">account_name</span> <span class="o">=</span> <span class="n">interface</span><span class="o">.</span><span class="n">account_arg</span><span class="p">(</span><span class="n">account</span><span class="p">)</span>
         <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="n">account_name</span><span class="p">]</span>
 
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">permission_name</span><span class="p">:</span>
+            <span class="n">permission_name</span> <span class="o">=</span> <span class="s2">&quot;active&quot;</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">permission_name</span><span class="p">,</span> <span class="n">interface</span><span class="o">.</span><span class="n">Permission</span><span class="p">):</span>
             <span class="n">permission_name</span> <span class="o">=</span> <span class="n">permission_name</span><span class="o">.</span><span class="n">value</span>
         <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">permission_name</span><span class="p">)</span>

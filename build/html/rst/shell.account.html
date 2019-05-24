@@ -163,7 +163,7 @@ execute on the contract.</li>
 
 <dl class="method">
 <dt id="eosfactory.shell.account.Account.set_account_permission">
-<code class="descname">set_account_permission</code><span class="sig-paren">(</span><em>permission_name</em>, <em>authority=None</em>, <em>parent_permission_name=None</em>, <em>permission=None</em>, <em>add_code=False</em>, <em>remove_code=False</em>, <em>expiration_sec=None</em>, <em>skip_sign=0</em>, <em>dont_broadcast=0</em>, <em>return_packed=0</em>, <em>force_unique=0</em>, <em>max_cpu_usage=0</em>, <em>max_net_usage=0</em>, <em>ref_block=None</em>, <em>delay_sec=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/account.html#Account.set_account_permission"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.account.Account.set_account_permission" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_account_permission</code><span class="sig-paren">(</span><em>permission_name=None</em>, <em>authority=None</em>, <em>parent_permission_name=None</em>, <em>permission=None</em>, <em>add_code=False</em>, <em>remove_code=False</em>, <em>expiration_sec=None</em>, <em>skip_sign=0</em>, <em>dont_broadcast=0</em>, <em>return_packed=0</em>, <em>force_unique=0</em>, <em>max_cpu_usage=0</em>, <em>max_net_usage=0</em>, <em>ref_block=None</em>, <em>delay_sec=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/account.html#Account.set_account_permission"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.account.Account.set_account_permission" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set parameters dealing with account permissions.</p>
 <p>Call <em>EOSIO cleos</em> with the <em>set account permission</em> command. Store
 the result, which is an object of the
@@ -174,7 +174,7 @@ class <a class="reference internal" href="core.cleos_set.html#eosfactory.core.cl
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>permission_name</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Permission" title="eosfactory.core.interface.Permission"><em>Permission</em></a>) – The permission to set/delete an
-authority for.</li>
+authority for (defaults to: “active”).</li>
 <li><strong>parent_permission_name</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Permission" title="eosfactory.core.interface.Permission"><em>Permission</em></a>) – The permission name of
 this parents permission (defaults to: “active”).</li>
 <li><strong>authority</strong> (<em>str</em><em> or </em><em>dict</em><em> or </em><em>filename</em>) – None to delete.</li>
