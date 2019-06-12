@@ -23,11 +23,6 @@ It's part of development tools created by `TOKENIKA <https://tokenika.io>`_.
     five_minutes_movie
     highlights/highlights
 
-.. toctree::
-    :maxdepth: 1
-
-    highlights/native_tests
-
 Release Notes
 -------------
 
