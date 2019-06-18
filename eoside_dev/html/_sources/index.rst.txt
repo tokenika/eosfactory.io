@@ -21,7 +21,16 @@ It's part of development tools created by `TOKENIKA <https://tokenika.io>`_.
     installing_movie
     introduction_to_EOSIDE
     five_minutes_movie
+
+Highlights
+----------
+
+.. toctree::
+    :maxdepth: 1
+
     highlights/highlights
+
+
 
 Release Notes
 -------------

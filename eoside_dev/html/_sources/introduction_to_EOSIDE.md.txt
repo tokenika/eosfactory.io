@@ -1,4 +1,4 @@
-# EOSIDE - Overview of the Main Features
+# Overview of the Main Features
 
 #### EOSIDE is an Integrated Development Environment for EOSIO smart-contracts.
 
