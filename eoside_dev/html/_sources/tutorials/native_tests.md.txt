@@ -26,8 +26,8 @@ file:///C:/Workspaces/EOS/eosfactory.io/eoside_dev/html/highlights/highlights.ht
 
 ## Working example
 
-Download to the system default download folder, this [zip file](https://github.com/tokenika/eosfactory.io/raw/master/examples/hello_with_native_test.zip). 
-Alternatively, go [there](https://github.com/tokenika/eosfactory.io/blob/master/examples/hello_with_native_test.zip), right-click the *Download* button and set a download folder.
+Download to the system default download folder, this [zip file](https://github.com/tokenika/eosfactory.io/raw/master/examples/native_debugger.zip). 
+Alternatively, go [there](https://github.com/tokenika/eosfactory.io/blob/master/examples/native_debugger.zip), right-click the *Download* button and set a download folder.
 
 Next, switch to the *EOSIDE* view and use `Open: Open zip file` feature. As a result, you should have a working example of the EOSIO hello contract with a unitest.
 
