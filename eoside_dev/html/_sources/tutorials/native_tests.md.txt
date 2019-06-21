@@ -1,4 +1,4 @@
-# Native unitest compilation and execution
+# Native unit test compilation and execution
 
 ## Setup options
 
@@ -30,3 +30,7 @@ Download to the system default download folder, this [zip file](https://github.c
 Alternatively, go [there](https://github.com/tokenika/eosfactory.io/blob/master/examples/hello_with_native_test.zip), right-click the *Download* button and set a download folder.
 
 Next, switch to the *EOSIDE* view and use `Open: Open zip file` feature. As a result, you should have a working example of the EOSIO hello contract with a unitest.
+
+## Short video
+
+<video src="../_static/native_debugging.mp4" width="854" height="480" controls preload></video>
