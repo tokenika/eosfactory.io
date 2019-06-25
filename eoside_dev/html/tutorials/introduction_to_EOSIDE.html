@@ -49,8 +49,8 @@
 <h1>Overview of the Main Features<a class="headerlink" href="#overview-of-the-main-features" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="eoside-is-an-integrated-development-environment-for-eosio-smart-contracts">
 <h2>EOSIDE is an Integrated Development Environment for EOSIO smart-contracts.<a class="headerlink" href="#eoside-is-an-integrated-development-environment-for-eosio-smart-contracts" title="Permalink to this headline">¶</a></h2>
-<p>EOSIDE organizes the workflow of development process for EOSIO smart-contracts. It leverages the functionality of <a class="reference external" href="https://eosfactory.io/">EOSFactory</a> and it’s implemented as a <a class="reference external" href="https://code.visualstudio.com/">Visual Studio Code</a> (VSC) extension.</p>
-<p>EOSIDE has the following features:</p>
+<p>EOSIDE organizes the workflow of development process for <a class="reference external" href="https://eos.io/">EOSIO</a> smart-contracts. It leverages the functionality of <a class="reference external" href="https://eosfactory.io/">EOSFactory</a>. EOSIDE is implemented as a <a class="reference external" href="https://code.visualstudio.com/">Visual Studio Code</a> (VSC) extension.</p>
+<p>EOSIDE implements the following features:</p>
 <ul class="simple">
 <li>project standardization,</li>
 <li>easy access to project archive,</li>
@@ -58,12 +58,13 @@
 <li>automatic availability of standard libraries,</li>
 <li>dependency management,</li>
 <li><a class="reference external" href="https://code.visualstudio.com/docs/editor/intellisense">IntelliSense</a> code completion,</li>
-<li>compilation and building of EOSIO contracts,</li>
-<li>testing – both functional and native,</li>
-<li>native debugging,</li>
+<li>compilation and building,</li>
+<li>native compilation, execution and debugging of native unit tests,</li>
+<li>functional unit testing,</li>
+<li>project packaging,</li>
 <li>deployment.</li>
 </ul>
-<p>Watch a short <a class="reference external" href="https://eosfactory.io/eoside/html/_static/five_minutes.mp4">video</a> demonstrating EOSIDE in action. And here is another <a class="reference external" href="https://eosfactory.io/eoside/html/_static/installing.mp4">video</a> demonstrating the setup process and a <em>Hello World</em> test.</p>
+<p>Watch a short <a class="reference external" href="https://eosfactory.io/eoside_dev/html/_static/five_minutes.mp4">video</a> demonstrating EOSIDE in action. And here is another <a class="reference external" href="https://eosfactory.io/eoside_dev/html/_static/installing.mp4">video</a> demonstrating the setup process and a <em>Hello World</em> test.</p>
 </div>
 <div class="section" id="user-interface">
 <h2>User interface<a class="headerlink" href="#user-interface" title="Permalink to this headline">¶</a></h2>
@@ -72,24 +73,25 @@
 <p><img alt="../_images/get_started.png" src="../_images/get_started.png" />Get Started view</p>
 <p>Let’s go through its options:</p>
 <ul class="simple">
-<li><em>Get Started</em> contains links to tutorials and other documentation. Especially, the <code class="docutils literal notranslate"><span class="pre">README</span></code> entry highlights a special issue.</li>
+<li><em>Get Started</em> contains links to tutorials and other documentation.</li>
 <li><em>New project</em> lets you create a new project from a template.</li>
 <li><em>Recent</em> lists existing projects.</li>
 <li><em>Open</em> triggers specified actions.</li>
-<li>And the two menu buttons located in the title bar, namely <code class="docutils literal notranslate"><span class="pre">EOSIDE</span></code> and <code class="docutils literal notranslate"><span class="pre">Setup</span></code>, display corresponding views.</li>
+<li>The two menu buttons located in the title bar, namely <code class="docutils literal notranslate"><span class="pre">EOSIDE</span></code> and <code class="docutils literal notranslate"><span class="pre">Setup</span></code>, display corresponding views.</li>
 </ul>
 </div>
 <div class="section" id="project-standardization">
 <h2>Project standardization<a class="headerlink" href="#project-standardization" title="Permalink to this headline">¶</a></h2>
 <p>EOSIDE introduces a standardized layout for the smart-contract’s folder:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">.vscode</span></code> – system folder</li>
-<li><code class="docutils literal notranslate"><span class="pre">build</span></code> – folder where contract WASM and ABI files go</li>
-<li><code class="docutils literal notranslate"><span class="pre">resources</span></code> – folder containing Ricardian contract files etc.</li>
-<li><code class="docutils literal notranslate"><span class="pre">src</span></code> – folder containing CPP/C source files</li>
-<li><code class="docutils literal notranslate"><span class="pre">include</span></code> – folder containing header files</li>
-<li><code class="docutils literal notranslate"><span class="pre">tests</span></code> - folder containing Python scripts, especially EOSFactory scripts</li>
-<li><code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>  - the CMake lists file of the project</li>
+<li><code class="docutils literal notranslate"><span class="pre">.vscode</span></code> – system folder,</li>
+<li><code class="docutils literal notranslate"><span class="pre">build</span></code> – folder where contract WASM and ABI files go,</li>
+<li><code class="docutils literal notranslate"><span class="pre">include</span></code> – folder containing header files,</li>
+<li><code class="docutils literal notranslate"><span class="pre">recardian</span></code> – folder containing Ricardian contract files etc.,</li>
+<li><code class="docutils literal notranslate"><span class="pre">src</span></code> – folder containing CPP/C source files,</li>
+<li><code class="docutils literal notranslate"><span class="pre">tests</span></code> - folder containing Python scripts, especially EOSFactory scripts,</li>
+<li><code class="docutils literal notranslate"><span class="pre">.eosioignore</span></code> - exclusion list for the project packaging utility,</li>
+<li><code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>  - the CMake lists file of the project.</li>
 </ul>
 <p>An example of the above layout is shown below:</p>
 <p><img alt="../_images/contract_folder.png" src="../_images/contract_folder.png" />Project layout</p>
@@ -135,28 +137,39 @@
 <div class="section" id="compile-and-build">
 <h2>Compile and build<a class="headerlink" href="#compile-and-build" title="Permalink to this headline">¶</a></h2>
 <p>The compilation process does not generate any output files. Its purpose is to verify that the source code of the contract can be built, and if not, to produce an error log. Whereas, the building process results in generating ABI and WASM files.</p>
-<p>The compilation process requires that project dependencies are satisfied, such as included headers and linked libraries. The dependencies registered for the project, as explained <a class="reference external" href="#Dependency-management">here</a>, are automatically applied.</p>
+<p>The compilation process requires that project dependencies are satisfied, such as included headers and linked libraries. The dependencies registered for the project, as explained <a class="reference external" href="#Dependency-management">here</a>, are automatically applied, in their default part.</p>
+<p>There are two pairs of compile-build commands. One uses the options set with the <code class="docutils literal notranslate"><span class="pre">Code</span> <span class="pre">Options</span></code> list in the <code class="docutils literal notranslate"><span class="pre">Setup</span></code> view. These commands result with compilation to WASM code. Other commands, set with <code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">Options</span></code>, are for native compilation (of native unit tests, mainly).</p>
 <div class="section" id="vsc-style-compile-and-build-with-vsc-tasks-and-commands">
 <h3>VSC style: compile and build with VSC tasks and commands<a class="headerlink" href="#vsc-style-compile-and-build-with-vsc-tasks-and-commands" title="Permalink to this headline">¶</a></h3>
 <p>To compile:</p>
 <ul class="simple">
 <li><strong>VSC task:</strong> <code class="docutils literal notranslate"><span class="pre">Terminal</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Run</span> <span class="pre">Task...</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Compile</span></code></li>
-<li><strong>VSC command:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eosid</span> <span class="pre">compile</span></code></li>
-<li><strong>keyboard shortcut:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl+shift+c</span></code></li>
+<li><strong>VSC command:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eosid</span> <span class="pre">compile</span></code></li>
+<li><strong>keyboard shortcut:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+c</span></code></li>
+</ul>
+<p>To compile test:</p>
+<ul class="simple">
+<li><strong>VSC command:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eosid</span> <span class="pre">compile</span> <span class="pre">test</span></code></li>
+<li><strong>keyboard shortcut:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+alt+c</span></code></li>
 </ul>
 <p>To build:</p>
 <ul class="simple">
 <li><strong>VSC task:</strong> <code class="docutils literal notranslate"><span class="pre">Terminal</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Run</span> <span class="pre">Build</span> <span class="pre">Task...</span></code></li>
-<li><strong>VSC command:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eosid</span> <span class="pre">build</span></code></li>
-<li><strong>keyboard shortcut:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl+shift+b</span></code></li>
+<li><strong>VSC command:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eosid</span> <span class="pre">build</span></code></li>
+<li><strong>keyboard shortcut:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+b</span></code></li>
+</ul>
+<p>To build and run test:</p>
+<ul class="simple">
+<li><strong>VSC command:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eosid</span> <span class="pre">build</span> <span class="pre">test</span></code></li>
+<li><strong>keyboard shortcut:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+alt+b</span></code></li>
 </ul>
 <p>The picture below shows how you can access tasks in VSC:</p>
 <p><img alt="../_images/build_task.png" src="../_images/build_task.png" />Build task</p>
 </div>
 <div class="section" id="build-using-cmake">
 <h3>Build using CMake<a class="headerlink" href="#build-using-cmake" title="Permalink to this headline">¶</a></h3>
-<p>If you are on Windows, the default terminal for VSC is PowerShell, while the CMake operations have to be executed within the Ubuntu bash. In VSC, to open a new Ubuntu bash terminal use the <code class="docutils literal notranslate"><span class="pre">ctrl+shift+t</span></code> shortcut. Alternatively, issue the <code class="docutils literal notranslate"><span class="pre">bash</span></code> command in the PowerShell terminal.</p>
-<p>In the Ubuntu bash terminal, type these commands:</p>
+<p>If you are on Windows, the default terminal for VSC is PowerShell, while the CMake operations have to be executed within the Ubuntu bash. In VSC, to open a new Ubuntu bash terminal use the <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+t</span></code> shortcut. Alternatively, issue the <code class="docutils literal notranslate"><span class="pre">bash</span></code> command in the PowerShell terminal.</p>
+<p>In the Ubuntu bash terminal, for code building, type these commands:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> build
 cmake ..
 make
@@ -177,6 +190,11 @@ WASM file writen to file:
     /mnt/c/Workspaces/EOS/contracts/token/build/token.wasm
 Built target wast
 cartman@cartman-PC:/mnt/c/Workspaces/EOS/contracts/token/build$
+</pre></div>
+</div>
+<p>For native test compilation, add an CMake argument:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake -DMODE:STRING<span class="o">=</span>test_options ..
+make
 </pre></div>
 </div>
 </div>
@@ -213,8 +231,8 @@ WASM file writen to file:
 <div class="section" id="deploy-with-vsc-command">
 <h3>Deploy with VSC command<a class="headerlink" href="#deploy-with-vsc-command" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><strong>VSC command:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eosid</span> <span class="pre">deploy</span></code></li>
-<li><strong>keyboard shortcut:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl+shift+y</span></code></li>
+<li><strong>VSC command:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eosid</span> <span class="pre">deploy</span></code></li>
+<li><strong>keyboard shortcut:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+y</span></code></li>
 </ul>
 </div>
 <div class="section" id="deploy-with-ubuntu-bash">
@@ -227,20 +245,6 @@ WASM file writen to file:
 <h3>Deploy with EOSFactory<a class="headerlink" href="#deploy-with-eosfactory" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">eosfactory.core.logger</span> <span class="kn">as</span> <span class="nn">logger</span>
 <span class="kn">from</span> <span class="nn">eosfactory.shell.contract</span> <span class="kn">import</span> <span class="n">Contract</span>
-<span class="kn">from</span> <span class="nn">eosfactory.core.teos</span> <span class="kn">import</span> <span class="n">get_c_cpp_properties</span>
-
-<span class="n">c_cpp_properties</span> <span class="o">=</span> <span class="n">teos</span><span class="o">.</span><span class="n">get_c_cpp_properties</span><span class="p">()</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">c_cpp_properties</span><span class="p">:</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">    The testnet account is not set and it can not be found any </span>
-<span class="s1">    c_cpp_properties json file.</span>
-<span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span>
-
-<span class="k">if</span> <span class="ow">not</span> <span class="s2">&quot;contractAccount&quot;</span> <span class="ow">in</span> <span class="n">c_cpp_properties</span><span class="p">:</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">ERROR</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">    The testnet account is not set, and it can not be found in a </span>
-<span class="s1">    c_cpp_properties json file.</span>
-<span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span>
 
 <span class="n">testnet_account</span> <span class="o">=</span> <span class="n">eosfactory</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">testnet</span><span class="o">.</span><span class="n">get_testnet</span><span class="p">(</span><span class="n">testnet_account_name</span><span class="p">)</span>
 
@@ -293,39 +297,16 @@ ctest
 Total Test <span class="nb">time</span> <span class="o">(</span>real<span class="o">)</span> <span class="o">=</span>  <span class="m">32</span>.07 sec
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">eosfactory.eosf</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">eosfactory.shell.account</span> <span class="kn">import</span> <span class="n">restore_account</span>
-<span class="kn">import</span> <span class="nn">eosfactory.core.testnet</span> <span class="kn">as</span> <span class="nn">testnet</span>
-
-
-<span class="n">testnet</span> <span class="o">=</span> <span class="n">Testnet</span><span class="p">(</span>
-    <span class="bp">None</span><span class="p">,</span>
-    <span class="s2">&quot;dgxo1uyhoytn&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;5JE9XSurh4Bmdw8Ynz72Eh6ZCKrxf63SmQWKrYJSXf1dEnoiKFY&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;5JgLo7jZhmY4huDNXwExmaWQJqyS1hGZrnSjECcpWwGU25Ym8tA&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;contract_account&quot;</span>
-<span class="p">)</span>
-<span class="n">testnet</span><span class="o">.</span><span class="n">configure</span><span class="p">()</span>
-<span class="n">testnet</span><span class="o">.</span><span class="n">verify_production</span><span class="p">()</span>
-<span class="n">restore_account</span><span class="p">(</span><span class="s2">&quot;contract_account&quot;</span><span class="p">,</span> <span class="n">testnet</span><span class="p">)</span>
-
-<span class="n">testnet</span> <span class="o">=</span> <span class="n">testnet</span><span class="o">.</span><span class="n">KYLIN</span>
-<span class="n">testnet</span><span class="o">.</span><span class="n">configure</span><span class="p">()</span>
-<span class="n">testnet</span><span class="o">.</span><span class="n">verify_production</span><span class="p">()</span>
-<span class="n">restore_account</span><span class="p">(</span><span class="s2">&quot;contract_account&quot;</span><span class="p">,</span> <span class="n">testnet</span><span class="p">)</span>
-<span class="n">Contract</span><span class="p">(</span><span class="n">host</span><span class="p">)</span><span class="o">.</span><span class="n">deploy</span><span class="p">()</span>
-</pre></div>
-</div>
 </div>
 <div class="section" id="installation-status">
 <h2>Installation status<a class="headerlink" href="#installation-status" title="Permalink to this headline">¶</a></h2>
-<p>With the VSC command <code class="docutils literal notranslate"><span class="pre">ctrl+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eoside</span> <span class="pre">install</span></code>, you can display the current status of the installation process and edit some of the settings, e.g. the workspace path.</p>
+<p>With the VSC command <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eoside</span> <span class="pre">install</span></code> or <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+alt=i</span></code>, you can display the current status of the installation process and edit some of the settings, e.g. the workspace path.</p>
 <p><img alt="../_images/install.png" src="../_images/install.png" />Setup view</p>
 <p>If you turn the menu off, you can still access EOSIDE views by using VSC commands:</p>
 <ul class="simple">
-<li><strong>Get Started View:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eoside</span> <span class="pre">EOSIDE</span></code></li>
-<li><strong>Setup View:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eoside</span> <span class="pre">setup</span></code></li>
-<li><strong>Install View:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eoside</span> <span class="pre">install</span></code></li>
+<li><strong>Get Started View:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eoside</span> <span class="pre">EOSIDE</span></code> or <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+alt+e</span></code></li>
+<li><strong>Setup View:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eoside</span> <span class="pre">setup</span></code> or <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+alt+s</span></code></li>
+<li><strong>Install View:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eoside</span> <span class="pre">install</span></code> or <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+i</span></code></li>
 </ul>
 </div>
 </div>

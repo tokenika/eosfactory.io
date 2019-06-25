@@ -2,9 +2,9 @@
 
 #### EOSIDE is an Integrated Development Environment for EOSIO smart-contracts.
 
-EOSIDE organizes the workflow of development process for EOSIO smart-contracts. It leverages the functionality of [EOSFactory](https://eosfactory.io/) and it's implemented as a [Visual Studio Code](https://code.visualstudio.com/) (VSC) extension.
+EOSIDE organizes the workflow of development process for [EOSIO](https://eos.io/) smart-contracts. It leverages the functionality of [EOSFactory](https://eosfactory.io/). EOSIDE is implemented as a [Visual Studio Code](https://code.visualstudio.com/) (VSC) extension.
 
-EOSIDE has the following features:
+EOSIDE implements the following features:
 
 - project standardization,
 - easy access to project archive,
@@ -12,12 +12,13 @@ EOSIDE has the following features:
 - automatic availability of standard libraries,
 - dependency management,
 - [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) code completion,
-- compilation and building of EOSIO contracts,
-- testing -- both functional and native,
-- native debugging,
+- compilation and building,
+- native compilation, execution and debugging of native unit tests,
+- functional unit testing,
+- project packaging,
 - deployment.
 
-Watch a short [video](https://eosfactory.io/eoside/html/_static/five_minutes.mp4) demonstrating EOSIDE in action. And here is another [video](https://eosfactory.io/eoside/html/_static/installing.mp4) demonstrating the setup process and a *Hello World* test.
+Watch a short [video](https://eosfactory.io/eoside_dev/html/_static/five_minutes.mp4) demonstrating EOSIDE in action. And here is another [video](https://eosfactory.io/eoside_dev/html/_static/installing.mp4) demonstrating the setup process and a *Hello World* test.
 
 ## User interface
 
@@ -29,22 +30,23 @@ The entry view is named `EOSIDE` and is displayed when VSC is started empty, i.e
 
 Let's go through its options:
 
-- *Get Started* contains links to tutorials and other documentation. Especially, the `README` entry highlights a special issue.
+- *Get Started* contains links to tutorials and other documentation.
 - *New project* lets you create a new project from a template.
 - *Recent* lists existing projects.
 - *Open* triggers specified actions.
-- And the two menu buttons located in the title bar, namely `EOSIDE` and `Setup`, display corresponding views.
+- The two menu buttons located in the title bar, namely `EOSIDE` and `Setup`, display corresponding views.
 
 ## Project standardization
 
 EOSIDE introduces a standardized layout for the smart-contract's folder:
-* `.vscode` -- system folder
-* `build` -- folder where contract WASM and ABI files go
-* `resources` -- folder containing Ricardian contract files etc.
-* `src` -- folder containing CPP/C source files
-* `include` -- folder containing header files
-* `tests` - folder containing Python scripts, especially EOSFactory scripts
-* `CMakeLists.txt`  - the CMake lists file of the project
+* `.vscode` -- system folder,
+* `build` -- folder where contract WASM and ABI files go,
+* `include` -- folder containing header files,
+* `recardian` -- folder containing Ricardian contract files etc.,
+* `src` -- folder containing CPP/C source files,
+* `tests` - folder containing Python scripts, especially EOSFactory scripts,
+* `.eosioignore` - exclusion list for the project packaging utility,
+* `CMakeLists.txt`  - the CMake lists file of the project.
 
 An example of the above layout is shown below:
 
@@ -100,19 +102,29 @@ As an example, the following screenshot shows the result of the `Pick Definition
 
 The compilation process does not generate any output files. Its purpose is to verify that the source code of the contract can be built, and if not, to produce an error log. Whereas, the building process results in generating ABI and WASM files.
 
-The compilation process requires that project dependencies are satisfied, such as included headers and linked libraries. The dependencies registered for the project, as explained [here](#Dependency-management), are automatically applied.
+The compilation process requires that project dependencies are satisfied, such as included headers and linked libraries. The dependencies registered for the project, as explained [here](#Dependency-management), are automatically applied, in their default part.
+
+There are two pairs of compile-build commands. One uses the options set with the `Code Options` list in the `Setup` view. These commands result with compilation to WASM code. Other commands, set with `Test Options`, are for native compilation (of native unit tests, mainly).
 
 ### VSC style: compile and build with VSC tasks and commands
 
 To compile:
 * **VSC task:** `Terminal` > `Run Task...` > `Compile`
-* **VSC command:** `ctrl+shift+p` > `eosid compile`
-* **keyboard shortcut:** `ctrl+shift+c`
+* **VSC command:** `ctrl/cmd+shift+p` > `eosid compile`
+* **keyboard shortcut:** `ctrl/cmd+shift+c`
+
+To compile test:
+* **VSC command:** `ctrl/cmd+shift+p` > `eosid compile test`
+* **keyboard shortcut:** `ctrl/cmd+alt+c`
 
 To build:
 * **VSC task:** `Terminal` > `Run Build Task...`
-* **VSC command:** `ctrl+shift+p` > `eosid build`
-* **keyboard shortcut:** `ctrl+shift+b`
+* **VSC command:** `ctrl/cmd+shift+p` > `eosid build`
+* **keyboard shortcut:** `ctrl/cmd+shift+b`
+
+To build and run test:
+* **VSC command:** `ctrl/cmd+shift+p` > `eosid build test`
+* **keyboard shortcut:** `ctrl/cmd+alt+b`
 
 The picture below shows how you can access tasks in VSC:
 
@@ -120,9 +132,9 @@ The picture below shows how you can access tasks in VSC:
 
 ### Build using CMake
 
-If you are on Windows, the default terminal for VSC is PowerShell, while the CMake operations have to be executed within the Ubuntu bash. In VSC, to open a new Ubuntu bash terminal use the `ctrl+shift+t` shortcut. Alternatively, issue the `bash` command in the PowerShell terminal.
+If you are on Windows, the default terminal for VSC is PowerShell, while the CMake operations have to be executed within the Ubuntu bash. In VSC, to open a new Ubuntu bash terminal use the `ctrl/cmd+shift+t` shortcut. Alternatively, issue the `bash` command in the PowerShell terminal.
 
-In the Ubuntu bash terminal, type these commands:
+In the Ubuntu bash terminal, for code building, type these commands:
 
 ```bash
 cd build
@@ -147,6 +159,13 @@ WASM file writen to file:
     /mnt/c/Workspaces/EOS/contracts/token/build/token.wasm
 Built target wast
 cartman@cartman-PC:/mnt/c/Workspaces/EOS/contracts/token/build$
+```
+
+For native test compilation, add an CMake argument:
+
+```bash
+cmake -DMODE:STRING=test_options ..
+make
 ```
 
 ### Build with EOSFactory
@@ -188,8 +207,8 @@ The following subsections show three ways of deploying the current project's sma
 
 ### Deploy with VSC command
 
-* **VSC command:** `ctrl+shift+p` > `eosid deploy`
-* **keyboard shortcut:** `ctrl+shift+y`
+* **VSC command:** `ctrl/cmd+shift+p` > `eosid deploy`
+* **keyboard shortcut:** `ctrl/cmd+shift+y`
 
 ### Deploy with Ubuntu bash
 
@@ -202,20 +221,6 @@ python3 -m eosfactory.deploy
 ```python
 import eosfactory.core.logger as logger
 from eosfactory.shell.contract import Contract
-from eosfactory.core.teos import get_c_cpp_properties
-
-c_cpp_properties = teos.get_c_cpp_properties()
-if not c_cpp_properties:
-    logger.ERROR('''
-    The testnet account is not set and it can not be found any 
-    c_cpp_properties json file.
-        ''')
-
-if not "contractAccount" in c_cpp_properties:
-    logger.ERROR('''
-    The testnet account is not set, and it can not be found in a 
-    c_cpp_properties json file.
-        ''')
 
 testnet_account = eosfactory.core.testnet.get_testnet(testnet_account_name)
 
@@ -276,38 +281,14 @@ Total Test time (real) =  32.07 sec
 
 ```
 
-```python
-from eosfactory.eosf import *
-from eosfactory.shell.account import restore_account
-import eosfactory.core.testnet as testnet
-
-
-testnet = Testnet(
-    None,
-    "dgxo1uyhoytn",
-    "5JE9XSurh4Bmdw8Ynz72Eh6ZCKrxf63SmQWKrYJSXf1dEnoiKFY",
-    "5JgLo7jZhmY4huDNXwExmaWQJqyS1hGZrnSjECcpWwGU25Ym8tA",
-    "contract_account"
-)
-testnet.configure()
-testnet.verify_production()
-restore_account("contract_account", testnet)
-
-testnet = testnet.KYLIN
-testnet.configure()
-testnet.verify_production()
-restore_account("contract_account", testnet)
-Contract(host).deploy()
-```
-
 ## Installation status
 
-With the VSC command `ctrl+shift+p` > `eoside install`, you can display the current status of the installation process and edit some of the settings, e.g. the workspace path.
+With the VSC command `ctrl/cmd+shift+p` > `eoside install` or `ctrl/cmd+alt=i`, you can display the current status of the installation process and edit some of the settings, e.g. the workspace path.
 
 ![Setup view](../images/install.png)
 
 If you turn the menu off, you can still access EOSIDE views by using VSC commands:
 
-- **Get Started View:** `ctrl+shift+p` > `eoside EOSIDE`
-- **Setup View:** `ctrl+shift+p` > `eoside setup`
-- **Install View:** `ctrl+shift+p` > `eoside install`
+- **Get Started View:** `ctrl/cmd+shift+p` > `eoside EOSIDE` or `ctrl/cmd+alt+e`
+- **Setup View:** `ctrl/cmd+shift+p` > `eoside setup` or `ctrl/cmd+alt+s`
+- **Install View:** `ctrl/cmd+shift+p` > `eoside install` or `ctrl/cmd+i`
