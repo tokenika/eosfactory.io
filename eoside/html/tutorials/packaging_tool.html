@@ -1,0 +1,120 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Packaging tool &#8212; EOSIDE 1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Release Notes - v1.2.0" href="../release_notes.html" />
+    <link rel="prev" title="Native unit test compilation and execution" href="native_tests.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../release_notes.html" title="Release Notes - v1.2.0"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="native_tests.html" title="Native unit test compilation and execution"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSIDE 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="packaging-tool">
+<h1>Packaging tool<a class="headerlink" href="#packaging-tool" title="Permalink to this headline">¶</a></h1>
+<p>If you want to pass to a colleague your EOSIO contract project which is a VSCode folder, the fist guess, is to zip the folder and e-mail it. However, this plan is not quite straightforward:</p>
+<ul class="simple">
+<li>There are volume binaries there.</li>
+<li>There are local configuring files in the <code class="docutils literal notranslate"><span class="pre">.vscode</span></code> folder.</li>
+<li>There are your private notes and scratchpads there.</li>
+<li>The paths in the <code class="docutils literal notranslate"><span class="pre">.vscode/c_cpp_properties.json</span></code> are localized according to your operating system.</li>
+</ul>
+<p>Hence, you should copy the folder, and edit it.</p>
+<p>EOSIDE implements EOSFactory tool <a class="reference external" href="https://eosfactory.io/build/html/tutorials/ExchangingContractProject.html"><code class="docutils literal notranslate"><span class="pre">eosfactory.pack_contract.py</span></code></a> that helps to organize the distribution process:</p>
+<ul class="simple">
+<li>The <code class="docutils literal notranslate"><span class="pre">Zip</span></code> button in the <code class="docutils literal notranslate"><span class="pre">Setup</span></code> view or (ctrl/cmd+alt+z) calls the EOSFactory command <code class="docutils literal notranslate"><span class="pre">eosfactory.pack_contract.py</span></code>: it zips the current (processed) project. The result goes to the root of the project.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">zip</span> <span class="pre">file</span></code> in the <code class="docutils literal notranslate"><span class="pre">EOSIDE</span></code> view does the opposite: it restores a project from a zip file. If the zip results from the packaging process, it is readjusted to the current conditions.</li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="native_tests.html"
+                        title="previous chapter">Native unit test compilation and execution</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../release_notes.html"
+                        title="next chapter">Release Notes - v1.2.0</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/tutorials/packaging_tool.md.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../release_notes.html" title="Release Notes - v1.2.0"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="native_tests.html" title="Native unit test compilation and execution"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSIDE 1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Tokenika.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
+    </div>
+  </body>
+</html>
