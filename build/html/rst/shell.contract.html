@@ -1,12 +1,10 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>shell.contract &#8212; EOSFactory 3.2.0 documentation</title>
+    <meta charset="utf-8" />
+    <title>shell.contract &#8212; EOSFactory 3.3.0 documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
@@ -39,7 +37,7 @@
         <li class="right" >
           <a href="shell.account.html" title="shell.account"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.2.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.3.0 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -52,168 +50,148 @@
 <span id="shell-contract"></span><h1>shell.contract<a class="headerlink" href="#module-eosfactory.shell.contract" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="eosfactory.shell.contract.Contract">
-<em class="property">class </em><code class="descclassname">eosfactory.shell.contract.</code><code class="descname">Contract</code><span class="sig-paren">(</span><em>account</em>, <em>contract_dir=None</em>, <em>abi_file=None</em>, <em>wasm_file=None</em>, <em>permission=None</em>, <em>expiration_sec=None</em>, <em>skip_sign=0</em>, <em>dont_broadcast=0</em>, <em>force_unique=0</em>, <em>max_cpu_usage=0</em>, <em>max_net_usage=0</em>, <em>ref_block=None</em>, <em>delay_sec=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#Contract"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.Contract" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">eosfactory.shell.contract.</code><code class="sig-name descname">Contract</code><span class="sig-paren">(</span><em class="sig-param">account</em>, <em class="sig-param">contract_dir=None</em>, <em class="sig-param">abi_file=None</em>, <em class="sig-param">wasm_file=None</em>, <em class="sig-param">permission=None</em>, <em class="sig-param">expiration_sec=None</em>, <em class="sig-param">skip_sign=0</em>, <em class="sig-param">dont_broadcast=0</em>, <em class="sig-param">force_unique=0</em>, <em class="sig-param">max_cpu_usage=0</em>, <em class="sig-param">max_net_usage=0</em>, <em class="sig-param">ref_block=None</em>, <em class="sig-param">delay_sec=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#Contract"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.Contract" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#eosfactory.shell.contract.ContractBuilder" title="eosfactory.shell.contract.ContractBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.shell.contract.ContractBuilder</span></code></a></p>
 <p>Add a contract to the given account.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>account</strong> (<em>shell.Account</em>) – The <em>Account</em> object to be fitted with a
-contract.</li>
-<li><strong>contract_dir</strong> (<em>str</em>) – The path to a directory.</li>
-<li><strong>wasm_file</strong> (<em>str</em>) – The WASM file relative to the contract_dir.</li>
-<li><strong>abi_file</strong> (<em>str</em>) – The ABI file for the contract relative to the
-contract-dir.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>account</strong> (<em>shell.Account</em>) – The <em>Account</em> object to be fitted with a
+contract.</p></li>
+<li><p><strong>contract_dir</strong> (<em>str</em>) – The path to a directory.</p></li>
+<li><p><strong>wasm_file</strong> (<em>str</em>) – The WASM file relative to the contract_dir.</p></li>
+<li><p><strong>abi_file</strong> (<em>str</em>) – The ABI file for the contract relative to the
+contract-dir.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p>See definitions of the remaining parameters:     <a class="reference internal" href="core.cleos.html#eosfactory.core.cleos.common_parameters" title="eosfactory.core.cleos.common_parameters"><code class="xref py py-func docutils literal notranslate"><span class="pre">cleos.common_parameters()</span></code></a>.</p>
 <dl class="method">
 <dt id="eosfactory.shell.contract.Contract.clear">
-<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#Contract.clear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.Contract.clear" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#Contract.clear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.Contract.clear" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove contract on an account</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="eosfactory.shell.contract.Contract.code">
-<code class="descname">code</code><span class="sig-paren">(</span><em>code=None</em>, <em>abi=None</em>, <em>wasm=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#Contract.code"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.Contract.code" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">code</code><span class="sig-paren">(</span><em class="sig-param">code=None</em>, <em class="sig-param">abi=None</em>, <em class="sig-param">wasm=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#Contract.code"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.Contract.code" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve the code and ABI</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>code</strong> (<em>str</em>) – If set, the name of the file to save the contract
-WAST/WASM to.</li>
-<li><strong>abi</strong> (<em>str</em>) – If set, the name of the file to save the contract ABI to.</li>
-<li><strong>wasm</strong> (<em>bool</em>) – Save contract as wasm.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code</strong> (<em>str</em>) – If set, the name of the file to save the contract
+WAST/WASM to.</p></li>
+<li><p><strong>abi</strong> (<em>str</em>) – If set, the name of the file to save the contract ABI to.</p></li>
+<li><p><strong>wasm</strong> (<em>bool</em>) – Save contract as wasm.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="eosfactory.shell.contract.Contract.deploy">
-<code class="descname">deploy</code><span class="sig-paren">(</span><em>permission=None</em>, <em>dont_broadcast=None</em>, <em>payer=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#Contract.deploy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.Contract.deploy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">deploy</code><span class="sig-paren">(</span><em class="sig-param">permission=None</em>, <em class="sig-param">dont_broadcast=None</em>, <em class="sig-param">payer=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#Contract.deploy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.Contract.deploy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Deploy the contract.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="eosfactory.shell.contract.Contract.path">
-<code class="descname">path</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#Contract.path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.Contract.path" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">path</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#Contract.path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.Contract.path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the path to the contract.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="eosfactory.shell.contract.Contract.push_action">
-<code class="descname">push_action</code><span class="sig-paren">(</span><em>action</em>, <em>data</em>, <em>permission=None</em>, <em>expiration_sec=None</em>, <em>skip_sign=0</em>, <em>dont_broadcast=0</em>, <em>force_unique=0</em>, <em>max_cpu_usage=0</em>, <em>max_net_usage=0</em>, <em>ref_block=None</em>, <em>json=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#Contract.push_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.Contract.push_action" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">push_action</code><span class="sig-paren">(</span><em class="sig-param">action</em>, <em class="sig-param">data</em>, <em class="sig-param">permission=None</em>, <em class="sig-param">expiration_sec=None</em>, <em class="sig-param">skip_sign=0</em>, <em class="sig-param">dont_broadcast=0</em>, <em class="sig-param">force_unique=0</em>, <em class="sig-param">max_cpu_usage=0</em>, <em class="sig-param">max_net_usage=0</em>, <em class="sig-param">ref_block=None</em>, <em class="sig-param">json=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#Contract.push_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.Contract.push_action" title="Permalink to this definition">¶</a></dt>
 <dd><p>Push a transaction with a single action.</p>
 <p>Call <em>EOSIO cleos</em> with the <em>push action</em> command. Store the result,
 which is an object of the class <a class="reference internal" href="core.cleos.html#eosfactory.core.cleos.PushAction" title="eosfactory.core.cleos.PushAction"><code class="xref py py-class docutils literal notranslate"><span class="pre">cleos.PushAction</span></code></a>,  as
 the value of the <em>action</em> attribute.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>action</strong> (<em>str</em><em> or </em><em>json</em><em> or </em><em>filename</em>) – Definition of the action to
-execute on the contract.</li>
-<li><strong>data</strong> (<em>str</em>) – The arguments to the contract.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>action</strong> (<em>str</em><em> or </em><em>json</em><em> or </em><em>filename</em>) – Definition of the action to
+execute on the contract.</p></li>
+<li><p><strong>data</strong> (<em>str</em>) – The arguments to the contract.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p>See definitions of the remaining parameters:         <a class="reference internal" href="core.cleos.html#eosfactory.core.cleos.common_parameters" title="eosfactory.core.cleos.common_parameters"><code class="xref py py-func docutils literal notranslate"><span class="pre">cleos.common_parameters()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="eosfactory.shell.contract.Contract.show_action">
-<code class="descname">show_action</code><span class="sig-paren">(</span><em>action</em>, <em>data</em>, <em>permission=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#Contract.show_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.Contract.show_action" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">show_action</code><span class="sig-paren">(</span><em class="sig-param">action</em>, <em class="sig-param">data</em>, <em class="sig-param">permission=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#Contract.show_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.Contract.show_action" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implements the <cite>push action</cite> command without broadcasting.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="eosfactory.shell.contract.Contract.table">
-<code class="descname">table</code><span class="sig-paren">(</span><em>table_name</em>, <em>scope=''</em>, <em>binary=False</em>, <em>limit=10</em>, <em>key=''</em>, <em>lower=''</em>, <em>upper=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#Contract.table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.Contract.table" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">table</code><span class="sig-paren">(</span><em class="sig-param">table_name</em>, <em class="sig-param">scope=''</em>, <em class="sig-param">binary=False</em>, <em class="sig-param">limit=10</em>, <em class="sig-param">key=''</em>, <em class="sig-param">lower=''</em>, <em class="sig-param">upper=''</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#Contract.table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.Contract.table" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retrieve the contents of a database table</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>scope</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Account" title="eosfactory.core.interface.Account"><em>interface.Account</em></a>) – The scope within the account in
-which the table is found.</li>
-<li><strong>table</strong> (<em>str</em>) – The name of the table as specified by the contract abi.</li>
-<li><strong>binary</strong> (<em>bool</em>) – Return the value as BINARY rather than using abi to
-interpret as JSON. Default is <em>False</em>.</li>
-<li><strong>limit</strong> (<em>int</em>) – The maximum number of rows to return. Default is 10.</li>
-<li><strong>lower</strong> (<em>str</em>) – JSON representation of lower bound value of key,
-defaults to first.</li>
-<li><strong>upper</strong> (<em>str</em>) – JSON representation of upper bound value value of key,
-defaults to last.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>scope</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Account" title="eosfactory.core.interface.Account"><em>interface.Account</em></a>) – The scope within the account in
+which the table is found.</p></li>
+<li><p><strong>table</strong> (<em>str</em>) – The name of the table as specified by the contract abi.</p></li>
+<li><p><strong>binary</strong> (<em>bool</em>) – Return the value as BINARY rather than using abi to
+interpret as JSON. Default is <em>False</em>.</p></li>
+<li><p><strong>limit</strong> (<em>int</em>) – The maximum number of rows to return. Default is 10.</p></li>
+<li><p><strong>lower</strong> (<em>str</em>) – JSON representation of lower bound value of key,
+defaults to first.</p></li>
+<li><p><strong>upper</strong> (<em>str</em>) – JSON representation of upper bound value value of key,
+defaults to last.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="xref py py-class docutils literal notranslate"><span class="pre">cleos_set.SetTable</span></code> object</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">cleos_set.SetTable</span></code> object</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="eosfactory.shell.contract.ContractBuilder">
-<em class="property">class </em><code class="descclassname">eosfactory.shell.contract.</code><code class="descname">ContractBuilder</code><span class="sig-paren">(</span><em>contract_dir=None</em>, <em>c_cpp_properties_path=None</em>, <em>abi_file=None</em>, <em>wasm_file=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#ContractBuilder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.ContractBuilder" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">eosfactory.shell.contract.</code><code class="sig-name descname">ContractBuilder</code><span class="sig-paren">(</span><em class="sig-param">contract_dir=None</em>, <em class="sig-param">c_cpp_properties_path=None</em>, <em class="sig-param">abi_file=None</em>, <em class="sig-param">wasm_file=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#ContractBuilder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.ContractBuilder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Build or delete a contract project.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>contract_dir</strong> (<em>str</em>) – If set, a hint to the root directory of a contract
-project, otherwise the current working directory.</li>
-<li><strong>c_cpp_properties_path</strong> (<em>str</em>) – If set, the directory of a C/CPP VSCode
-extension configuration file.</li>
-<li><strong>abi_file</strong> (<em>str</em>) – If set, the path to the ABI file, absolute,
-or relative to <em>contract_dir</em>.</li>
-<li><strong>wasm_file</strong> (<em>str</em>) – If set, the path to the WASM file, absolute,
-or relative to <em>contract_dir</em>.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>contract_dir</strong> (<em>str</em>) – If set, a hint to the root directory of a contract
+project, otherwise the current working directory.</p></li>
+<li><p><strong>c_cpp_properties_path</strong> (<em>str</em>) – If set, the directory of a C/CPP VSCode
+extension configuration file.</p></li>
+<li><p><strong>abi_file</strong> (<em>str</em>) – If set, the path to the ABI file, absolute,
+or relative to <em>contract_dir</em>.</p></li>
+<li><p><strong>wasm_file</strong> (<em>str</em>) – If set, the path to the WASM file, absolute,
+or relative to <em>contract_dir</em>.</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <dl class="method">
 <dt id="eosfactory.shell.contract.ContractBuilder.build">
-<code class="descname">build</code><span class="sig-paren">(</span><em>force=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#ContractBuilder.build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.ContractBuilder.build" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">build</code><span class="sig-paren">(</span><em class="sig-param">force=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#ContractBuilder.build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.ContractBuilder.build" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make both, ABI and WASM files.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="eosfactory.shell.contract.ContractBuilder.delete">
-<code class="descname">delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#ContractBuilder.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.ContractBuilder.delete" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#ContractBuilder.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.ContractBuilder.delete" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delete the project.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="eosfactory.shell.contract.ContractBuilder.is_built">
-<code class="descname">is_built</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#ContractBuilder.is_built"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.ContractBuilder.is_built" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">is_built</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#ContractBuilder.is_built"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.ContractBuilder.is_built" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check whether both the ABI and WASM files exist.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="eosfactory.shell.contract.ContractBuilder.path">
-<code class="descname">path</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#ContractBuilder.path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.ContractBuilder.path" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">path</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/shell/contract.html#ContractBuilder.path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.shell.contract.ContractBuilder.path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the path to the contract.</p>
 </dd></dl>
 
@@ -241,13 +219,11 @@ or relative to <em>contract_dir</em>.</li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -271,12 +247,12 @@ or relative to <em>contract_dir</em>.</li>
         <li class="right" >
           <a href="shell.account.html" title="shell.account"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.2.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.3.0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
     </div>
   </body>
 </html>

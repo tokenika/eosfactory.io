@@ -1,12 +1,10 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>eosfactory.core.config &#8212; EOSFactory 3.2.0 documentation</title>
+    <meta charset="utf-8" />
+    <title>eosfactory.core.config &#8212; EOSFactory 3.3.0 documentation</title>
     <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
@@ -31,7 +29,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.3.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
       </ul>
     </div>  
@@ -55,14 +53,15 @@
 <span class="kn">import</span> <span class="nn">eosfactory.core.utils</span> <span class="k">as</span> <span class="nn">utils</span>
 
 
-<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">&quot;3.2.0&quot;</span>
-<span class="n">EOSIO_VERSION</span> <span class="o">=</span> <span class="s2">&quot;1.7.1&quot;</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="s2">&quot;3.3.0&quot;</span>
+<span class="n">EOSIO_VERSION</span> <span class="o">=</span> <span class="s2">&quot;1.8.0&quot;</span>
 <span class="n">EOSIO_CDT_VERSION</span> <span class="o">=</span> <span class="s2">&quot;1.6.1&quot;</span>
 <span class="n">PYTHON_VERSION</span> <span class="o">=</span> <span class="s2">&quot;3.5 or higher&quot;</span>
 <span class="n">EOSFACTORY_DIR</span> <span class="o">=</span> <span class="s2">&quot;eosfactory/&quot;</span>
 <span class="n">TMP</span> <span class="o">=</span> <span class="s2">&quot;/tmp/eosfactory/&quot;</span>
 <span class="n">SETUPTOOLS_NAME</span> <span class="o">=</span> <span class="s2">&quot;eosfactory_tokenika&quot;</span>
-<span class="n">VERSION_PATTERN</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;.+/eosio\.cdt/(\d\.\d\.\d)/.*$&quot;</span>
+<span class="n">EOSIO_CDT_PATTERN</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;.+/eosio\.cdt/(\d\.\d\.\d)/.*&quot;</span>
+<span class="n">UBUNTU_PATTERN</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\s*</span><span class="se">\&quot;</span><span class="s2">(.*CanonicalGroupLimited.Ubuntu.*/LocalState/rootfs)/.*&quot;</span>
 <span class="n">BUILD</span> <span class="o">=</span> <span class="s2">&quot;build&quot;</span>
 <span class="n">IGNORE_FILE</span> <span class="o">=</span> <span class="s2">&quot;.eosideignore&quot;</span>
 <span class="n">IGNORE_LIST</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;.vscode/ipch/*&quot;</span><span class="p">,</span> <span class="s2">&quot;.vscode/settings.json&quot;</span><span class="p">,</span> <span class="s2">&quot;.vscode/tasks.json&quot;</span><span class="p">,</span>\
@@ -83,13 +82,13 @@
             <span class="p">[])</span>
 <span class="n">node_address_</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;LOCAL_NODE_ADDRESS&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">LOCALHOST_HTTP_ADDRESS</span><span class="p">])</span>
 <span class="n">wallet_address_</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;WALLET_MANAGER_ADDRESS&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">LOCALHOST_HTTP_ADDRESS</span><span class="p">])</span>
+
 <span class="n">genesis_json_</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;EOSIO_GENESIS_JSON&quot;</span><span class="p">,</span> 
                 <span class="p">[</span><span class="s2">&quot;/home/cartman/.local/share/eosio/nodeos/config/genesis.json&quot;</span><span class="p">])</span>
-<span class="n">data_dir_</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;LOCAL_NODE_DATA_DIR&quot;</span><span class="p">,</span> 
-                            <span class="p">[</span><span class="s2">&quot;/home/cartman/.local/share/eosio/nodeos/data/&quot;</span><span class="p">])</span>
-<span class="n">config_dir_</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;LOCAL_NODE_CONFIG_DIR&quot;</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">])</span>
-<span class="c1"># config_dir_ = (&quot;LOCAL_NODE_CONFIG_DIR&quot;, </span>
-<span class="c1">#                         [&quot;/home/cartman/.local/share/eosio/nodeos/config/&quot;])</span>
+<span class="n">nodeos_config_dir_</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;NODEOS_CONFIG_DIR&quot;</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">])</span>
+<span class="n">nodeos_data_dir_</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;NODEOS_DATA_DIR&quot;</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">])</span>
+<span class="n">nodeos_options_</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;NODEOS_OPTIONS&quot;</span><span class="p">,</span> <span class="p">[])</span>
+
 <span class="n">keosd_wallet_dir_</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;KEOSD_WALLET_DIR&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;$</span><span class="si">{HOME}</span><span class="s2">/eosio-wallet/&quot;</span><span class="p">])</span>
 <span class="n">chain_state_db_size_mb_</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;EOSIO_SHARED_MEMORY_SIZE_MB&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;300&quot;</span><span class="p">])</span>
 
@@ -415,50 +414,6 @@
     <span class="k">return</span> <span class="n">config_value_checked</span><span class="p">(</span><span class="n">key_public_</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="data_dir"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.data_dir">[docs]</a><span class="k">def</span> <span class="nf">data_dir</span><span class="p">():</span>
-    <span class="sd">&#39;&#39;&#39;Directory containing runtime data of *nodeos*.</span>
-
-<span class="sd">    It may be changed with </span>
-<span class="sd">    *LOCAL_NODE_DATA_DIR* entry in the *config.json* file, </span>
-<span class="sd">    see :func:`.current_config`.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="k">return</span> <span class="n">first_valid_path</span><span class="p">(</span><span class="n">data_dir_</span><span class="p">)</span></div>
-    
-
-<div class="viewcode-block" id="nodeos_config_dir"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.nodeos_config_dir">[docs]</a><span class="k">def</span> <span class="nf">nodeos_config_dir</span><span class="p">():</span>
-    <span class="sd">&#39;&#39;&#39;Directory containing configuration files such as config.ini.</span>
-
-<span class="sd">    It may be changed with </span>
-<span class="sd">    *LOCAL_NODE_CONFIG_DIR* entry in the *config.json* file, </span>
-<span class="sd">    see :func:`.current_config`.</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">path</span> <span class="o">=</span> <span class="n">first_valid_path</span><span class="p">(</span><span class="n">config_dir_</span><span class="p">,</span> <span class="n">raise_error</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">path</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">path</span>
-
-    <span class="k">return</span> <span class="n">config_dir</span><span class="p">()</span></div>
-
-
-<div class="viewcode-block" id="genesis_json"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.genesis_json">[docs]</a><span class="k">def</span> <span class="nf">genesis_json</span><span class="p">():</span>
-    <span class="sd">&#39;&#39;&#39;File to read Genesis State from.</span>
-
-<span class="sd">    It may be changed with </span>
-<span class="sd">    *EOSIO_GENESIS_JSON* entry in the *config.json* file, </span>
-<span class="sd">    see :func:`.current_config`.    </span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">path</span> <span class="o">=</span> <span class="n">first_valid_path</span><span class="p">(</span><span class="n">genesis_json_</span><span class="p">,</span> <span class="n">raise_error</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="p">:</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config_dir</span><span class="p">(),</span> <span class="s2">&quot;genesis.json&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">Cannot find any path for &#39;</span><span class="si">{}</span><span class="s1">&#39;.</span>
-<span class="s1">Tried:</span>
-<span class="si">{}</span><span class="s1"></span>
-<span class="s1">        &#39;&#39;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">genesis_json_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">genesis_json_</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">translate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">path</span></div>
-
-
 <div class="viewcode-block" id="chain_state_db_size_mb"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.chain_state_db_size_mb">[docs]</a><span class="k">def</span> <span class="nf">chain_state_db_size_mb</span><span class="p">():</span>
     <span class="sd">&#39;&#39;&#39;The size of the buffer of the local node. </span>
 
@@ -652,7 +607,7 @@
 <span class="sd">            &#39;eosio-cpp&#39; does not response.</span>
 <span class="sd">            &#39;&#39;&#39;</span><span class="p">)</span>        
 
-    <span class="n">version_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">VERSION_PATTERN</span><span class="p">)</span>
+    <span class="n">version_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">EOSIO_CDT_PATTERN</span><span class="p">)</span>
     <span class="n">tested</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">eosio_cdt_root_</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
         <span class="n">tested</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
@@ -923,6 +878,47 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">None</span></div>
 
+<div class="viewcode-block" id="nodeos_data_dir"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.nodeos_data_dir">[docs]</a><span class="k">def</span> <span class="nf">nodeos_data_dir</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39;Directory containing runtime data of *nodeos*.</span>
+
+<span class="sd">    It may be changed with </span>
+<span class="sd">    *NODEOS_DATA_DIR* entry in the *config.json* file, </span>
+<span class="sd">    see :func:`.current_config`.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">nodeos_data_dir_</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span></div>
+    
+
+<div class="viewcode-block" id="nodeos_config_dir"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.nodeos_config_dir">[docs]</a><span class="k">def</span> <span class="nf">nodeos_config_dir</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39;Directory containing configuration files such as config.ini.</span>
+
+<span class="sd">    It may be changed with </span>
+<span class="sd">    *NODEOS_CONFIG_DIR* entry in the *config.json* file, </span>
+<span class="sd">    see :func:`.current_config`.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">nodeos_config_dir_</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="nodeos_options"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.nodeos_options">[docs]</a><span class="k">def</span> <span class="nf">nodeos_options</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">nodeos_options_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="genesis_json"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.genesis_json">[docs]</a><span class="k">def</span> <span class="nf">genesis_json</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39;File to read Genesis State from.</span>
+
+<span class="sd">    It may be changed with </span>
+<span class="sd">    *EOSIO_GENESIS_JSON* entry in the *config.json* file, </span>
+<span class="sd">    see :func:`.current_config`.    </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">first_valid_path</span><span class="p">(</span><span class="n">genesis_json_</span><span class="p">,</span> <span class="n">raise_error</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="p">:</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config_dir</span><span class="p">(),</span> <span class="s2">&quot;genesis.json&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">return</span> <span class="n">path</span></div>
+
 
 <div class="viewcode-block" id="contract_dir"><a class="viewcode-back" href="../../../rst/core.config.html#eosfactory.core.config.contract_dir">[docs]</a><span class="k">def</span> <span class="nf">contract_dir</span><span class="p">(</span><span class="n">contract_dir_hint</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Given a hint, determine the contract root directory.</span>
@@ -1084,16 +1080,27 @@
     <span class="k">return</span> <span class="n">files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 
-<span class="k">def</span> <span class="nf">update_eosio_cpp_includes</span><span class="p">(</span><span class="n">c_cpp_properties_path</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">update_vscode</span><span class="p">(</span><span class="n">c_cpp_properties_path</span><span class="p">):</span>
     <span class="n">c_cpp_properties_path</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">wslMapWindowsLinux</span><span class="p">(</span><span class="n">c_cpp_properties_path</span><span class="p">)</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">c_cpp_properties_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">c_cpp_properties</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
         
-    <span class="n">version_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">VERSION_PATTERN</span><span class="p">)</span>
+    <span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">EOSIO_CDT_PATTERN</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">version_pattern</span><span class="p">,</span> <span class="n">c_cpp_properties</span><span class="p">):</span>
-        <span class="n">new</span> <span class="o">=</span> <span class="n">c_cpp_properties</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-                <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">version_pattern</span><span class="p">,</span> <span class="n">c_cpp_properties</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">eosio_cpp_version</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">c_cpp_properties</span><span class="p">):</span>
+        <span class="n">new</span> <span class="o">=</span> <span class="n">c_cpp_properties</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span>
+                <span class="n">pattern</span><span class="p">,</span> <span class="n">c_cpp_properties</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">eosio_cpp_version</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">new</span> <span class="o">==</span> <span class="n">c_cpp_properties</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">c_cpp_properties_path</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">new</span><span class="p">)</span>
+
+    <span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">UBUNTU_PATTERN</span><span class="p">)</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="n">wsl_root</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">root</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">c_cpp_properties</span><span class="p">):</span>
+            <span class="n">new</span> <span class="o">=</span> <span class="n">c_cpp_properties</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+                                <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">c_cpp_properties</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">root</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">new</span> <span class="o">==</span> <span class="n">c_cpp_properties</span><span class="p">:</span>
             <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">c_cpp_properties_path</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
@@ -1192,14 +1199,6 @@
     <span class="k">except</span><span class="p">:</span>
         <span class="nb">map</span><span class="p">[</span><span class="n">keosd_wallet_dir_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">try</span><span class="p">:</span> 
-        <span class="nb">map</span><span class="p">[</span><span class="n">data_dir_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">data_dir</span><span class="p">()</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="nb">map</span><span class="p">[</span><span class="n">data_dir_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span> 
-    <span class="k">try</span><span class="p">:</span>    
-        <span class="nb">map</span><span class="p">[</span><span class="n">config_dir_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">nodeos_config_dir</span><span class="p">()</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="nb">map</span><span class="p">[</span><span class="n">config_dir_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>   
-    <span class="k">try</span><span class="p">:</span> 
         <span class="nb">map</span><span class="p">[</span><span class="n">cli_exe_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">cli_exe</span><span class="p">()</span>
     <span class="k">except</span><span class="p">:</span>
         <span class="nb">map</span><span class="p">[</span><span class="n">cli_exe_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span> 
@@ -1224,10 +1223,6 @@
     <span class="k">except</span><span class="p">:</span>
         <span class="nb">map</span><span class="p">[</span><span class="n">eosio_cpp_includes_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>        
     <span class="k">try</span><span class="p">:</span>   
-        <span class="nb">map</span><span class="p">[</span><span class="n">genesis_json_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">genesis_json</span><span class="p">()</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="nb">map</span><span class="p">[</span><span class="n">genesis_json_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="k">try</span><span class="p">:</span>   
         <span class="nb">map</span><span class="p">[</span><span class="n">includes_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">eoside_includes_dir</span><span class="p">()</span>
     <span class="k">except</span><span class="p">:</span>
         <span class="nb">map</span><span class="p">[</span><span class="n">libs_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
@@ -1243,7 +1238,11 @@
         <span class="nb">map</span><span class="p">[</span><span class="n">TEMPLATE_DIR</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">template_dir</span><span class="p">()</span>
     <span class="k">except</span><span class="p">:</span>
         <span class="nb">map</span><span class="p">[</span><span class="n">TEMPLATE_DIR</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
-        
+  
+    <span class="nb">map</span><span class="p">[</span><span class="n">genesis_json_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">genesis_json</span><span class="p">()</span>
+    <span class="nb">map</span><span class="p">[</span><span class="n">nodeos_config_dir_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">nodeos_config_dir</span><span class="p">()</span>
+    <span class="nb">map</span><span class="p">[</span><span class="n">nodeos_data_dir_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">nodeos_data_dir</span><span class="p">()</span>
+    <span class="nb">map</span><span class="p">[</span><span class="n">nodeos_options_</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">nodeos_options</span><span class="p">()</span>
 
     <span class="nb">map</span><span class="p">[</span><span class="s2">&quot;EOSIO_VERSION&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">eosio_version</span><span class="p">()</span>
     <span class="nb">map</span><span class="p">[</span><span class="s2">&quot;EOSIO_CDT_VERSION&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">eosio_cpp_version</span><span class="p">()</span>
@@ -1380,13 +1379,11 @@
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -1404,13 +1401,13 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.3.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
     </div>
   </body>
 </html>

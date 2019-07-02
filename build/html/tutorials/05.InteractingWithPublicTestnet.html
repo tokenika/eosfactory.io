@@ -1,12 +1,10 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Interacting with Public Testnet &#8212; EOSFactory 3.2.0 documentation</title>
+    <meta charset="utf-8" />
+    <title>Interacting with Public Testnet &#8212; EOSFactory 3.3.0 documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
@@ -39,7 +37,7 @@
         <li class="right" >
           <a href="04.WorkingWithEOSContractsUsingEOSFactoryInVSC.html" title="Working with EOS Contracts using EOSFactory in Visual Studio Code"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.2.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.3.0 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -54,11 +52,11 @@
 <div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>This tutorial assumes that you have successfully installed <em>EOSFactory</em>. If it’s not the case, please refer to <a class="reference external" href="01.InstallingEOSFactory.html">Installing EOSFactory</a>.</li>
-<li>We assume that you are familiar with the material covered in <a class="reference external" href="02.InteractingWithEOSContractsInEOSFactory.html">Interacting with EOS Contracts in EOSFactory</a> and <a class="reference external" href="03.BuildingAndDeployingEOSContractsInEOSFactory.html">Building &amp; Deploying EOS Contracts using EOSFactory</a>.</li>
-<li>We also assume you have <a class="reference external" href="https://code.visualstudio.com/">Visual Studio Code</a> installed. If you are on Windows and run VSC for the first time, in order to get access to <em>Windows Subsystem for Linux</em> bash terminal inside VSC, navigate to <code class="docutils literal notranslate"><span class="pre">Preferences</span> <span class="pre">-&gt;</span> <span class="pre">Settings</span></code> and overwrite the default configuration for the <code class="docutils literal notranslate"><span class="pre">terminal.integrated.shell.windows</span></code> option: <br><br>
+<li><p>This tutorial assumes that you have successfully installed <em>EOSFactory</em>. If it’s not the case, please refer to <a class="reference external" href="01.InstallingEOSFactory.html">Installing EOSFactory</a>.</p></li>
+<li><p>We assume that you are familiar with the material covered in <a class="reference external" href="02.InteractingWithEOSContractsInEOSFactory.html">Interacting with EOS Contracts in EOSFactory</a> and <a class="reference external" href="03.BuildingAndDeployingEOSContractsInEOSFactory.html">Building &amp; Deploying EOS Contracts using EOSFactory</a>.</p></li>
+<li><p>We also assume you have <a class="reference external" href="https://code.visualstudio.com/">Visual Studio Code</a> installed. If you are on Windows and run VSC for the first time, in order to get access to <em>Windows Subsystem for Linux</em> bash terminal inside VSC, navigate to <code class="docutils literal notranslate"><span class="pre">Preferences</span> <span class="pre">-&gt;</span> <span class="pre">Settings</span></code> and overwrite the default configuration for the <code class="docutils literal notranslate"><span class="pre">terminal.integrated.shell.windows</span></code> option: <br><br>
 <code class="docutils literal notranslate"><span class="pre">&quot;terminal.integrated.shell.windows&quot;:</span> <span class="pre">&quot;C:\\Windows\\sysnative\\bash.exe&quot;</span></code><br><br>
-Alternatively, you can execute the command <code class="docutils literal notranslate"><span class="pre">bash</span></code> in the terminal.</li>
+Alternatively, you can execute the command <code class="docutils literal notranslate"><span class="pre">bash</span></code> in the terminal.</p></li>
 </ul>
 </div>
 <div class="section" id="the-problems-with-public-testnet">
@@ -75,8 +73,8 @@ Alternatively, you can execute the command <code class="docutils literal notrans
 <h3>Case 1: You do not have an account<a class="headerlink" href="#case-1-you-do-not-have-an-account" title="Permalink to this headline">¶</a></h3>
 <p>We recommend using the <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">eosfactory.register_testnet</span></code> script with the following two parameters:</p>
 <ul class="simple">
-<li>an URL of a <a class="reference external" href="https://monitor.jungletestnet.io/">public node</a> offering access to the testnet, e.g. <code class="docutils literal notranslate"><span class="pre">http://145.239.133.201:8888</span></code>,</li>
-<li>your preferred alias for the testnet, e.g. <code class="docutils literal notranslate"><span class="pre">myjungle</span></code>.</li>
+<li><p>an URL of a <a class="reference external" href="https://monitor.jungletestnet.io/">public node</a> offering access to the testnet, e.g. <code class="docutils literal notranslate"><span class="pre">http://145.239.133.201:8888</span></code>,</p></li>
+<li><p>your preferred alias for the testnet, e.g. <code class="docutils literal notranslate"><span class="pre">myjungle</span></code>.</p></li>
 </ul>
 <p>In our case the command looks like this:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 -m eosfactory.register_testnet http://145.239.133.201:8888 myjungle
@@ -90,7 +88,8 @@ Active Public Key: EOS8LQq1VDf1F5cBSdYvbott9GgsR7Bvz4ttR8A6RJiHDKsPdBY1c
 </div>
 <p>To complete the process, use the suggested account name and public keys (ignore the private keys) to register a new account on a public testnet. This account will serve as a master account for the <em>EOSFactory</em> testnet object.</p>
 <blockquote>
-<div><strong>NOTE:</strong> Make sure to use the testnet’s faucet to fund the newly created account with enough liquid EOS to be able to spawn other accounts, delegate CPU &amp; NET and buy RAM for them.</div></blockquote>
+<div><p><strong>NOTE:</strong> Make sure to use the testnet’s faucet to fund the newly created account with enough liquid EOS to be able to spawn other accounts, delegate CPU &amp; NET and buy RAM for them.</p>
+</div></blockquote>
 <p>When you are ready, type <code class="docutils literal notranslate"><span class="pre">go</span></code> to let the script verify that the newly created account has been registered properly with the testnet. Once this is done, the script proceeds to register the testnet with <em>EOSFactory</em>.</p>
 <p>If everything works fine, you should see a message similar to this:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>myjungle:  tcfchehyagd4 @ http://145.239.133.201:8888
@@ -102,11 +101,11 @@ Active Public Key: EOS8LQq1VDf1F5cBSdYvbott9GgsR7Bvz4ttR8A6RJiHDKsPdBY1c
 <p>We assume that you already have an account registered on a public testnet and this account is able to act as a master account for the <em>EOSFactory</em> testnet object, i.e. it’s funded with enough liquid EOS to be able to spawn other accounts, delegate CPU &amp; NET and buy RAM for them.</p>
 <p>We recommend using the <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">eosfactory.register_testnet</span></code> script with the following five parameters:</p>
 <ul class="simple">
-<li>an URL of a public node offering access to the testnet, e.g. <code class="docutils literal notranslate"><span class="pre">http://145.239.133.201:8888</span></code>,</li>
-<li>your preferred alias for the testnet, e.g. <code class="docutils literal notranslate"><span class="pre">myjungle</span></code>,</li>
-<li>your account name, as registered on the testnet, e.g. <code class="docutils literal notranslate"><span class="pre">tcfchehyagd4</span></code>,</li>
-<li>your account’s owner private key,</li>
-<li>your account’s active private key.</li>
+<li><p>an URL of a public node offering access to the testnet, e.g. <code class="docutils literal notranslate"><span class="pre">http://145.239.133.201:8888</span></code>,</p></li>
+<li><p>your preferred alias for the testnet, e.g. <code class="docutils literal notranslate"><span class="pre">myjungle</span></code>,</p></li>
+<li><p>your account name, as registered on the testnet, e.g. <code class="docutils literal notranslate"><span class="pre">tcfchehyagd4</span></code>,</p></li>
+<li><p>your account’s owner private key,</p></li>
+<li><p>your account’s active private key.</p></li>
 </ul>
 <p>In our case the command looks like this:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 -m eosfactory.register_testnet http://88.99.97.30:38888 myjungle -a tcfchehyagd4 5JBbCwe3t6j63yerYmguRVWg7ZVDY3nKXzGYMwkR9y5w4appKhk 5JYZU9xPS54NhnJrmgQWzVXxZCWpzsVUPS3SBZVZnsPUBFtV5YK
@@ -123,9 +122,9 @@ Active Public Key: EOS8LQq1VDf1F5cBSdYvbott9GgsR7Bvz4ttR8A6RJiHDKsPdBY1c
 <p>We assume here that for the purpose of unit testing you want to create a new account on the <a class="reference external" href="https://www.cryptokylin.io/">CryptoKylin Testnet</a>. If you want to use an exiting one, please refer to <em>Case 2</em> above.</p>
 <p>We recommend using the <code class="docutils literal notranslate"><span class="pre">eosfactory.register_testnet_via_faucet</span></code> script with the following three parameters:</p>
 <ul class="simple">
-<li>an URL of a public faucet, e.g. <code class="docutils literal notranslate"><span class="pre">http://faucet.cryptokylin.io</span></code>,</li>
-<li>an URL of a public node offering access to the testnet, e.g. <code class="docutils literal notranslate"><span class="pre">http://145.239.133.201:9999</span></code>,</li>
-<li>your preferred alias for the testnet, e.g. <code class="docutils literal notranslate"><span class="pre">mykylin</span></code>.</li>
+<li><p>an URL of a public faucet, e.g. <code class="docutils literal notranslate"><span class="pre">http://faucet.cryptokylin.io</span></code>,</p></li>
+<li><p>an URL of a public node offering access to the testnet, e.g. <code class="docutils literal notranslate"><span class="pre">http://145.239.133.201:9999</span></code>,</p></li>
+<li><p>your preferred alias for the testnet, e.g. <code class="docutils literal notranslate"><span class="pre">mykylin</span></code>.</p></li>
 </ul>
 <p>In our case the command looks like this:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 -m eosfactory.register_testnet_via_faucet http://faucet.cryptokylin.io http://145.239.133.201:9999 mykylin
@@ -180,10 +179,10 @@ mykylin:   xlg3pao3idlq @ https://api.kylin.alohaeos.com
 <p>If you have an account on a public testnet, you can skip the process of registering this testnet with <em>EOSFactory</em> and run a unit test directly, by using the <code class="docutils literal notranslate"><span class="pre">-t</span></code> (or <code class="docutils literal notranslate"><span class="pre">--testnet</span></code>) option.</p>
 <p>This option requires four parameters:</p>
 <ul class="simple">
-<li>an URL of a public node offering access to the testnet, e.g. <code class="docutils literal notranslate"><span class="pre">http://145.239.133.201:8888</span></code>,</li>
-<li>your account name, as registered on the testnet,</li>
-<li>your account’s owner private key,</li>
-<li>your account’s active private key.</li>
+<li><p>an URL of a public node offering access to the testnet, e.g. <code class="docutils literal notranslate"><span class="pre">http://145.239.133.201:8888</span></code>,</p></li>
+<li><p>your account name, as registered on the testnet,</p></li>
+<li><p>your account’s owner private key,</p></li>
+<li><p>your account’s active private key.</p></li>
 </ul>
 <p>In our case the command looks like this:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 tests/tic_tac_toe.py -t http://88.99.97.30:38888 dgxo1uyhoytn 5JE9XSurh4Bmdw8Ynz72Eh6ZCKrxf63SmQWKrYJSXf1dEnoiKFY 5JgLo7jZhmY4huDNXwExmaWQJqyS1hGZrnSjECcpWwGU25Ym8tA
@@ -231,13 +230,11 @@ mykylin:   xlg3pao3idlq @ https://api.kylin.alohaeos.com
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -261,12 +258,12 @@ mykylin:   xlg3pao3idlq @ https://api.kylin.alohaeos.com
         <li class="right" >
           <a href="04.WorkingWithEOSContractsUsingEOSFactoryInVSC.html" title="Working with EOS Contracts using EOSFactory in Visual Studio Code"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.2.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.3.0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
     </div>
   </body>
 </html>

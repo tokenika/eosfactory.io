@@ -1,12 +1,10 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>core.manager &#8212; EOSFactory 3.2.0 documentation</title>
+    <meta charset="utf-8" />
+    <title>core.manager &#8212; EOSFactory 3.3.0 documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
@@ -39,7 +37,7 @@
         <li class="right" >
           <a href="core.cleos_sys.html" title="core.cleos_sys"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.2.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.3.0 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -52,7 +50,7 @@
 <span id="core-manager"></span><h1>core.manager<a class="headerlink" href="#module-eosfactory.core.manager" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="eosfactory.core.manager.account_map">
-<code class="descclassname">eosfactory.core.manager.</code><code class="descname">account_map</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#account_map"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.account_map" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">eosfactory.core.manager.</code><code class="sig-name descname">account_map</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#account_map"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.account_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return json account map</p>
 <p>Attempt to open the account map file named <code class="docutils literal notranslate"><span class="pre">setup.account_map</span></code>, located
 in the wallet directory <code class="docutils literal notranslate"><span class="pre">config.keosd_wallet_dir()</span></code>, to return its json
@@ -63,19 +61,19 @@ editor. Return <code class="docutils literal notranslate"><span class="pre">None
 
 <dl class="function">
 <dt id="eosfactory.core.manager.clear_testnet_cache">
-<code class="descclassname">eosfactory.core.manager.</code><code class="descname">clear_testnet_cache</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#clear_testnet_cache"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.clear_testnet_cache" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">eosfactory.core.manager.</code><code class="sig-name descname">clear_testnet_cache</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#clear_testnet_cache"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.clear_testnet_cache" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove wallet files associated with the current testnet.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="eosfactory.core.manager.info">
-<code class="descclassname">eosfactory.core.manager.</code><code class="descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.info" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">eosfactory.core.manager.</code><code class="sig-name descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Display EOS node info.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="eosfactory.core.manager.read_map">
-<code class="descclassname">eosfactory.core.manager.</code><code class="descname">read_map</code><span class="sig-paren">(</span><em>file_name</em>, <em>text_editor='nano'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#read_map"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.read_map" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">eosfactory.core.manager.</code><code class="sig-name descname">read_map</code><span class="sig-paren">(</span><em class="sig-param">file_name</em>, <em class="sig-param">text_editor='nano'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#read_map"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.read_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return json account map</p>
 <p>Attempt to open the account map file named <code class="docutils literal notranslate"><span class="pre">setup.account_map</span></code>, located
 in the wallet directory <code class="docutils literal notranslate"><span class="pre">config.keosd_wallet_dir()</span></code>, to return its json
@@ -86,7 +84,7 @@ editor. Return <code class="docutils literal notranslate"><span class="pre">None
 
 <dl class="function">
 <dt id="eosfactory.core.manager.reset">
-<code class="descclassname">eosfactory.core.manager.</code><code class="descname">reset</code><span class="sig-paren">(</span><em>nodeos_stdout=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.reset" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">eosfactory.core.manager.</code><code class="sig-name descname">reset</code><span class="sig-paren">(</span><em class="sig-param">nodeos_stdout=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start clean the local EOSIO node.</p>
 <p>The procedure addresses problems with instabilities of EOSIO <em>nodeos</em>
 executable: it happens that it blocks itself on clean restart.</p>
@@ -121,47 +119,41 @@ the command line is printed, for <em>example</em>:</p>
 <p>The exemplary case is easy, it explains itself. Generally, the command
 line given can be executed in a <em>bash</em> terminal separately, in order to
 understand a problem.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>nodeos_stdout</strong> (<em>str</em>) – If set, a file where <em>stdout</em> stream of
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>nodeos_stdout</strong> (<em>str</em>) – If set, a file where <em>stdout</em> stream of
 the local <em>nodeos</em> is send. Note that the file can be included to
 the configuration of EOSFactory, see <a class="reference internal" href="core.config.html#eosfactory.core.config.nodeos_stdout" title="eosfactory.core.config.nodeos_stdout"><code class="xref py py-func docutils literal notranslate"><span class="pre">core.config.nodeos_stdout()</span></code></a>.
 If the file is set with the configuration, and in the same time
-it is set with this argument, the argument setting prevails.</td>
-</tr>
-</tbody>
-</table>
+it is set with this argument, the argument setting prevails.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="eosfactory.core.manager.resume">
-<code class="descclassname">eosfactory.core.manager.</code><code class="descname">resume</code><span class="sig-paren">(</span><em>nodeos_stdout=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#resume"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.resume" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">eosfactory.core.manager.</code><code class="sig-name descname">resume</code><span class="sig-paren">(</span><em class="sig-param">nodeos_stdout=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#resume"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.resume" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resume the local EOSIO node.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>nodeos_stdout</strong> (<em>str</em>) – If set, a file where <em>stdout</em> stream of
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>nodeos_stdout</strong> (<em>str</em>) – If set, a file where <em>stdout</em> stream of
 the local <em>nodeos</em> is send. Note that the file can be included to
 the configuration of EOSFactory, see <a class="reference internal" href="core.config.html#eosfactory.core.config.nodeos_stdout" title="eosfactory.core.config.nodeos_stdout"><code class="xref py py-func docutils literal notranslate"><span class="pre">core.config.nodeos_stdout()</span></code></a>.
 If the file is set with the configuration, and in the same time
-it is set with this argument, the argument setting prevails.</td>
-</tr>
-</tbody>
-</table>
+it is set with this argument, the argument setting prevails.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="eosfactory.core.manager.status">
-<code class="descclassname">eosfactory.core.manager.</code><code class="descname">status</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#status"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.status" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">eosfactory.core.manager.</code><code class="sig-name descname">status</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#status"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.status" title="Permalink to this definition">¶</a></dt>
 <dd><p>Display EOS node status.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="eosfactory.core.manager.stop">
-<code class="descclassname">eosfactory.core.manager.</code><code class="descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#stop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.stop" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">eosfactory.core.manager.</code><code class="sig-name descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#stop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.stop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stops keosd and all running EOSIO nodes.</p>
 </dd></dl>
 
@@ -187,13 +179,11 @@ it is set with this argument, the argument setting prevails.</td>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -217,12 +207,12 @@ it is set with this argument, the argument setting prevails.</td>
         <li class="right" >
           <a href="core.cleos_sys.html" title="core.cleos_sys"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.2.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.3.0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
     </div>
   </body>
 </html>

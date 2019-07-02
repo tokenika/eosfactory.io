@@ -1,12 +1,10 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Interacting with EOS Contracts in EOSFactory &#8212; EOSFactory 3.2.0 documentation</title>
+    <meta charset="utf-8" />
+    <title>Interacting with EOS Contracts in EOSFactory &#8212; EOSFactory 3.3.0 documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
@@ -39,7 +37,7 @@
         <li class="right" >
           <a href="01.InstallingEOSFactory.html" title="Installing EOSFactory"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.2.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.3.0 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -54,8 +52,8 @@
 <div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>This tutorial assumes that you have successfully installed <em>EOSFactory</em>. If it’s not the case, please refer to <a class="reference external" href="01.InstallingEOSFactory.html">Installing EOSFactory</a>.</li>
-<li>We also assume that you are familiar with the official <a class="reference external" href="https://developers.eos.io/eosio-cpp/docs/introduction-to-smart-contracts">EOS tutorials</a>, as they will give you a broader context and explain the rationale behind EOS smart-contracts.</li>
+<li><p>This tutorial assumes that you have successfully installed <em>EOSFactory</em>. If it’s not the case, please refer to <a class="reference external" href="01.InstallingEOSFactory.html">Installing EOSFactory</a>.</p></li>
+<li><p>We also assume that you are familiar with the official <a class="reference external" href="https://developers.eos.io/eosio-cpp/docs/introduction-to-smart-contracts">EOS tutorials</a>, as they will give you a broader context and explain the rationale behind EOS smart-contracts.</p></li>
 </ul>
 </div>
 <div class="section" id="run-python-cli">
@@ -112,7 +110,8 @@
 </pre></div>
 </div>
 <blockquote>
-<div><strong>NOTE:</strong> The name <code class="docutils literal notranslate"><span class="pre">master</span></code> is just a name of a variable, not the actual name of the account created on the blockchain. The actual (physical) name of the account is <code class="docutils literal notranslate"><span class="pre">str(master)</span></code>.</div></blockquote>
+<div><p><strong>NOTE:</strong> The name <code class="docutils literal notranslate"><span class="pre">master</span></code> is just a name of a variable, not the actual name of the account created on the blockchain. The actual (physical) name of the account is <code class="docutils literal notranslate"><span class="pre">str(master)</span></code>.</p>
+</div></blockquote>
 <p>You don’t need to worry about locking or unlocking the wallet, managing its password or importing private keys into it. All of this is being taken care of by EOS Factory behind the scenes.</p>
 </div>
 <div class="section" id="create-accounts">
@@ -124,13 +123,13 @@
 <blockquote>
 <div><p>Such actions happen while creating an account:</p>
 <ul class="simple">
-<li>the given account name is checked for uniqueness, if positive, break;</li>
-<li>a random physical name of the new account is determined;</li>
-<li>two pairs of cryptographic keys are produced;</li>
-<li>a wallet is opened and unlocked;</li>
-<li>two private keys are imported to the wallet;</li>
-<li>a new account is send to the blockchain;</li>
-<li>confirmation from the blockchain is received.</li>
+<li><p>the given account name is checked for uniqueness, if positive, break;</p></li>
+<li><p>a random physical name of the new account is determined;</p></li>
+<li><p>two pairs of cryptographic keys are produced;</p></li>
+<li><p>a wallet is opened and unlocked;</p></li>
+<li><p>two private keys are imported to the wallet;</p></li>
+<li><p>a new account is send to the blockchain;</p></li>
+<li><p>confirmation from the blockchain is received.</p></li>
 </ul>
 </div></blockquote>
 <p>Again, a global (in the current script) variable, this time called <code class="docutils literal notranslate"><span class="pre">charlie</span></code>, is created and from now on can be used anywhere in the code, for example:</p>
@@ -138,13 +137,15 @@
 </pre></div>
 </div>
 <blockquote>
-<div><strong>NOTE:</strong> If you don’t specify the <code class="docutils literal notranslate"><span class="pre">account_name</span></code> parameter in <code class="docutils literal notranslate"><span class="pre">create_account()</span></code> which is the third parameter, a random name is applied, which is useful on a public testnet where extra restrictions apply. You can see it: <code class="docutils literal notranslate"><span class="pre">str(charlie)</span></code></div></blockquote>
+<div><p><strong>NOTE:</strong> If you don’t specify the <code class="docutils literal notranslate"><span class="pre">account_name</span></code> parameter in <code class="docutils literal notranslate"><span class="pre">create_account()</span></code> which is the third parameter, a random name is applied, which is useful on a public testnet where extra restrictions apply. You can see it: <code class="docutils literal notranslate"><span class="pre">str(charlie)</span></code></p>
+</div></blockquote>
 <p>However, if you want to assign a specific name to an account, you can still do it, for example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">create_account</span><span class="p">(</span><span class="s2">&quot;charlie2&quot;</span><span class="p">,</span> <span class="n">master</span><span class="p">,</span> <span class="n">account_name</span><span class="o">=</span><span class="s2">&quot;charlie4eos&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <blockquote>
-<div><strong>NOTE:</strong> You cannot create the same account variable twice (EOSFactory protects yourself against non-uniqueness), that’s why we use a different name for the variable to be created, i.e. <code class="docutils literal notranslate"><span class="pre">charlie2</span></code>.</div></blockquote>
+<div><p><strong>NOTE:</strong> You cannot create the same account variable twice (EOSFactory protects yourself against non-uniqueness), that’s why we use a different name for the variable to be created, i.e. <code class="docutils literal notranslate"><span class="pre">charlie2</span></code>.</p>
+</div></blockquote>
 <p>And then run the <code class="docutils literal notranslate"><span class="pre">info()</span></code> command to verify that the <code class="docutils literal notranslate"><span class="pre">charlie4eos</span></code> name is actually assigned to the account referenced by the <code class="docutils literal notranslate"><span class="pre">charlie2</span></code> variable:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">charlie2</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
@@ -207,9 +208,11 @@
 </pre></div>
 </div>
 <blockquote>
-<div><strong>NOTE:</strong> The <code class="docutils literal notranslate"><span class="pre">push_action</span></code> method takes three arguments: the action’s name, the action’s arguments in JSON format and the accounts whose permission is needed, in this case <code class="docutils literal notranslate"><span class="pre">master</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">host</span></code>.</div></blockquote>
+<div><p><strong>NOTE:</strong> The <code class="docutils literal notranslate"><span class="pre">push_action</span></code> method takes three arguments: the action’s name, the action’s arguments in JSON format and the accounts whose permission is needed, in this case <code class="docutils literal notranslate"><span class="pre">master</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">host</span></code>.</p>
+</div></blockquote>
 <blockquote>
-<div><strong>NOTE:</strong> If you want to see the actual transaction without broadcasting it, use the <code class="docutils literal notranslate"><span class="pre">show_action</span></code> method instead of <code class="docutils literal notranslate"><span class="pre">push_action</span></code>, for example:</div></blockquote>
+<div><p><strong>NOTE:</strong> If you want to see the actual transaction without broadcasting it, use the <code class="docutils literal notranslate"><span class="pre">show_action</span></code> method instead of <code class="docutils literal notranslate"><span class="pre">push_action</span></code>, for example:</p>
+</div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">host</span><span class="o">.</span><span class="n">show_action</span><span class="p">(</span>
     <span class="s2">&quot;create&quot;</span><span class="p">,</span> 
     <span class="p">{</span>
@@ -242,7 +245,8 @@
 </pre></div>
 </div>
 <blockquote>
-<div><strong>NOTE:</strong> In this case the permission is assigned to the default <code class="docutils literal notranslate"><span class="pre">master</span></code> account.</div></blockquote>
+<div><p><strong>NOTE:</strong> In this case the permission is assigned to the default <code class="docutils literal notranslate"><span class="pre">master</span></code> account.</p>
+</div></blockquote>
 </div>
 <div class="section" id="transfer-tokens">
 <h2>Transfer tokens<a class="headerlink" href="#transfer-tokens" title="Permalink to this headline">¶</a></h2>
@@ -257,7 +261,8 @@
 </pre></div>
 </div>
 <blockquote>
-<div><strong>NOTE:</strong> As the third argument we pass the reference to the <code class="docutils literal notranslate"><span class="pre">alice</span></code> account to indicate that she is the one who authorized this action.</div></blockquote>
+<div><p><strong>NOTE:</strong> As the third argument we pass the reference to the <code class="docutils literal notranslate"><span class="pre">alice</span></code> account to indicate that she is the one who authorized this action.</p>
+</div></blockquote>
 </div>
 <div class="section" id="check-the-contract-table">
 <h2>Check the contract table<a class="headerlink" href="#check-the-contract-table" title="Permalink to this headline">¶</a></h2>
@@ -270,7 +275,8 @@
 </pre></div>
 </div>
 <blockquote>
-<div><strong>NOTE:</strong> The <code class="docutils literal notranslate"><span class="pre">table()</span></code> method takes two arguments: the name of the table as specified by the contract ABI and the scope within the contract in which the table is found.</div></blockquote>
+<div><p><strong>NOTE:</strong> The <code class="docutils literal notranslate"><span class="pre">table()</span></code> method takes two arguments: the name of the table as specified by the contract ABI and the scope within the contract in which the table is found.</p>
+</div></blockquote>
 <p>This is the result you should get for <code class="docutils literal notranslate"><span class="pre">alice</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="p">[{</span>
@@ -356,13 +362,11 @@
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -386,12 +390,12 @@
         <li class="right" >
           <a href="01.InstallingEOSFactory.html" title="Installing EOSFactory"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.2.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.3.0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
     </div>
   </body>
 </html>

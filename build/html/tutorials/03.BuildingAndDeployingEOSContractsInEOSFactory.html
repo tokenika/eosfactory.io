@@ -1,12 +1,10 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Building and Deploying EOS Contracts using EOSFactory &#8212; EOSFactory 3.2.0 documentation</title>
+    <meta charset="utf-8" />
+    <title>Building and Deploying EOS Contracts using EOSFactory &#8212; EOSFactory 3.3.0 documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
@@ -39,7 +37,7 @@
         <li class="right" >
           <a href="02.InteractingWithEOSContractsInEOSFactory.html" title="Interacting with EOS Contracts in EOSFactory"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.2.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.3.0 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -54,9 +52,9 @@
 <div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>This tutorial assumes that you have successfully installed <em>EOSFactory</em>. If it’s not the case, please refer to <a class="reference external" href="01.InstallingEOSFactory.html">Installing EOSFactory</a>.</li>
-<li>We also assume that you are familiar with the material covered in <a class="reference external" href="02.InteractingWithEOSContractsInEOSFactory.html">Interacting with EOS Contracts in EOSFactory</a>.</li>
-<li>Finally, we assume that you are familiar with the official <a class="reference external" href="https://developers.eos.io/eosio-cpp/docs/hello-world">EOS Hello World tutorial</a>.</li>
+<li><p>This tutorial assumes that you have successfully installed <em>EOSFactory</em>. If it’s not the case, please refer to <a class="reference external" href="01.InstallingEOSFactory.html">Installing EOSFactory</a>.</p></li>
+<li><p>We also assume that you are familiar with the material covered in <a class="reference external" href="02.InteractingWithEOSContractsInEOSFactory.html">Interacting with EOS Contracts in EOSFactory</a>.</p></li>
+<li><p>Finally, we assume that you are familiar with the official <a class="reference external" href="https://developers.eos.io/eosio-cpp/docs/hello-world">EOS Hello World tutorial</a>.</p></li>
 </ul>
 </div>
 <div class="section" id="run-python-cli-in-vsc">
@@ -77,7 +75,8 @@
 </pre></div>
 </div>
 <blockquote>
-<div><strong>NOTE:</strong> Do not use spaces in contract names. What is allowed are letters, numbers, underscores <code class="docutils literal notranslate"><span class="pre">_</span></code>, dots <code class="docutils literal notranslate"><span class="pre">.</span></code> and dashes <code class="docutils literal notranslate"><span class="pre">-</span></code>. Regarding the second parameter, as of now there are three templates to choose from (i.e. <code class="docutils literal notranslate"><span class="pre">hello_world</span></code>, <code class="docutils literal notranslate"><span class="pre">eosio_token</span></code> and <code class="docutils literal notranslate"><span class="pre">tic_tac_toe</span></code>), with more coming in the future. This parameter is optional, the default value is&nbsp;<code class="docutils literal notranslate"><span class="pre">hello_world</span></code>.</div></blockquote>
+<div><p><strong>NOTE:</strong> Do not use spaces in contract names. What is allowed are letters, numbers, underscores <code class="docutils literal notranslate"><span class="pre">_</span></code>, dots <code class="docutils literal notranslate"><span class="pre">.</span></code> and dashes <code class="docutils literal notranslate"><span class="pre">-</span> </code>. Regarding the second parameter, as of now there are three templates to choose from (i.e. <code class="docutils literal notranslate"><span class="pre">hello_world</span></code>, <code class="docutils literal notranslate"><span class="pre">eosio_token</span></code> and <code class="docutils literal notranslate"><span class="pre">tic_tac_toe</span></code>), with more coming in the future. This parameter is optional, the default value is <code class="docutils literal notranslate"><span class="pre">hello_world</span></code>.</p>
+</div></blockquote>
 </div>
 <div class="section" id="create-reference-to-an-existing-contract">
 <h2>Create reference to an existing contract<a class="headerlink" href="#create-reference-to-an-existing-contract" title="Permalink to this headline">¶</a></h2>
@@ -100,7 +99,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">contract_builder_foo</span><span class="o">.</span><span class="n">path</span><span class="p">())</span>
 </pre></div>
 </div>
-<p>Locate the folder containing the new contract (if you’re not sure where it is, use the output produced by the <code class="docutils literal notranslate"><span class="pre">contract_builder_foo.path</span></code> method) and edit the <code class="docutils literal notranslate"><span class="pre">foo.cpp</span></code> file in your favorite text editor by commenting out line <code class="docutils literal notranslate"><span class="pre">18</span></code>, i.e. <code class="docutils literal notranslate"><span class="pre">require_auth(</span> <span class="pre">user</span> <span class="pre">)</span></code>:</p>
+<p>Locate the folder containing the new contract (if you’re not sure where it is, use the output produced by the <code class="docutils literal notranslate"><span class="pre">contract_builder_foo.path</span></code> method) and edit the <code class="docutils literal notranslate"><span class="pre">foo.cpp</span></code> file in your favorite text editor by commenting out line <code class="docutils literal notranslate"><span class="pre">18</span></code>, i.e. <code class="docutils literal notranslate"><span class="pre">require_auth(</span> <span class="pre">user</span> <span class="pre">)</span> </code>:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;eosio/eosio.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;eosio/print.hpp&gt;</span><span class="cp"></span>
 
@@ -153,7 +152,8 @@
 </pre></div>
 </div>
 <blockquote>
-<div><strong>NOTE:</strong> In a similar way you could deploy a demo contract supplied by <em>EOSFactory</em>, for example:</div></blockquote>
+<div><p><strong>NOTE:</strong> In a similar way you could deploy a demo contract supplied by <em>EOSFactory</em>, for example:</p>
+</div></blockquote>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">contract_hello</span> <span class="o">=</span> <span class="n">Contract</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="s2">&quot;hello_world&quot;</span><span class="p">)</span>
 <span class="n">contract_hello</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
 <span class="n">contract_hello</span><span class="o">.</span><span class="n">deploy</span><span class="p">()</span>
@@ -183,9 +183,9 @@
 <blockquote>
 <div><p><strong>NOTE:</strong> The <code class="docutils literal notranslate"><span class="pre">push_action</span></code> method takes three parameters:</p>
 <ul class="simple">
-<li>the name of the action, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;hi&quot;</span></code>,</li>
-<li>the data required by the action, e.g. <code class="docutils literal notranslate"><span class="pre">{&quot;user&quot;:alice}</span></code>,</li>
-<li>the permissions required by the action, e.g. <code class="docutils literal notranslate"><span class="pre">alice</span></code>.</li>
+<li><p>the name of the action, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;hi&quot;</span></code>,</p></li>
+<li><p>the data required by the action, e.g. <code class="docutils literal notranslate"><span class="pre">{&quot;user&quot;:alice}</span></code>,</p></li>
+<li><p>the permissions required by the action, e.g. <code class="docutils literal notranslate"><span class="pre">alice</span></code>.</p></li>
 </ul>
 </div></blockquote>
 <p>Regarding permissions, <em>EOSFactory</em> offers several options:</p>
@@ -240,7 +240,8 @@ Ensure that you have the related authority inside your transaction!
 </pre></div>
 </div>
 <blockquote>
-<div><strong>NOTE:</strong> The above command removes the entire folder.</div></blockquote>
+<div><p><strong>NOTE:</strong> The above command removes the entire folder.</p>
+</div></blockquote>
 <p>To stop the testnet:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stop</span><span class="p">()</span>
 </pre></div>
@@ -290,13 +291,11 @@ Ensure that you have the related authority inside your transaction!
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -320,12 +319,12 @@ Ensure that you have the related authority inside your transaction!
         <li class="right" >
           <a href="02.InteractingWithEOSContractsInEOSFactory.html" title="Interacting with EOS Contracts in EOSFactory"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.2.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.3.0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
     </div>
   </body>
 </html>

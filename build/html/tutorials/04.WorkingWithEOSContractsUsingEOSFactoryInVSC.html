@@ -1,12 +1,10 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Working with EOS Contracts using EOSFactory in Visual Studio Code &#8212; EOSFactory 3.2.0 documentation</title>
+    <meta charset="utf-8" />
+    <title>Working with EOS Contracts using EOSFactory in Visual Studio Code &#8212; EOSFactory 3.3.0 documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
@@ -39,7 +37,7 @@
         <li class="right" >
           <a href="03.BuildingAndDeployingEOSContractsInEOSFactory.html" title="Building and Deploying EOS Contracts using EOSFactory"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.2.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.3.0 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -54,13 +52,13 @@
 <div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>This tutorial assumes that you have successfully installed <em>EOSFactory</em>. If it’s not the case, please refer to <a class="reference external" href="01.InstallingEOSFactory.html">Installing <em>EOSFactory</em></a>.</li>
-<li>We assume that you are familiar with the material covered in <a class="reference external" href="02.InteractingWithEOSContractsInEOSFactory.html">Interacting with EOS Contracts in <em>EOSFactory</em></a>.</li>
-<li>We also assume you have <a class="reference external" href="https://code.visualstudio.com/">Visual Studio Code</a> installed. If you are on Windows and run VSC for the first time, in order to get access to <em>Windows Subsystem for Linux</em> bash terminal inside VSC, navigate to <code class="docutils literal notranslate"><span class="pre">Preferences</span> <span class="pre">-&gt;</span> <span class="pre">Settings</span></code> and overwrite the default configuration for the <code class="docutils literal notranslate"><span class="pre">terminal.integrated.shell.windows</span></code> option: <br><br>
+<li><p>This tutorial assumes that you have successfully installed <em>EOSFactory</em>. If it’s not the case, please refer to <a class="reference external" href="01.InstallingEOSFactory.html">Installing <em>EOSFactory</em></a>.</p></li>
+<li><p>We assume that you are familiar with the material covered in <a class="reference external" href="02.InteractingWithEOSContractsInEOSFactory.html">Interacting with EOS Contracts in <em>EOSFactory</em></a>.</p></li>
+<li><p>We also assume you have <a class="reference external" href="https://code.visualstudio.com/">Visual Studio Code</a> installed. If you are on Windows and run VSC for the first time, in order to get access to <em>Windows Subsystem for Linux</em> bash terminal inside VSC, navigate to <code class="docutils literal notranslate"><span class="pre">Preferences</span> <span class="pre">-&gt;</span> <span class="pre">Settings</span></code> and overwrite the default configuration for the <code class="docutils literal notranslate"><span class="pre">terminal.integrated.shell.windows</span></code> option: <br><br>
 <code class="docutils literal notranslate"><span class="pre">&quot;terminal.integrated.shell.windows&quot;:</span> <span class="pre">&quot;C:\\Windows\\sysnative\\bash.exe&quot;</span></code><br><br>
-Alternatively, you can execute the command <code class="docutils literal notranslate"><span class="pre">bash</span></code> in the terminal.</li>
-<li>We assume that you have <a class="reference external" href="https://cmake.org/">cmake</a> installed.</li>
-<li>Finally, we assume that you are familiar with the official <a class="reference external" href="https://github.com/EOSIO/eos/wiki/Tutorial-Hello-World-Contract">EOS Hello World tutorial</a>, as it presents the standard way to compile and deploy smart-contracts in EOS. What we present here is an alternative.</li>
+Alternatively, you can execute the command <code class="docutils literal notranslate"><span class="pre">bash</span></code> in the terminal.</p></li>
+<li><p>We assume that you have <a class="reference external" href="https://cmake.org/">cmake</a> installed.</p></li>
+<li><p>Finally, we assume that you are familiar with the official <a class="reference external" href="https://github.com/EOSIO/eos/wiki/Tutorial-Hello-World-Contract">EOS Hello World tutorial</a>, as it presents the standard way to compile and deploy smart-contracts in EOS. What we present here is an alternative.</p></li>
 </ul>
 </div>
 <div class="section" id="create-a-new-smart-contract-vsc-project">
@@ -71,7 +69,8 @@ python3 -m eosfactory.create_project foo_bar hello_world
 </pre></div>
 </div>
 <blockquote>
-<div><strong>NOTE:</strong> If you are on Windows and have not restarted your WSL bash terminal after <em>EOSFactory</em> installation, you’ll need to do so before you execute this command (if you are using WSL bash terminal inside <em>Visual Studio Code</em>, restart your VSC instead).</div></blockquote>
+<div><p><strong>NOTE:</strong> If you are on Windows and have not restarted your WSL bash terminal after <em>EOSFactory</em> installation, you’ll need to do so before you execute this command (if you are using WSL bash terminal inside <em>Visual Studio Code</em>, restart your VSC instead).</p>
+</div></blockquote>
 <p>The first parameter (in our case <code class="docutils literal notranslate"><span class="pre">foo_bar</span></code>) is the name of your contract. It can be any name you want, provided there are no spaces in it. Letters, numbers, underscores <code class="docutils literal notranslate"><span class="pre">_</span></code>, dots <code class="docutils literal notranslate"><span class="pre">.</span></code> and dashes <code class="docutils literal notranslate"><span class="pre">-</span></code> are allowed.</p>
 <p>The second parameter (in our case <code class="docutils literal notranslate"><span class="pre">hello_world</span></code>) denotes the template from which the new contract will be created. As of now there are three templates to choose from (i.e. <code class="docutils literal notranslate"><span class="pre">hello_world</span></code>, <code class="docutils literal notranslate"><span class="pre">eosio_token</span></code> and <code class="docutils literal notranslate"><span class="pre">tic_tac_toe</span></code>), with more coming in the future. This parameter is optional, the default value is <code class="docutils literal notranslate"><span class="pre">hello_world</span></code>.</p>
 </div>
@@ -84,8 +83,9 @@ python3 -m eosfactory.create_project foo_bar hello_world --vsc
 </pre></div>
 </div>
 <blockquote>
-<div><strong>NOTE</strong> With the WSL (Windows Subsystem Unix), VSCode starts as a Windows application. Therefore a result of the above call is strange if VSCode has not access rights to the contract workspace.<br>
-The directory of the contract workspace can be seen and set with the command <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">eosfactory.config</span> <span class="pre">--workspace</span></code>.</div></blockquote>
+<div><p><strong>NOTE</strong> With the WSL (Windows Subsystem Unix), VSCode starts as a Windows application. Therefore a result of the above call is strange if VSCode has not access rights to the contract workspace.<br>
+The directory of the contract workspace can be seen and set with the command <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">eosfactory.config</span> <span class="pre">--workspace</span></code>.</p>
+</div></blockquote>
 </div>
 <div class="section" id="folder-structure">
 <h2>Folder structure<a class="headerlink" href="#folder-structure" title="Permalink to this headline">¶</a></h2>
@@ -93,16 +93,17 @@ The directory of the contract workspace can be seen and set with the command <co
 <p><img alt="../_images/file_structure.png" src="../_images/file_structure.png" /></p>
 <p>What you get is a complete smart-contract workspace with clear separation between smart-contract source code, build output files and unit tests. Everything is set up and ready to be built and unit tested:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">src</span></code> directory, the <code class="docutils literal notranslate"><span class="pre">cpp</span></code> files are there.</li>
-<li><code class="docutils literal notranslate"><span class="pre">include</span></code> directory, the <code class="docutils literal notranslate"><span class="pre">hpp</span></code> files are there.</li>
-<li><code class="docutils literal notranslate"><span class="pre">test</span></code> directory, test scripts are there.</li>
-<li><code class="docutils literal notranslate"><span class="pre">ricardian</span></code> contains the Ricardian contract files.</li>
-<li><code class="docutils literal notranslate"><span class="pre">.vscode</span></code> directory that contains <em>IntelliSense</em> definitions, task
-definitions, etc.</li>
-<li><code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file, CMake definitions.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src</span></code> directory, the <code class="docutils literal notranslate"><span class="pre">cpp</span></code> files are there.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">include</span></code> directory, the <code class="docutils literal notranslate"><span class="pre">hpp</span></code> files are there.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test</span></code> directory, test scripts are there.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ricardian</span></code> contains the Ricardian contract files.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.vscode</span></code> directory that contains <em>IntelliSense</em> definitions, task
+definitions, etc.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file, CMake definitions.</p></li>
 </ul>
 <blockquote>
-<div><strong>NOTE:</strong> You are free to change the literals, e.g. you can change the name of <code class="docutils literal notranslate"><span class="pre">test1</span></code> to some other name, but if you do so you’ll also have to update both the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">.vscode/tasks.json</span></code> files.</div></blockquote>
+<div><p><strong>NOTE:</strong> You are free to change the literals, e.g. you can change the name of <code class="docutils literal notranslate"><span class="pre">test1</span></code> to some other name, but if you do so you’ll also have to update both the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">.vscode/tasks.json</span></code> files.</p>
+</div></blockquote>
 </div>
 <div class="section" id="use-cmake-in-visual-studio-code">
 <h2>Use <em>CMake</em> in <em>Visual Studio Code</em><a class="headerlink" href="#use-cmake-in-visual-studio-code" title="Permalink to this headline">¶</a></h2>
@@ -140,7 +141,8 @@ Built target wast
 </pre></div>
 </div>
 <blockquote>
-<div><strong>NOTE:</strong> If the <code class="docutils literal notranslate"><span class="pre">ABI</span></code> file already exists in the <code class="docutils literal notranslate"><span class="pre">src</span></code> folder (you should keep it there, if you prefer to create it manually instead of relying on the <em>EOSIO</em> toolset) <em>CMake</em> will skip the <code class="docutils literal notranslate"><span class="pre">ABI</span></code> file generation step and proceed with <code class="docutils literal notranslate"><span class="pre">WASM</span></code> file generation.</div></blockquote>
+<div><p><strong>NOTE:</strong> If the <code class="docutils literal notranslate"><span class="pre">ABI</span></code> file already exists in the <code class="docutils literal notranslate"><span class="pre">src</span></code> folder (you should keep it there, if you prefer to create it manually instead of relying on the <em>EOSIO</em> toolset) <em>CMake</em> will skip the <code class="docutils literal notranslate"><span class="pre">ABI</span></code> file generation step and proceed with <code class="docutils literal notranslate"><span class="pre">WASM</span></code> file generation.</p>
+</div></blockquote>
 </div>
 <div class="section" id="unit-tests">
 <h3>Unit tests<a class="headerlink" href="#unit-tests" title="Permalink to this headline">¶</a></h3>
@@ -165,7 +167,8 @@ Total Test <span class="nb">time</span> <span class="o">(</span>real<span class=
 </pre></div>
 </div>
 <blockquote>
-<div><strong>NOTE:</strong> As you might have noticed, there are two types of unit tests: the standard ones (named <em>unittest1</em>, <em>unittest2</em>, etc) and ad-hoc ones (named <em>test1</em>, <em>test2</em>, etc). The reason for this duality is this: we find it useful to have standard unit tests to prove that things work as expected, and ad-hoc tests to investigate bugs and generally monitor the inner workings of a smart-contract. <em>EOSFactory</em> supports both, so you can choose whatever suits your needs.</div></blockquote>
+<div><p><strong>NOTE:</strong> As you might have noticed, there are two types of unit tests: the standard ones (named <em>unittest1</em>, <em>unittest2</em>, etc) and ad-hoc ones (named <em>test1</em>, <em>test2</em>, etc). The reason for this duality is this: we find it useful to have standard unit tests to prove that things work as expected, and ad-hoc tests to investigate bugs and generally monitor the inner workings of a smart-contract. <em>EOSFactory</em> supports both, so you can choose whatever suits your needs.</p>
+</div></blockquote>
 <p>Also, please note that an alternative way to run the tests is to invoke them as a Python executable file, for example, assuming bash in the root directory:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 tests/test1.py
 </pre></div>
@@ -182,14 +185,14 @@ Total Test <span class="nb">time</span> <span class="o">(</span>real<span class=
 <p>The advantage of using the <code class="docutils literal notranslate"><span class="pre">CLANG</span></code> compiler (as opposed to the <code class="docutils literal notranslate"><span class="pre">WASM</span></code> compiler) is that it runs faster and does not involve the linking process. Thus most of the errors in a smart-contract’s code can be spotted automatically by <code class="docutils literal notranslate"><span class="pre">CLANG</span></code>.</p>
 <p>To access automated task navigate to the <code class="docutils literal notranslate"><span class="pre">Tasks</span></code> top menu option:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">Build</span></code> results in building the contract, with the <code class="docutils literal notranslate"><span class="pre">ABI</span></code> and <code class="docutils literal notranslate"><span class="pre">WASM</span></code>
-files going to the <code class="docutils literal notranslate"><span class="pre">build</span></code> directory.</li>
-<li><code class="docutils literal notranslate"><span class="pre">Compile</span></code> results in compilation of the contract, without building
+<li><p><code class="docutils literal notranslate"><span class="pre">Build</span></code> results in building the contract, with the <code class="docutils literal notranslate"><span class="pre">ABI</span></code> and <code class="docutils literal notranslate"><span class="pre">WASM</span></code>
+files going to the <code class="docutils literal notranslate"><span class="pre">build</span></code> directory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Compile</span></code> results in compilation of the contract, without building
 (neither <code class="docutils literal notranslate"><span class="pre">ABI</span></code> nor <code class="docutils literal notranslate"><span class="pre">WASM</span></code> are produced), but code errors, if any,
-are listed.</li>
-<li><code class="docutils literal notranslate"><span class="pre">Test</span></code> executes the <code class="docutils literal notranslate"><span class="pre">test1.py</span></code> script.</li>
-<li><code class="docutils literal notranslate"><span class="pre">Unittest</span></code> executes the <code class="docutils literal notranslate"><span class="pre">unittest1.py</span></code> script.</li>
-<li><code class="docutils literal notranslate"><span class="pre">EOSIO</span> <span class="pre">API</span></code> opens the <a class="reference external" href="https://developers.eos.io/eosio-cpp/reference">EOSIO documentation</a>.</li>
+are listed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Test</span></code> executes the <code class="docutils literal notranslate"><span class="pre">test1.py</span></code> script.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Unittest</span></code> executes the <code class="docutils literal notranslate"><span class="pre">unittest1.py</span></code> script.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EOSIO</span> <span class="pre">API</span></code> opens the <a class="reference external" href="https://developers.eos.io/eosio-cpp/reference">EOSIO documentation</a>.</p></li>
 </ul>
 <div class="section" id="compile">
 <h3>Compile<a class="headerlink" href="#compile" title="Permalink to this headline">¶</a></h3>
@@ -217,7 +220,8 @@ are listed.</li>
 <p>You can also make use of VSC <a class="reference external" href="https://code.visualstudio.com/docs/editor/intellisense">IntelliSense</a> feature. Among other things, it allows you to inspect the context of any code element, including its definition and declaration.</p>
 <p><img alt="../_images/intelisense.png" src="../_images/intelisense.png" /></p>
 <blockquote>
-<div><strong>NOTE:</strong> For that to work you’ll need to install the C/C++ IntelliSense extension in VSC.</div></blockquote>
+<div><p><strong>NOTE:</strong> For that to work you’ll need to install the C/C++ IntelliSense extension in VSC.</p>
+</div></blockquote>
 </div>
 </div>
 
@@ -266,13 +270,11 @@ are listed.</li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -296,12 +298,12 @@ are listed.</li>
         <li class="right" >
           <a href="03.BuildingAndDeployingEOSContractsInEOSFactory.html" title="Building and Deploying EOS Contracts using EOSFactory"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.2.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.3.0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
     </div>
   </body>
 </html>

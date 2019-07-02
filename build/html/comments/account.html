@@ -1,12 +1,10 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Account Object &#8212; EOSFactory 3.2.0 documentation</title>
+    <meta charset="utf-8" />
+    <title>Account Object &#8212; EOSFactory 3.3.0 documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
@@ -39,7 +37,7 @@
         <li class="right" >
           <a href="symbolic_names.html" title="Symbolic Names"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.2.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.3.0 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -67,24 +65,28 @@ We present how to create an account object, associate it with a contract and the
 </pre></div>
 </div>
 <blockquote>
-<div><strong>NOTE</strong> If you write a script, you can use alternative syntax:</div></blockquote>
+<div><p><strong>NOTE</strong> If you write a script, you can use alternative syntax:</p>
+</div></blockquote>
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>MASTER = new_master_account()
 </pre></div>
 </div>
 <blockquote>
-<div>This syntax does not work interactively.</div></blockquote>
+<div><p>This syntax does not work interactively.</p>
+</div></blockquote>
 <p>Next, use the <code class="docutils literal notranslate"><span class="pre">MASTER</span></code> account to create another account referenced by a global variable called <code class="docutils literal notranslate"><span class="pre">HOST</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">create_account</span><span class="p">(</span><span class="s2">&quot;HOST&quot;</span><span class="p">,</span> <span class="n">MASTER</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The first argument is the name of variable to be created, the second one points to the <code class="docutils literal notranslate"><span class="pre">MASTER</span></code> account, which we created in the previous step.</p>
 <blockquote>
-<div><strong>NOTE</strong> If you write a script, you can use alternative syntax:</div></blockquote>
+<div><p><strong>NOTE</strong> If you write a script, you can use alternative syntax:</p>
+</div></blockquote>
 <div class="highlight-md notranslate"><div class="highlight"><pre><span></span>HOST = new_account(MASTER)
 </pre></div>
 </div>
 <blockquote>
-<div>This syntax does not work interactively.</div></blockquote>
+<div><p>This syntax does not work interactively.</p>
+</div></blockquote>
 <p>You can verify that the variable exists and its methods can be invoked, for example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">HOST</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
@@ -93,12 +95,12 @@ We present how to create an account object, associate it with a contract and the
 <p><img alt="../_images/create_account.png" src="../_images/create_account.png" />create account</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">create_account</span></code> command performs several tasks:</p>
 <ul class="simple">
-<li>verifies that a <code class="docutils literal notranslate"><span class="pre">Wallet</span></code> object exist in the namespace,</li>
-<li>verifies that the proposed variable name is not already taken,</li>
-<li>registers a new account on the testnet - this account has its own name generated randomly,</li>
-<li>using the proposed name, creates a global variable referencing the actual account on the testnet,</li>
-<li>opens the wallet, unlocks it and stores the account’s private keys into it,</li>
-<li>and finally, updates its internal statistics tracking all accounts created in a similar way.</li>
+<li><p>verifies that a <code class="docutils literal notranslate"><span class="pre">Wallet</span></code> object exist in the namespace,</p></li>
+<li><p>verifies that the proposed variable name is not already taken,</p></li>
+<li><p>registers a new account on the testnet - this account has its own name generated randomly,</p></li>
+<li><p>using the proposed name, creates a global variable referencing the actual account on the testnet,</p></li>
+<li><p>opens the wallet, unlocks it and stores the account’s private keys into it,</p></li>
+<li><p>and finally, updates its internal statistics tracking all accounts created in a similar way.</p></li>
 </ul>
 <p>All the above actions are logged to the terminal, which can be visible, provided the verbosity is set to its default value.</p>
 <div class="section" id="account-objects-reside-in-the-global-namespace">
@@ -138,10 +140,10 @@ EOSIO account, or two different local objects, if account objects could be not g
 <h2>Methods of the Account class<a class="headerlink" href="#methods-of-the-account-class" title="Permalink to this headline">¶</a></h2>
 <p>An instance of the <code class="docutils literal notranslate"><span class="pre">Account</span></code> class has the following methods:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">info()</span></code> - list the account’s information,</li>
-<li><code class="docutils literal notranslate"><span class="pre">push_action()</span></code> - push an action to the smart-contract,</li>
-<li><code class="docutils literal notranslate"><span class="pre">show_action()</span></code> - display a <code class="docutils literal notranslate"><span class="pre">JSON</span></code> file of a transaction without sending it to the blockchain,</li>
-<li><code class="docutils literal notranslate"><span class="pre">table()</span></code> - list the content of the local database associated with the smart-contract.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">info()</span></code> - list the account’s information,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">push_action()</span></code> - push an action to the smart-contract,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">show_action()</span></code> - display a <code class="docutils literal notranslate"><span class="pre">JSON</span></code> file of a transaction without sending it to the blockchain,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">table()</span></code> - list the content of the local database associated with the smart-contract.</p></li>
 </ul>
 <p><strong>NOTE:</strong> the <code class="docutils literal notranslate"><span class="pre">MASTER</span></code> account is an instance of a different class (i.e. the <code class="docutils literal notranslate"><span class="pre">AccountMaster</span></code> class) which does not implement the above methods. As a consequence, you cannot associate a smart-contract with an instance of the <code class="docutils literal notranslate"><span class="pre">AccountMaster</span></code> class.</p>
 <div class="section" id="create-a-contract-object">
@@ -230,13 +232,11 @@ EOSIO account, or two different local objects, if account objects could be not g
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -260,12 +260,12 @@ EOSIO account, or two different local objects, if account objects could be not g
         <li class="right" >
           <a href="symbolic_names.html" title="Symbolic Names"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.2.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.3.0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
     </div>
   </body>
 </html>

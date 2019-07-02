@@ -1,12 +1,10 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>eosfactory.core.teos &#8212; EOSFactory 3.2.0 documentation</title>
+    <meta charset="utf-8" />
+    <title>eosfactory.core.teos &#8212; EOSFactory 3.3.0 documentation</title>
     <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
@@ -31,7 +29,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.3.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
       </ul>
     </div>  
@@ -640,21 +638,6 @@
 
 
 <span class="k">def</span> <span class="nf">args</span><span class="p">(</span><span class="n">clear</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">data_dir</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">data_dir</span><span class="p">()</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="n">data_dir</span> <span class="o">=</span> <span class="kc">None</span>
-
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">config_dir</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">nodeos_config_dir</span><span class="p">()</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="n">config_dir</span> <span class="o">=</span> <span class="kc">None</span>
-
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">genesis_json</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">genesis_json</span><span class="p">()</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="n">genesis_json</span> <span class="o">=</span> <span class="kc">None</span>
-
     <span class="n">args_</span> <span class="o">=</span> <span class="p">[</span>
         <span class="s2">&quot;--http-server-address&quot;</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">http_server_address</span><span class="p">(),</span>
         <span class="s2">&quot;--chain-state-db-size-mb&quot;</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">chain_state_db_size_mb</span><span class="p">(),</span>
@@ -667,18 +650,19 @@
         <span class="s2">&quot;--plugin eosio::producer_plugin&quot;</span><span class="p">,</span>
         <span class="s2">&quot;--plugin eosio::chain_api_plugin&quot;</span><span class="p">,</span>
         <span class="s2">&quot;--plugin eosio::http_plugin&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;--plugin eosio::history_api_plugin&quot;</span>
     <span class="p">]</span>
-    <span class="k">if</span> <span class="n">config_dir</span><span class="p">:</span>
-        <span class="n">args_</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;--config-dir&quot;</span><span class="p">,</span> <span class="n">config_dir</span><span class="p">])</span>
-    <span class="k">if</span> <span class="n">data_dir</span><span class="p">:</span>
-        <span class="n">args_</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;--data-dir&quot;</span><span class="p">,</span> <span class="n">data_dir</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">nodeos_config_dir</span><span class="p">():</span>
+        <span class="n">args_</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;--config-dir&quot;</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">nodeos_config_dir</span><span class="p">()])</span>
+    <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">nodeos_data_dir</span><span class="p">():</span>
+        <span class="n">args_</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;--data-dir&quot;</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">nodeos_data_dir</span><span class="p">()])</span>
+    <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">nodeos_options</span><span class="p">():</span>
+        <span class="n">args_</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">nodeos_options</span><span class="p">())</span>
 
     <span class="k">if</span> <span class="n">clear</span><span class="p">:</span>
         <span class="n">node_stop</span><span class="p">()</span>
         <span class="n">args_</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;--delete-all-blocks&quot;</span><span class="p">])</span>
-        <span class="k">if</span> <span class="n">genesis_json</span><span class="p">:</span>
-            <span class="n">args_</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;--genesis-json&quot;</span><span class="p">,</span> <span class="n">genesis_json</span><span class="p">])</span>            
+        <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">genesis_json</span><span class="p">():</span>
+            <span class="n">args_</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;--genesis-json&quot;</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">genesis_json</span><span class="p">()])</span>     
     <span class="k">return</span> <span class="n">args_</span>
 
 
@@ -954,13 +938,11 @@
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -978,13 +960,13 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.3.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
     </div>
   </body>
 </html>
