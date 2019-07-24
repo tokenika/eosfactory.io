@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>core.cleos.sys &#8212; EOSFactory 3.4.0 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="core.manager" href="core.manager.html" />
+    <link rel="prev" title="core.cleos.set" href="core.cleos.set.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="core.manager.html" title="core.manager"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="core.cleos.set.html" title="core.cleos.set"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.4.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-eosfactory.core.cleos.sys">
+<span id="core-cleos-sys"></span><h1>core.cleos.sys<a class="headerlink" href="#module-eosfactory.core.cleos.sys" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="eosfactory.core.cleos.sys.BuyRam">
+<em class="property">class </em><code class="sig-prename descclassname">eosfactory.core.cleos.sys.</code><code class="sig-name descname">BuyRam</code><span class="sig-paren">(</span><em class="sig-param">payer</em>, <em class="sig-param">receiver</em>, <em class="sig-param">amount</em>, <em class="sig-param">buy_ram_kbytes=0</em>, <em class="sig-param">expiration_sec=None</em>, <em class="sig-param">skip_sign=0</em>, <em class="sig-param">dont_broadcast=0</em>, <em class="sig-param">force_unique=0</em>, <em class="sig-param">max_cpu_usage=0</em>, <em class="sig-param">max_net_usage=0</em>, <em class="sig-param">ref_block=None</em>, <em class="sig-param">delay_sec=0</em>, <em class="sig-param">is_verbose=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/cleos/sys.html#BuyRam"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.cleos.sys.BuyRam" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="core.cleos.base.html#eosfactory.core.cleos.base.Cleos" title="eosfactory.core.cleos.base.Cleos"><code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.core.cleos.base.Cleos</span></code></a></p>
+<p>Buy RAM.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>payer</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Account" title="eosfactory.core.interface.Account"><em>interface.Account</em></a>) – The account paying for RAM.</p></li>
+<li><p><strong>receiver</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Account" title="eosfactory.core.interface.Account"><em>interface.Account</em></a>) – The account receiving bought RAM.</p></li>
+<li><p><strong>amount</strong> (<em>int</em>) – The amount of EOS to pay for RAM, or number of kbytes
+of RAM if <code class="docutils literal notranslate"><span class="pre">buy_ram_kbytes</span></code> is set.</p></li>
+<li><p><strong>buy_ram_kbytes</strong> (<em>bool</em>) – If set, buy ram in number of kbytes.</p></li>
+</ul>
+</dd>
+</dl>
+<p>See definitions of the remaining parameters:     <a class="reference internal" href="core.cleos.base.html#eosfactory.core.cleos.base.common_parameters" title="eosfactory.core.cleos.base.common_parameters"><code class="xref py py-func docutils literal notranslate"><span class="pre">cleos.base.common_parameters()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="eosfactory.core.cleos.sys.DelegateBw">
+<em class="property">class </em><code class="sig-prename descclassname">eosfactory.core.cleos.sys.</code><code class="sig-name descname">DelegateBw</code><span class="sig-paren">(</span><em class="sig-param">payer</em>, <em class="sig-param">receiver</em>, <em class="sig-param">stake_net_quantity</em>, <em class="sig-param">stake_cpu_quantity</em>, <em class="sig-param">permission=None</em>, <em class="sig-param">transfer=False</em>, <em class="sig-param">expiration_sec=None</em>, <em class="sig-param">skip_sign=0</em>, <em class="sig-param">dont_broadcast=0</em>, <em class="sig-param">force_unique=0</em>, <em class="sig-param">max_cpu_usage=0</em>, <em class="sig-param">max_net_usage=0</em>, <em class="sig-param">ref_block=None</em>, <em class="sig-param">delay_sec=0</em>, <em class="sig-param">is_verbose=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/cleos/sys.html#DelegateBw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.cleos.sys.DelegateBw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="core.cleos.base.html#eosfactory.core.cleos.base.Cleos" title="eosfactory.core.cleos.base.Cleos"><code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.core.cleos.base.Cleos</span></code></a></p>
+<p>Delegate bandwidth.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>payer</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Account" title="eosfactory.core.interface.Account"><em>interface.Account</em></a>) – The account to delegate bandwidth
+from.</p></li>
+<li><p><strong>receiver</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Account" title="eosfactory.core.interface.Account"><em>interface.Account</em></a>) – The account to receive the
+delegated bandwidth.</p></li>
+<li><p><strong>stake_net_quantity</strong> (<em>int</em>) – The amount of EOS to stake for network bandwidth.</p></li>
+<li><p><strong>stake_cpu_quantity</strong> (<em>int</em>) – The amount of EOS to stake for CPU bandwidth.</p></li>
+<li><p><strong>transfer</strong> (<em>bool</em>) – Transfer voting power and right to unstake EOS to
+receiver.</p></li>
+</ul>
+</dd>
+</dl>
+<p>See definitions of the remaining parameters:     <a class="reference internal" href="core.cleos.base.html#eosfactory.core.cleos.base.common_parameters" title="eosfactory.core.cleos.base.common_parameters"><code class="xref py py-func docutils literal notranslate"><span class="pre">cleos.base.common_parameters()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="eosfactory.core.cleos.sys.SystemNewaccount">
+<em class="property">class </em><code class="sig-prename descclassname">eosfactory.core.cleos.sys.</code><code class="sig-name descname">SystemNewaccount</code><span class="sig-paren">(</span><em class="sig-param">creator</em>, <em class="sig-param">name</em>, <em class="sig-param">owner_key</em>, <em class="sig-param">active_key</em>, <em class="sig-param">stake_net</em>, <em class="sig-param">stake_cpu</em>, <em class="sig-param">permission=None</em>, <em class="sig-param">buy_ram_kbytes=0</em>, <em class="sig-param">buy_ram=''</em>, <em class="sig-param">transfer=False</em>, <em class="sig-param">expiration_sec=None</em>, <em class="sig-param">skip_sign=0</em>, <em class="sig-param">dont_broadcast=0</em>, <em class="sig-param">force_unique=0</em>, <em class="sig-param">max_cpu_usage=0</em>, <em class="sig-param">max_net_usage=0</em>, <em class="sig-param">ref_block=None</em>, <em class="sig-param">delay_sec=0</em>, <em class="sig-param">is_verbose=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/cleos/sys.html#SystemNewaccount"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.cleos.sys.SystemNewaccount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="core.interface.html#eosfactory.core.interface.Account" title="eosfactory.core.interface.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.core.interface.Account</span></code></a>, <a class="reference internal" href="core.cleos.base.html#eosfactory.core.cleos.base.Cleos" title="eosfactory.core.cleos.base.Cleos"><code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.core.cleos.base.Cleos</span></code></a></p>
+<p>Create an account, buy ram, stake for bandwidth for the account.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>creator</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Account" title="eosfactory.core.interface.Account"><em>interface.Account</em></a>) – The account creating
+the new account.</p></li>
+<li><p><strong>name</strong> – The name of the new account.</p></li>
+<li><p><strong>owner_key</strong> (<em>str</em>) – If set, the owner public key for the new account,
+otherwise random.</p></li>
+<li><p><strong>active_key</strong> (<em>str</em>) – If set, the active public key for the new account,
+otherwise random.</p></li>
+<li><p><strong>stake_net</strong> (<em>int</em>) – The amount of EOS delegated for net bandwidth.</p></li>
+<li><p><strong>stake_cpu</strong> (<em>int</em>) – The amount of EOS delegated for CPU bandwidth.</p></li>
+<li><p><strong>buy_ram</strong> (<em>str</em>) – The amount of RAM bytes to purchase for the new
+account in EOS.</p></li>
+<li><p><strong>buy_ram_kbytes</strong> (<em>int</em>) – The amount of RAM bytes to purchase for the new
+account in kibibytes (KiB)</p></li>
+<li><p><strong>transfer</strong> (<em>bool</em>) – Transfer voting power and right to unstake EOS to receiver.</p></li>
+</ul>
+</dd>
+</dl>
+<p>See definitions of the remaining parameters:     <a class="reference internal" href="core.cleos.base.html#eosfactory.core.cleos.base.common_parameters" title="eosfactory.core.cleos.base.common_parameters"><code class="xref py py-func docutils literal notranslate"><span class="pre">cleos.base.common_parameters()</span></code></a>.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="core.cleos.set.html"
+                        title="previous chapter">core.cleos.set</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="core.manager.html"
+                        title="next chapter">core.manager</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/rst/core.cleos.sys.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="core.manager.html" title="core.manager"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="core.cleos.set.html" title="core.cleos.set"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.4.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Tokenika.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>

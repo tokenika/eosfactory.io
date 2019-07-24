@@ -1,0 +1,224 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>utils &#8212; EOSFactory 3.4.0 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="shell.account" href="shell.account.html" />
+    <link rel="prev" title="Set Action Permission" href="../patterns/set/set_action_permission.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="shell.account.html" title="shell.account"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../patterns/set/set_action_permission.html" title="Set Action Permission"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.4.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-eosfactory.create_project">
+<span id="utils"></span><h1>utils<a class="headerlink" href="#module-eosfactory.create_project" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="eosfactory.create_project.main">
+<code class="sig-prename descclassname">eosfactory.create_project.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/create_project.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.create_project.main" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>usage: python3 -m eosfactory.create_project [-h] [–vsc]</dt><dd><p>[–throw] [–ovr] [–silent]
+name [template]</p>
+</dd>
+</dl>
+<p>Given a workspace name and (optional) a template name, create a new
+workspace, compatible with Visual Studio Code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – Project name or directory.</p></li>
+<li><p><strong>template</strong> – Template name or directory.</p></li>
+<li><p><strong>--c_cpp_prop</strong> – c_cpp_properties.json file path.</p></li>
+<li><p><strong>--includes</strong> – Comma-separated list of include folders.</p></li>
+<li><p><strong>--libs</strong> – Comma-separated list of libraries.</p></li>
+<li><p><strong>--vsc</strong> – Open Visual Studio Code.</p></li>
+<li><p><strong>--throw</strong> – Throw error if the project exists.</p></li>
+<li><p><strong>--ovr</strong> – Overwrite any existing project.</p></li>
+<li><p><strong>--silent</strong> – Do not print info.</p></li>
+<li><p><strong>-h</strong> – Show help message and exit</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-eosfactory.build"></span><dl class="function">
+<dt id="eosfactory.build.main">
+<code class="sig-prename descclassname">eosfactory.build.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/build.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.build.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build a contract.</p>
+<p>usage: python3 -m eosfactory.build [-h] [–compile] [–silent] dir</p>
+<p>The contract is determined with its project directory. The directory may be
+absolute or relative to the <em>contract workspace</em> directory as defined with
+<a class="reference internal" href="core.config.html#eosfactory.core.config.contract_workspace_dir" title="eosfactory.core.config.contract_workspace_dir"><code class="xref py py-func docutils literal notranslate"><span class="pre">core.config.contract_workspace_dir()</span></code></a>. If the <em>dir</em> argument is not set,
+it is substituted with the current working directory.</p>
+<p>The dependencies of the contract are determined with the json file given with the argument <em>c_cpp_prop</em> – if it is set – or with the file
+<em>.vscode/c_opp_properties.json</em> in the project’s directory, otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dir</strong> – Contract name or directory.</p></li>
+<li><p><strong>--c_cpp_prop</strong> – c_cpp_properties.json file path.</p></li>
+<li><p><strong>--compile</strong> – Do not build, compile only.</p></li>
+<li><p><strong>--test_options</strong> – Use test options, not code ones.</p></li>
+<li><p><strong>--execute</strong> – Execute the target.</p></li>
+<li><p><strong>--silent</strong> – Do not print info.</p></li>
+<li><p><strong>-h</strong> – Show help message and exit</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-eosfactory.testnets"></span><dl class="function">
+<dt id="eosfactory.testnets.main">
+<code class="sig-prename descclassname">eosfactory.testnets.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/testnets.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.testnets.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>usage: testnets.py [-h] [–name NAME] [–remove]</p>
+<p>List saved testnets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>--name</strong> – print a testent of the given name</p></li>
+<li><p><strong>--remove</strong> – remove a testent of the given name</p></li>
+<li><p><strong>-h</strong> – show help message and exit</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-eosfactory.register_testnet"></span><dl class="function">
+<dt id="eosfactory.register_testnet.main">
+<code class="sig-prename descclassname">eosfactory.register_testnet.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/register_testnet.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.register_testnet.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>usage: python3 -m eosfactory.register_testnet [-h]     [-a ACCOUNT ACCOUNT ACCOUNT] url [alias]</p>
+<p>Given an url and an testnet alias (not obligatory), get registration data.
+Apply the data to the registration form of the testnet. Enter ‘go’ when ready.</p>
+<p>Example using the jungle testnet <a class="reference external" href="https://monitor.jungletestnet.io/">https://monitor.jungletestnet.io/</a>:</p>
+<p>python3 -m eosfactory.register_testnet <a class="reference external" href="http://jungle2.cryptolions.io:80">http://jungle2.cryptolions.io:80</a> jungle</p>
+<p>If additional arguments are given, denoted as <code class="docutils literal notranslate"><span class="pre">--account</span></code>, then the given
+account is checked for existence, and then added as a testnet master
+account, for example:</p>
+<p>python3 -m eosfactory.register_testnet <a class="reference external" href="http://jungle2.cryptolions.io:80">http://jungle2.cryptolions.io:80</a> jungle -a
+dgxo1uyhoytn 5K4rezbmuoDUyBUntM3PqxwutPU3rYKrNzgF4f3djQDjfXF3Q67
+5JCvLMJVR24WWvC6qD6VbLpdUMsjhiXmcrk4i7bdPfjDfNMNAeX</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> – An URL of a public node offering access to the
+testnet, e.g. <a class="reference external" href="http://jungle2.cryptolions.io:80">http://jungle2.cryptolions.io:80</a></p></li>
+<li><p><strong>alias</strong> – Testnet alias</p></li>
+<li><p><strong>-h</strong> – show this help message and exit</p></li>
+<li><p><strong>-a</strong> (<em>ACCOUNT ACCOUNT ACCOUNT</em>) – &lt;name&gt; &lt;owner key&gt; &lt;active key&gt;</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-eosfactory.register_testnet_via_faucet"></span><dl class="function">
+<dt id="eosfactory.register_testnet_via_faucet.main">
+<code class="sig-prename descclassname">eosfactory.register_testnet_via_faucet.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/register_testnet_via_faucet.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.register_testnet_via_faucet.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>usage: python3 -m eosfactory.register_testnet_via_faucet [-h]     faucet url [alias]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>faucet</strong> – An URL of a public faucet for the testnet, e.g.
+<a class="reference external" href="http://faucet.cryptokylin.io">http://faucet.cryptokylin.io</a></p></li>
+<li><p><strong>url</strong> – An URL of a public node offering access to the testnet, e.g.
+<a class="reference external" href="https://api.kylin.alohaeos.com">https://api.kylin.alohaeos.com</a></p></li>
+<li><p><strong>alias</strong> – Testnet alias.</p></li>
+<li><p><strong>-h</strong> – Show help message and exit.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../patterns/set/set_action_permission.html"
+                        title="previous chapter">Set Action Permission</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="shell.account.html"
+                        title="next chapter">shell.account</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/rst/utils.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="shell.account.html" title="shell.account"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../patterns/set/set_action_permission.html" title="Set Action Permission"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.4.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Tokenika.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>

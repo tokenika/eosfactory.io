@@ -1,0 +1,504 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>core.cleos.base &#8212; EOSFactory 3.4.0 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="core.cleos.get" href="core.cleos.get.html" />
+    <link rel="prev" title="core.teos" href="core.teos.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="core.cleos.get.html" title="core.cleos.get"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="core.teos.html" title="core.teos"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.4.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="core-cleos-base">
+<h1>core.cleos.base<a class="headerlink" href="#core-cleos-base" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-eosfactory.core.cleos.base"></span><dl class="class">
+<dt id="eosfactory.core.cleos.base.Cleos">
+<em class="property">class </em><code class="sig-prename descclassname">eosfactory.core.cleos.base.</code><code class="sig-name descname">Cleos</code><span class="sig-paren">(</span><em class="sig-param">args</em>, <em class="sig-param">command_group</em>, <em class="sig-param">command</em>, <em class="sig-param">is_verbose=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/cleos/base.html#Cleos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.cleos.base.Cleos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A prototype for <em>EOSIO cleos</em> commands.
+Calls <em>EOSIO cleos</em>, and processes the responce.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>list</em>) – List of <em>EOSIO cleos</em> positionals and options.</p></li>
+<li><p><strong>command_group</strong> (<em>str</em>) – Command group name.</p></li>
+<li><p><strong>command</strong> (<em>str</em>) – Command name.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Variables</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>out_msg</strong> (<em>str</em>) – Responce received via the stdout stream.</p></li>
+<li><p><strong>out_msg_details</strong> (<em>str</em>) – Responce received via the stderr stream.</p></li>
+<li><p><strong>err_msg</strong> (<em>str</em>) – Error message received via the stderr stream.</p></li>
+<li><p><strong>json</strong> (<em>json</em>) – Responce received as JSON, if any.</p></li>
+<li><p><strong>is_verbose</strong> (<em>bool</em>) – If set, a message is printed.</p></li>
+<li><p><strong>args</strong> (<em>list</em>) – Value of the <em>args</em> argument.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="core.errors.html#eosfactory.core.errors.Error" title="eosfactory.core.errors.Error"><strong>core.errors.Error</strong></a> – If err_msg.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="eosfactory.core.cleos.base.Cleos.printself">
+<code class="sig-name descname">printself</code><span class="sig-paren">(</span><em class="sig-param">is_verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/cleos/base.html#Cleos.printself"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.cleos.base.Cleos.printself" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print a message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>is_verbose</strong> (<em>bool</em>) – If set, a message is printed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="eosfactory.core.cleos.base.CreateAccount">
+<em class="property">class </em><code class="sig-prename descclassname">eosfactory.core.cleos.base.</code><code class="sig-name descname">CreateAccount</code><span class="sig-paren">(</span><em class="sig-param">creator</em>, <em class="sig-param">name</em>, <em class="sig-param">owner_key</em>, <em class="sig-param">active_key=None</em>, <em class="sig-param">permission=None</em>, <em class="sig-param">expiration_sec=None</em>, <em class="sig-param">skip_sign=0</em>, <em class="sig-param">dont_broadcast=0</em>, <em class="sig-param">force_unique=0</em>, <em class="sig-param">max_cpu_usage=0</em>, <em class="sig-param">max_net_usage=0</em>, <em class="sig-param">ref_block=None</em>, <em class="sig-param">delay_sec=0</em>, <em class="sig-param">is_verbose=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/cleos/base.html#CreateAccount"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.cleos.base.CreateAccount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="core.interface.html#eosfactory.core.interface.Account" title="eosfactory.core.interface.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.core.interface.Account</span></code></a>, <a class="reference internal" href="#eosfactory.core.cleos.base.Cleos" title="eosfactory.core.cleos.base.Cleos"><code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.core.cleos.base.Cleos</span></code></a></p>
+<p>Create an account, buy ram, stake for bandwidth for the account.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>creator</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Account" title="eosfactory.core.interface.Account"><em>interface.Account</em></a>) – The account creating
+the new account.</p></li>
+<li><p><strong>name</strong> – (str) The name of the new account.</p></li>
+<li><p><strong>owner_key</strong> (<em>str</em>) – If set, the owner public key for the new account,
+otherwise random.</p></li>
+<li><p><strong>active_key</strong> (<em>str</em>) – If set, the active public key for the new account,
+otherwise random.</p></li>
+</ul>
+</dd>
+</dl>
+<p>See definitions of the remaining parameters:     <a class="reference internal" href="#eosfactory.core.cleos.base.common_parameters" title="eosfactory.core.cleos.base.common_parameters"><code class="xref py py-func docutils literal notranslate"><span class="pre">cleos.base.common_parameters()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="eosfactory.core.cleos.base.CreateKey">
+<em class="property">class </em><code class="sig-prename descclassname">eosfactory.core.cleos.base.</code><code class="sig-name descname">CreateKey</code><span class="sig-paren">(</span><em class="sig-param">key_public=None</em>, <em class="sig-param">key_private=None</em>, <em class="sig-param">r1=False</em>, <em class="sig-param">is_verbose=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/cleos/base.html#CreateKey"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.cleos.base.CreateKey" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="core.interface.html#eosfactory.core.interface.Key" title="eosfactory.core.interface.Key"><code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.core.interface.Key</span></code></a>, <a class="reference internal" href="#eosfactory.core.cleos.base.Cleos" title="eosfactory.core.cleos.base.Cleos"><code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.core.cleos.base.Cleos</span></code></a></p>
+<p>Create a new keypair and print the public and private keys.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key_private</strong> (<em>str</em>) – If set, a private key to set, otherwise random.</p></li>
+<li><p><strong>key_public</strong> (<em>str</em>) – If set, a public key to set, otherwise random.</p></li>
+<li><p><strong>r1</strong> – Generate a key using the R1 curve (iPhone), instead of the
+K1 curve (Bitcoin)</p></li>
+<li><p><strong>is_verbose</strong> (<em>bool</em>) – If <em>False</em> do not print. Default is <em>True</em>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Variables</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>key_private</strong> (<em>str</em>) – The private key set.</p></li>
+<li><p><strong>key_public</strong> (<em>str</em>) – The public key set.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="eosfactory.core.cleos.base.GetAccount">
+<em class="property">class </em><code class="sig-prename descclassname">eosfactory.core.cleos.base.</code><code class="sig-name descname">GetAccount</code><span class="sig-paren">(</span><em class="sig-param">account</em>, <em class="sig-param">is_info=True</em>, <em class="sig-param">is_verbose=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/cleos/base.html#GetAccount"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.cleos.base.GetAccount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="core.interface.html#eosfactory.core.interface.Account" title="eosfactory.core.interface.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.core.interface.Account</span></code></a>, <a class="reference internal" href="#eosfactory.core.cleos.base.Cleos" title="eosfactory.core.cleos.base.Cleos"><code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.core.cleos.base.Cleos</span></code></a></p>
+<p>Retrieve an account from the blockchain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>account</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Account" title="eosfactory.core.interface.Account"><em>interface.Account</em></a>) – The account to retrieve.</p></li>
+<li><p><strong>is_verbose</strong> (<em>bool</em>) – If <em>False</em> do not print. Default is <em>True</em>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Variables</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – The EOSIO name of the account.</p></li>
+<li><p><strong>owner_key</strong> (<em>str</em>) – </p></li>
+<li><p><strong>active_key</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="eosfactory.core.cleos.base.GetTransaction">
+<em class="property">class </em><code class="sig-prename descclassname">eosfactory.core.cleos.base.</code><code class="sig-name descname">GetTransaction</code><span class="sig-paren">(</span><em class="sig-param">transaction_id</em>, <em class="sig-param">block_hint=None</em>, <em class="sig-param">is_verbose=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/cleos/base.html#GetTransaction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.cleos.base.GetTransaction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#eosfactory.core.cleos.base.Cleos" title="eosfactory.core.cleos.base.Cleos"><code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.core.cleos.base.Cleos</span></code></a></p>
+<p>Retrieve a transaction from the blockchain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>transaction_id</strong> (<em>str</em>) – ID of the transaction to retrieve.</p></li>
+<li><p><strong>block_hint</strong> (<em>int</em>) – If set, the block number this transaction may be in.</p></li>
+<li><p><strong>is_verbose</strong> (<em>bool</em>) – If <em>False</em> do not print. Default is <em>True</em>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Variables</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>transaction_id</strong> – The ID of the transaction retrieved.</p></li>
+<li><p><strong>json</strong> – The transaction retrieved.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="eosfactory.core.cleos.base.PushAction">
+<em class="property">class </em><code class="sig-prename descclassname">eosfactory.core.cleos.base.</code><code class="sig-name descname">PushAction</code><span class="sig-paren">(</span><em class="sig-param">account</em>, <em class="sig-param">action</em>, <em class="sig-param">data</em>, <em class="sig-param">permission=None</em>, <em class="sig-param">expiration_sec=None</em>, <em class="sig-param">skip_sign=0</em>, <em class="sig-param">dont_broadcast=0</em>, <em class="sig-param">force_unique=0</em>, <em class="sig-param">max_cpu_usage=0</em>, <em class="sig-param">max_net_usage=0</em>, <em class="sig-param">ref_block=None</em>, <em class="sig-param">delay_sec=0</em>, <em class="sig-param">is_verbose=True</em>, <em class="sig-param">json=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/cleos/base.html#PushAction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.cleos.base.PushAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#eosfactory.core.cleos.base.Cleos" title="eosfactory.core.cleos.base.Cleos"><code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.core.cleos.base.Cleos</span></code></a></p>
+<p>Push a transaction with a single action.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>account</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Account" title="eosfactory.core.interface.Account"><em>interface.Account</em></a>) – The account to publish a contract
+for.</p></li>
+<li><p><strong>action</strong> (<em>str</em><em> or </em><em>json</em><em> or </em><em>filename</em>) – Definition of the action to execute on
+the contract.</p></li>
+<li><p><strong>data</strong> (<em>str</em>) – The arguments to the contract.</p></li>
+</ul>
+</dd>
+</dl>
+<p>See definitions of the remaining parameters:     <a class="reference internal" href="#eosfactory.core.cleos.base.common_parameters" title="eosfactory.core.cleos.base.common_parameters"><code class="xref py py-func docutils literal notranslate"><span class="pre">cleos.base.common_parameters()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>account_name</strong> (<em>str</em>) – The EOSIO name of the contract’s account.</p></li>
+<li><p><strong>console</strong> (<em>str</em>) – Sum of all <em>[“processed”][“action_traces”][][“console”]</em>             components of EOSIO cleos responce.</p></li>
+<li><p><strong>act</strong> (<em>str</em>) – Summary of all actions, like             <em>eosio.null::nonce &lt;= 5d0a572c49880500</em>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="eosfactory.core.cleos.base.RestoreAccount">
+<em class="property">class </em><code class="sig-prename descclassname">eosfactory.core.cleos.base.</code><code class="sig-name descname">RestoreAccount</code><span class="sig-paren">(</span><em class="sig-param">account</em>, <em class="sig-param">is_verbose=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/cleos/base.html#RestoreAccount"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.cleos.base.RestoreAccount" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#eosfactory.core.cleos.base.GetAccount" title="eosfactory.core.cleos.base.GetAccount"><code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.core.cleos.base.GetAccount</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="eosfactory.core.cleos.base.WalletCreate">
+<em class="property">class </em><code class="sig-prename descclassname">eosfactory.core.cleos.base.</code><code class="sig-name descname">WalletCreate</code><span class="sig-paren">(</span><em class="sig-param">name='default'</em>, <em class="sig-param">password=''</em>, <em class="sig-param">is_verbose=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/cleos/base.html#WalletCreate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.cleos.base.WalletCreate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="core.interface.html#eosfactory.core.interface.Wallet" title="eosfactory.core.interface.Wallet"><code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.core.interface.Wallet</span></code></a>, <a class="reference internal" href="#eosfactory.core.cleos.base.Cleos" title="eosfactory.core.cleos.base.Cleos"><code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.core.cleos.base.Cleos</span></code></a></p>
+<p>Create a new wallet locally.</p>
+<p>If the <em>password</em> argument is set, try to open a wallet. Otherwise, create
+a new wallet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – The name of the wallet, defaults to <em>default</em>.</p></li>
+<li><p><strong>password</strong> (<em>str</em>) – The password to the wallet, if the wallet exists.</p></li>
+<li><p><strong>is_verbose</strong> (<em>bool</em>) – If <em>False</em> do not print. Default is <em>True</em>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Variables</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – The name of the wallet.</p></li>
+<li><p><strong>password</strong> (<em>str</em>) – The password returned by the <em>wallet create</em>
+EOSIO cleos command.</p></li>
+<li><p><strong>is_created</strong> (<em>bool</em>) – True, if the wallet created.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="eosfactory.core.cleos.base.WalletImport">
+<em class="property">class </em><code class="sig-prename descclassname">eosfactory.core.cleos.base.</code><code class="sig-name descname">WalletImport</code><span class="sig-paren">(</span><em class="sig-param">key</em>, <em class="sig-param">wallet='default'</em>, <em class="sig-param">is_verbose=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/cleos/base.html#WalletImport"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.cleos.base.WalletImport" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#eosfactory.core.cleos.base.Cleos" title="eosfactory.core.cleos.base.Cleos"><code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.core.cleos.base.Cleos</span></code></a></p>
+<p>Import a private key into wallet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wallet</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Wallet" title="eosfactory.core.interface.Wallet"><em>interface.Wallet</em></a>) – A wallet to import key into.</p></li>
+<li><p><strong>key</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Key" title="eosfactory.core.interface.Key"><em>interface.Key</em></a>) – A key to import.</p></li>
+<li><p><strong>is_verbose</strong> (<em>bool</em>) – If <em>False</em> do not print. Default is <em>True</em>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Variables</dt>
+<dd class="field-even"><p><strong>key_private</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="eosfactory.core.cleos.base.WalletKeys">
+<em class="property">class </em><code class="sig-prename descclassname">eosfactory.core.cleos.base.</code><code class="sig-name descname">WalletKeys</code><span class="sig-paren">(</span><em class="sig-param">is_verbose=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/cleos/base.html#WalletKeys"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.cleos.base.WalletKeys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#eosfactory.core.cleos.base.Cleos" title="eosfactory.core.cleos.base.Cleos"><code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.core.cleos.base.Cleos</span></code></a></p>
+<p>List of public keys from all unlocked wallets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>is_verbose</strong> (<em>bool</em>) – If <em>False</em> do not print. Default is <em>True</em>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="eosfactory.core.cleos.base.WalletList">
+<em class="property">class </em><code class="sig-prename descclassname">eosfactory.core.cleos.base.</code><code class="sig-name descname">WalletList</code><span class="sig-paren">(</span><em class="sig-param">is_verbose=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/cleos/base.html#WalletList"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.cleos.base.WalletList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#eosfactory.core.cleos.base.Cleos" title="eosfactory.core.cleos.base.Cleos"><code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.core.cleos.base.Cleos</span></code></a></p>
+<p>List opened wallets, * marks unlocked.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>is_verbose</strong> (<em>bool</em>) – If <em>False</em> do not print. Default is <em>True</em>.</p>
+</dd>
+<dt class="field-even">Variables</dt>
+<dd class="field-even"><p><strong>json</strong> – The list of the open wallets.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="eosfactory.core.cleos.base.WalletLock">
+<em class="property">class </em><code class="sig-prename descclassname">eosfactory.core.cleos.base.</code><code class="sig-name descname">WalletLock</code><span class="sig-paren">(</span><em class="sig-param">wallet='default'</em>, <em class="sig-param">is_verbose=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/cleos/base.html#WalletLock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.cleos.base.WalletLock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#eosfactory.core.cleos.base.Cleos" title="eosfactory.core.cleos.base.Cleos"><code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.core.cleos.base.Cleos</span></code></a></p>
+<p>Lock wallet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wallet</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Wallet" title="eosfactory.core.interface.Wallet"><em>interface.Wallet</em></a>) – The wallet to open.</p></li>
+<li><p><strong>is_verbose</strong> (<em>bool</em>) – If <em>False</em> do not print. Default is <em>True</em>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="eosfactory.core.cleos.base.WalletLockAll">
+<em class="property">class </em><code class="sig-prename descclassname">eosfactory.core.cleos.base.</code><code class="sig-name descname">WalletLockAll</code><span class="sig-paren">(</span><em class="sig-param">is_verbose=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/cleos/base.html#WalletLockAll"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.cleos.base.WalletLockAll" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#eosfactory.core.cleos.base.Cleos" title="eosfactory.core.cleos.base.Cleos"><code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.core.cleos.base.Cleos</span></code></a></p>
+<p>Lock all unlocked wallets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>is_verbose</strong> (<em>bool</em>) – If <em>False</em> do not print. Default is <em>True</em>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="eosfactory.core.cleos.base.WalletOpen">
+<em class="property">class </em><code class="sig-prename descclassname">eosfactory.core.cleos.base.</code><code class="sig-name descname">WalletOpen</code><span class="sig-paren">(</span><em class="sig-param">wallet='default'</em>, <em class="sig-param">is_verbose=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/cleos/base.html#WalletOpen"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.cleos.base.WalletOpen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#eosfactory.core.cleos.base.Cleos" title="eosfactory.core.cleos.base.Cleos"><code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.core.cleos.base.Cleos</span></code></a></p>
+<p>Open an existing wallet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wallet</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Wallet" title="eosfactory.core.interface.Wallet"><em>interface.Wallet</em></a>) – The wallet to open.</p></li>
+<li><p><strong>is_verbose</strong> (<em>bool</em>) – If <em>False</em> do not print. Default is <em>True</em>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="eosfactory.core.cleos.base.WalletRemove_key">
+<em class="property">class </em><code class="sig-prename descclassname">eosfactory.core.cleos.base.</code><code class="sig-name descname">WalletRemove_key</code><span class="sig-paren">(</span><em class="sig-param">key</em>, <em class="sig-param">wallet</em>, <em class="sig-param">password</em>, <em class="sig-param">is_verbose=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/cleos/base.html#WalletRemove_key"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.cleos.base.WalletRemove_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#eosfactory.core.cleos.base.Cleos" title="eosfactory.core.cleos.base.Cleos"><code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.core.cleos.base.Cleos</span></code></a></p>
+<p>Remove key from wallet</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wallet</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Wallet" title="eosfactory.core.interface.Wallet"><em>interface.Wallet</em></a>) – The wallet to remove key from.</p></li>
+<li><p><strong>password</strong> (<em>str</em>) – The password returned by wallet create.</p></li>
+<li><p><strong>key</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Key" title="eosfactory.core.interface.Key"><em>interface.Key</em></a>) – A public key to remove.</p></li>
+<li><p><strong>is_verbose</strong> (<em>bool</em>) – If <em>False</em> do not print. Default is <em>True</em>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Variables</dt>
+<dd class="field-even"><p><strong>key_public</strong> (<em>str</em>) – The public key removed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="eosfactory.core.cleos.base.WalletStop">
+<em class="property">class </em><code class="sig-prename descclassname">eosfactory.core.cleos.base.</code><code class="sig-name descname">WalletStop</code><span class="sig-paren">(</span><em class="sig-param">is_verbose=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/cleos/base.html#WalletStop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.cleos.base.WalletStop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#eosfactory.core.cleos.base.Cleos" title="eosfactory.core.cleos.base.Cleos"><code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.core.cleos.base.Cleos</span></code></a></p>
+<p>Stop keosd, the EOSIO wallet manager.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>is_verbose</strong> (<em>bool</em>) – If <em>False</em> do not print. Default is <em>True</em>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="eosfactory.core.cleos.base.WalletUnlock">
+<em class="property">class </em><code class="sig-prename descclassname">eosfactory.core.cleos.base.</code><code class="sig-name descname">WalletUnlock</code><span class="sig-paren">(</span><em class="sig-param">wallet='default'</em>, <em class="sig-param">password=''</em>, <em class="sig-param">timeout=0</em>, <em class="sig-param">is_verbose=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/cleos/base.html#WalletUnlock"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.cleos.base.WalletUnlock" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#eosfactory.core.cleos.base.Cleos" title="eosfactory.core.cleos.base.Cleos"><code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.core.cleos.base.Cleos</span></code></a></p>
+<p>Unlock wallet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wallet</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Wallet" title="eosfactory.core.interface.Wallet"><em>interface.Wallet</em></a>) – The wallet to remove key from.</p></li>
+<li><p><strong>password</strong> (<em>str</em>) – The password returned by wallet create.</p></li>
+<li><p><strong>is_verbose</strong> (<em>bool</em>) – If <em>False</em> do not print. Default is <em>True</em>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.cleos.base.account_name">
+<code class="sig-prename descclassname">eosfactory.core.cleos.base.</code><code class="sig-name descname">account_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/cleos/base.html#account_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.cleos.base.account_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a random EOSIO account name.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.cleos.base.common_parameters">
+<code class="sig-prename descclassname">eosfactory.core.cleos.base.</code><code class="sig-name descname">common_parameters</code><span class="sig-paren">(</span><em class="sig-param">permission=None</em>, <em class="sig-param">expiration_sec=None</em>, <em class="sig-param">skip_sign=False</em>, <em class="sig-param">dont_broadcast=False</em>, <em class="sig-param">force_unique=False</em>, <em class="sig-param">max_cpu_usage=0</em>, <em class="sig-param">max_net_usage=0</em>, <em class="sig-param">ref_block=None</em>, <em class="sig-param">delay_sec=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/cleos/base.html#common_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.cleos.base.common_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Common parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>permission</strong> (<a class="reference internal" href="core.interface.html#eosfactory.core.interface.Account" title="eosfactory.core.interface.Account"><em>interface.Account</em></a><em> or </em><em>str</em><em> or </em><em>(</em><em>str</em><em>, </em><em>str</em><em>) or             </em><em>(</em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Account" title="eosfactory.core.interface.Account"><em>interface.Account</em></a><em>, </em><em>str</em><em>) or </em><em>any list of the previous items.</em>) – An account and permission level to authorize.</p>
+</dd>
+</dl>
+<p>Exemplary values of the argument <em>permission</em>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eosio</span> <span class="c1"># eosio is interface.Account object</span>
+
+<span class="s2">&quot;eosio@owner&quot;</span>
+
+<span class="p">(</span><span class="s2">&quot;eosio&quot;</span><span class="p">,</span> <span class="s2">&quot;owner&quot;</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">eosio</span><span class="p">,</span> <span class="n">interface</span><span class="o">.</span><span class="n">Permission</span><span class="o">.</span><span class="n">ACTIVE</span><span class="p">)</span>
+
+<span class="p">[</span><span class="s2">&quot;eosio@owner&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">eosio</span><span class="p">,</span> <span class="o">.</span><span class="n">Permission</span><span class="o">.</span><span class="n">ACTIVE</span><span class="p">)]</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expiration</strong> (<em>int</em>) – The time in seconds before a transaction expires,
+defaults to 30s</p></li>
+<li><p><strong>skip_sign</strong> (<em>bool</em>) – Specify if unlocked wallet keys should be used to
+sign transaction.</p></li>
+<li><p><strong>dont_broadcast</strong> (<em>bool</em>) – Don’t broadcast transaction to the network
+(just print).</p></li>
+<li><p><strong>force_unique</strong> (<em>bool</em>) – Force the transaction to be unique. This will
+consume extra bandwidth and remove any protections against
+accidentally issuing the same transaction multiple times.</p></li>
+<li><p><strong>max_cpu_usage</strong> (<em>int</em>) – Upper limit on the milliseconds of cpu usage budget,
+for the execution of the transaction (defaults to 0 which means no limit).</p></li>
+<li><p><strong>max_net_usage</strong> (<em>int</em>) – Upper limit on the net usage budget, in bytes, for the
+transaction (defaults to 0 which means no limit).</p></li>
+<li><p><strong>ref_block</strong> (<em>int</em>) – The reference block num or block id used for TAPOS
+(Transaction as Proof-of-Stake).</p></li>
+<li><p><strong>delay_sec</strong> – The delay in seconds, defaults to 0s.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.cleos.base.contract_is_built">
+<code class="sig-prename descclassname">eosfactory.core.cleos.base.</code><code class="sig-name descname">contract_is_built</code><span class="sig-paren">(</span><em class="sig-param">contract_dir</em>, <em class="sig-param">wasm_file=None</em>, <em class="sig-param">abi_file=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/cleos/base.html#contract_is_built"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.cleos.base.contract_is_built" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check whether the given contract project has its ABI and WASM files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>contract_dir</strong> (<em>str</em>) – A hint to the project root directory.</p></li>
+<li><p><strong>wasm_file</strong> (<em>str</em>) – If set, the WASM file.</p></li>
+<li><p><strong>abi_file</strong> (<em>str</em>) – If set, the ABI file.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>[&lt;absolute contract dir&gt;, &lt;wasm file&gt;, &lt;abi file&gt;]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="core.teos.html"
+                        title="previous chapter">core.teos</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="core.cleos.get.html"
+                        title="next chapter">core.cleos.get</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/rst/core.cleos.base.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="core.cleos.get.html" title="core.cleos.get"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="core.teos.html" title="core.teos"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.4.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Tokenika.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>

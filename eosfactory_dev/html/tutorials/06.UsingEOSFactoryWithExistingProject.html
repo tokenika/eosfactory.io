@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Using EOSFactory With an Existing EOS Smart-Contract Project &#8212; EOSFactory 3.4.0 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Exchanging EOSIO Contract Projects" href="ExchangingContractProject.html" />
+    <link rel="prev" title="Interacting with Public Testnet" href="05.InteractingWithPublicTestnet.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ExchangingContractProject.html" title="Exchanging EOSIO Contract Projects"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="05.InteractingWithPublicTestnet.html" title="Interacting with Public Testnet"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.4.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="using-eosfactory-with-an-existing-eos-smart-contract-project">
+<h1>Using EOSFactory With an Existing EOS Smart-Contract Project<a class="headerlink" href="#using-eosfactory-with-an-existing-eos-smart-contract-project" title="Permalink to this headline">¶</a></h1>
+<p>The purpose of this tutorial is to demonstrate how to apply <em>EOSFactory</em> to an existing EOS smart-contract project with an arbitrary folder structure.</p>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>This tutorial assumes that you have successfully installed <em>EOSFactory</em>. If it’s not the case, please refer to <a class="reference external" href="01.InstallingEOSFactory.html">Installing EOSFactory</a>.</p></li>
+<li><p>Your smart-contract project is located inside a folder named <code class="docutils literal notranslate"><span class="pre">foo_project</span></code>.</p></li>
+<li><p>Your smart-contract’s C++ source code is contained in a file named <code class="docutils literal notranslate"><span class="pre">foo_source.cpp</span></code>, located anywhere inside the <code class="docutils literal notranslate"><span class="pre">foo_project</span></code> folder (it can also be located in a subfolder inside the <code class="docutils literal notranslate"><span class="pre">foo_project</span></code> folder).</p></li>
+<li><p>If your project requires a C++ header file, it’s contained in a file named <code class="docutils literal notranslate"><span class="pre">foo_header.hpp</span></code>, located anywhere inside the <code class="docutils literal notranslate"><span class="pre">foo_project</span></code> folder (it can also be located in a subfolder inside the <code class="docutils literal notranslate"><span class="pre">foo_project</span></code> folder).</p></li>
+<li><p>A test scenario for your contract is contained in a file named <code class="docutils literal notranslate"><span class="pre">foo_test.py</span></code>. This file can be located anywhere you want - it doesn’t need to be inside the <code class="docutils literal notranslate"><span class="pre">foo_project</span></code> folder.</p></li>
+</ul>
+<p><strong>NOTE:</strong> Obviously, <code class="docutils literal notranslate"><span class="pre">foo_project</span></code>, <code class="docutils literal notranslate"><span class="pre">foo_source</span></code>, <code class="docutils literal notranslate"><span class="pre">foo_header</span></code> and <code class="docutils literal notranslate"><span class="pre">foo_test</span></code> are placeholders - they can be replaced by any names you prefer.</p>
+<p><strong>NOTE:</strong> We assume there is only one C++ source code file (i.e. an  <code class="docutils literal notranslate"><span class="pre">*.cpp</span></code> file) within the <code class="docutils literal notranslate"><span class="pre">foo_project</span></code> folder. If your project for some reasons requires more than one <code class="docutils literal notranslate"><span class="pre">*.cpp</span></code> file, <em>EOSFactory</em> can handle this situation but it requires a more complex setup, which is beyond the scope of this guide.</p>
+</div>
+<div class="section" id="create-a-test-script">
+<h2>Create a test script<a class="headerlink" href="#create-a-test-script" title="Permalink to this headline">¶</a></h2>
+<p>A test scenario contained in the <code class="docutils literal notranslate"><span class="pre">foo_test.py</span></code> file needs to be expressed as a  Python script.</p>
+<p>Firstly, make sure the <code class="docutils literal notranslate"><span class="pre">foo_test.py</span></code> file contains the following import clause:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">eosfactory.eosf</span> <span class="k">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>Secondly, make sure the <code class="docutils literal notranslate"><span class="pre">foo_test.py</span></code> file defines a string constant named <code class="docutils literal notranslate"><span class="pre">PROJECT_DIR</span></code> equal to the absolute path of the <code class="docutils literal notranslate"><span class="pre">foo_project</span></code> folder, i.e. it contains an expression like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PROJECT_DIR</span> <span class="o">=</span> <span class="s2">&quot;/path/to/foo_project/&quot;</span>
+</pre></div>
+</div>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">PROJECT_DIR</span></code> constant is needed because it is then used to define a variable that holds a reference to the contract:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">Contract</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">PROJECT_DIR</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And here is a complete (yet trivial) example of a valid <code class="docutils literal notranslate"><span class="pre">foo_test.py</span></code> file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">eosfactory.eosf</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="n">PROJECT_DIR</span> <span class="o">=</span> <span class="s2">&quot;/mnt/c/Workspaces/EOS/foo_project/&quot;</span>
+
+<span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+    <span class="n">reset</span><span class="p">()</span>
+    
+    <span class="n">master</span> <span class="o">=</span> <span class="n">new_master_account</span><span class="p">()</span>
+    <span class="n">host</span> <span class="o">=</span> <span class="n">new_account</span><span class="p">(</span><span class="n">master</span><span class="p">)</span>
+    
+    <span class="n">c</span> <span class="o">=</span> <span class="n">Contract</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">PROJECT_DIR</span><span class="p">)</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">deploy</span><span class="p">()</span>
+
+    <span class="n">alice</span> <span class="o">=</span> <span class="n">new_account</span><span class="p">(</span><span class="n">master</span><span class="p">)</span>
+    <span class="n">host</span><span class="o">.</span><span class="n">push_action</span><span class="p">(</span>
+        <span class="s2">&quot;hi&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;user&quot;</span><span class="p">:</span><span class="n">alice</span><span class="p">},</span> 
+        <span class="n">permission</span><span class="o">=</span><span class="p">(</span><span class="n">alice</span><span class="p">,</span> <span class="n">Permission</span><span class="o">.</span><span class="n">ACTIVE</span><span class="p">))</span>
+
+    <span class="k">assert</span><span class="p">(</span><span class="s2">&quot;alice&quot;</span> <span class="ow">in</span> <span class="n">DEBUG</span><span class="p">())</span>
+
+    <span class="n">stop</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">test</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>For less trivial examples of test scenarios, please refer to examples listed in <a class="reference external" href="https://github.com/tokenika/eosfactory/tree/master/contracts">this folder</a>.</p>
+</div>
+<div class="section" id="run-the-test-script">
+<h2>Run the test script<a class="headerlink" href="#run-the-test-script" title="Permalink to this headline">¶</a></h2>
+<p>To run your test script, you simply run the <code class="docutils literal notranslate"><span class="pre">foo_test.py</span></code> file with your <code class="docutils literal notranslate"><span class="pre">python3</span></code> executable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">test</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">foo_test</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="interact-with-your-contract">
+<h2>Interact with your contract<a class="headerlink" href="#interact-with-your-contract" title="Permalink to this headline">¶</a></h2>
+<p>If you want to manually interact with your smart-contract via <em>EOSFactory</em>, first run the Python CLI:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span>
+</pre></div>
+</div>
+<p>Inside the Python CLI initialize a local testnet, create a reference to your smart-contract, then build it, and finally deploy it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">eosfactory.eosf</span> <span class="k">import</span> <span class="o">*</span>
+<span class="n">reset</span><span class="p">()</span>
+<span class="n">create_master_account</span><span class="p">(</span><span class="s2">&quot;master&quot;</span><span class="p">)</span>
+<span class="n">create_account</span><span class="p">(</span><span class="s2">&quot;host&quot;</span><span class="p">,</span> <span class="n">master</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">Contract</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="s2">&quot;/path/to/foo_project/&quot;</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">deploy</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>At this stage you are ready to interact with your smart-contract, referring to it either by its hosting account, e.g.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">host</span><span class="o">.</span><span class="n">push_action</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="p">{</span><span class="o">...</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>…or directly by its variable, e.g.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">push_action</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="p">{</span><span class="o">...</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>To stop the local testnet run:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>And to exit the Python CLI:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>exit<span class="o">()</span>
+</pre></div>
+</div>
+<p>Alternatively, use the <code class="docutils literal notranslate"><span class="pre">ctrl-D</span></code> shortcut.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Using EOSFactory With an Existing EOS Smart-Contract Project</a><ul>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference internal" href="#create-a-test-script">Create a test script</a></li>
+<li><a class="reference internal" href="#run-the-test-script">Run the test script</a></li>
+<li><a class="reference internal" href="#interact-with-your-contract">Interact with your contract</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="05.InteractingWithPublicTestnet.html"
+                        title="previous chapter">Interacting with Public Testnet</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ExchangingContractProject.html"
+                        title="next chapter">Exchanging EOSIO Contract Projects</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/tutorials/06.UsingEOSFactoryWithExistingProject.md.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ExchangingContractProject.html" title="Exchanging EOSIO Contract Projects"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="05.InteractingWithPublicTestnet.html" title="Interacting with Public Testnet"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.4.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Tokenika.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>

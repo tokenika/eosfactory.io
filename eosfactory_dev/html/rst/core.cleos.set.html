@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>core.cleos.set &#8212; EOSFactory 3.4.0 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="core.cleos.sys" href="core.cleos.sys.html" />
+    <link rel="prev" title="core.cleos.get" href="core.cleos.get.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="core.cleos.sys.html" title="core.cleos.sys"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="core.cleos.get.html" title="core.cleos.get"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.4.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-eosfactory.core.cleos.set">
+<span id="core-cleos-set"></span><h1>core.cleos.set<a class="headerlink" href="#module-eosfactory.core.cleos.set" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="eosfactory.core.cleos.set.SetAccountPermission">
+<em class="property">class </em><code class="sig-prename descclassname">eosfactory.core.cleos.set.</code><code class="sig-name descname">SetAccountPermission</code><span class="sig-paren">(</span><em class="sig-param">account</em>, <em class="sig-param">permission_name</em>, <em class="sig-param">authority=None</em>, <em class="sig-param">parent_permission_name=None</em>, <em class="sig-param">permission=None</em>, <em class="sig-param">add_code=False</em>, <em class="sig-param">remove_code=False</em>, <em class="sig-param">expiration_sec=None</em>, <em class="sig-param">skip_sign=0</em>, <em class="sig-param">dont_broadcast=0</em>, <em class="sig-param">return_packed=0</em>, <em class="sig-param">force_unique=0</em>, <em class="sig-param">max_cpu_usage=0</em>, <em class="sig-param">max_net_usage=0</em>, <em class="sig-param">ref_block=None</em>, <em class="sig-param">delay_sec=0</em>, <em class="sig-param">is_verbose=True</em>, <em class="sig-param">json=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/cleos/set.html#SetAccountPermission"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.cleos.set.SetAccountPermission" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="core.cleos.base.html#eosfactory.core.cleos.base.Cleos" title="eosfactory.core.cleos.base.Cleos"><code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.core.cleos.base.Cleos</span></code></a></p>
+<p>Set parameters dealing with account permissions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>account</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Account" title="eosfactory.core.interface.Account"><em>interface.Account</em></a>) – The account to set/delete a
+permission authority for.</p></li>
+<li><p><strong>permission_name</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Permission" title="eosfactory.core.interface.Permission"><em>Permission</em></a>) – The permission to set/delete an
+authority for (defaults to: “active”).</p></li>
+<li><p><strong>parent_permission_name</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Permission" title="eosfactory.core.interface.Permission"><em>Permission</em></a>) – The permission name of
+this parents permission (defaults to: “active”).</p></li>
+<li><p><strong>authority</strong> (<em>str</em><em> or </em><em>dict</em><em> or </em><em>filename</em>) – None to delete.</p></li>
+<li><p><strong>add_code</strong> (<em>bool</em>) – If set, add ‘eosio.code’ permission to specified
+permission authority. Default is false.</p></li>
+<li><p><strong>remove_code</strong> (<em>bool</em>) – If set, remove ‘eosio.code’ permission from
+specified permission authority. Default is false.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Exemplary values of the argument <em>authority</em>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># bob, carol are account objects created with</span>
+<span class="c1"># shell.account.create_account factory function</span>
+
+<span class="n">str_value</span> <span class="o">=</span> <span class="s2">&quot;EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV&quot;</span>
+
+<span class="n">permission_value</span> <span class="o">=</span> <span class="n">bob</span><span class="o">.</span><span class="n">active</span><span class="p">()</span>
+
+<span class="n">dict_value</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;threshold&quot;</span> <span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="s2">&quot;keys&quot;</span> <span class="p">:</span> <span class="p">[],</span>
+    <span class="s2">&quot;accounts&quot;</span> <span class="p">:</span>
+        <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;permission&quot;</span><span class="p">:</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;actor&quot;</span><span class="p">:</span> <span class="n">bob</span><span class="o">.</span><span class="n">active</span><span class="p">(),</span>
+                        <span class="s2">&quot;permission&quot;</span><span class="p">:</span><span class="s2">&quot;active&quot;</span>
+                    <span class="p">},</span>
+                <span class="s2">&quot;weight&quot;</span><span class="p">:</span><span class="mi">100</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>See definitions of the remaining parameters:     <a class="reference internal" href="core.cleos.base.html#eosfactory.core.cleos.base.common_parameters" title="eosfactory.core.cleos.base.common_parameters"><code class="xref py py-func docutils literal notranslate"><span class="pre">cleos.base.common_parameters()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>account_name</strong> (<em>str</em>) – The EOSIO name of the contract’s account.</p></li>
+<li><p><strong>console</strong> (<em>str</em>) – <em>[“processed”][“action_traces”][0][“console”]</em>
+component of EOSIO cleos responce.</p></li>
+<li><p><strong>data</strong> (<em>str</em>) – <em>[“processed”][“action_traces”][0][“act”][“data”]</em>
+component of EOSIO cleos responce.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="eosfactory.core.cleos.set.SetActionPermission">
+<em class="property">class </em><code class="sig-prename descclassname">eosfactory.core.cleos.set.</code><code class="sig-name descname">SetActionPermission</code><span class="sig-paren">(</span><em class="sig-param">account</em>, <em class="sig-param">code</em>, <em class="sig-param">action_type</em>, <em class="sig-param">requirement</em>, <em class="sig-param">permission=None</em>, <em class="sig-param">expiration_sec=None</em>, <em class="sig-param">skip_sign=0</em>, <em class="sig-param">dont_broadcast=0</em>, <em class="sig-param">return_packed=0</em>, <em class="sig-param">force_unique=0</em>, <em class="sig-param">max_cpu_usage=0</em>, <em class="sig-param">max_net_usage=0</em>, <em class="sig-param">ref_block=None</em>, <em class="sig-param">delay_sec=0</em>, <em class="sig-param">is_verbose=True</em>, <em class="sig-param">json=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/cleos/set.html#SetActionPermission"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.cleos.set.SetActionPermission" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="core.cleos.base.html#eosfactory.core.cleos.base.Cleos" title="eosfactory.core.cleos.base.Cleos"><code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.core.cleos.base.Cleos</span></code></a></p>
+<p>Set parameters dealing with account permissions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>account</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Account" title="eosfactory.core.interface.Account"><em>interface.Account</em></a>) – The account to set/delete a
+permission authority for.</p></li>
+<li><p><strong>code</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Account" title="eosfactory.core.interface.Account"><em>interface.Account</em></a>) – The account that owns the code for             the action.</p></li>
+<li><p><strong>action_type</strong> (<em>str</em>) – The type of the action.</p></li>
+<li><p><strong>requirement</strong> (<em>str</em>) – The permission name require for executing the given
+action.</p></li>
+</ul>
+</dd>
+</dl>
+<p>See definitions of the remaining parameters:     <a class="reference internal" href="core.cleos.base.html#eosfactory.core.cleos.base.common_parameters" title="eosfactory.core.cleos.base.common_parameters"><code class="xref py py-func docutils literal notranslate"><span class="pre">cleos.base.common_parameters()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>account_name</strong> (<em>str</em>) – The EOSIO name of the contract’s account.</p></li>
+<li><p><strong>console</strong> (<em>str</em>) – <em>[“processed”][“action_traces”][0][“console”]</em>             component of EOSIO cleos responce.</p></li>
+<li><p><strong>data</strong> (<em>str</em>) – <em>[“processed”][“action_traces”][0][“act”][“data”]</em>             component of EOSIO cleos responce.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="eosfactory.core.cleos.set.SetContract">
+<em class="property">class </em><code class="sig-prename descclassname">eosfactory.core.cleos.set.</code><code class="sig-name descname">SetContract</code><span class="sig-paren">(</span><em class="sig-param">account</em>, <em class="sig-param">contract_dir</em>, <em class="sig-param">wasm_file=None</em>, <em class="sig-param">abi_file=None</em>, <em class="sig-param">clear=False</em>, <em class="sig-param">permission=None</em>, <em class="sig-param">expiration_sec=None</em>, <em class="sig-param">skip_sign=0</em>, <em class="sig-param">dont_broadcast=0</em>, <em class="sig-param">force_unique=0</em>, <em class="sig-param">max_cpu_usage=0</em>, <em class="sig-param">max_net_usage=0</em>, <em class="sig-param">ref_block=None</em>, <em class="sig-param">delay_sec=0</em>, <em class="sig-param">is_verbose=True</em>, <em class="sig-param">json=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/cleos/set.html#SetContract"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.cleos.set.SetContract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="core.cleos.base.html#eosfactory.core.cleos.base.Cleos" title="eosfactory.core.cleos.base.Cleos"><code class="xref py py-class docutils literal notranslate"><span class="pre">eosfactory.core.cleos.base.Cleos</span></code></a></p>
+<p>Create or update the contract on an account.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>account</strong> (<em>str</em><em> or </em><a class="reference internal" href="core.interface.html#eosfactory.core.interface.Account" title="eosfactory.core.interface.Account"><em>interface.Account</em></a>) – The account to publish a contract
+for.</p></li>
+<li><p><strong>contract_dir</strong> (<em>str</em>) – The path to a directory.</p></li>
+<li><p><strong>wasm_file</strong> (<em>str</em>) – The WASM file relative to the contract_dir.</p></li>
+<li><p><strong>abi_file</strong> (<em>str</em>) – The ABI file for the contract relative to the
+contract-dir.</p></li>
+<li><p><strong>clear</strong> (<em>bool</em>) – Remove contract on an account. Default is False.</p></li>
+</ul>
+</dd>
+</dl>
+<p>See definitions of the remaining parameters:     <a class="reference internal" href="core.cleos.base.html#eosfactory.core.cleos.base.common_parameters" title="eosfactory.core.cleos.base.common_parameters"><code class="xref py py-func docutils literal notranslate"><span class="pre">cleos.base.common_parameters()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>contract_path_absolute</strong> (<em>str</em>) – The path to the contract project</p></li>
+<li><p><strong>account_name</strong> (<em>str</em>) – The EOSIO name of the contract’s account.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="core.cleos.get.html"
+                        title="previous chapter">core.cleos.get</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="core.cleos.sys.html"
+                        title="next chapter">core.cleos.sys</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/rst/core.cleos.set.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="core.cleos.sys.html" title="core.cleos.sys"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="core.cleos.get.html" title="core.cleos.get"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.4.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Tokenika.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>

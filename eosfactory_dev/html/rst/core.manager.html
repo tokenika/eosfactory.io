@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>core.manager &#8212; EOSFactory 3.4.0 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="core.testnet" href="core.testnet.html" />
+    <link rel="prev" title="core.cleos.sys" href="core.cleos.sys.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="core.testnet.html" title="core.testnet"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="core.cleos.sys.html" title="core.cleos.sys"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.4.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-eosfactory.core.manager">
+<span id="core-manager"></span><h1>core.manager<a class="headerlink" href="#module-eosfactory.core.manager" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="eosfactory.core.manager.account_map">
+<code class="sig-prename descclassname">eosfactory.core.manager.</code><code class="sig-name descname">account_map</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#account_map"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.account_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return json account map</p>
+<p>Attempt to open the account map file named <code class="docutils literal notranslate"><span class="pre">setup.account_map</span></code>, located
+in the wallet directory <code class="docutils literal notranslate"><span class="pre">config.keosd_wallet_dir()</span></code>, to return its json
+contents. If the file does not exist, return an empty json.</p>
+<p>If the file is corrupted, offer editing the file with the <code class="docutils literal notranslate"><span class="pre">nano</span></code> linux
+editor. Return <code class="docutils literal notranslate"><span class="pre">None</span></code> if the the offer is rejected.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.manager.clear_testnet_cache">
+<code class="sig-prename descclassname">eosfactory.core.manager.</code><code class="sig-name descname">clear_testnet_cache</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#clear_testnet_cache"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.clear_testnet_cache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove wallet files associated with the current testnet.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.manager.info">
+<code class="sig-prename descclassname">eosfactory.core.manager.</code><code class="sig-name descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display EOS node info.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.manager.read_map">
+<code class="sig-prename descclassname">eosfactory.core.manager.</code><code class="sig-name descname">read_map</code><span class="sig-paren">(</span><em class="sig-param">file_name</em>, <em class="sig-param">text_editor='nano'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#read_map"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.read_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return json account map</p>
+<p>Attempt to open the account map file named <code class="docutils literal notranslate"><span class="pre">setup.account_map</span></code>, located
+in the wallet directory <code class="docutils literal notranslate"><span class="pre">config.keosd_wallet_dir()</span></code>, to return its json
+contents. If the file does not exist, return an empty json.</p>
+<p>If the file is corrupted, offer editing the file with the <code class="docutils literal notranslate"><span class="pre">nano</span></code> linux
+editor. Return <code class="docutils literal notranslate"><span class="pre">None</span></code> if the the offer is rejected.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.manager.reset">
+<code class="sig-prename descclassname">eosfactory.core.manager.</code><code class="sig-name descname">reset</code><span class="sig-paren">(</span><em class="sig-param">nodeos_stdout=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start clean the local EOSIO node.</p>
+<p>The procedure addresses problems with instabilities of EOSIO <em>nodeos</em>
+executable: it happens that it blocks itself on clean restart.</p>
+<p>The issue is patched with one subsequent restart if the first attempt
+fails. However, it happens that both launches fail, rarely due to
+instability of <em>nodeos</em>, sometimes because of misconfiguration.</p>
+<p>When both launch attempts fail, an exception routine passes. At first,
+the command line is printed, for <em>example</em>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ERROR</span><span class="p">:</span>
+<span class="n">The</span> <span class="n">local</span> <span class="s1">&#39;nodeos&#39;</span> <span class="n">failed</span> <span class="n">to</span> <span class="n">start</span> <span class="n">twice</span> <span class="ow">in</span> <span class="n">sequence</span><span class="o">.</span> <span class="n">Perhaps</span><span class="p">,</span> <span class="n">something</span> <span class="ow">is</span>
+<span class="n">wrong</span> <span class="k">with</span> <span class="n">configuration</span> <span class="n">of</span> <span class="n">the</span> <span class="n">system</span><span class="o">.</span> <span class="n">See</span> <span class="n">the</span> <span class="n">command</span> <span class="n">line</span> <span class="n">issued</span><span class="p">:</span>
+
+<span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">nodeosx</span>
+<span class="o">--</span><span class="n">http</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">address</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8888</span>
+<span class="o">--</span><span class="n">data</span><span class="o">-</span><span class="nb">dir</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">Workspaces</span><span class="o">/</span><span class="n">EOS</span><span class="o">/</span><span class="n">eosfactory</span><span class="o">/</span><span class="n">localnode</span><span class="o">/</span>
+<span class="o">--</span><span class="n">config</span><span class="o">-</span><span class="nb">dir</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">Workspaces</span><span class="o">/</span><span class="n">EOS</span><span class="o">/</span><span class="n">eosfactory</span><span class="o">/</span><span class="n">localnode</span><span class="o">/</span>
+<span class="o">--</span><span class="n">chain</span><span class="o">-</span><span class="n">state</span><span class="o">-</span><span class="n">db</span><span class="o">-</span><span class="n">size</span><span class="o">-</span><span class="n">mb</span> <span class="mi">200</span> <span class="o">--</span><span class="n">contracts</span><span class="o">-</span><span class="n">console</span> <span class="o">--</span><span class="n">verbose</span><span class="o">-</span><span class="n">http</span><span class="o">-</span><span class="n">errors</span> <span class="o">--</span><span class="n">enable</span><span class="o">-</span><span class="n">stale</span><span class="o">-</span><span class="n">production</span> <span class="o">--</span><span class="n">producer</span><span class="o">-</span><span class="n">name</span> <span class="n">eosio</span>
+<span class="o">--</span><span class="n">signature</span><span class="o">-</span><span class="n">provider</span> <span class="n">EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV</span><span class="o">=</span><span class="n">KEY</span><span class="p">:</span><span class="mi">5</span><span class="n">KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3</span>
+<span class="o">--</span><span class="n">plugin</span> <span class="n">eosio</span><span class="p">::</span><span class="n">producer_plugin</span>
+<span class="o">--</span><span class="n">plugin</span> <span class="n">eosio</span><span class="p">::</span><span class="n">chain_api_plugin</span>
+<span class="o">--</span><span class="n">plugin</span> <span class="n">eosio</span><span class="p">::</span><span class="n">http_plugin</span>
+<span class="o">--</span><span class="n">plugin</span> <span class="n">eosio</span><span class="p">::</span><span class="n">history_api_plugin</span>
+<span class="o">--</span><span class="n">genesis</span><span class="o">-</span><span class="n">json</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">Workspaces</span><span class="o">/</span><span class="n">EOS</span><span class="o">/</span><span class="n">eosfactory</span><span class="o">/</span><span class="n">localnode</span><span class="o">/</span><span class="n">genesis</span><span class="o">.</span><span class="n">json</span>
+<span class="o">--</span><span class="n">delete</span><span class="o">-</span><span class="nb">all</span><span class="o">-</span><span class="n">blocks</span>
+</pre></div>
+</div>
+<p>Next, the command line is executed, for <em>example</em>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Now</span><span class="p">,</span> <span class="n">see</span> <span class="n">the</span> <span class="n">result</span> <span class="n">of</span> <span class="n">an</span> <span class="n">execution</span> <span class="n">of</span> <span class="n">the</span> <span class="n">command</span> <span class="n">line</span><span class="o">.</span>
+<span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">sh</span><span class="p">:</span> <span class="mi">1</span><span class="p">:</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">nodeosx</span><span class="p">:</span> <span class="ow">not</span> <span class="n">found</span>
+</pre></div>
+</div>
+<p>The exemplary case is easy, it explains itself. Generally, the command
+line given can be executed in a <em>bash</em> terminal separately, in order to
+understand a problem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>nodeos_stdout</strong> (<em>str</em>) – If set, a file where <em>stdout</em> stream of
+the local <em>nodeos</em> is send. Note that the file can be included to
+the configuration of EOSFactory, see <a class="reference internal" href="core.config.html#eosfactory.core.config.nodeos_stdout" title="eosfactory.core.config.nodeos_stdout"><code class="xref py py-func docutils literal notranslate"><span class="pre">core.config.nodeos_stdout()</span></code></a>.
+If the file is set with the configuration, and in the same time
+it is set with this argument, the argument setting prevails.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.manager.resume">
+<code class="sig-prename descclassname">eosfactory.core.manager.</code><code class="sig-name descname">resume</code><span class="sig-paren">(</span><em class="sig-param">nodeos_stdout=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#resume"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.resume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resume the local EOSIO node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>nodeos_stdout</strong> (<em>str</em>) – If set, a file where <em>stdout</em> stream of
+the local <em>nodeos</em> is send. Note that the file can be included to
+the configuration of EOSFactory, see <a class="reference internal" href="core.config.html#eosfactory.core.config.nodeos_stdout" title="eosfactory.core.config.nodeos_stdout"><code class="xref py py-func docutils literal notranslate"><span class="pre">core.config.nodeos_stdout()</span></code></a>.
+If the file is set with the configuration, and in the same time
+it is set with this argument, the argument setting prevails.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.manager.status">
+<code class="sig-prename descclassname">eosfactory.core.manager.</code><code class="sig-name descname">status</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#status"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display EOS node status.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.manager.stop">
+<code class="sig-prename descclassname">eosfactory.core.manager.</code><code class="sig-name descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/manager.html#stop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.manager.stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stops keosd and all running EOSIO nodes.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="core.cleos.sys.html"
+                        title="previous chapter">core.cleos.sys</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="core.testnet.html"
+                        title="next chapter">core.testnet</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/rst/core.manager.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="core.testnet.html" title="core.testnet"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="core.cleos.sys.html" title="core.cleos.sys"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.4.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Tokenika.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>

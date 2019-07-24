@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Release Notes History &#8212; EOSFactory 3.4.0 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/sidebar.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Plan for Subsequent EOSFactory Releases" href="roadmap/PlanForSubsequentEOSFactoryReleases.html" />
+    <link rel="prev" title="Release Notes - v3.4.0" href="ReleaseNotes.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="roadmap/PlanForSubsequentEOSFactoryReleases.html" title="Plan for Subsequent EOSFactory Releases"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ReleaseNotes.html" title="Release Notes - v3.4.0"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">EOSFactory 3.4.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="release-notes-history">
+<h1>Release Notes History<a class="headerlink" href="#release-notes-history" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Release 0.8 on 17 May 2018</p>
+<ul>
+<li><p>Launch a single-node private testnet and fully control it: stop it and then continue running it or completely reset it.</p></li>
+<li><p>Initialize a testnet with the <code class="docutils literal notranslate"><span class="pre">bios</span></code> contract and several test accounts (available as <code class="docutils literal notranslate"><span class="pre">sess.alice</span></code>, <code class="docutils literal notranslate"><span class="pre">sess.bob</span> </code> and <code class="docutils literal notranslate"><span class="pre">sess.carol</span></code>).</p></li>
+<li><p>Create additional test accounts (their keys are automatically imported into the wallet).</p></li>
+<li><p>Manage the wallet (locking, unlocking etc).</p></li>
+<li><p>Have an easy access to demo contracts stored in the <code class="docutils literal notranslate"><span class="pre">contracts</span></code> folder of the <em>EOSIO</em> source code (you can instantiate them in EOSFactory by passing their folder name in the <code class="docutils literal notranslate"><span class="pre">Contract</span></code> class constructor).</p></li>
+<li><p>Compile a contract, both <code class="docutils literal notranslate"><span class="pre">ABI</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">WAST</span></code> (but please note that the ABI compiler has an experimental status in <em>EOSIO</em> repository).</p></li>
+<li><p>Create a new contract from a pre-defined template (this includes the creation of its <a class="reference external" href="https://cmake.org/">CMake</a> files).</p></li>
+<li><p>Deploy a contract (the account holding the contract is created behind the scenes).</p></li>
+<li><p>Interact with a contract by pushing actions to it.</p></li>
+<li><p>Extract data from a contract’s table.</p></li>
+</ul>
+</li>
+<li><p>Release 1.0 on 6 Jun 2018</p>
+<ul>
+<li><p>Integration with Python UnitTest standard library.</p></li>
+<li><p>User-defined workspace for smart-contract storage.</p></li>
+<li><p>Support for debugging via logger output containing file name &amp; line number.</p></li>
+<li><p>Preliminary code verification with CLANG.</p></li>
+<li><p>Visual Studio Code integration, including CMake builds and automated tasks.</p></li>
+</ul>
+</li>
+<li><p>Release 1.1 on 11 Jul 2018</p>
+<ul>
+<li><p>Full compatibility with production version of EOS (v1.0.8 or higher).</p></li>
+<li><p>Ability to interact with a public testnet (e.g. Jungle Testnet).</p></li>
+<li><p>Support for keosd, the official wallet management tool.</p></li>
+<li><p>Built-in mechanism for mapping random account names to fixed names needed for smart-contract testing.</p></li>
+<li><p>Color differentiation in console output.</p></li>
+<li><p>Improved error reporting.</p></li>
+</ul>
+</li>
+<li><p>Release 2.0 on 13 Sep 2018</p>
+<ul>
+<li><p>Full compatibility with production version of EOS (v1.2.0 or higher).</p></li>
+<li><p>Seamless integration with public testnets (e.g. Jungle Testnet or Kylin Testnet).</p></li>
+<li><p>The entire wallet management migrated to keosd.</p></li>
+<li><p>Radically improved mechanism for mapping random account names to human-friendly aliases, including symbolic translation of EOS logger messages.</p></li>
+<li><p>New mechanism for caching public testnet settings.</p></li>
+<li><p>Developer API reduced to less than 20 basic commands and classes.</p></li>
+<li><p>Radially improved logger messaging, including highly customizable verbosity.</p></li>
+</ul>
+</li>
+<li><p>Release 2.1 on 25 Sep 2018</p>
+<ul>
+<li><p>Local testnet running in a headless mode (this allows you to run EOSFactory in a GUI-less environment, e.g. Ubuntu Server, or via SSH).</p></li>
+<li><p>All functionality ported to Python, no need to compile any C++ code.</p></li>
+<li><p>Precise error catching in unit tests, utilizing Python’s assertRaises(Error) feature.</p></li>
+<li><p>Improved folder structure within Python modules.</p></li>
+<li><p>Simplified syntax for logger management.</p></li>
+</ul>
+</li>
+<li><p>Release 2.2 on 30 Oct 2018</p>
+<ul>
+<li><p>Completely removed dependence on system variables: entries in the ~/.profile or ~/.bash_profile files are no longer needed.</p></li>
+<li><p>Radically improved (and simplified) installation process: the Python modules are now installed with setuptools.</p></li>
+<li><p>While using EOSFactory with Visual Studio Code is highly recommended, EOSFactory has become independent from any particular IDE and does not impose any particular folder structure inside your smart-contract project. The only requirement is having a folder called build on the same level or one level up from your C++ source files.</p></li>
+</ul>
+</li>
+<li><p>Release 2.3 on 10 Dec 2018</p>
+<ul>
+<li><p>Compatibility with EOSIO v1.5.0</p></li>
+<li><p>Support for binary version of EOSIO (while support for a source code build is maintained)</p></li>
+<li><p>Smart-contract are built using EOSIO Contract Development Toolkit (CDT)</p></li>
+<li><p>Support for setting account and action permissions</p></li>
+<li><p>Optional nodeos output to file</p></li>
+<li><p>Several bug fixes</p></li>
+</ul>
+</li>
+<li><p>Release 2.4 on 4 Jan 2019</p>
+<ul>
+<li><p>General code overhaul &amp; clean-up.</p></li>
+<li><p>Documentation improved &amp; revised.</p></li>
+<li><p>Introduction of code patterns.</p></li>
+<li><p>Several bug fixes.</p></li>
+</ul>
+</li>
+<li><p>Release 3.0.2 on 5 Mar 2019</p>
+<ul>
+<li><p>New alternative syntax introduced for creating references to EOS accounts: <code class="docutils literal notranslate"><span class="pre">foo</span> <span class="pre">=</span> <span class="pre">new_account(...)</span></code>.</p></li>
+<li><p>EOSFactory package can be installed from PyPi repository.</p></li>
+<li><p>Compatibility with python linter: now linter doesn’t raise warnings about dynamically created account objects.</p></li>
+<li><p>Cleaner code, better documented.</p></li>
+</ul>
+</li>
+<li><p>Release 3.1.1 on 8 May 2019</p>
+<ul>
+<li><p>Gather console output from all actions (PR #155).</p></li>
+<li><p>Support for arbitrary folder structure.</p></li>
+</ul>
+</li>
+<li><p>Release 3.1.2 on 20 May 2019</p>
+<ul>
+<li><p>Record <code class="docutils literal notranslate"><span class="pre">cleos</span></code> and <code class="docutils literal notranslate"><span class="pre">nodeos</span></code> command lines in a file.</p></li>
+<li><p>Support for compilation of native unit-tests.</p></li>
+<li><p>Support for distribution of EOSIO smart-contract projects.</p></li>
+</ul>
+</li>
+<li><p>Release 3.1.3 on 23 May 2019</p>
+<ul>
+<li><p>Corrected the account method <code class="docutils literal notranslate"><span class="pre">set_account_permission</span></code> so that it supports adding and removing <code class="docutils literal notranslate"><span class="pre">eosio.code</span></code> permission.</p></li>
+</ul>
+</li>
+<li><p>Release 3.2.0 on 24 June 2019</p>
+<ul>
+<li><p>Native compilation and debugging of EOSIO smart contracts.</p></li>
+<li><p>Improved startup of the <code class="docutils literal notranslate"><span class="pre">nodeos</span></code> process: better control on stuck conditions that frequently occur.</p></li>
+</ul>
+</li>
+<li><p>Release 3.3.0 on 2 July 2019</p>
+<ul>
+<li><p>Compatibility with EOS <a class="reference external" href="https://github.com/EOSIO/eos/releases/tag/v1.8.0">v1.8.0</a>.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ReleaseNotes.html"
+                        title="previous chapter">Release Notes - v3.4.0</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="roadmap/PlanForSubsequentEOSFactoryReleases.html"
+                        title="next chapter">Plan for Subsequent EOSFactory Releases</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/ReleaseNotesHistory.md.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="roadmap/PlanForSubsequentEOSFactoryReleases.html" title="Plan for Subsequent EOSFactory Releases"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ReleaseNotes.html" title="Release Notes - v3.4.0"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">EOSFactory 3.4.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Tokenika.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,575 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>core.config &#8212; EOSFactory 3.4.0 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/sidebar.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="core.errors" href="core.errors.html" />
+    <link rel="prev" title="core.interface" href="core.interface.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="core.errors.html" title="core.errors"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="core.interface.html" title="core.interface"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.4.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-eosfactory.core.config">
+<span id="core-config"></span><h1>core.config<a class="headerlink" href="#module-eosfactory.core.config" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="eosfactory.core.config.abi_file">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">abi_file</code><span class="sig-paren">(</span><em class="sig-param">contract_dir_hint</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#abi_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.abi_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given the contract directory, return the ABI file path.
+See <code class="xref py py-func docutils literal notranslate"><span class="pre">contract_file()</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>contract_dir_hint</strong> – A directory path, may be not absolute.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="core.errors.html#eosfactory.core.errors.Error" title="eosfactory.core.errors.Error"><strong>core.errors.Error</strong></a> – If the result is not defined.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.chain_state_db_size_mb">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">chain_state_db_size_mb</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#chain_state_db_size_mb"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.chain_state_db_size_mb" title="Permalink to this definition">¶</a></dt>
+<dd><p>The size of the buffer of the local node.</p>
+<p>The value of the option <em>chain-state-db-size-mb</em> in the command line for
+the <em>nodeos</em> executable.</p>
+<p>It may be changed with
+<em>EOSIO_SHARED_MEMORY_SIZE_MB</em> entry in the <em>config.json</em> file,
+see <a class="reference internal" href="#eosfactory.core.config.current_config" title="eosfactory.core.config.current_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">current_config()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.cli_exe">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">cli_exe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#cli_exe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.cli_exe" title="Permalink to this definition">¶</a></dt>
+<dd><p>The path to the <em>cleos</em> executable.</p>
+<p>The setting may be changed with
+<em>EOSIO_CLI_EXECUTABLE</em> entry in the <em>config.json</em> file,
+see <a class="reference internal" href="#eosfactory.core.config.current_config" title="eosfactory.core.config.current_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">current_config()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.config_file">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">config_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#config_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.config_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>The path to the <em>config.json</em> file.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.config_map">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">config_map</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#config_map"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.config_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a JSON object read from the <em>config.json</em> file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="core.errors.html#eosfactory.core.errors.Error" title="eosfactory.core.errors.Error"><strong>core.errors.Error</strong></a> – If the JSON object cannot be returned.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.config_value">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">config_value</code><span class="sig-paren">(</span><em class="sig-param">config_list</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#config_value"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.config_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the first item from <a class="reference internal" href="#eosfactory.core.config.config_values" title="eosfactory.core.config.config_values"><code class="xref py py-func docutils literal notranslate"><span class="pre">config_values()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config_list</strong> (<em>(</em><em>)</em>) – A configure list tuple.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.config_value_checked">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">config_value_checked</code><span class="sig-paren">(</span><em class="sig-param">config_list</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#config_value_checked"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.config_value_checked" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the first item from <a class="reference internal" href="#eosfactory.core.config.config_values" title="eosfactory.core.config.config_values"><code class="xref py py-func docutils literal notranslate"><span class="pre">config_values()</span></code></a>. Raise an error if fails.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config_list</strong> (<em>tuple</em>) – A configure list tuple.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="core.errors.html#eosfactory.core.errors.Error" title="eosfactory.core.errors.Error"><strong>core.errors.Error</strong></a> – If the result is not defined.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.config_values">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">config_values</code><span class="sig-paren">(</span><em class="sig-param">config_list</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#config_values"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.config_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>List values ascribed to the key of a hard-codded configuration list.</p>
+<p>First, consider the <em>config.json</em>, next the values of the hard-codded
+configuration list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config_list</strong> (<em>tuple</em>) – A configure list tuple.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.contract_dir">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">contract_dir</code><span class="sig-paren">(</span><em class="sig-param">contract_dir_hint</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#contract_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.contract_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a hint, determine the contract root directory.</p>
+<dl class="simple">
+<dt>The <code class="docutils literal notranslate"><span class="pre">contract_dir_hint</span></code> is tested to be either</dt><dd><ul class="simple">
+<li><p>an absolute path, or</p></li>
+<li><dl class="simple">
+<dt>a path relative to either</dt><dd><ul>
+<li><p>the directory given with <code class="xref py py-func docutils literal notranslate"><span class="pre">contract_workspace()</span></code>, or</p></li>
+<li><p>the directory given with <a class="reference internal" href="#eosfactory.core.config.eosf_dir" title="eosfactory.core.config.eosf_dir"><code class="xref py py-func docutils literal notranslate"><span class="pre">eosf_dir()</span></code></a> <code class="docutils literal notranslate"><span class="pre">/contracts</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>contract_dir_hint</strong> (<em>path</em>) – A directory path, may be not absolute.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="core.errors.html#eosfactory.core.errors.Error" title="eosfactory.core.errors.Error"><strong>core.errors.Error</strong></a> – If the result is not defined.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.contract_source_files">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">contract_source_files</code><span class="sig-paren">(</span><em class="sig-param">contract_dir_hint</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#contract_source_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.contract_source_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>List files CPP/C and ABI files from directory given a hint.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>contract_dir_hint</strong> (<em>str</em>) – An argument to the function
+<a class="reference internal" href="#eosfactory.core.config.contract_dir" title="eosfactory.core.config.contract_dir"><code class="xref py py-func docutils literal notranslate"><span class="pre">contract_dir()</span></code></a></p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="core.errors.html#eosfactory.core.errors.Error" title="eosfactory.core.errors.Error"><strong>core.errors.Error</strong></a> – If the list is empty.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.contract_workspace_dir">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">contract_workspace_dir</code><span class="sig-paren">(</span><em class="sig-param">dont_set_workspace=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#contract_workspace_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.contract_workspace_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>The absolute path to the contract workspace.</p>
+<p>The contract workspace is a directory where automatically created projects
+are placed by default. It is set while EOSFactory is installed.</p>
+<p>If not set, the projects are stored in the <cite>.config.CONTRACTS_DIR</cite>
+subdirectory (typically <em>contracts/</em>) of the EOSFActory installation, if
+EOSFactory is installed from its GitHub repository, otherwise, they go to
+a directory specified as
+<cite>join(.config.TMP, .config.CONTRACTS_DIR)</cite>.</p>
+<p>The setting may be changed with
+<em>EOSIO_CONTRACT_WORKSPACE</em> entry in the <em>config.json</em> file,
+see <a class="reference internal" href="#eosfactory.core.config.current_config" title="eosfactory.core.config.current_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">current_config()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dont_set_workspace</strong> (<em>bool</em>) – If set, do not query for empty workspace
+directory.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.current_config">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">current_config</code><span class="sig-paren">(</span><em class="sig-param">contract_dir=None</em>, <em class="sig-param">dont_set_workspace=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#current_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.current_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Present the current configuration.</p>
+<p>The current configuration result from both the <em>config.json</em> file setting
+and default hard-codded setup. The <em>config.json</em> prevails.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>str</strong><strong>(</strong><strong>)</strong> (<em>contract_dir</em>) – If set</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The current configuration can be seen with the bash command:</p>
+<p><em>python3 -m eosfactory.core.config</em></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.eosf_dir">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">eosf_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#eosf_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.eosf_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>The absolute directory of the EOSFactory installation.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.eosfactory_data">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">eosfactory_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#eosfactory_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.eosfactory_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Data directory.</p>
+<p>For developer’s installation, data is in the root of the installation.
+.: wsl_root.sh
+config: config.ini, config.json, genesis.json, …
+contracts: eosio_token, hello_world, tic_tac_toe, …
+templates: contracts, …
+includes: eoside, …
+libs: …</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.eoside_includes_dir">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">eoside_includes_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#eoside_includes_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.eoside_includes_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>The directory for contract definition includes.</p>
+<p>It may be set with
+<em>INCLUDE</em> entry in the <em>config.json</em> file,
+see <a class="reference internal" href="#eosfactory.core.config.current_config" title="eosfactory.core.config.current_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">current_config()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.eoside_libs_dir">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">eoside_libs_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#eoside_libs_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.eoside_libs_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>The directory for contract links.</p>
+<p>It may be set with
+<em>LIBS</em> entry in the <em>config.json</em> file,
+see <a class="reference internal" href="#eosfactory.core.config.current_config" title="eosfactory.core.config.current_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">current_config()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.eosio_cdt_root">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">eosio_cdt_root</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#eosio_cdt_root"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.eosio_cdt_root" title="Permalink to this definition">¶</a></dt>
+<dd><p>The path to the <em>eosio-cpp</em> installation directory.</p>
+<p>The setting may be changed with
+<em>EOSIO_CPP</em> entry in the <em>config.json</em> file,
+see <a class="reference internal" href="#eosfactory.core.config.current_config" title="eosfactory.core.config.current_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">current_config()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.eosio_cpp">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">eosio_cpp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#eosio_cpp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.eosio_cpp" title="Permalink to this definition">¶</a></dt>
+<dd><p>The path to the <em>eosio-cpp</em> executable.</p>
+<p>The setting may be changed with
+<em>EOSIO_CPP</em> entry in the <em>config.json</em> file,
+see <a class="reference internal" href="#eosfactory.core.config.current_config" title="eosfactory.core.config.current_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">current_config()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.eosio_cpp_includes">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">eosio_cpp_includes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#eosio_cpp_includes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.eosio_cpp_includes" title="Permalink to this definition">¶</a></dt>
+<dd><p>The list of eosio-cpp includes.</p>
+<p>The setting may be changed with <em>EOSIO_CPP</em> entry in the <em>config.json</em>
+file, see <a class="reference internal" href="#eosfactory.core.config.current_config" title="eosfactory.core.config.current_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">current_config()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.eosio_key_private">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">eosio_key_private</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#eosio_key_private"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.eosio_key_private" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>eosio</em> account private key.</p>
+<p>A private key used as the value of the option <em>signature-provider</em> in
+the command line for the <em>nodeos</em> executable.</p>
+<p>It may be changed with
+<em>EOSIO_KEY_PRIVATE</em> entry in the <em>config.json</em> file,
+see <a class="reference internal" href="#eosfactory.core.config.current_config" title="eosfactory.core.config.current_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">current_config()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.eosio_key_public">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">eosio_key_public</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#eosio_key_public"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.eosio_key_public" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>eosio</em> account public key.</p>
+<p>A public key used as the value of the option <em>signature-provider</em> in
+the command line for the <em>nodeos</em> executable.</p>
+<p>It may be changed with
+<em>EOSIO_KEY_PUBLIC</em> entry in the <em>config.json</em> file,
+see <a class="reference internal" href="#eosfactory.core.config.current_config" title="eosfactory.core.config.current_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">current_config()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.first_valid_path">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">first_valid_path</code><span class="sig-paren">(</span><em class="sig-param">config_list</em>, <em class="sig-param">find_file=None</em>, <em class="sig-param">raise_error=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#first_valid_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.first_valid_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a key to the config list, get a valid file system path.</p>
+<p>Applicable if the <em>config_list</em> argument refers to a file path.
+The path may be absolute or relative to the root of the EOSFactory
+installation.</p>
+<p>Also, the path may be relative to the <em>HOME</em> environment variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config_list</strong> (<em>tuple</em>) – A configure list tuple.</p></li>
+<li><p><strong>find_file</strong> (<em>str</em>) – If set, the given file has to exist.</p></li>
+<li><p><strong>raise_error</strong> (<em>bool</em>) – If set, raise an error on failure.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="core.errors.html#eosfactory.core.errors.Error" title="eosfactory.core.errors.Error"><strong>core.errors.Error</strong></a> – If the <em>raise_error</em> argument is set and the             result is not defined.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.first_valid_which">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">first_valid_which</code><span class="sig-paren">(</span><em class="sig-param">config_list</em>, <em class="sig-param">find_file=None</em>, <em class="sig-param">raise_error=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#first_valid_which"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.first_valid_which" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a key to the config list, get a valid file system path.</p>
+<p>Applicable if the <em>config_list</em> argument refers to a file path.
+The path may be absolute or relative to the root of the EOSFactory
+installation.</p>
+<p>Also, the path may be relative to the <em>HOME</em> environment variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config_list</strong> (<em>tuple</em>) – A configure list tuple.</p></li>
+<li><p><strong>find_file</strong> (<em>str</em>) – If set, the given file has to exist.</p></li>
+<li><p><strong>raise_error</strong> (<em>bool</em>) – If set, raise an error on failure.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="core.errors.html#eosfactory.core.errors.Error" title="eosfactory.core.errors.Error"><strong>core.errors.Error</strong></a> – If the <em>raise_error</em> argument is set and the             result is not defined.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.genesis_json">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">genesis_json</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#genesis_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.genesis_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>File to read Genesis State from.</p>
+<p>It may be changed with
+<em>EOSIO_GENESIS_JSON</em> entry in the <em>config.json</em> file,
+see <a class="reference internal" href="#eosfactory.core.config.current_config" title="eosfactory.core.config.current_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">current_config()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.http_server_address">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">http_server_address</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#http_server_address"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.http_server_address" title="Permalink to this definition">¶</a></dt>
+<dd><p>The http/https URL where local <em>nodeos</em> is running.</p>
+<p>The setting may be changed with
+<em>LOCAL_NODE_ADDRESS</em> entry in the <em>config.json</em> file,
+see <a class="reference internal" href="#eosfactory.core.config.current_config" title="eosfactory.core.config.current_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">current_config()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.http_wallet_address">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">http_wallet_address</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#http_wallet_address"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.http_wallet_address" title="Permalink to this definition">¶</a></dt>
+<dd><p>The http/https URL where keosd is running.</p>
+<p>The setting may be changed with
+<em>WALLET_MANAGER_ADDRESS</em> entry in the <em>config.json</em> file,
+see <a class="reference internal" href="#eosfactory.core.config.current_config" title="eosfactory.core.config.current_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">current_config()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.keosd_exe">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">keosd_exe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#keosd_exe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.keosd_exe" title="Permalink to this definition">¶</a></dt>
+<dd><p>The path to the <em>keosd</em> executable.</p>
+<p>The setting may be changed with
+<em>KEOSD_EXECUTABLE</em> entry in the <em>config.json</em> file,
+see <a class="reference internal" href="#eosfactory.core.config.current_config" title="eosfactory.core.config.current_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">current_config()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.keosd_wallet_dir">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">keosd_wallet_dir</code><span class="sig-paren">(</span><em class="sig-param">raise_error=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#keosd_wallet_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.keosd_wallet_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>The path to the local wallet directory.</p>
+<p>The path is hard-coded in the <em>keosd</em> wallet manager.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>raise_error</strong> (<em>bool</em>) – If set, rise an error if the path is invalid.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="core.errors.html#eosfactory.core.errors.Error" title="eosfactory.core.errors.Error"><strong>core.errors.Error</strong></a> – If the directory does not exist.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.main">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.main" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>usage: config.py [-h] [–wsl_root] [–dependencies] [–json]</dt><dd><p>[–workspace WORKSPACE]</p>
+</dd>
+</dl>
+<p>Show the configuration of EOSFactory or set contract workspace.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>--help              Show this help message and exit</strong> (<em>-h</em><em>,</em>) – </p></li>
+<li><p><strong>Show set the root of the WSL and exit.</strong> (<em>--wsl_root</em>) – </p></li>
+<li><p><strong>Ignore empty workspace directory.</strong> (<em>--dont_set_workspace</em>) – </p></li>
+<li><p><strong>Bare config JSON and exit.</strong> (<em>--json</em>) – </p></li>
+<li><p><strong>WORKSPACE   Set contract workspace and exit.</strong> (<em>--workspace</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.node_exe">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">node_exe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#node_exe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.node_exe" title="Permalink to this definition">¶</a></dt>
+<dd><p>The path to the <em>nodeos</em> executable.</p>
+<p>The setting may be changed with
+<em>LOCAL_NODE_EXECUTABLE</em> entry in the <em>config.json</em> file,
+see <a class="reference internal" href="#eosfactory.core.config.current_config" title="eosfactory.core.config.current_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">current_config()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.nodeos_config_dir">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">nodeos_config_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#nodeos_config_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.nodeos_config_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Directory containing configuration files such as config.ini.</p>
+<p>It may be changed with
+<em>NODEOS_CONFIG_DIR</em> entry in the <em>config.json</em> file,
+see <a class="reference internal" href="#eosfactory.core.config.current_config" title="eosfactory.core.config.current_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">current_config()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.nodeos_data_dir">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">nodeos_data_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#nodeos_data_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.nodeos_data_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Directory containing runtime data of <em>nodeos</em>.</p>
+<p>It may be changed with
+<em>NODEOS_DATA_DIR</em> entry in the <em>config.json</em> file,
+see <a class="reference internal" href="#eosfactory.core.config.current_config" title="eosfactory.core.config.current_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">current_config()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.nodeos_options">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">nodeos_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#nodeos_options"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.nodeos_options" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.nodeos_stdout">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">nodeos_stdout</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#nodeos_stdout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.nodeos_stdout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set <em>stdout</em> file for the <em>stdout</em> stream of the local node.</p>
+<p>If the value of <em>NODEOS_STDOUT</em> entry in the <em>config.json</em> file is set,
+the local node logs to the specified file its output,
+see <a class="reference internal" href="#eosfactory.core.config.current_config" title="eosfactory.core.config.current_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">current_config()</span></code></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The same may be achieved with the <em>nodeos_stdout</em> argument in the
+function <a class="reference internal" href="core.manager.html#eosfactory.core.manager.resume" title="eosfactory.core.manager.resume"><code class="xref py py-func docutils literal notranslate"><span class="pre">core.manager.resume()</span></code></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.source_files">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">source_files</code><span class="sig-paren">(</span><em class="sig-param">search_dir</em>, <em class="sig-param">extensions</em>, <em class="sig-param">recursively=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#source_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.source_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>List files CPP/C and ABI files from the given directory</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.wasm_file">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">wasm_file</code><span class="sig-paren">(</span><em class="sig-param">contract_dir_hint</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#wasm_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.wasm_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given the contract directory, return the WASM file path.
+See <code class="xref py py-func docutils literal notranslate"><span class="pre">contract_file()</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>contract_dir_hint</strong> – A directory path, may be not absolute.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="core.errors.html#eosfactory.core.errors.Error" title="eosfactory.core.errors.Error"><strong>core.errors.Error</strong></a> – If the result is not defined.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.write_config_map">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">write_config_map</code><span class="sig-paren">(</span><em class="sig-param">map</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#write_config_map"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.write_config_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write the given json object to <em>config.json</em>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>map</strong> (<em>json</em>) – The json object to be saved.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="core.errors.html#eosfactory.core.errors.Error" title="eosfactory.core.errors.Error"><strong>core.errors.Error</strong></a> – If the JSON object cannot be saved.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="eosfactory.core.config.wsl_root">
+<code class="sig-prename descclassname">eosfactory.core.config.</code><code class="sig-name descname">wsl_root</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/eosfactory/core/config.html#wsl_root"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eosfactory.core.config.wsl_root" title="Permalink to this definition">¶</a></dt>
+<dd><p>The root directory of the Windows WSL, or empty string if not Windows.</p>
+<p>The root directory of the Ubuntu file system, owned by the installation,
+if any, of the Windows Subsystem Linux (WSL).</p>
+<p>It may be changed with
+<em>WSL_ROOT</em> entry in the <em>config.json</em> file,
+see <a class="reference internal" href="#eosfactory.core.config.current_config" title="eosfactory.core.config.current_config"><code class="xref py py-func docutils literal notranslate"><span class="pre">current_config()</span></code></a>.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="core.interface.html"
+                        title="previous chapter">core.interface</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="core.errors.html"
+                        title="next chapter">core.errors</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/rst/core.config.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="core.errors.html" title="core.errors"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="core.interface.html" title="core.interface"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">EOSFactory 3.4.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Tokenika.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>

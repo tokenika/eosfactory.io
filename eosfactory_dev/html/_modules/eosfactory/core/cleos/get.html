@@ -1,0 +1,316 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>eosfactory.core.cleos.get &#8212; EOSFactory 3.4.0 documentation</title>
+    <link rel="stylesheet" href="../../../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/sidebar.js"></script>
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">EOSFactory 3.4.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for eosfactory.core.cleos.get</h1><div class="highlight"><pre>
+<span></span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="kn">import</span> <span class="nn">eosfactory.core.logger</span> <span class="k">as</span> <span class="nn">logger</span>
+<span class="kn">import</span> <span class="nn">eosfactory.core.interface</span> <span class="k">as</span> <span class="nn">interface</span>
+<span class="kn">import</span> <span class="nn">eosfactory.core.cleos.base</span> <span class="k">as</span> <span class="nn">base_commands</span>
+
+
+<div class="viewcode-block" id="GetInfo"><a class="viewcode-back" href="../../../../rst/core.cleos.get.html#eosfactory.core.cleos.get.GetInfo">[docs]</a><span class="k">class</span> <span class="nc">GetInfo</span><span class="p">(</span><span class="n">base_commands</span><span class="o">.</span><span class="n">Cleos</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Get current blockchain information.</span>
+
+<span class="sd">    :param bool is_verbose: If ``False``, print a message. Default is ``True``.</span>
+
+<span class="sd">    :return: A :class:`eosfactory.core.cleos.base.Cleos` object, extended with the </span>
+<span class="sd">        following items:</span>
+
+<span class="sd">    :var str head_block_time: The time of the most recent block.</span>
+<span class="sd">    :var int head_block: The most recent block number.</span>
+<span class="sd">    :var int last_irreversible_block_num: The number of the most recent irreversible</span>
+<span class="sd">        block.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">is_verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">base_commands</span><span class="o">.</span><span class="n">Cleos</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">[],</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;info&quot;</span><span class="p">,</span> <span class="n">is_verbose</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">head_block</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s2">&quot;head_block_num&quot;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">head_block_time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s2">&quot;head_block_time&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_irreversible_block_num</span> \
+                            <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s2">&quot;last_irreversible_block_num&quot;</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">printself</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">json</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="GetActions"><a class="viewcode-back" href="../../../../rst/core.cleos.get.html#eosfactory.core.cleos.get.GetActions">[docs]</a><span class="k">class</span> <span class="nc">GetActions</span><span class="p">(</span><span class="n">base_commands</span><span class="o">.</span><span class="n">Cleos</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Retrieve all actions with specific account name referenced in authorization or receiver.</span>
+
+<span class="sd">    Note that available actions are filtered. By default, all actions are</span>
+<span class="sd">    filered off. To see the actions, the node has to be restarted with the --filter-on option.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        account (str): Name of account to query on.</span>
+<span class="sd">        pos (int): Sequence number of action for this account, -1 for last. </span>
+<span class="sd">            Default is -1.</span>
+<span class="sd">        offset (int): Get actions [pos,pos+offset] for positive offset or </span>
+<span class="sd">            [pos-offset,pos) for negative offset. Default is 1.</span>
+<span class="sd">        json (bool): Responce received as JSON, if any. Default is *False*.</span>
+<span class="sd">        full (bool): Don&#39;t truncate action json. Default is *False*.</span>
+<span class="sd">        pretty (bool): Pretty print full action json. Default is *False*.</span>
+<span class="sd">        console (bool): print console output generated by action. Default </span>
+<span class="sd">            is *False*.</span>
+<span class="sd">        is_verbose (bool): If *False* do not print. Default is *True*.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">account</span><span class="p">,</span> <span class="n">pos</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
+        <span class="n">json</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">pretty</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">console</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">is_verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+
+        <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="n">interface</span><span class="o">.</span><span class="n">account_arg</span><span class="p">(</span><span class="n">account</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">pos</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">offset</span><span class="p">)]</span>
+        
+        <span class="k">if</span> <span class="n">json</span><span class="p">:</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--json&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">full</span><span class="p">:</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--full&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">pretty</span><span class="p">:</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--pretty&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">console</span><span class="p">:</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--console&quot;</span><span class="p">)</span>
+        <span class="n">base_commands</span><span class="o">.</span><span class="n">Cleos</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;actions&quot;</span><span class="p">,</span> <span class="n">is_verbose</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">printself</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="GetBlock"><a class="viewcode-back" href="../../../../rst/core.cleos.get.html#eosfactory.core.cleos.get.GetBlock">[docs]</a><span class="k">class</span> <span class="nc">GetBlock</span><span class="p">(</span><span class="n">base_commands</span><span class="o">.</span><span class="n">Cleos</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Retrieve a full block from the blockchain.</span>
+
+<span class="sd">    :param int block_number: The number of the block to retrieve.</span>
+<span class="sd">    :param str block_id: The ID of the block to retrieve, if set, defaults to &quot;&quot;.   </span>
+<span class="sd">    :param bool is_verbose: If ``False``, print a message. Default is ``True``.</span>
+<span class="sd">        </span>
+<span class="sd">    :return: A :class:`eosfactory.core.cleos.base.Cleos` object.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">block_number</span><span class="p">,</span> <span class="n">block_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">is_verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">base_commands</span><span class="o">.</span><span class="n">Cleos</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="p">,</span> <span class="p">[</span><span class="n">block_id</span><span class="p">]</span> <span class="k">if</span> <span class="n">block_id</span> <span class="k">else</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">block_number</span><span class="p">)],</span> 
+                        <span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;block&quot;</span><span class="p">,</span> <span class="n">is_verbose</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">printself</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">json</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">get_block_trx_data</span><span class="p">(</span><span class="n">block_num</span><span class="p">):</span>
+    <span class="n">block</span> <span class="o">=</span> <span class="n">GetBlock</span><span class="p">(</span><span class="n">block_num</span><span class="p">,</span> <span class="n">is_verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">trxs</span> <span class="o">=</span> <span class="n">block</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s2">&quot;transactions&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">trxs</span><span class="p">):</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">OUT</span><span class="p">(</span><span class="s2">&quot;No transactions in block </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">block_num</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">trx</span> <span class="ow">in</span> <span class="n">trxs</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">OUT</span><span class="p">(</span><span class="n">trx</span><span class="p">[</span><span class="s2">&quot;trx&quot;</span><span class="p">][</span><span class="s2">&quot;transaction&quot;</span><span class="p">][</span><span class="s2">&quot;actions&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;data&quot;</span><span class="p">])</span>
+
+
+<span class="k">def</span> <span class="nf">get_block_trx_count</span><span class="p">(</span><span class="n">block_num</span><span class="p">):</span>
+    <span class="n">block</span> <span class="o">=</span> <span class="n">GetBlock</span><span class="p">(</span><span class="n">block_num</span><span class="p">,</span> <span class="n">is_verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">trxs</span> <span class="o">=</span> <span class="n">block</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s2">&quot;transactions&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">trxs</span><span class="p">):</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">OUT</span><span class="p">(</span><span class="s2">&quot;No transactions in block </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">block_num</span><span class="p">))</span>    
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">trxs</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="GetAccounts"><a class="viewcode-back" href="../../../../rst/core.cleos.get.html#eosfactory.core.cleos.get.GetAccounts">[docs]</a><span class="k">class</span> <span class="nc">GetAccounts</span><span class="p">(</span><span class="n">base_commands</span><span class="o">.</span><span class="n">Cleos</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Retrieve accounts associated with a public key.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        key (str or .interface.Key): The public key to retrieve accounts for.</span>
+<span class="sd">        is_verbose (bool): If *False* do not print. Default is *True*.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        names (list): The retrieved list of accounts.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">is_verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">public_key</span> <span class="o">=</span> <span class="n">interface</span><span class="o">.</span><span class="n">key_arg</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">is_owner_key</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">is_private_key</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">base_commands</span><span class="o">.</span><span class="n">Cleos</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="p">[</span><span class="n">public_key</span><span class="p">],</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;accounts&quot;</span><span class="p">,</span> <span class="n">is_verbose</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s1">&#39;account_names&#39;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">printself</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="GetCode"><a class="viewcode-back" href="../../../../rst/core.cleos.get.html#eosfactory.core.cleos.get.GetCode">[docs]</a><span class="k">class</span> <span class="nc">GetCode</span><span class="p">(</span><span class="n">base_commands</span><span class="o">.</span><span class="n">Cleos</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Retrieve the code and ABI for an account.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        account (str or .interface.Account): The account to retrieve.</span>
+<span class="sd">        code (str): If set, the name of the file to save the contract </span>
+<span class="sd">            .wast/wasm to.</span>
+<span class="sd">        abi (str): If set, the name of the file to save the contract .abi to.</span>
+<span class="sd">        wasm (bool): Save contract as wasm.</span>
+<span class="sd">        is_verbose (bool): If *False* do not print. Default is *True*.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        code_hash (str): The hash of the code.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">account</span><span class="p">,</span> <span class="n">code</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">abi</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> 
+            <span class="n">wasm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">is_verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+
+        <span class="n">account_name</span> <span class="o">=</span> <span class="n">interface</span><span class="o">.</span><span class="n">account_arg</span><span class="p">(</span><span class="n">account</span><span class="p">)</span>
+
+        <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="n">account_name</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">code</span><span class="p">:</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;--code&quot;</span><span class="p">,</span> <span class="n">code</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">abi</span><span class="p">:</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;--abi&quot;</span><span class="p">,</span> <span class="n">abi</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">wasm</span><span class="p">:</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;--wasm&quot;</span><span class="p">])</span>
+
+        <span class="n">base_commands</span><span class="o">.</span><span class="n">Cleos</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;code&quot;</span><span class="p">,</span> <span class="n">is_verbose</span><span class="p">)</span>
+
+        <span class="n">msg</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out_msg</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s2">&quot;code_hash&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">msg</span><span class="p">[</span><span class="n">msg</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span> <span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">code_hash</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s2">&quot;code_hash&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">printself</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="GetTable"><a class="viewcode-back" href="../../../../rst/core.cleos.get.html#eosfactory.core.cleos.get.GetTable">[docs]</a><span class="k">class</span> <span class="nc">GetTable</span><span class="p">(</span><span class="n">base_commands</span><span class="o">.</span><span class="n">Cleos</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Retrieve the contents of a database table</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        table (str): The name of the table as specified by the contract abi.        </span>
+<span class="sd">        scope (str or .interface.Account): The scope within the account in </span>
+<span class="sd">            which the table is found.</span>
+<span class="sd">        binary (bool): Return the value as BINARY rather than using abi to </span>
+<span class="sd">            interpret as JSON. Default is *False*.</span>
+<span class="sd">        limit (int): The maximum number of rows to return. Default is 10.</span>
+<span class="sd">        lower (str): JSON representation of lower bound value of key, </span>
+<span class="sd">            defaults to first.</span>
+<span class="sd">        upper (str): JSON representation of upper bound value value of key, </span>
+<span class="sd">            defaults to last.</span>
+<span class="sd">        index (int or str): Index number, 1 - primary (first), 2 - secondary </span>
+<span class="sd">            index (in order defined by multi_index), 3 - third index, etc.</span>
+<span class="sd">            Number or name of index can be specified, </span>
+<span class="sd">            e.g. &#39;secondary&#39; or &#39;2&#39;.</span>
+<span class="sd">        key_type (str): The key type of --index, primary only supports </span>
+<span class="sd">            (i64), all others support (i64, i128, i256, float64, float128, </span>
+<span class="sd">            ripemd160, sha256).</span>
+<span class="sd">            Special type &#39;name&#39; indicates an account name.</span>
+<span class="sd">        enncode_type (str): The encoding type of key_type </span>
+<span class="sd">            (i64 , i128 , float64, float128) only support decimal </span>
+<span class="sd">            encoding e.g. &#39;dec&#39;i256 - supports both &#39;dec&#39; and &#39;hex&#39;, </span>
+<span class="sd">            ripemd160 and sha256 is &#39;hex&#39; only.</span>
+<span class="sd">        reverse (bool): Iterate in reverse order.</span>
+<span class="sd">        is_verbose (bool): If *False* do not print. Default is *True*.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="n">account</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">scope</span><span class="p">,</span>
+            <span class="n">binary</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+            <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="n">key_type</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">encode_type</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">show_payer</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">is_verbose</span><span class="o">=</span><span class="kc">True</span>
+            <span class="p">):</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="n">interface</span><span class="o">.</span><span class="n">account_arg</span><span class="p">(</span><span class="n">account</span><span class="p">)]</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">scope</span><span class="p">:</span>
+            <span class="n">scope</span><span class="o">=</span><span class="n">account</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">scope_name</span> <span class="o">=</span> <span class="n">scope</span><span class="o">.</span><span class="n">name</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="n">scope_name</span> <span class="o">=</span> <span class="n">scope</span>
+
+        <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scope_name</span><span class="p">)</span>
+        <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">binary</span><span class="p">:</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--binary&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">limit</span><span class="p">:</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;--limit&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">limit</span><span class="p">)])</span>
+        <span class="k">if</span> <span class="n">lower</span><span class="p">:</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;--lower&quot;</span><span class="p">,</span> <span class="n">lower</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">upper</span><span class="p">:</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;--upper&quot;</span><span class="p">,</span> <span class="n">upper</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">index</span><span class="p">:</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;--index&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">index</span><span class="p">)])</span>
+        <span class="k">if</span> <span class="n">key_type</span><span class="p">:</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;--key-type&quot;</span><span class="p">,</span> <span class="n">key_type</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">encode_type</span><span class="p">:</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s2">&quot;--encode-type&quot;</span><span class="p">,</span> <span class="n">encode_type</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">reverse</span><span class="p">:</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--reverse&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">show_payer</span><span class="p">:</span>
+            <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;--show-payer&quot;</span><span class="p">)</span>
+
+        <span class="n">base_commands</span><span class="o">.</span><span class="n">Cleos</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;table&quot;</span><span class="p">,</span> <span class="n">is_verbose</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">printself</span><span class="p">()</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">EOSFactory 3.4.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Tokenika.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>
