@@ -4,33 +4,34 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>eosfactory.core.cleos &#8212; EOSFactory 3.4.0 documentation</title>
-    <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
+    <title>eosfactory.core.cleos.base &#8212; EOSFactory 3.4.0 documentation</title>
+    <link rel="stylesheet" href="../../../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/language_data.js"></script>
     
-    <script type="text/javascript" src="../../../_static/sidebar.js"></script>
+    <script type="text/javascript" src="../../../../_static/sidebar.js"></script>
     
-    <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" /> 
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../../../genindex.html" title="General Index"
+          <a href="../../../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../../../py-modindex.html" title="Python Module Index"
+          <a href="../../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.4.0 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">EOSFactory 3.4.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../cleos.html" accesskey="U">eosfactory.core.cleos</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -39,7 +40,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <h1>Source code for eosfactory.core.cleos</h1><div class="highlight"><pre>
+  <h1>Source code for eosfactory.core.cleos.base</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">subprocess</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">pathlib</span>
@@ -64,7 +65,7 @@
 
 
 <span class="c1"># http://www.sphinx-doc.org/domains.html#info-field-lists</span>
-<div class="viewcode-block" id="Cleos"><a class="viewcode-back" href="../../../rst/core.cleos.html#eosfactory.core.cleos.Cleos">[docs]</a><span class="k">class</span> <span class="nc">Cleos</span><span class="p">():</span>
+<div class="viewcode-block" id="Cleos"><a class="viewcode-back" href="../../../../rst/core.cleos.base.html#eosfactory.core.cleos.base.Cleos">[docs]</a><span class="k">class</span> <span class="nc">Cleos</span><span class="p">():</span>
     <span class="sd">&#39;&#39;&#39;A prototype for *EOSIO cleos* commands.</span>
 <span class="sd">    Calls *EOSIO cleos*, and processes the responce.</span>
 
@@ -150,7 +151,7 @@
         <span class="k">except</span><span class="p">:</span>
             <span class="k">pass</span>        
 
-<div class="viewcode-block" id="Cleos.printself"><a class="viewcode-back" href="../../../rst/core.cleos.html#eosfactory.core.cleos.Cleos.printself">[docs]</a>    <span class="k">def</span> <span class="nf">printself</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">is_verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="Cleos.printself"><a class="viewcode-back" href="../../../../rst/core.cleos.base.html#eosfactory.core.cleos.base.Cleos.printself">[docs]</a>    <span class="k">def</span> <span class="nf">printself</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">is_verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;Print a message.</span>
 
 <span class="sd">        Args:</span>
@@ -175,7 +176,7 @@
         <span class="k">return</span> <span class="s2">&quot;&quot;</span></div>
 
 
-<div class="viewcode-block" id="common_parameters"><a class="viewcode-back" href="../../../rst/core.cleos.html#eosfactory.core.cleos.common_parameters">[docs]</a><span class="k">def</span> <span class="nf">common_parameters</span><span class="p">(</span>
+<div class="viewcode-block" id="common_parameters"><a class="viewcode-back" href="../../../../rst/core.cleos.base.html#eosfactory.core.cleos.base.common_parameters">[docs]</a><span class="k">def</span> <span class="nf">common_parameters</span><span class="p">(</span>
         <span class="n">permission</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
         <span class="n">expiration_sec</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
         <span class="n">skip_sign</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dont_broadcast</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">force_unique</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -223,7 +224,7 @@
     <span class="k">pass</span></div>
 
 
-<div class="viewcode-block" id="GetAccount"><a class="viewcode-back" href="../../../rst/core.cleos.html#eosfactory.core.cleos.GetAccount">[docs]</a><span class="k">class</span> <span class="nc">GetAccount</span><span class="p">(</span><span class="n">interface</span><span class="o">.</span><span class="n">Account</span><span class="p">,</span> <span class="n">Cleos</span><span class="p">):</span>
+<div class="viewcode-block" id="GetAccount"><a class="viewcode-back" href="../../../../rst/core.cleos.base.html#eosfactory.core.cleos.base.GetAccount">[docs]</a><span class="k">class</span> <span class="nc">GetAccount</span><span class="p">(</span><span class="n">interface</span><span class="o">.</span><span class="n">Account</span><span class="p">,</span> <span class="n">Cleos</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Retrieve an account from the blockchain.</span>
 
 <span class="sd">    Args:</span>
@@ -269,7 +270,7 @@
         <span class="k">return</span> <span class="s2">&quot;name: </span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">Cleos</span><span class="o">.</span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span></div>
 
 
-<div class="viewcode-block" id="GetTransaction"><a class="viewcode-back" href="../../../rst/core.cleos.html#eosfactory.core.cleos.GetTransaction">[docs]</a><span class="k">class</span> <span class="nc">GetTransaction</span><span class="p">(</span><span class="n">Cleos</span><span class="p">):</span>
+<div class="viewcode-block" id="GetTransaction"><a class="viewcode-back" href="../../../../rst/core.cleos.base.html#eosfactory.core.cleos.base.GetTransaction">[docs]</a><span class="k">class</span> <span class="nc">GetTransaction</span><span class="p">(</span><span class="n">Cleos</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Retrieve a transaction from the blockchain.</span>
 
 <span class="sd">    Args:</span>
@@ -293,7 +294,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">printself</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="WalletCreate"><a class="viewcode-back" href="../../../rst/core.cleos.html#eosfactory.core.cleos.WalletCreate">[docs]</a><span class="k">class</span> <span class="nc">WalletCreate</span><span class="p">(</span><span class="n">interface</span><span class="o">.</span><span class="n">Wallet</span><span class="p">,</span> <span class="n">Cleos</span><span class="p">):</span>
+<div class="viewcode-block" id="WalletCreate"><a class="viewcode-back" href="../../../../rst/core.cleos.base.html#eosfactory.core.cleos.base.WalletCreate">[docs]</a><span class="k">class</span> <span class="nc">WalletCreate</span><span class="p">(</span><span class="n">interface</span><span class="o">.</span><span class="n">Wallet</span><span class="p">,</span> <span class="n">Cleos</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Create a new wallet locally.</span>
 
 <span class="sd">    If the *password* argument is set, try to open a wallet. Otherwise, create</span>
@@ -339,7 +340,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">printself</span><span class="p">(</span><span class="n">is_verbose</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="WalletStop"><a class="viewcode-back" href="../../../rst/core.cleos.html#eosfactory.core.cleos.WalletStop">[docs]</a><span class="k">class</span> <span class="nc">WalletStop</span><span class="p">(</span><span class="n">Cleos</span><span class="p">):</span>
+<div class="viewcode-block" id="WalletStop"><a class="viewcode-back" href="../../../../rst/core.cleos.base.html#eosfactory.core.cleos.base.WalletStop">[docs]</a><span class="k">class</span> <span class="nc">WalletStop</span><span class="p">(</span><span class="n">Cleos</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Stop keosd, the EOSIO wallet manager.</span>
 
 <span class="sd">    Args:</span>
@@ -351,7 +352,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">printself</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="WalletList"><a class="viewcode-back" href="../../../rst/core.cleos.html#eosfactory.core.cleos.WalletList">[docs]</a><span class="k">class</span> <span class="nc">WalletList</span><span class="p">(</span><span class="n">Cleos</span><span class="p">):</span>
+<div class="viewcode-block" id="WalletList"><a class="viewcode-back" href="../../../../rst/core.cleos.base.html#eosfactory.core.cleos.base.WalletList">[docs]</a><span class="k">class</span> <span class="nc">WalletList</span><span class="p">(</span><span class="n">Cleos</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;List opened wallets, * marks unlocked.</span>
 
 <span class="sd">    Args:</span>
@@ -369,7 +370,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">printself</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="WalletImport"><a class="viewcode-back" href="../../../rst/core.cleos.html#eosfactory.core.cleos.WalletImport">[docs]</a><span class="k">class</span> <span class="nc">WalletImport</span><span class="p">(</span><span class="n">Cleos</span><span class="p">):</span>
+<div class="viewcode-block" id="WalletImport"><a class="viewcode-back" href="../../../../rst/core.cleos.base.html#eosfactory.core.cleos.base.WalletImport">[docs]</a><span class="k">class</span> <span class="nc">WalletImport</span><span class="p">(</span><span class="n">Cleos</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Import a private key into wallet.</span>
 
 <span class="sd">    Args:</span>
@@ -393,7 +394,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">key_private</span> <span class="o">=</span> <span class="n">key_private</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">printself</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="WalletRemove_key"><a class="viewcode-back" href="../../../rst/core.cleos.html#eosfactory.core.cleos.WalletRemove_key">[docs]</a><span class="k">class</span> <span class="nc">WalletRemove_key</span><span class="p">(</span><span class="n">Cleos</span><span class="p">):</span>
+<div class="viewcode-block" id="WalletRemove_key"><a class="viewcode-back" href="../../../../rst/core.cleos.base.html#eosfactory.core.cleos.base.WalletRemove_key">[docs]</a><span class="k">class</span> <span class="nc">WalletRemove_key</span><span class="p">(</span><span class="n">Cleos</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Remove key from wallet</span>
 
 <span class="sd">    Args:</span>
@@ -420,7 +421,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">printself</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="WalletKeys"><a class="viewcode-back" href="../../../rst/core.cleos.html#eosfactory.core.cleos.WalletKeys">[docs]</a><span class="k">class</span> <span class="nc">WalletKeys</span><span class="p">(</span><span class="n">Cleos</span><span class="p">):</span>
+<div class="viewcode-block" id="WalletKeys"><a class="viewcode-back" href="../../../../rst/core.cleos.base.html#eosfactory.core.cleos.base.WalletKeys">[docs]</a><span class="k">class</span> <span class="nc">WalletKeys</span><span class="p">(</span><span class="n">Cleos</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;List of public keys from all unlocked wallets.</span>
 
 <span class="sd">    Args:</span>
@@ -437,7 +438,7 @@
         <span class="k">return</span> <span class="n">out</span></div>
 
 
-<div class="viewcode-block" id="WalletOpen"><a class="viewcode-back" href="../../../rst/core.cleos.html#eosfactory.core.cleos.WalletOpen">[docs]</a><span class="k">class</span> <span class="nc">WalletOpen</span><span class="p">(</span><span class="n">Cleos</span><span class="p">):</span>
+<div class="viewcode-block" id="WalletOpen"><a class="viewcode-back" href="../../../../rst/core.cleos.base.html#eosfactory.core.cleos.base.WalletOpen">[docs]</a><span class="k">class</span> <span class="nc">WalletOpen</span><span class="p">(</span><span class="n">Cleos</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Open an existing wallet.</span>
 
 <span class="sd">    Args:</span>
@@ -452,7 +453,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">printself</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="WalletLockAll"><a class="viewcode-back" href="../../../rst/core.cleos.html#eosfactory.core.cleos.WalletLockAll">[docs]</a><span class="k">class</span> <span class="nc">WalletLockAll</span><span class="p">(</span><span class="n">Cleos</span><span class="p">):</span>
+<div class="viewcode-block" id="WalletLockAll"><a class="viewcode-back" href="../../../../rst/core.cleos.base.html#eosfactory.core.cleos.base.WalletLockAll">[docs]</a><span class="k">class</span> <span class="nc">WalletLockAll</span><span class="p">(</span><span class="n">Cleos</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Lock all unlocked wallets.</span>
 
 <span class="sd">    Args:</span>
@@ -465,7 +466,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">printself</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="WalletLock"><a class="viewcode-back" href="../../../rst/core.cleos.html#eosfactory.core.cleos.WalletLock">[docs]</a><span class="k">class</span> <span class="nc">WalletLock</span><span class="p">(</span><span class="n">Cleos</span><span class="p">):</span>
+<div class="viewcode-block" id="WalletLock"><a class="viewcode-back" href="../../../../rst/core.cleos.base.html#eosfactory.core.cleos.base.WalletLock">[docs]</a><span class="k">class</span> <span class="nc">WalletLock</span><span class="p">(</span><span class="n">Cleos</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Lock wallet.</span>
 
 <span class="sd">    Args:</span>
@@ -480,7 +481,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">printself</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="WalletUnlock"><a class="viewcode-back" href="../../../rst/core.cleos.html#eosfactory.core.cleos.WalletUnlock">[docs]</a><span class="k">class</span> <span class="nc">WalletUnlock</span><span class="p">(</span><span class="n">Cleos</span><span class="p">):</span>
+<div class="viewcode-block" id="WalletUnlock"><a class="viewcode-back" href="../../../../rst/core.cleos.base.html#eosfactory.core.cleos.base.WalletUnlock">[docs]</a><span class="k">class</span> <span class="nc">WalletUnlock</span><span class="p">(</span><span class="n">Cleos</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Unlock wallet.</span>
 
 <span class="sd">    Args:</span>
@@ -502,7 +503,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">printself</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="CreateKey"><a class="viewcode-back" href="../../../rst/core.cleos.html#eosfactory.core.cleos.CreateKey">[docs]</a><span class="k">class</span> <span class="nc">CreateKey</span><span class="p">(</span><span class="n">interface</span><span class="o">.</span><span class="n">Key</span><span class="p">,</span> <span class="n">Cleos</span><span class="p">):</span>
+<div class="viewcode-block" id="CreateKey"><a class="viewcode-back" href="../../../../rst/core.cleos.base.html#eosfactory.core.cleos.base.CreateKey">[docs]</a><span class="k">class</span> <span class="nc">CreateKey</span><span class="p">(</span><span class="n">interface</span><span class="o">.</span><span class="n">Key</span><span class="p">,</span> <span class="n">Cleos</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Create a new keypair and print the public and private keys.</span>
 
 <span class="sd">    Args:</span>
@@ -546,7 +547,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">key_public</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">json</span><span class="p">[</span><span class="s2">&quot;publicKey&quot;</span><span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="RestoreAccount"><a class="viewcode-back" href="../../../rst/core.cleos.html#eosfactory.core.cleos.RestoreAccount">[docs]</a><span class="k">class</span> <span class="nc">RestoreAccount</span><span class="p">(</span><span class="n">GetAccount</span><span class="p">):</span>
+<div class="viewcode-block" id="RestoreAccount"><a class="viewcode-back" href="../../../../rst/core.cleos.base.html#eosfactory.core.cleos.base.RestoreAccount">[docs]</a><span class="k">class</span> <span class="nc">RestoreAccount</span><span class="p">(</span><span class="n">GetAccount</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">account</span><span class="p">,</span> <span class="n">is_verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="n">GetAccount</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">account</span><span class="p">,</span> <span class="n">is_verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">is_info</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -559,7 +560,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span></div>
 
 
-<div class="viewcode-block" id="CreateAccount"><a class="viewcode-back" href="../../../rst/core.cleos.html#eosfactory.core.cleos.CreateAccount">[docs]</a><span class="k">class</span> <span class="nc">CreateAccount</span><span class="p">(</span><span class="n">interface</span><span class="o">.</span><span class="n">Account</span><span class="p">,</span> <span class="n">Cleos</span><span class="p">):</span>
+<div class="viewcode-block" id="CreateAccount"><a class="viewcode-back" href="../../../../rst/core.cleos.base.html#eosfactory.core.cleos.base.CreateAccount">[docs]</a><span class="k">class</span> <span class="nc">CreateAccount</span><span class="p">(</span><span class="n">interface</span><span class="o">.</span><span class="n">Account</span><span class="p">,</span> <span class="n">Cleos</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Create an account, buy ram, stake for bandwidth for the account.</span>
 
 <span class="sd">    Args:</span>
@@ -572,7 +573,7 @@
 <span class="sd">            otherwise random.</span>
 
 <span class="sd">    See definitions of the remaining parameters: \</span>
-<span class="sd">    :func:`.cleos.common_parameters`.</span>
+<span class="sd">    :func:`.cleos.base.common_parameters`.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span> <span class="n">creator</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">owner_key</span><span class="p">,</span> 
@@ -642,7 +643,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span></div>
 
 
-<div class="viewcode-block" id="account_name"><a class="viewcode-back" href="../../../rst/core.cleos.html#eosfactory.core.cleos.account_name">[docs]</a><span class="k">def</span> <span class="nf">account_name</span><span class="p">():</span>
+<div class="viewcode-block" id="account_name"><a class="viewcode-back" href="../../../../rst/core.cleos.base.html#eosfactory.core.cleos.base.account_name">[docs]</a><span class="k">def</span> <span class="nf">account_name</span><span class="p">():</span>
     <span class="sd">&#39;&#39;&#39;Get a random EOSIO account name.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">letters</span> <span class="o">=</span> <span class="s2">&quot;abcdefghijklmnopqrstuvwxyz12345&quot;</span>
@@ -653,7 +654,7 @@
     <span class="k">return</span> <span class="n">name</span></div>
 
 
-<div class="viewcode-block" id="contract_is_built"><a class="viewcode-back" href="../../../rst/core.cleos.html#eosfactory.core.cleos.contract_is_built">[docs]</a><span class="k">def</span> <span class="nf">contract_is_built</span><span class="p">(</span><span class="n">contract_dir</span><span class="p">,</span> <span class="n">wasm_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">abi_file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="contract_is_built"><a class="viewcode-back" href="../../../../rst/core.cleos.base.html#eosfactory.core.cleos.base.contract_is_built">[docs]</a><span class="k">def</span> <span class="nf">contract_is_built</span><span class="p">(</span><span class="n">contract_dir</span><span class="p">,</span> <span class="n">wasm_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">abi_file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Check whether the given contract project has its ABI and WASM files.</span>
 
 <span class="sd">    Args:</span>
@@ -687,7 +688,7 @@
     <span class="k">return</span> <span class="p">[</span><span class="n">contract_path_absolute</span><span class="p">,</span> <span class="n">wasm_file</span><span class="p">,</span> <span class="n">abi_file</span><span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="PushAction"><a class="viewcode-back" href="../../../rst/core.cleos.html#eosfactory.core.cleos.PushAction">[docs]</a><span class="k">class</span> <span class="nc">PushAction</span><span class="p">(</span><span class="n">Cleos</span><span class="p">):</span>
+<div class="viewcode-block" id="PushAction"><a class="viewcode-back" href="../../../../rst/core.cleos.base.html#eosfactory.core.cleos.base.PushAction">[docs]</a><span class="k">class</span> <span class="nc">PushAction</span><span class="p">(</span><span class="n">Cleos</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;Push a transaction with a single action.</span>
 
 <span class="sd">    Args:</span>
@@ -698,7 +699,7 @@
 <span class="sd">        data (str): The arguments to the contract.</span>
 
 <span class="sd">    See definitions of the remaining parameters: \</span>
-<span class="sd">    :func:`.cleos.common_parameters`.</span>
+<span class="sd">    :func:`.cleos.base.common_parameters`.</span>
 
 <span class="sd">    Attributes:</span>
 <span class="sd">        account_name (str): The EOSIO name of the contract&#39;s account.</span>
@@ -784,7 +785,7 @@
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
-    <form class="search" action="../../../search.html" method="get">
+    <form class="search" action="../../../../search.html" method="get">
       <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
@@ -799,13 +800,14 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../../../genindex.html" title="General Index"
+          <a href="../../../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../../../py-modindex.html" title="Python Module Index"
+          <a href="../../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.4.0 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">EOSFactory 3.4.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../index.html" >Module code</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../cleos.html" >eosfactory.core.cleos</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

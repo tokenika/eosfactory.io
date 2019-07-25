@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>eosfactory.core.teos &#8212; EOSFactory 3.3.0 documentation</title>
+    <title>eosfactory.core.teos &#8212; EOSFactory 3.4.0 documentation</title>
     <link rel="stylesheet" href="../../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
@@ -29,7 +29,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.3.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.4.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
       </ul>
     </div>  
@@ -559,7 +559,7 @@
         <span class="k">if</span> <span class="n">utils</span><span class="o">.</span><span class="n">is_windows_ubuntu</span><span class="p">():</span>
             <span class="n">command_line</span> <span class="o">=</span> <span class="s2">&quot;cmd.exe /C code </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="n">utils</span><span class="o">.</span><span class="n">wslMapLinuxWindows</span><span class="p">(</span><span class="n">project_dir</span><span class="p">))</span>
-        <span class="k">elif</span> <span class="n">utils</span><span class="o">.</span><span class="n">uname</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;Darwin&quot;</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">utils</span><span class="o">.</span><span class="n">os_version</span><span class="p">()</span> <span class="o">==</span> <span class="n">utils</span><span class="o">.</span><span class="n">DARWIN</span><span class="p">:</span>
             <span class="n">command_line</span> <span class="o">=</span> <span class="s2">&quot;open -n -b com.microsoft.VSCode --args </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
                 <span class="n">project_dir</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
@@ -584,7 +584,7 @@
 
     <span class="n">pids</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">processes</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">info</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">psutil</span><span class="o">.</span><span class="n">process_iter</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;pid&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">])</span> \
-                                        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span>
+                                        <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span>
     <span class="k">for</span> <span class="n">process</span> <span class="ow">in</span> <span class="n">processes</span><span class="p">:</span>
         <span class="n">pids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">process</span><span class="p">[</span><span class="s2">&quot;pid&quot;</span><span class="p">])</span>
 
@@ -821,7 +821,7 @@
     <span class="n">pid</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
         <span class="n">pids</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">info</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">psutil</span><span class="o">.</span><span class="n">process_iter</span><span class="p">(</span><span class="n">attrs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;pid&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">])</span> \
-                                        <span class="k">if</span> <span class="n">NODEOS</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span>
+                                        <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">NODEOS</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span>
         <span class="k">if</span> <span class="n">pids</span> <span class="ow">and</span> <span class="n">pids</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">NODEOS</span><span class="p">:</span>
             <span class="n">pid</span> <span class="o">=</span> <span class="n">pids</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;pid&quot;</span><span class="p">]</span>
             <span class="k">break</span>
@@ -960,7 +960,7 @@
         <li class="right" >
           <a href="../../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.3.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">EOSFactory 3.4.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li> 
       </ul>
     </div>
