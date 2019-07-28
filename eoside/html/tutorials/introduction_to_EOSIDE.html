@@ -1,11 +1,9 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>Overview of the Main Features &#8212; EOSIDE 1.0 documentation</title>
     <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -21,8 +19,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Overview of the Main Features (short video)" href="five_minutes_movie.html" />
-    <link rel="prev" title="Installation Guide (short video)" href="installing_movie.html" /> 
+    <link rel="next" title="Native unit test compilation and execution" href="native_tests.html" />
+    <link rel="prev" title="Installation Guide" href="installing_EOSIDE.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -31,10 +29,10 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="five_minutes_movie.html" title="Overview of the Main Features (short video)"
+          <a href="native_tests.html" title="Native unit test compilation and execution"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="installing_movie.html" title="Installation Guide (short video)"
+          <a href="installing_EOSIDE.html" title="Installation Guide"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">EOSIDE 1.0 documentation</a> &#187;</li> 
       </ul>
@@ -52,17 +50,17 @@
 <p>EOSIDE organizes the workflow of development process for <a class="reference external" href="https://eos.io/">EOSIO</a> smart-contracts. It leverages the functionality of <a class="reference external" href="https://eosfactory.io/">EOSFactory</a>. EOSIDE is implemented as a <a class="reference external" href="https://code.visualstudio.com/">Visual Studio Code</a> (VSC) extension.</p>
 <p>EOSIDE implements the following features:</p>
 <ul class="simple">
-<li>project standardization,</li>
-<li>easy access to project archive,</li>
-<li>referencing documentation and tutorials,</li>
-<li>automatic availability of standard libraries,</li>
-<li>dependency management,</li>
-<li><a class="reference external" href="https://code.visualstudio.com/docs/editor/intellisense">IntelliSense</a> code completion,</li>
-<li>compilation and building,</li>
-<li>native compilation, execution and debugging of native unit tests,</li>
-<li>functional unit testing,</li>
-<li>project packaging,</li>
-<li>deployment.</li>
+<li><p>project standardization,</p></li>
+<li><p>easy access to project archive,</p></li>
+<li><p>referencing documentation and tutorials,</p></li>
+<li><p>automatic availability of standard libraries,</p></li>
+<li><p>dependency management,</p></li>
+<li><p><a class="reference external" href="https://code.visualstudio.com/docs/editor/intellisense">IntelliSense</a> code completion,</p></li>
+<li><p>compilation and building,</p></li>
+<li><p>native compilation, execution and debugging of native unit tests,</p></li>
+<li><p>functional unit testing,</p></li>
+<li><p>project packaging,</p></li>
+<li><p>deployment.</p></li>
 </ul>
 <p>Watch a short <a class="reference external" href="https://eosfactory.io/eoside/html/_static/five_minutes.mp4">video</a> demonstrating EOSIDE in action. And here is another <a class="reference external" href="https://eosfactory.io/eoside/html/_static/installing.mp4">video</a> demonstrating the setup process and a <em>Hello World</em> test.</p>
 </div>
@@ -73,25 +71,25 @@
 <p><img alt="../_images/get_started.png" src="../_images/get_started.png" />Get Started view</p>
 <p>Let’s go through its options:</p>
 <ul class="simple">
-<li><em>Get Started</em> contains links to tutorials and other documentation.</li>
-<li><em>New project</em> lets you create a new project from a template.</li>
-<li><em>Recent</em> lists existing projects.</li>
-<li><em>Open</em> triggers specified actions.</li>
-<li>The two menu buttons located in the title bar, namely <code class="docutils literal notranslate"><span class="pre">EOSIDE</span></code> and <code class="docutils literal notranslate"><span class="pre">Setup</span></code>, display corresponding views.</li>
+<li><p><em>Get Started</em> contains links to tutorials and other documentation.</p></li>
+<li><p><em>New project</em> lets you create a new project from a template.</p></li>
+<li><p><em>Recent</em> lists existing projects.</p></li>
+<li><p><em>Open</em> triggers specified actions.</p></li>
+<li><p>The two menu buttons located in the title bar, namely <code class="docutils literal notranslate"><span class="pre">EOSIDE</span></code> and <code class="docutils literal notranslate"><span class="pre">Setup</span></code>, display corresponding views.</p></li>
 </ul>
 </div>
 <div class="section" id="project-standardization">
 <h2>Project standardization<a class="headerlink" href="#project-standardization" title="Permalink to this headline">¶</a></h2>
 <p>EOSIDE introduces a standardized layout for the smart-contract’s folder:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">.vscode</span></code> – system folder,</li>
-<li><code class="docutils literal notranslate"><span class="pre">build</span></code> – folder where contract WASM and ABI files go,</li>
-<li><code class="docutils literal notranslate"><span class="pre">include</span></code> – folder containing header files,</li>
-<li><code class="docutils literal notranslate"><span class="pre">recardian</span></code> – folder containing Ricardian contract files etc.,</li>
-<li><code class="docutils literal notranslate"><span class="pre">src</span></code> – folder containing CPP/C source files,</li>
-<li><code class="docutils literal notranslate"><span class="pre">tests</span></code> - folder containing Python scripts, especially EOSFactory scripts,</li>
-<li><code class="docutils literal notranslate"><span class="pre">.eosioignore</span></code> - exclusion list for the project packaging utility,</li>
-<li><code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>  - the CMake lists file of the project.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.vscode</span></code> – system folder,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">build</span></code> – folder where contract WASM and ABI files go,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">include</span></code> – folder containing header files,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">recardian</span></code> – folder containing Ricardian contract files etc.,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">src</span></code> – folder containing CPP/C source files,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tests</span></code> - folder containing Python scripts, especially EOSFactory scripts,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.eosioignore</span></code> - exclusion list for the project packaging utility,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>  - the CMake lists file of the project.</p></li>
 </ul>
 <p>An example of the above layout is shown below:</p>
 <p><img alt="../_images/contract_folder.png" src="../_images/contract_folder.png" />Project layout</p>
@@ -110,21 +108,16 @@
 <p><img alt="../_images/setup.png" src="../_images/setup.png" />Setup view</p>
 <p>Let’s go through its options:</p>
 <ul>
-<li><p class="first"><em>Include</em> lists directories containing headers involved in the project. This list is extracted from the content of the <code class="docutils literal notranslate"><span class="pre">.vscode/c_cpp_properties.json</span></code> file generated by <code class="docutils literal notranslate"><span class="pre">ms-vscode.cpptools</span></code>. The entries can be edited by clicking buttons next to them. Also, new items can be added. <strong>Note</strong>: the left mouse button opens native dialog, the right one opens VSCode input box. <strong>Note:</strong> on Windows and WSL Ubuntu all file paths are expressed relative to the <code class="docutils literal notranslate"><span class="pre">WSL</span> <span class="pre">root</span></code>.</p>
-</li>
-<li><p class="first"><em>Libs</em> lists libraries resolving outer dependencies of the project.</p>
-</li>
-<li><p class="first"><em>Code Options</em> lists parameters of the WASM compiler/builder.</p>
-</li>
-<li><p class="first"><em>Tests Options</em> lists parameters of the native compiler/builder.</p>
-</li>
-<li><p class="first"><em>Contract Account</em> defines the account that holds the smart-contract. Its name has to be chosen from a list given with the bash command:</p>
+<li><p><em>Include</em> lists directories containing headers involved in the project. This list is extracted from the content of the <code class="docutils literal notranslate"><span class="pre">.vscode/c_cpp_properties.json</span></code> file generated by <code class="docutils literal notranslate"><span class="pre">ms-vscode.cpptools</span></code>. The entries can be edited by clicking buttons next to them. Also, new items can be added. <strong>Note</strong>: the left mouse button opens native dialog, the right one opens VSCode input box. <strong>Note:</strong> on Windows and WSL Ubuntu all file paths are expressed relative to the <code class="docutils literal notranslate"><span class="pre">WSL</span> <span class="pre">root</span></code>.</p></li>
+<li><p><em>Libs</em> lists libraries resolving outer dependencies of the project.</p></li>
+<li><p><em>Code Options</em> lists parameters of the WASM compiler/builder.</p></li>
+<li><p><em>Tests Options</em> lists parameters of the native compiler/builder.</p></li>
+<li><p><em>Contract Account</em> defines the account that holds the smart-contract. Its name has to be chosen from a list given with the bash command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 -m eosfactory.testnets
 </pre></div>
 </div>
 </li>
-<li><p class="first">The buttons in the top, labelled <code class="docutils literal notranslate"><span class="pre">Compile</span></code>, <code class="docutils literal notranslate"><span class="pre">Build</span></code>, <code class="docutils literal notranslate"><span class="pre">Compile</span> <span class="pre">Test</span></code>, <code class="docutils literal notranslate"><span class="pre">Build</span> <span class="pre">and</span> <span class="pre">Run</span> <span class="pre">Test</span></code>, <code class="docutils literal notranslate"><span class="pre">EOSIDE</span></code> and <code class="docutils literal notranslate"><span class="pre">Bash</span></code>, trigger corresponding actions. The <code class="docutils literal notranslate"><span class="pre">Bash</span></code> button, available on Windows only, starts a new bash terminal. The <code class="docutils literal notranslate"><span class="pre">Zip</span></code> button compresses, with defined exclusions, the project. All these actions can be invoked with keyboard shortcuts or with extension commands.</p>
-</li>
+<li><p>The buttons in the top, labelled <code class="docutils literal notranslate"><span class="pre">Compile</span></code>, <code class="docutils literal notranslate"><span class="pre">Build</span></code>, <code class="docutils literal notranslate"><span class="pre">Compile</span> <span class="pre">Test</span></code>, <code class="docutils literal notranslate"><span class="pre">Build</span> <span class="pre">and</span> <span class="pre">Run</span> <span class="pre">Test</span></code>, <code class="docutils literal notranslate"><span class="pre">EOSIDE</span></code> and <code class="docutils literal notranslate"><span class="pre">Bash</span></code>, trigger corresponding actions. The <code class="docutils literal notranslate"><span class="pre">Bash</span></code> button, available on Windows only, starts a new bash terminal. The <code class="docutils literal notranslate"><span class="pre">Zip</span></code> button compresses, with defined exclusions, the project. All these actions can be invoked with keyboard shortcuts or with extension commands.</p></li>
 </ul>
 <p>All the dependencies are stored in the <code class="docutils literal notranslate"><span class="pre">.vscode/c_cpp_properties.json</span></code> file. This file feeds the compile procedures, build procedures and the <em>IntelliSense</em> features of VSC.</p>
 </div>
@@ -143,25 +136,25 @@
 <h3>VSC style: compile and build with VSC tasks and commands<a class="headerlink" href="#vsc-style-compile-and-build-with-vsc-tasks-and-commands" title="Permalink to this headline">¶</a></h3>
 <p>To compile:</p>
 <ul class="simple">
-<li><strong>VSC task:</strong> <code class="docutils literal notranslate"><span class="pre">Terminal</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Run</span> <span class="pre">Task...</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Compile</span></code></li>
-<li><strong>VSC command:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eosid</span> <span class="pre">compile</span></code></li>
-<li><strong>keyboard shortcut:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+c</span></code></li>
+<li><p><strong>VSC task:</strong> <code class="docutils literal notranslate"><span class="pre">Terminal</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Run</span> <span class="pre">Task...</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Compile</span></code></p></li>
+<li><p><strong>VSC command:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eosid</span> <span class="pre">compile</span></code></p></li>
+<li><p><strong>keyboard shortcut:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+c</span></code></p></li>
 </ul>
 <p>To compile test:</p>
 <ul class="simple">
-<li><strong>VSC command:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eosid</span> <span class="pre">compile</span> <span class="pre">test</span></code></li>
-<li><strong>keyboard shortcut:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+alt+c</span></code></li>
+<li><p><strong>VSC command:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eosid</span> <span class="pre">compile</span> <span class="pre">test</span></code></p></li>
+<li><p><strong>keyboard shortcut:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+alt+c</span></code></p></li>
 </ul>
 <p>To build:</p>
 <ul class="simple">
-<li><strong>VSC task:</strong> <code class="docutils literal notranslate"><span class="pre">Terminal</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Run</span> <span class="pre">Build</span> <span class="pre">Task...</span></code></li>
-<li><strong>VSC command:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eosid</span> <span class="pre">build</span></code></li>
-<li><strong>keyboard shortcut:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+b</span></code></li>
+<li><p><strong>VSC task:</strong> <code class="docutils literal notranslate"><span class="pre">Terminal</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Run</span> <span class="pre">Build</span> <span class="pre">Task...</span></code></p></li>
+<li><p><strong>VSC command:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eosid</span> <span class="pre">build</span></code></p></li>
+<li><p><strong>keyboard shortcut:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+b</span></code></p></li>
 </ul>
 <p>To build and run test:</p>
 <ul class="simple">
-<li><strong>VSC command:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eosid</span> <span class="pre">build</span> <span class="pre">test</span></code></li>
-<li><strong>keyboard shortcut:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+alt+b</span></code></li>
+<li><p><strong>VSC command:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eosid</span> <span class="pre">build</span> <span class="pre">test</span></code></p></li>
+<li><p><strong>keyboard shortcut:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+alt+b</span></code></p></li>
 </ul>
 <p>The picture below shows how you can access tasks in VSC:</p>
 <p><img alt="../_images/build_task.png" src="../_images/build_task.png" />Build task</p>
@@ -231,8 +224,8 @@ WASM file writen to file:
 <div class="section" id="deploy-with-vsc-command">
 <h3>Deploy with VSC command<a class="headerlink" href="#deploy-with-vsc-command" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><strong>VSC command:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eosid</span> <span class="pre">deploy</span></code></li>
-<li><strong>keyboard shortcut:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+y</span></code></li>
+<li><p><strong>VSC command:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eosid</span> <span class="pre">deploy</span></code></p></li>
+<li><p><strong>keyboard shortcut:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+y</span></code></p></li>
 </ul>
 </div>
 <div class="section" id="deploy-with-ubuntu-bash">
@@ -304,9 +297,9 @@ Total Test <span class="nb">time</span> <span class="o">(</span>real<span class=
 <p><img alt="../_images/install.png" src="../_images/install.png" />Setup view</p>
 <p>If you turn the menu off, you can still access EOSIDE views by using VSC commands:</p>
 <ul class="simple">
-<li><strong>Get Started View:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eoside</span> <span class="pre">EOSIDE</span></code> or <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+alt+e</span></code></li>
-<li><strong>Setup View:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eoside</span> <span class="pre">setup</span></code> or <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+alt+s</span></code></li>
-<li><strong>Install View:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eoside</span> <span class="pre">install</span></code> or <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+i</span></code></li>
+<li><p><strong>Get Started View:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eoside</span> <span class="pre">EOSIDE</span></code> or <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+alt+e</span></code></p></li>
+<li><p><strong>Setup View:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eoside</span> <span class="pre">setup</span></code> or <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+alt+s</span></code></p></li>
+<li><p><strong>Install View:</strong> <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+shift+p</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">eoside</span> <span class="pre">install</span></code> or <code class="docutils literal notranslate"><span class="pre">ctrl/cmd+i</span></code></p></li>
 </ul>
 </div>
 </div>
@@ -346,11 +339,11 @@ Total Test <span class="nb">time</span> <span class="o">(</span>real<span class=
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="installing_movie.html"
-                        title="previous chapter">Installation Guide (short video)</a></p>
+  <p class="topless"><a href="installing_EOSIDE.html"
+                        title="previous chapter">Installation Guide</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="five_minutes_movie.html"
-                        title="next chapter">Overview of the Main Features (short video)</a></p>
+  <p class="topless"><a href="native_tests.html"
+                        title="next chapter">Native unit test compilation and execution</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -359,13 +352,11 @@ Total Test <span class="nb">time</span> <span class="o">(</span>real<span class=
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -381,17 +372,17 @@ Total Test <span class="nb">time</span> <span class="o">(</span>real<span class=
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="five_minutes_movie.html" title="Overview of the Main Features (short video)"
+          <a href="native_tests.html" title="Native unit test compilation and execution"
              >next</a> |</li>
         <li class="right" >
-          <a href="installing_movie.html" title="Installation Guide (short video)"
+          <a href="installing_EOSIDE.html" title="Installation Guide"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">EOSIDE 1.0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Tokenika.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
     </div>
   </body>
 </html>
